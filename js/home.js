@@ -1,9 +1,10 @@
 // =========================================================
 // MAS MAIL — HOME CONTROLLER
-// FINAL VERSION
+// FINAL NAVIGATION VERSION
 //
 // Scroll = membaca isi section
 // Tombol = pindah section
+// Android Back = kembali ke section sebelumnya
 // =========================================================
 
 
@@ -13,7 +14,7 @@ document.addEventListener(
 
 
         // =================================================
-        // 01. AMBIL SECTION
+        // 01. ELEMENT
         // =================================================
 
         const homePage =
@@ -46,7 +47,7 @@ document.addEventListener(
 
 
         // =================================================
-        // 02. SECTION PERTAMA
+        // 02. INITIAL STATE
         // =================================================
 
         sections.forEach(
@@ -83,18 +84,65 @@ document.addEventListener(
 
 
         // =================================================
-        // 03. PINDAH SECTION
+        // 03. HISTORY SYSTEM
+        // =================================================
+        //
+        // Setiap perpindahan section membuat history browser.
+        //
+        // Contoh:
+        //
+        // Home
+        //   ↓
+        // Section 2
+        //   ↓
+        // Section 3
+        //
+        // Tekan Back Android:
+        //
+        // Section 3
+        //   ↓
+        // Section 2
+        //
+        // =================================================
+
+
+        history.replaceState(
+            {
+                homeSection: 0
+            },
+            '',
+            window.location.href
+        );
+
+
+        function pushSectionHistory(
+            sectionIndex
+        ) {
+
+            history.pushState(
+                {
+                    homeSection:
+                        sectionIndex
+                },
+                '',
+                window.location.href
+            );
+
+        }
+
+
+        // =================================================
+        // 04. CHANGE SECTION
         // =================================================
 
         function changeSection(
             targetIndex,
-            direction
+            direction,
+            addHistory
         ) {
 
 
-            if (
-                isChanging
-            ) {
+            if (isChanging) {
 
                 return;
 
@@ -136,16 +184,14 @@ document.addEventListener(
 
 
             // ---------------------------------------------
-            // PENTING:
-            // Setiap kali section dibuka,
-            // selalu kembali ke PALING ATAS.
+            // SET KE ATAS
             // ---------------------------------------------
 
             next.scrollTop = 0;
 
 
             // ---------------------------------------------
-            // Tentukan arah animasi
+            // ARAH ANIMASI
             // ---------------------------------------------
 
             if (
@@ -164,7 +210,7 @@ document.addEventListener(
 
 
             // ---------------------------------------------
-            // Tampilkan section baru
+            // TAMPILKAN SECTION BARU
             // ---------------------------------------------
 
             next.classList.remove(
@@ -178,7 +224,7 @@ document.addEventListener(
 
 
             // ---------------------------------------------
-            // Sembunyikan section lama
+            // SECTION LAMA KELUAR
             // ---------------------------------------------
 
             current.classList.remove(
@@ -192,7 +238,7 @@ document.addEventListener(
 
 
             // ---------------------------------------------
-            // Trigger browser
+            // TRIGGER TRANSITION
             // ---------------------------------------------
 
             void next.offsetWidth;
@@ -207,7 +253,20 @@ document.addEventListener(
 
 
             // ---------------------------------------------
-            // Bersihkan
+            // SIMPAN HISTORY
+            // ---------------------------------------------
+
+            if (addHistory) {
+
+                pushSectionHistory(
+                    targetIndex
+                );
+
+            }
+
+
+            // ---------------------------------------------
+            // BERSIHKAN
             // ---------------------------------------------
 
             window.setTimeout(
@@ -236,8 +295,7 @@ document.addEventListener(
 
 
         // =================================================
-        // 04. SEMUA PERPINDAHAN SECTION
-        //     HANYA DENGAN TOMBOL
+        // 05. BUTTON NAVIGATION
         // =================================================
 
         const sectionButtons =
@@ -297,7 +355,8 @@ document.addEventListener(
 
                         changeSection(
                             targetIndex,
-                            direction
+                            direction,
+                            true
                         );
 
                     }
@@ -308,52 +367,51 @@ document.addEventListener(
 
 
         // =================================================
-        // 05. TIDAK ADA WHEEL NAVIGATION
-        // =================================================
-        //
-        // PENTING:
-        //
-        // Scroll mouse hanya digunakan untuk
-        // membaca isi section.
-        //
-        // TIDAK akan pindah section.
-        //
+        // 06. ANDROID / BROWSER BACK BUTTON
         // =================================================
 
+        window.addEventListener(
+            'popstate',
+            function (event) {
 
-        // Tidak ada event wheel di sini.
+
+                const state =
+                    event.state;
+
+
+                if (
+                    state &&
+                    typeof state.homeSection ===
+                    'number'
+                ) {
+
+
+                    const targetIndex =
+                        state.homeSection;
+
+
+                    const direction =
+                        targetIndex >
+                        currentSection
+                            ? 'next'
+                            : 'previous';
+
+
+                    changeSection(
+                        targetIndex,
+                        direction,
+                        false
+                    );
+
+
+                }
+
+            }
+        );
 
 
         // =================================================
-        // 06. TIDAK ADA SWIPE NAVIGATION
-        // =================================================
-        //
-        // Swipe pada HP = scroll normal.
-        //
-        // Jadi user bisa membaca section panjang.
-        //
-        // =================================================
-
-
-        // Tidak ada event touchend di sini.
-
-
-        // =================================================
-        // 07. KEYBOARD
-        // =================================================
-        //
-        // Keyboard tidak digunakan untuk pindah section.
-        //
-        // Tombol website adalah navigasi utama.
-        //
-        // =================================================
-
-
-        // Tidak ada keyboard navigation.
-
-
-        // =================================================
-        // 08. ANIMASI REVEAL
+        // 07. REVEAL ANIMATION
         // =================================================
 
         function animateSection(
@@ -402,7 +460,7 @@ document.addEventListener(
 
 
         // =================================================
-        // 09. ANIMASI HOME PERTAMA
+        // 08. ANIMASI SECTION PERTAMA
         // =================================================
 
         window.setTimeout(
@@ -419,7 +477,7 @@ document.addEventListener(
 
 
         // =================================================
-        // 10. ANIMASI SECTION BARU
+        // 09. ANIMASI SECTION BARU
         // =================================================
 
         sections.forEach(
