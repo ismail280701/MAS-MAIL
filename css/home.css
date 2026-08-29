@@ -1817,3 +1817,196 @@ body:has(.home-page) {
     }
 
 }
+/* =========================================================
+   HOME — FINAL SECTION NAVIGATION
+   Scroll hanya untuk membaca isi section
+   Pindah section HANYA menggunakan tombol
+   ========================================================= */
+
+
+/* HOME tetap menjadi layar utama */
+
+.home-page {
+    position: relative;
+
+    width: 100%;
+    height: 100svh;
+
+    overflow: hidden;
+
+    touch-action: auto;
+}
+
+
+/* =========================================================
+   SECTION
+   ========================================================= */
+
+.home-page .home-section {
+
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100svh;
+
+    min-height: 100svh;
+
+    overflow-x: hidden;
+
+    overflow-y: auto;
+
+    -webkit-overflow-scrolling: touch;
+
+    overscroll-behavior-y: contain;
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transform: scale(1.025);
+
+    pointer-events: none;
+
+    transition:
+        opacity 500ms ease,
+        transform 650ms
+        cubic-bezier(
+            0.22,
+            1,
+            0.36,
+            1
+        );
+}
+
+
+/* =========================================================
+   SECTION AKTIF
+   ========================================================= */
+
+.home-page .home-section.is-active {
+
+    opacity: 1;
+
+    visibility: visible;
+
+    transform: scale(1);
+
+    pointer-events: auto;
+
+    z-index: 10;
+}
+
+
+/* =========================================================
+   SECTION YANG KELUAR
+   ========================================================= */
+
+.home-page .home-section.is-leaving {
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transform:
+        scale(0.985)
+        translateY(-10px);
+
+    pointer-events: none;
+
+    z-index: 5;
+}
+
+
+/* =========================================================
+   SECTION YANG BELUM DIBUKA
+   ========================================================= */
+
+.home-page .home-section.is-entering {
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transform:
+        scale(1.025)
+        translateY(20px);
+
+    pointer-events: none;
+
+    z-index: 1;
+}
+
+
+/* =========================================================
+   SCROLLBAR
+   ========================================================= */
+
+.home-page .home-section::-webkit-scrollbar {
+
+    width: 5px;
+}
+
+
+.home-page .home-section::-webkit-scrollbar-track {
+
+    background: transparent;
+}
+
+
+.home-page .home-section::-webkit-scrollbar-thumb {
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.12
+        );
+
+    border-radius: 20px;
+}
+
+
+/* =========================================================
+   DESKTOP
+   ========================================================= */
+
+@media (min-width: 769px) {
+
+    .home-page .home-section {
+
+        scrollbar-width: thin;
+
+        scrollbar-color:
+            rgba(
+                255,
+                255,
+                255,
+                0.12
+            )
+            transparent;
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+    .home-page .home-section {
+
+        height: 100svh;
+
+        min-height: 100svh;
+
+        overflow-y: auto;
+
+        overflow-x: hidden;
+    }
+
+}
