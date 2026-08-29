@@ -2179,3 +2179,93 @@ body:has(.home-page) {
     }
 
 }
+/* =========================================================
+   FIX — TOMBOL NAVIGASI HOME SELALU MENEMPEL DI LAYAR
+   ========================================================= */
+
+.home-page {
+    position: relative;
+    width: 100%;
+    height: 100svh;
+    overflow: hidden;
+}
+
+
+/* Section boleh di-scroll */
+
+.home-page .home-section {
+    position: absolute;
+    inset: 0;
+
+    width: 100%;
+    height: 100svh;
+
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    -webkit-overflow-scrolling: touch;
+
+    scroll-behavior: smooth;
+}
+
+
+/* =========================================================
+   TOMBOL NAVIGASI
+   ========================================================= */
+
+.home-page .section-navigation {
+    position: fixed !important;
+
+    left: 50% !important;
+    bottom: 20px !important;
+
+    transform: translateX(-50%) !important;
+
+    z-index: 99999 !important;
+
+    width: max-content;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    pointer-events: auto;
+}
+
+
+/* Jangan ikut bergerak ketika section di-scroll */
+
+.home-page .section-navigation,
+.home-page .section-navigation * {
+    transform-origin: center;
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+    .home-page .section-navigation {
+
+        position: fixed !important;
+
+        left: 50% !important;
+
+        bottom:
+            calc(
+                14px +
+                env(safe-area-inset-bottom)
+            ) !important;
+
+        transform:
+            translateX(-50%) !important;
+
+        width:
+            calc(100% - 30px);
+
+    }
+
+}
