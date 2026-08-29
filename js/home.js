@@ -187,7 +187,11 @@ document.addEventListener(
             // SET KE ATAS
             // ---------------------------------------------
 
-            next.scrollTop = 0;
+            next.scrollTo({
+    top: 0,
+    left: 0,
+    behavior: 'instant'
+});
 
 
             // ---------------------------------------------
