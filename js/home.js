@@ -196,19 +196,7 @@ document.addEventListener(
 
             if (
                 direction === 'next'
-            ) {
-
-                next.style.transform =
-                    'translateY(25px) scale(1.025)';
-
-            } else {
-
-                next.style.transform =
-                    'translateY(-25px) scale(1.025)';
-
-            }
-
-
+            )
             // ---------------------------------------------
             // TAMPILKAN SECTION BARU
             // ---------------------------------------------
@@ -243,11 +231,6 @@ document.addEventListener(
 
             void next.offsetWidth;
 
-
-            next.style.transform =
-                'translateY(0) scale(1)';
-
-
             currentSection =
                 targetIndex;
 
@@ -275,15 +258,6 @@ document.addEventListener(
                     current.classList.remove(
                         'is-leaving'
                     );
-
-
-                    current.style.transform =
-                        '';
-
-
-                    next.style.transform =
-                        '';
-
 
                     isChanging = false;
 
