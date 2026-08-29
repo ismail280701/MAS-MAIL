@@ -1,5 +1,5 @@
 // =========================================================
-// MAS MAIL — HOME JAVASCRIPT
+// MAS MAIL — HOME APP CONTROLLER
 // File: home.js
 // =========================================================
 
@@ -8,7 +8,191 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
     // =====================================================
-    // 01. SECTION NAVIGATION
+    // 01. SECTION SYSTEM
+    // =====================================================
+
+    const homePage =
+        document.querySelector('.home-page');
+
+
+    const sections =
+        Array.from(
+            document.querySelectorAll('.home-section')
+        );
+
+
+    if (!homePage || sections.length === 0) {
+
+        return;
+
+    }
+
+
+    let currentSection = 0;
+
+    let isChanging = false;
+
+
+    // =====================================================
+    // 02. SET INITIAL SECTION
+    // =====================================================
+
+    sections.forEach(function (section, index) {
+
+        section.classList.remove(
+            'is-active',
+            'is-entering',
+            'is-leaving'
+        );
+
+
+        if (index === 0) {
+
+            section.classList.add(
+                'is-active'
+            );
+
+        } else {
+
+            section.classList.add(
+                'is-entering'
+            );
+
+        }
+
+    });
+
+
+    // =====================================================
+    // 03. CHANGE SECTION
+    // =====================================================
+
+    function changeSection(
+        targetIndex,
+        direction
+    ) {
+
+
+        if (isChanging) {
+
+            return;
+
+        }
+
+
+        if (
+            targetIndex < 0 ||
+            targetIndex >= sections.length
+        ) {
+
+            return;
+
+        }
+
+
+        if (
+            targetIndex === currentSection
+        ) {
+
+            return;
+
+        }
+
+
+        isChanging = true;
+
+
+        const current =
+            sections[currentSection];
+
+
+        const next =
+            sections[targetIndex];
+
+
+        /*
+         * Tentukan arah masuk.
+         */
+
+        if (direction === 'next') {
+
+            next.style.transform =
+                'translateY(35px) scale(1.035)';
+
+        } else {
+
+            next.style.transform =
+                'translateY(-35px) scale(1.035)';
+
+        }
+
+
+        next.classList.remove(
+            'is-entering'
+        );
+
+
+        next.classList.add(
+            'is-active'
+        );
+
+
+        current.classList.remove(
+            'is-active'
+        );
+
+
+        current.classList.add(
+            'is-leaving'
+        );
+
+
+        /*
+         * Paksa browser membaca perubahan
+         * sebelum menjalankan transisi.
+         */
+
+        void next.offsetWidth;
+
+
+        next.style.transform =
+            'translateY(0) scale(1)';
+
+
+        currentSection =
+            targetIndex;
+
+
+        /*
+         * Bersihkan section lama.
+         */
+
+        window.setTimeout(
+            function () {
+
+                current.classList.remove(
+                    'is-leaving'
+                );
+
+
+                current.style.transform = '';
+
+
+                next.style.transform = '';
+
+
+                isChanging = false;
+
+            },
+
+            800
+        );
+
+    }
+
+
+    // =====================================================
+    // 04. BUTTON NAVIGATION
     // =====================================================
 
     const sectionButtons =
@@ -42,267 +226,253 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
 
 
-                target.scrollIntoView({
-
-                    behavior: 'smooth',
-
-                    block: 'start'
-
-                });
-
-            }
-        );
-
-    });
+                const targetIndex =
+                    sections.indexOf(target);
 
 
-    // =====================================================
-    // 02. REVEAL ANIMATION
-    // =====================================================
+                if (targetIndex === -1) {
 
-    const revealItems =
-        document.querySelectorAll(
-            '.reveal-item'
-        );
-
-
-    /*
-     * Intersection Observer membuat elemen
-     * muncul ketika section mulai terlihat.
-     */
-
-    const revealObserver =
-        new IntersectionObserver(
-
-            function (entries) {
-
-                entries.forEach(function (entry) {
-
-                    if (
-                        entry.isIntersecting
-                    ) {
-
-                        entry.target.classList.add(
-                            'is-visible'
-                        );
-
-                    }
-
-                });
-
-            },
-
-            {
-                threshold: 0.15
-            }
-
-        );
-
-
-    revealItems.forEach(function (item) {
-
-        revealObserver.observe(item);
-
-    });
-
-
-    // =====================================================
-    // 03. STAGGER ANIMATION
-    // =====================================================
-
-    const brandCards =
-        document.querySelectorAll(
-            '.brand-card'
-        );
-
-
-    brandCards.forEach(function (card, index) {
-
-        card.style.transitionDelay =
-            (index * 100) + 'ms';
-
-    });
-
-
-    const contactItems =
-        document.querySelectorAll(
-            '.contact-item'
-        );
-
-
-    contactItems.forEach(function (item, index) {
-
-        item.style.transitionDelay =
-            (index * 80) + 'ms';
-
-    });
-
-
-    // =====================================================
-    // 04. KEYBOARD NAVIGATION
-    // =====================================================
-
-    const homeSections =
-        document.querySelectorAll(
-            '.home-section'
-        );
-
-
-    let currentSection = 0;
-
-
-    function getCurrentSection() {
-
-        const scrollPosition =
-            window.scrollY +
-            (window.innerHeight * 0.45);
-
-
-        homeSections.forEach(
-            function (section, index) {
-
-                const sectionTop =
-                    section.offsetTop;
-
-                const sectionBottom =
-                    sectionTop +
-                    section.offsetHeight;
-
-
-                if (
-                    scrollPosition >= sectionTop &&
-                    scrollPosition < sectionBottom
-                ) {
-
-                    currentSection = index;
+                    return;
 
                 }
 
+
+                const direction =
+                    targetIndex >
+                    currentSection
+                        ? 'next'
+                        : 'previous';
+
+
+                changeSection(
+                    targetIndex,
+                    direction
+                );
+
             }
         );
 
-    }
+    });
 
 
-    window.addEventListener(
-        'scroll',
-        getCurrentSection,
-        {
-            passive: true
-        }
-    );
-
-
-    /*
-     * Panah keyboard:
-     *
-     * ArrowDown → section berikutnya
-     * ArrowUp   → section sebelumnya
-     *
-     * Tidak aktif ketika user sedang mengetik.
-     */
+    // =====================================================
+    // 05. KEYBOARD NAVIGATION
+    // =====================================================
 
     document.addEventListener(
         'keydown',
         function (event) {
 
-            const activeElement =
-                document.activeElement;
+
+            /*
+             * Tombol keyboard yang bisa digunakan:
+             *
+             * ArrowDown
+             * ArrowRight
+             * ArrowUp
+             * ArrowLeft
+             */
+
+            if (
+                event.key === 'ArrowDown' ||
+                event.key === 'ArrowRight'
+            ) {
+
+                event.preventDefault();
 
 
-            const isTyping =
-                activeElement &&
-                (
-                    activeElement.tagName ===
-                    'INPUT' ||
-
-                    activeElement.tagName ===
-                    'TEXTAREA' ||
-
-                    activeElement.isContentEditable
+                changeSection(
+                    currentSection + 1,
+                    'next'
                 );
 
+            }
 
-            if (isTyping) {
+
+            if (
+                event.key === 'ArrowUp' ||
+                event.key === 'ArrowLeft'
+            ) {
+
+                event.preventDefault();
+
+
+                changeSection(
+                    currentSection - 1,
+                    'previous'
+                );
+
+            }
+
+        }
+    );
+
+
+    // =====================================================
+    // 06. MOUSE WHEEL
+    // =====================================================
+
+    /*
+     * Mouse wheel TIDAK melakukan scroll.
+     *
+     * Satu gerakan wheel dianggap sebagai
+     * satu perpindahan section.
+     *
+     * Jadi website tetap terasa seperti aplikasi.
+     */
+
+    let wheelLocked = false;
+
+
+    homePage.addEventListener(
+        'wheel',
+        function (event) {
+
+            event.preventDefault();
+
+
+            if (
+                wheelLocked ||
+                isChanging
+            ) {
 
                 return;
 
             }
 
 
-            if (
-                event.key ===
-                'ArrowDown'
+            wheelLocked = true;
+
+
+            if (event.deltaY > 0) {
+
+                changeSection(
+                    currentSection + 1,
+                    'next'
+                );
+
+            } else if (
+                event.deltaY < 0
             ) {
 
-                event.preventDefault();
-
-
-                if (
-                    currentSection <
-                    homeSections.length - 1
-                ) {
-
-                    currentSection++;
-
-                    homeSections[
-                        currentSection
-                    ].scrollIntoView({
-
-                        behavior: 'smooth'
-
-                    });
-
-                }
+                changeSection(
+                    currentSection - 1,
+                    'previous'
+                );
 
             }
 
 
-            if (
-                event.key ===
-                'ArrowUp'
-            ) {
+            window.setTimeout(
+                function () {
 
-                event.preventDefault();
+                    wheelLocked = false;
 
+                },
 
-                if (
-                    currentSection >
-                    0
-                ) {
+                850
+            );
 
-                    currentSection--;
-
-                    homeSections[
-                        currentSection
-                    ].scrollIntoView({
-
-                        behavior: 'smooth'
-
-                    });
-
-                }
-
-            }
-
+        },
+        {
+            passive: false
         }
     );
 
 
     // =====================================================
-    // 05. INITIAL REVEAL
+    // 07. TOUCH SWIPE
     // =====================================================
 
-    window.setTimeout(function () {
+    let touchStartY = 0;
 
-        const firstItems =
-            document.querySelectorAll(
-                '#homeHero .reveal-item'
+    let touchEndY = 0;
+
+
+    homePage.addEventListener(
+        'touchstart',
+        function (event) {
+
+            touchStartY =
+                event.changedTouches[0].screenY;
+
+        },
+        {
+            passive: true
+        }
+    );
+
+
+    homePage.addEventListener(
+        'touchend',
+        function (event) {
+
+            touchEndY =
+                event.changedTouches[0].screenY;
+
+
+            const difference =
+                touchStartY -
+                touchEndY;
+
+
+            /*
+             * Swipe minimal 50px.
+             */
+
+            if (
+                Math.abs(difference) < 50
+            ) {
+
+                return;
+
+            }
+
+
+            if (difference > 0) {
+
+                changeSection(
+                    currentSection + 1,
+                    'next'
+                );
+
+            } else {
+
+                changeSection(
+                    currentSection - 1,
+                    'previous'
+                );
+
+            }
+
+        },
+        {
+            passive: true
+        }
+    );
+
+
+    // =====================================================
+    // 08. REVEAL ANIMATION
+    // =====================================================
+
+    function animateSection(
+        section
+    ) {
+
+        const items =
+            section.querySelectorAll(
+                '.reveal-item'
             );
 
 
-        firstItems.forEach(
+        items.forEach(
             function (item, index) {
+
+                item.classList.remove(
+                    'is-visible'
+                );
+
 
                 window.setTimeout(
                     function () {
@@ -313,13 +483,86 @@ document.addEventListener('DOMContentLoaded', function () {
 
                     },
 
-                    index * 120
+                    100 +
+                    (index * 100)
                 );
 
             }
         );
 
-    }, 250);
+    }
+
+
+    /*
+     * Jalankan animasi Home pertama.
+     */
+
+    window.setTimeout(
+        function () {
+
+            animateSection(
+                sections[0]
+            );
+
+        },
+
+        150
+    );
+
+
+    // =====================================================
+    // 09. ANIMATE EVERY NEW SECTION
+    // =====================================================
+
+    sections.forEach(
+        function (section) {
+
+            section.addEventListener(
+                'transitionstart',
+                function () {
+
+                    if (
+                        section.classList.contains(
+                            'is-active'
+                        )
+                    ) {
+
+                        animateSection(
+                            section
+                        );
+
+                    }
+
+                }
+            );
+
+        }
+    );
+
+
+    // =====================================================
+    // 10. PREVENT NORMAL PAGE SCROLL
+    // =====================================================
+
+    document.addEventListener(
+        'touchmove',
+        function (event) {
+
+            if (
+                homePage.contains(
+                    event.target
+                )
+            ) {
+
+                event.preventDefault();
+
+            }
+
+        },
+        {
+            passive: false
+        }
+    );
 
 
 });
