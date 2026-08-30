@@ -1,1 +1,792 @@
+/* =========================================================
+   MAS MAIL DIGITAL
+   File: digital.css
 
+   Khusus:
+   - Isi halaman Mas Mail Digital
+   - Hero
+   - Layanan
+   - Produk digital
+   - Keunggulan
+   - CTA
+   - Floating element pendukung halaman
+
+   Navbar  → header-digital.css
+   Footer  → footer-digital.css
+   Umum    → umum.css
+   ========================================================= */
+
+
+/* =========================================================
+   01. DIGITAL PAGE
+   ========================================================= */
+
+.digital-page {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    background: var(--color-bg);
+    color: var(--color-text);
+    overflow-x: hidden;
+}
+
+
+/* =========================================================
+   02. DIGITAL SECTION
+   ========================================================= */
+
+.digital-section {
+    position: relative;
+    width: 100%;
+    min-height: 100svh;
+
+    display: flex;
+    align-items: center;
+
+    padding:
+        110px 20px
+        90px;
+
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   03. SECTION CONTAINER
+   ========================================================= */
+
+.digital-container {
+    position: relative;
+
+    width: min(
+        1180px,
+        100%
+    );
+
+    margin: 0 auto;
+
+    z-index: 2;
+}
+
+
+/* =========================================================
+   04. DIGITAL HERO
+   ========================================================= */
+
+.digital-hero {
+    min-height: 100svh;
+
+    background:
+        radial-gradient(
+            circle at 15% 20%,
+            rgba(102, 227, 255, 0.11),
+            transparent 32%
+        ),
+        radial-gradient(
+            circle at 90% 75%,
+            rgba(140, 124, 255, 0.10),
+            transparent 35%
+        ),
+        var(--color-bg);
+}
+
+
+/* =========================================================
+   HERO BACKGROUND
+   ========================================================= */
+
+.digital-hero-background {
+    position: absolute;
+    inset: 0;
+
+    z-index: 0;
+
+    overflow: hidden;
+
+    pointer-events: none;
+}
+
+
+.digital-hero-orb {
+    position: absolute;
+
+    width: 420px;
+    height: 420px;
+
+    border-radius: 50%;
+
+    filter: blur(80px);
+
+    opacity: 0.45;
+
+    animation:
+        digitalOrbFloat
+        12s
+        ease-in-out
+        infinite
+        alternate;
+}
+
+
+.digital-hero-orb-one {
+    top: -180px;
+    left: -120px;
+
+    background:
+        rgba(102, 227, 255, 0.18);
+}
+
+
+.digital-hero-orb-two {
+    right: -160px;
+    bottom: -190px;
+
+    background:
+        rgba(140, 124, 255, 0.17);
+
+    animation-delay: -4s;
+}
+
+
+@keyframes digitalOrbFloat {
+
+    from {
+        transform:
+            translate3d(
+                0,
+                0,
+                0
+            )
+            scale(1);
+    }
+
+    to {
+        transform:
+            translate3d(
+                45px,
+                -35px,
+                0
+            )
+            scale(1.16);
+    }
+}
+
+
+/* =========================================================
+   HERO GRID
+   ========================================================= */
+
+.digital-hero-grid {
+    position: absolute;
+    inset: 0;
+
+    opacity: 0.18;
+
+    background-image:
+        linear-gradient(
+            rgba(255,255,255,0.035) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,0.035) 1px,
+            transparent 1px
+        );
+
+    background-size:
+        55px 55px;
+
+    mask-image:
+        radial-gradient(
+            ellipse at center,
+            black,
+            transparent 72%
+        );
+
+    -webkit-mask-image:
+        radial-gradient(
+            ellipse at center,
+            black,
+            transparent 72%
+        );
+}
+
+
+/* =========================================================
+   05. HERO CONTENT
+   ========================================================= */
+
+.digital-hero-content {
+    position: relative;
+
+    width: min(
+        820px,
+        100%
+    );
+
+    margin: 0 auto;
+
+    text-align: center;
+}
+
+
+/* =========================================================
+   DIGITAL LOGO
+   ========================================================= */
+
+.digital-logo {
+    display: flex;
+
+    justify-content: center;
+
+    margin-bottom: 28px;
+}
+
+
+.digital-logo img {
+    display: block;
+
+    width: 92px;
+    height: 92px;
+
+    object-fit: contain;
+
+    border-radius: 25px;
+
+    filter:
+        drop-shadow(
+            0 18px 45px
+            rgba(102, 227, 255, 0.12)
+        );
+
+    transition:
+        transform
+        450ms
+        cubic-bezier(
+            0.22,
+            1,
+            0.36,
+            1
+        );
+}
+
+
+.digital-logo img:hover {
+    transform:
+        translateY(-5px)
+        scale(1.04);
+}
+
+
+/* =========================================================
+   06. EYEBROW
+   ========================================================= */
+
+.digital-eyebrow {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 10px;
+
+    margin-bottom: 18px;
+
+    color:
+        var(--color-primary);
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+    letter-spacing: 0.2em;
+
+    text-transform: uppercase;
+}
+
+
+.digital-eyebrow::before,
+.digital-eyebrow::after {
+    content: "";
+
+    width: 25px;
+    height: 1px;
+
+    background:
+        rgba(
+            102,
+            227,
+            255,
+            0.45
+        );
+}
+
+
+/* =========================================================
+   07. HERO TITLE
+   ========================================================= */
+
+.digital-hero-title {
+    margin: 0 0 22px;
+
+    font-size:
+        clamp(
+            46px,
+            9vw,
+            88px
+        );
+
+    line-height: 0.98;
+
+    letter-spacing:
+        -0.06em;
+
+    font-weight: 800;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ffffff 15%,
+            #b9f3ff 55%,
+            #8c7cff 100%
+        );
+
+    -webkit-background-clip:
+        text;
+
+    background-clip:
+        text;
+
+    color: transparent;
+
+    filter:
+        drop-shadow(
+            0 15px 40px
+            rgba(
+                102,
+                227,
+                255,
+                0.08
+            )
+        );
+}
+
+
+.digital-hero-title span {
+    display: block;
+}
+
+
+/* =========================================================
+   HERO DESCRIPTION
+   ========================================================= */
+
+.digital-hero-description {
+    width:
+        min(
+            620px,
+            100%
+        );
+
+    margin:
+        0 auto 32px;
+
+    color:
+        var(--color-text-soft);
+
+    font-size:
+        clamp(
+            14px,
+            2.5vw,
+            17px
+        );
+
+    line-height: 1.8;
+}
+
+
+/* =========================================================
+   HERO ACTION
+   ========================================================= */
+
+.digital-hero-actions {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    flex-wrap: wrap;
+
+    gap: 12px;
+}
+
+
+/* =========================================================
+   08. DIGITAL SERVICES
+   ========================================================= */
+
+.digital-services {
+    background:
+        radial-gradient(
+            circle at 15% 50%,
+            rgba(102,227,255,0.055),
+            transparent 32%
+        ),
+        var(--color-bg-soft);
+}
+
+
+.digital-section-heading {
+    max-width: 720px;
+
+    margin:
+        0 auto 50px;
+
+    text-align: center;
+}
+
+
+.digital-section-number {
+    display: block;
+
+    margin-bottom: 8px;
+
+    color:
+        var(--color-primary);
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+    letter-spacing: 0.18em;
+}
+
+
+.digital-section-label {
+    display: block;
+
+    margin-bottom: 15px;
+
+    color:
+        var(--color-text-muted);
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+    letter-spacing: 0.17em;
+
+    text-transform: uppercase;
+}
+
+
+.digital-section-heading h2 {
+    margin: 0 0 18px;
+
+    font-size:
+        clamp(
+            34px,
+            7vw,
+            62px
+        );
+
+    line-height: 1;
+
+    letter-spacing:
+        -0.05em;
+}
+
+
+.digital-section-heading h2 span {
+    display: block;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--color-primary),
+            #b8aefe
+        );
+
+    -webkit-background-clip:
+        text;
+
+    background-clip:
+        text;
+
+    color: transparent;
+}
+
+
+.digital-section-heading p {
+    max-width: 590px;
+
+    margin: 0 auto;
+
+    color:
+        var(--color-text-soft);
+
+    font-size: 14px;
+
+    line-height: 1.75;
+}
+
+
+/* =========================================================
+   09. SERVICE GRID
+   ========================================================= */
+
+.digital-service-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            3,
+            minmax(
+                0,
+                1fr
+            )
+        );
+
+    gap: 16px;
+
+    width: min(
+        1050px,
+        100%
+    );
+
+    margin: 0 auto;
+}
+
+
+/* =========================================================
+   SERVICE CARD
+   ========================================================= */
+
+.digital-service-card {
+    position: relative;
+
+    min-height: 280px;
+
+    padding: 27px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: space-between;
+
+    overflow: hidden;
+
+    border:
+        1px solid
+        var(--color-border);
+
+    border-radius:
+        var(--radius-large);
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.045
+        );
+
+    backdrop-filter:
+        blur(18px);
+
+    -webkit-backdrop-filter:
+        blur(18px);
+
+    box-shadow:
+        var(--shadow-soft);
+
+    transition:
+        transform
+        450ms
+        cubic-bezier(
+            0.22,
+            1,
+            0.36,
+            1
+        ),
+
+        border-color
+        350ms ease,
+
+        background
+        350ms ease;
+}
+
+
+.digital-service-card::before {
+    content: "";
+
+    position: absolute;
+
+    width: 180px;
+    height: 180px;
+
+    top: -90px;
+    right: -90px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(
+            102,
+            227,
+            255,
+            0.10
+        );
+
+    filter: blur(20px);
+
+    transition:
+        transform
+        600ms ease;
+}
+
+
+.digital-service-card:hover {
+    transform:
+        translateY(-7px);
+
+    border-color:
+        rgba(
+            102,
+            227,
+            255,
+            0.28
+        );
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.065
+        );
+
+    box-shadow:
+        var(--shadow-strong);
+}
+
+
+.digital-service-card:hover::before {
+    transform:
+        scale(1.45);
+}
+
+
+/* =========================================================
+   SERVICE ICON
+   ========================================================= */
+
+.digital-service-icon {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 52px;
+    height: 52px;
+
+    margin-bottom: 25px;
+
+    border:
+        1px solid
+        rgba(
+            102,
+            227,
+            255,
+            0.18
+        );
+
+    border-radius: 17px;
+
+    color:
+        var(--color-primary);
+
+    background:
+        rgba(
+            102,
+            227,
+            255,
+            0.07
+        );
+
+    font-size: 20px;
+
+    box-shadow:
+        0 12px 35px
+        rgba(
+            102,
+            227,
+            255,
+            0.06
+        );
+}
+
+
+.digital-service-card h3 {
+    margin: 0 0 10px;
+
+    font-size: 22px;
+
+    letter-spacing:
+        -0.03em;
+}
+
+
+.digital-service-card p {
+    margin: 0;
+
+    color:
+        var(--color-text-soft);
+
+    font-size: 13px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   10. PRODUCT SECTION
+   ========================================================= */
+
+.digital-products {
+    background:
+        var(--color-bg);
+}
+
+
+.digital-product-layout {
+    display: grid;
+
+    grid-template-columns:
+        0.9fr
+        1.1fr;
+
+    align-items: center;
+
+    gap: 70px;
+}
+
+
+/* =========================================================
+   PRODUCT INTRO
+   ========================================================= */
+
+.digital-product-intro {
+    max-width: 570px;
+}
+
+
+.digital-product-intro h2 {
+    margin:
+        0 0 20px;
+
+    font-size:
+        clamp(
+            36px,
