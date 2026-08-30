@@ -1,25 +1,28 @@
 // =========================================================
 // MAS MAIL — HOME CONTROLLER
-// FINAL APP-STYLE NAVIGATION
+// FINAL APP STYLE NAVIGATION
 //
-// Scroll  = membaca isi section
-// Tombol  = berpindah section
-// Back HP = kembali ke section sebelumnya
-// Setiap section baru selalu mulai dari paling atas
+// SECTION = halaman di dalam Home
+// SCROLL  = membaca isi section
+// BUTTON  = berpindah section
+// BACK HP = kembali ke section sebelumnya
 // =========================================================
 
 
-document.addEventListener('DOMContentLoaded', function () {
-
+document.addEventListener("DOMContentLoaded", () => {
 
     // =====================================================
     // 01. ELEMENT
     // =====================================================
 
-    const homePage = document.querySelector('.home-page');
+    const homePage = document.querySelector(".home-page");
 
     const sections = Array.from(
-        document.querySelectorAll('.home-section')
+        document.querySelectorAll(".home-section")
+    );
+
+    const nextButtons = Array.from(
+        document.querySelectorAll(".section-next-button")
     );
 
 
@@ -29,40 +32,50 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
     // =====================================================
-    // 02. STATE
+    // 02. VARIABLE
     // =====================================================
 
-    let currentSection = 0;
+    let currentIndex = 0;
 
-    let isChanging = false;
+    let isTransitioning = false;
 
-    const TRANSITION_TIME = 700;
+    const TRANSITION_DURATION = 650;
 
 
     // =====================================================
-    // 03. INITIAL STATE
+    // 03. BROWSER SCROLL RESTORATION
     // =====================================================
 
-    sections.forEach(function (section, index) {
+    if ("scrollRestoration" in history) {
+
+        history.scrollRestoration = "manual";
+
+    }
+
+
+    // =====================================================
+    // 04. RESET SEMUA SECTION
+    // =====================================================
+
+    sections.forEach((section, index) => {
 
         section.classList.remove(
-            'is-active',
-            'is-leaving',
-            'is-entering'
+            "is-active",
+            "is-leaving",
+            "is-entering"
         );
+
+
+        section.scrollTop = 0;
 
 
         if (index === 0) {
 
-            section.classList.add('is-active');
-
-            section.scrollTop = 0;
+            section.classList.add("is-active");
 
         } else {
 
-            section.classList.add('is-entering');
-
-            section.scrollTop = 0;
+            section.classList.add("is-entering");
 
         }
 
@@ -70,36 +83,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
     // =====================================================
-    // 04. HISTORY
-    // =====================================================
-
-    history.replaceState(
-        {
-            homeSection: 0
-        },
-        '',
-        window.location.href
-    );
-
-
-    function pushSectionHistory(sectionIndex) {
-
-        history.pushState(
-            {
-                homeSection: sectionIndex
-            },
-            '',
-            window.location.href
-        );
-
-    }
-
-
-    // =====================================================
     // 05. RESET SCROLL SECTION
     // =====================================================
 
-    function resetSectionScroll(section) {
+    function resetScroll(section) {
 
         if (!section) {
             return;
@@ -107,9 +94,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
         /*
-         * Langsung ke paling atas.
-         * Tidak memakai smooth agar section baru
-         * tidak muncul dari tengah.
+         * Reset langsung.
          */
 
         section.scrollTop = 0;
@@ -118,7 +103,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
         /*
-         * Cadangan untuk browser modern.
+         * Reset menggunakan method browser
+         * sebagai pengaman tambahan.
          */
 
         try {
@@ -126,12 +112,13 @@ document.addEventListener('DOMContentLoaded', function () {
             section.scrollTo({
                 top: 0,
                 left: 0,
-                behavior: 'instant'
+                behavior: "auto"
             });
 
         } catch (error) {
 
-            section.scrollTo(0, 0);
+            section.scrollTop = 0;
+            section.scrollLeft = 0;
 
         }
 
@@ -139,31 +126,39 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
     // =====================================================
-    // 06. ANIMASI ISI SECTION
+    // 06. TOMBOL YANG AKTIF
     // =====================================================
 
-    function animateSection(section) {
+    function updateNextButton() {
 
-        if (!section) {
-            return;
-        }
+        nextButtons.forEach((button) => {
 
-
-        const items = section.querySelectorAll(
-            '.reveal-item'
-        );
+            const parentSection =
+                button.closest(".home-section");
 
 
-        items.forEach(function (item, index) {
+            if (!parentSection) {
+                return;
+            }
 
-            item.classList.remove('is-visible');
+
+            const sectionIndex =
+                sections.indexOf(parentSection);
 
 
-            window.setTimeout(function () {
+            if (sectionIndex === currentIndex) {
 
-                item.classList.add('is-visible');
+                button.classList.add(
+                    "is-current-button"
+                );
 
-            }, 80 + (index * 90));
+            } else {
+
+                button.classList.remove(
+                    "is-current-button"
+                );
+
+            }
 
         });
 
@@ -171,46 +166,95 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
     // =====================================================
-    // 07. CHANGE SECTION
+    // 07. ANIMASI ISI
     // =====================================================
 
-    function changeSection(
-        targetIndex,
-        direction,
-        addHistory
-    ) {
+    function revealSection(section) {
 
-
-        // -----------------------------------------------
-        // CEGAH DOUBLE CLICK / DOUBLE TRANSITION
-        // -----------------------------------------------
-
-        if (isChanging) {
+        if (!section) {
             return;
         }
 
 
-        // -----------------------------------------------
-        // CEK INDEX
-        // -----------------------------------------------
+        const items =
+            section.querySelectorAll(
+                ".reveal-item"
+            );
+
+
+        items.forEach((item, index) => {
+
+            item.classList.remove(
+                "is-visible"
+            );
+
+
+            setTimeout(() => {
+
+                item.classList.add(
+                    "is-visible"
+                );
+
+            }, 100 + (index * 80));
+
+        });
+
+    }
+
+
+    // =====================================================
+    // 08. HISTORY
+    // =====================================================
+
+    history.replaceState(
+        {
+            masMailHome: true,
+            section: 0
+        },
+        "",
+        window.location.href
+    );
+
+
+    function createHistory(index) {
+
+        history.pushState(
+            {
+                masMailHome: true,
+                section: index
+            },
+            "",
+            window.location.href
+        );
+
+    }
+
+
+    // =====================================================
+    // 09. PINDAH SECTION
+    // =====================================================
+
+    function goToSection(
+        targetIndex,
+        createHistoryEntry = true
+    ) {
+
+        if (isTransitioning) {
+            return;
+        }
+
 
         if (
             targetIndex < 0 ||
             targetIndex >= sections.length
         ) {
-
             return;
-
         }
 
 
-        // -----------------------------------------------
-        // JIKA SECTION SAMA
-        // -----------------------------------------------
+        if (targetIndex === currentIndex) {
 
-        if (targetIndex === currentSection) {
-
-            resetSectionScroll(
+            resetScroll(
                 sections[targetIndex]
             );
 
@@ -219,64 +263,73 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
 
-        isChanging = true;
+        const currentSection =
+            sections[currentIndex];
 
-
-        const current =
-            sections[currentSection];
-
-
-        const next =
+        const nextSection =
             sections[targetIndex];
+
+
+        isTransitioning = true;
 
 
         // =================================================
         // RESET SECTION BARU SEBELUM DITAMPILKAN
         // =================================================
 
-        resetSectionScroll(next);
+        resetScroll(nextSection);
 
 
         // =================================================
         // SIAPKAN SECTION BARU
         // =================================================
 
-        next.classList.remove(
-            'is-leaving'
-        );
-
-        next.classList.add(
-            'is-active'
+        nextSection.classList.remove(
+            "is-entering",
+            "is-leaving"
         );
 
 
-        // =================================================
-        // SECTION LAMA KELUAR
-        // =================================================
-
-        current.classList.remove(
-            'is-active'
-        );
-
-        current.classList.add(
-            'is-leaving'
+        nextSection.classList.add(
+            "is-active"
         );
 
 
         // =================================================
-        // UPDATE CURRENT SECTION
+        // SECTION LAMA
         // =================================================
 
-        currentSection = targetIndex;
+        currentSection.classList.remove(
+            "is-active"
+        );
+
+
+        currentSection.classList.add(
+            "is-leaving"
+        );
+
+
+        // =================================================
+        // UPDATE INDEX
+        // =================================================
+
+        currentIndex = targetIndex;
+
+
+        // =================================================
+        // UPDATE TOMBOL
+        // =================================================
+
+        updateNextButton();
 
 
         // =================================================
         // HISTORY
         // =================================================
 
-        if (addHistory) {
+        if (createHistoryEntry) {
 
-            pushSectionHistory(
+            createHistory(
                 targetIndex
             );
 
@@ -284,83 +337,108 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
         // =================================================
-        // ANIMASI ISI
+        // RESET LAGI SETELAH SECTION AKTIF
         // =================================================
 
-        window.setTimeout(function () {
+        requestAnimationFrame(() => {
 
-            resetSectionScroll(next);
+            resetScroll(
+                nextSection
+            );
 
-            animateSection(next);
-
-        }, 50);
+        });
 
 
         // =================================================
-        // SELESAIKAN TRANSISI
+        // ANIMASI
         // =================================================
 
-        window.setTimeout(function () {
+        setTimeout(() => {
 
-            current.classList.remove(
-                'is-leaving'
+            revealSection(
+                nextSection
+            );
+
+        }, 80);
+
+
+        // =================================================
+        // SELESAI TRANSISI
+        // =================================================
+
+        setTimeout(() => {
+
+            currentSection.classList.remove(
+                "is-leaving"
+            );
+
+
+            nextSection.classList.remove(
+                "is-entering"
             );
 
 
             /*
-             * Pastikan section baru benar-benar
-             * dimulai dari paling atas.
+             * Reset terakhir.
+             *
+             * Ini penting agar section baru
+             * benar-benar dimulai dari atas.
              */
 
-            resetSectionScroll(next);
+            resetScroll(
+                nextSection
+            );
 
 
-            isChanging = false;
+            isTransitioning = false;
 
 
-        }, TRANSITION_TIME);
+        }, TRANSITION_DURATION);
 
     }
 
 
     // =====================================================
-    // 08. BUTTON NAVIGATION
+    // 10. SEMUA TOMBOL SECTION
     // =====================================================
 
-    const sectionButtons =
-        document.querySelectorAll(
-            '[data-scroll-target]'
-        );
-
-
-    sectionButtons.forEach(function (button) {
+    nextButtons.forEach((button) => {
 
         button.addEventListener(
-            'click',
-            function (event) {
+            "click",
+            (event) => {
 
                 event.preventDefault();
+
+                event.stopPropagation();
 
 
                 const targetId =
                     button.getAttribute(
-                        'data-scroll-target'
+                        "data-scroll-target"
                     );
 
 
-                const target =
+                if (!targetId) {
+                    return;
+                }
+
+
+                const targetSection =
                     document.getElementById(
                         targetId
                     );
 
 
-                if (!target) {
+                if (!targetSection) {
                     return;
                 }
 
 
                 const targetIndex =
-                    sections.indexOf(target);
+                    sections.indexOf(
+                        targetSection
+                    );
 
 
                 if (targetIndex === -1) {
@@ -368,15 +446,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
 
 
-                const direction =
-                    targetIndex > currentSection
-                        ? 'next'
-                        : 'previous';
-
-
-                changeSection(
+                goToSection(
                     targetIndex,
-                    direction,
                     true
                 );
 
@@ -387,43 +458,27 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
     // =====================================================
-    // 09. ANDROID / BROWSER BACK
+    // 11. BACK BUTTON ANDROID
     // =====================================================
 
     window.addEventListener(
-        'popstate',
-        function (event) {
+        "popstate",
+        (event) => {
 
             const state =
                 event.state;
 
 
-            /*
-             * Jika history mempunyai posisi section,
-             * kembali ke section tersebut.
-             */
-
             if (
                 state &&
-                typeof state.homeSection === 'number'
+                state.masMailHome === true &&
+                typeof state.section === "number"
             ) {
 
-                const targetIndex =
-                    state.homeSection;
-
-
-                const direction =
-                    targetIndex > currentSection
-                        ? 'next'
-                        : 'previous';
-
-
-                changeSection(
-                    targetIndex,
-                    direction,
+                goToSection(
+                    state.section,
                     false
                 );
-
 
                 return;
 
@@ -431,13 +486,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
             /*
-             * Jika tidak ada state,
-             * kembalikan ke Home.
+             * Kalau tidak ada state,
+             * kembali ke Home.
              */
 
-            changeSection(
+            goToSection(
                 0,
-                'previous',
                 false
             );
 
@@ -446,47 +500,41 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
     // =====================================================
-    // 10. ANIMASI SECTION PERTAMA
-    // =====================================================
-
-    window.setTimeout(function () {
-
-        resetSectionScroll(
-            sections[0]
-        );
-
-        animateSection(
-            sections[0]
-        );
-
-    }, 150);
-
-
-    // =====================================================
-    // 11. MENCEGAH SECTION PINDAH KARENA SCROLL
+    // 12. TOUCH / SCROLL
     // =====================================================
     //
-    // Scroll tetap diperbolehkan di dalam section.
+    // TIDAK ADA LOGIKA PINDAH SECTION DI SINI.
     //
-    // Tidak ada wheel / touch yang digunakan untuk
-    // mengganti section.
+    // Jadi:
     //
-    // Pindah section hanya melalui tombol.
+    // Scroll atas  = membaca
+    // Scroll bawah = membaca
+    //
+    // Scroll TIDAK PERNAH memanggil goToSection().
     // =====================================================
 
 
-    sections.forEach(function (section) {
+    sections.forEach((section) => {
 
         section.addEventListener(
-            'wheel',
-            function () {
+            "wheel",
+            () => {
 
-                /*
-                 * Sengaja kosong.
-                 *
-                 * Browser tetap mengizinkan section
-                 * melakukan scroll normal.
-                 */
+                // Sengaja kosong.
+
+            },
+            {
+                passive: true
+            }
+        );
+
+
+        section.addEventListener(
+            "touchmove",
+            () => {
+
+                // Sengaja kosong.
+                // Scroll tetap normal.
 
             },
             {
@@ -498,29 +546,28 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
     // =====================================================
-    // 12. TOUCH SAFETY
+    // 13. INITIAL BUTTON
     // =====================================================
 
-    sections.forEach(function (section) {
+    updateNextButton();
 
-        section.addEventListener(
-            'touchmove',
-            function () {
 
-                /*
-                 * Jangan preventDefault.
-                 *
-                 * Supaya user tetap bisa scroll
-                 * isi section secara normal.
-                 */
+    // =====================================================
+    // 14. INITIAL REVEAL
+    // =====================================================
 
-            },
-            {
-                passive: true
-            }
+    setTimeout(() => {
+
+        resetScroll(
+            sections[0]
         );
 
-    });
+
+        revealSection(
+            sections[0]
+        );
+
+    }, 100);
 
 
 });
