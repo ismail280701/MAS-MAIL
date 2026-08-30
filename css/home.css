@@ -1,7 +1,7 @@
- /* =========================================================
-    MAS MAIL — HOME CSS
-    File: home.css
-    ========================================================= */
+/* =========================================================
+   MAS MAIL — HOME
+   File: css/home.css
+   ========================================================= */
 
 
 /* =========================================================
@@ -9,204 +9,267 @@
    ========================================================= */
 
 .home-page {
-
     position: relative;
-
     width: 100%;
-
-    background:
-        var(--color-bg);
-
+    height: 100svh;
+    overflow: hidden;
 }
 
 
 /* =========================================================
-   02. HERO SECTION
+   02. SECTION SYSTEM
    ========================================================= */
 
-.hero-section {
+.home-page .home-section {
+    position: absolute;
+    inset: 0;
 
+    width: 100%;
+    height: 100svh;
     min-height: 100svh;
 
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+
+    padding:
+        90px 24px
+        100px;
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    z-index: 1;
+
+    transition:
+        opacity 550ms
+        cubic-bezier(.22,1,.36,1);
+}
+
+
+/* Section aktif */
+
+.home-page .home-section.is-active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    z-index: 10;
+}
+
+
+/* Section yang keluar */
+
+.home-page .home-section.is-leaving {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    z-index: 5;
+}
+
+
+/* Section berikutnya */
+
+.home-page .home-section.is-entering {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    z-index: 1;
+}
+
+
+/* =========================================================
+   03. BACKGROUND
+   ========================================================= */
+
+.home-page .home-section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    pointer-events: none;
+
+    background:
+        radial-gradient(
+            circle at 20% 20%,
+            rgba(102,227,255,.08),
+            transparent 32%
+        ),
+        radial-gradient(
+            circle at 80% 80%,
+            rgba(140,124,255,.07),
+            transparent 35%
+        );
+}
+
+
+/* =========================================================
+   04. HERO
+   ========================================================= */
+
+.home-page .hero-section {
+    display: flex;
+
+    align-items: center;
     justify-content: center;
 
     text-align: center;
 
+    padding:
+        80px 24px
+        120px;
+
     background:
         radial-gradient(
-            circle at 50% 25%,
-            rgba(102, 227, 255, 0.09),
-            transparent 34%
+            circle at 50% 20%,
+            rgba(102,227,255,.10),
+            transparent 38%
         ),
         var(--color-bg);
 }
 
 
 .hero-background {
-
     position: absolute;
-
     inset: 0;
-
-    z-index: -1;
 
     overflow: hidden;
-}
-
-
-/* =========================================================
-   HERO GLOW
-   ========================================================= */
-
-.hero-glow {
-
-    position: absolute;
-
-    width: 380px;
-
-    height: 380px;
-
-    border-radius: 50%;
-
-    filter: blur(80px);
-
-    opacity: 0.45;
-
     pointer-events: none;
+
+    z-index: 0;
 }
 
-
-.hero-glow-one {
-
-    top: -160px;
-
-    left: -100px;
-
-    background:
-        rgba(102, 227, 255, 0.16);
-
-    animation:
-        hero-glow-one 10s ease-in-out infinite alternate;
-}
-
-
-.hero-glow-two {
-
-    right: -120px;
-
-    bottom: -160px;
-
-    background:
-        rgba(140, 124, 255, 0.16);
-
-    animation:
-        hero-glow-two 12s ease-in-out infinite alternate;
-}
-
-
-@keyframes hero-glow-one {
-
-    from {
-        transform:
-            translate3d(0, 0, 0)
-            scale(1);
-    }
-
-    to {
-        transform:
-            translate3d(80px, 60px, 0)
-            scale(1.25);
-    }
-
-}
-
-
-@keyframes hero-glow-two {
-
-    from {
-        transform:
-            translate3d(0, 0, 0)
-            scale(1);
-    }
-
-    to {
-        transform:
-            translate3d(-70px, -50px, 0)
-            scale(1.2);
-    }
-
-}
-
-
-/* =========================================================
-   HERO GRID
-   ========================================================= */
 
 .hero-grid {
-
     position: absolute;
-
     inset: 0;
 
-    opacity: 0.25;
+    opacity: .25;
 
     background-image:
-
         linear-gradient(
-            rgba(255, 255, 255, 0.035) 1px,
+            rgba(255,255,255,.035) 1px,
             transparent 1px
         ),
-
         linear-gradient(
             90deg,
-            rgba(255, 255, 255, 0.035) 1px,
+            rgba(255,255,255,.035) 1px,
             transparent 1px
         );
 
-    background-size:
-        55px 55px;
+    background-size: 55px 55px;
 
     mask-image:
         radial-gradient(
             ellipse at center,
-            black 0%,
-            transparent 70%
+            black,
+            transparent 72%
         );
 
     -webkit-mask-image:
         radial-gradient(
             ellipse at center,
-            black 0%,
-            transparent 70%
+            black,
+            transparent 72%
         );
 }
 
 
-/* =========================================================
-   03. HERO CONTENT
-   ========================================================= */
+.hero-glow {
+    position: absolute;
 
-.hero-content {
+    width: 380px;
+    height: 380px;
 
-    position: relative;
+    border-radius: 50%;
 
-    z-index: 5;
+    filter: blur(90px);
 
-    width: min(760px, 100%);
+    opacity: .45;
+}
 
-    padding:
-        80px 24px;
+
+.hero-glow-one {
+    top: -180px;
+    left: -120px;
+
+    background:
+        rgba(102,227,255,.18);
+
+    animation:
+        homeGlowOne
+        10s
+        ease-in-out
+        infinite
+        alternate;
+}
+
+
+.hero-glow-two {
+    right: -150px;
+    bottom: -180px;
+
+    background:
+        rgba(140,124,255,.18);
+
+    animation:
+        homeGlowTwo
+        12s
+        ease-in-out
+        infinite
+        alternate;
+}
+
+
+@keyframes homeGlowOne {
+
+    from {
+        transform: translate3d(0,0,0) scale(1);
+    }
+
+    to {
+        transform: translate3d(70px,60px,0) scale(1.25);
+    }
+
+}
+
+
+@keyframes homeGlowTwo {
+
+    from {
+        transform: translate3d(0,0,0) scale(1);
+    }
+
+    to {
+        transform: translate3d(-70px,-50px,0) scale(1.2);
+    }
+
 }
 
 
 /* =========================================================
-   LOGO
+   05. HERO CONTENT
    ========================================================= */
 
+.hero-content {
+    position: relative;
+
+    z-index: 2;
+
+    width:
+        min(
+            760px,
+            100%
+        );
+
+    margin: auto;
+}
+
+
 .logo-wrapper {
-
     display: flex;
-
     justify-content: center;
 
     margin-bottom: 26px;
@@ -214,16 +277,14 @@
 
 
 .logo-placeholder {
+    width: 100px;
+    height: 100px;
 
     display: flex;
-
     align-items: center;
-
     justify-content: center;
 
-    width: 92px;
-
-    height: 92px;
+    overflow: hidden;
 
     border:
         1px solid
@@ -231,59 +292,47 @@
 
     border-radius: 28px;
 
-    color:
-        var(--color-text-soft);
-
     background:
-        rgba(255, 255, 255, 0.055);
+        rgba(255,255,255,.055);
 
     backdrop-filter:
-        var(--blur);
+        blur(18px);
 
     -webkit-backdrop-filter:
-        var(--blur);
+        blur(18px);
 
     box-shadow:
         var(--shadow-soft);
 
-    font-size: 9px;
+    color:
+        var(--color-text-soft);
 
+    font-size: 9px;
     font-weight: 800;
 
-    letter-spacing:
-        0.1em;
-
-    transform:
-        rotate(-3deg);
-
     transition:
-        transform var(--transition-smooth),
-        box-shadow var(--transition-smooth);
+        transform .4s ease,
+        box-shadow .4s ease;
 }
 
 
 .logo-placeholder:hover {
-
     transform:
-        rotate(0deg)
+        translateY(-5px)
         scale(1.04);
 
     box-shadow:
-        0 25px 70px
-        rgba(102, 227, 255, 0.12);
+        var(--shadow-strong);
 }
 
 
 /* =========================================================
-   EYEBROW
+   06. HERO TEXT
    ========================================================= */
 
 .hero-section .eyebrow {
-
     display: inline-flex;
-
     align-items: center;
-
     gap: 10px;
 
     margin-bottom: 18px;
@@ -292,90 +341,70 @@
         var(--color-primary);
 
     font-size: 10px;
-
     font-weight: 800;
 
-    letter-spacing:
-        0.2em;
+    letter-spacing: .2em;
 }
 
 
 .hero-section .eyebrow::before,
 .hero-section .eyebrow::after {
-
-    content: '';
+    content: "";
 
     width: 24px;
-
     height: 1px;
 
     background:
-        rgba(102, 227, 255, 0.45);
+        rgba(102,227,255,.45);
 }
 
 
-/* =========================================================
-   HERO TITLE
-   ========================================================= */
-
 .hero-title {
-
     margin-bottom: 22px;
 
     font-size:
         clamp(
-            56px,
+            58px,
             13vw,
             112px
         );
 
+    line-height: .92;
+
+    letter-spacing: -.065em;
+
     font-weight: 800;
-
-    letter-spacing:
-        -0.065em;
-
-    line-height:
-        0.95;
 
     background:
         linear-gradient(
             135deg,
-            #ffffff 15%,
+            #fff 15%,
             #b9f3ff 55%,
             #8c7cff 100%
         );
 
-    -webkit-background-clip:
-        text;
+    -webkit-background-clip: text;
+    background-clip: text;
 
-    background-clip:
-        text;
-
-    color:
-        transparent;
+    color: transparent;
 
     filter:
         drop-shadow(
             0 15px 45px
-            rgba(102, 227, 255, 0.08)
+            rgba(102,227,255,.08)
         );
 }
 
 
-/* =========================================================
-   HERO DESCRIPTION
-   ========================================================= */
-
 .hero-description {
-
     width:
         min(
-            520px,
+            540px,
             100%
         );
 
     margin:
-        0 auto 32px;
+        0 auto 34px;
 
     color:
         var(--color-text-soft);
@@ -387,32 +416,49 @@
             17px
         );
 
-    line-height:
-        1.75;
+    line-height: 1.75;
 }
 
 
 /* =========================================================
-   HERO BUTTONS
+   07. BUTTONS
    ========================================================= */
 
 .hero-actions {
+    display: flex;
 
-    display:
-        flex;
+    align-items: center;
+    justify-content: center;
 
-    align-items:
-        center;
-
-    justify-content:
-        center;
-
-    gap:
-        12px;
+    gap: 12px;
 
     width:
         min(
-            600px,
+            620px,
+            100%
+        );
+
+    margin: auto;
+}
+
+
+.hero-actions .main-button {
+    min-width: 205px;
+}
+
+
+/* =========================================================
+   08. SECTION CONTAINER
+   ========================================================= */
+
+.section-container {
+    position: relative;
+
+    z-index: 2;
+
+    width:
+        min(
+            1100px,
             100%
         );
 
@@ -421,73 +467,52 @@
 }
 
 
-.hero-actions .main-button {
-
-    min-width:
-        205px;
-}
-
-
 /* =========================================================
-   04. BRANDS SECTION
-   ========================================================= */
-
-.brands-section {
-
-    min-height:
-        100svh;
-
-    background:
-
-        radial-gradient(
-            circle at 15% 50%,
-            rgba(102, 227, 255, 0.055),
-            transparent 30%
-        ),
-
-        radial-gradient(
-            circle at 85% 50%,
-            rgba(140, 124, 255, 0.055),
-            transparent 30%
-        ),
-
-        var(--color-bg-soft);
-}
-
-
-.brands-section .section-container {
-
-    padding-top:
-        100px;
-
-    padding-bottom:
-        100px;
-}
-
-
-/* =========================================================
-   SECTION HEADING
+   09. SECTION HEADING
    ========================================================= */
 
 .section-heading {
-
-    max-width:
-        680px;
+    max-width: 680px;
 
     margin:
         0 auto 45px;
 
-    text-align:
-        center;
+    text-align: center;
+}
+
+
+.section-number {
+    display: block;
+
+    margin-bottom: 8px;
+
+    color:
+        var(--color-primary);
+
+    font-size: 11px;
+    font-weight: 800;
+
+    letter-spacing: .18em;
+}
+
+
+.section-label {
+    margin-bottom: 14px;
+
+    color:
+        var(--color-primary);
+
+    font-size: 10px;
+    font-weight: 800;
+
+    letter-spacing: .18em;
 }
 
 
 .section-heading h2,
 .about-content h2,
 .contact-heading h2 {
-
-    margin-bottom:
-        20px;
+    margin-bottom: 20px;
 
     font-size:
         clamp(
@@ -496,17 +521,16 @@
             64px
         );
 
-    letter-spacing:
-        -0.045em;
+    line-height: 1;
+
+    letter-spacing: -.045em;
 }
 
 
 .section-heading h2 span,
 .about-content h2 span,
 .contact-heading h2 span {
-
-    display:
-        block;
+    display: block;
 
     background:
         linear-gradient(
@@ -515,81 +539,85 @@
             #b8aefe
         );
 
-    -webkit-background-clip:
-        text;
+    -webkit-background-clip: text;
+    background-clip: text;
 
-    background-clip:
-        text;
-
-    color:
-        transparent;
+    color: transparent;
 }
 
 
 .section-heading > p:last-child {
+    max-width: 560px;
 
-    max-width:
-        560px;
-
-    margin:
-        0 auto;
+    margin: auto;
 
     color:
         var(--color-text-soft);
 
-    font-size:
-        15px;
+    font-size: 15px;
+    line-height: 1.7;
 }
 
 
 /* =========================================================
-   05. BRAND CARDS
+   10. BRANDS
    ========================================================= */
 
-.brand-cards {
+.brands-section {
+    background:
+        radial-gradient(
+            circle at 15% 50%,
+            rgba(102,227,255,.055),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 85% 50%,
+            rgba(140,124,255,.055),
+            transparent 30%
+        ),
+        var(--color-bg-soft);
+}
 
-    display:
-        grid;
+
+.brands-section .section-container {
+    padding-top: 20px;
+}
+
+
+.brand-cards {
+    display: grid;
 
     grid-template-columns:
         repeat(
             2,
-            minmax(
-                0,
-                1fr
-            )
+            minmax(0,1fr)
         );
 
-    gap:
-        18px;
+    gap: 18px;
 
     width:
         min(
-            100%,
-            900px
+            900px,
+            100%
         );
 
-    margin:
-        0 auto;
+    margin: auto;
 }
 
 
+/* =========================================================
+   11. BRAND CARD
+   ========================================================= */
+
 .brand-card {
+    position: relative;
 
-    position:
-        relative;
+    min-height: 390px;
 
-    min-height:
-        390px;
+    display: flex;
+    align-items: flex-end;
 
-    display:
-        flex;
-
-    align-items:
-        flex-end;
-
-    overflow:
-        hidden;
+    overflow: hidden;
 
     border:
         1px solid
@@ -598,54 +626,40 @@
     border-radius:
         var(--radius-large);
 
-    isolation:
-        isolate;
+    isolation: isolate;
 
     box-shadow:
         var(--shadow-soft);
 
     transition:
-        transform var(--transition-smooth),
-        border-color var(--transition-smooth),
-        box-shadow var(--transition-smooth);
+        transform .45s
+        cubic-bezier(.22,1,.36,1),
+        border-color .35s ease,
+        box-shadow .45s ease;
 }
 
 
 .brand-card::before {
+    content: "";
 
-    content: '';
+    position: absolute;
+    inset: 0;
 
-    position:
-        absolute;
-
-    inset:
-        0;
-
-    z-index:
-        -3;
+    z-index: -3;
 
     transition:
-        transform
-        900ms
-        cubic-bezier(
-            0.22,
-            1,
-            0.36,
-            1
-        );
+        transform .8s
+        cubic-bezier(.22,1,.36,1);
 }
 
 
 .digital-card::before {
-
     background:
-
         radial-gradient(
             circle at 20% 20%,
-            rgba(102, 227, 255, 0.28),
+            rgba(102,227,255,.28),
             transparent 40%
         ),
-
         linear-gradient(
             145deg,
             #0b2635,
@@ -655,15 +669,12 @@
 
 
 .barokah-card::before {
-
     background:
-
         radial-gradient(
             circle at 80% 20%,
-            rgba(140, 124, 255, 0.28),
+            rgba(140,124,255,.28),
             transparent 40%
         ),
-
         linear-gradient(
             145deg,
             #211b36,
@@ -672,18 +683,30 @@
 }
 
 
-.brand-card:hover {
+.brand-card::after {
+    content: "";
 
+    position: absolute;
+    inset: 0;
+
+    z-index: -2;
+
+    background:
+        linear-gradient(
+            to top,
+            rgba(3,8,17,.97),
+            rgba(3,8,17,.38) 55%,
+            rgba(3,8,17,.05)
+        );
+}
+
+
+.brand-card:hover {
     transform:
         translateY(-8px);
 
     border-color:
-        rgba(
-            102,
-            227,
-            255,
-            0.30
-        );
+        rgba(102,227,255,.3);
 
     box-shadow:
         var(--shadow-strong);
@@ -691,140 +714,45 @@
 
 
 .brand-card:hover::before {
-
     transform:
         scale(1.08);
 }
 
 
 /* =========================================================
-   CARD LIGHT
-   ========================================================= */
-
-.brand-card::after {
-
-    content: '';
-
-    position:
-        absolute;
-
-    inset:
-        0;
-
-    z-index:
-        -2;
-
-    background:
-
-        linear-gradient(
-            to top,
-            rgba(3, 8, 17, 0.96),
-            rgba(3, 8, 17, 0.38)
-            55%,
-            rgba(3, 8, 17, 0.05)
-        );
-}
-
-
-.brand-card-overlay {
-
-    position:
-        absolute;
-
-    inset:
-        0;
-
-    z-index:
-        -1;
-
-    background:
-
-        radial-gradient(
-            circle at 50% 100%,
-            rgba(
-                255,
-                255,
-                255,
-                0.08
-            ),
-            transparent 55%
-        );
-
-    opacity:
-        0.5;
-
-    transition:
-        opacity
-        var(--transition-normal);
-}
-
-
-.brand-card:hover .brand-card-overlay {
-
-    opacity:
-        1;
-}
-
-
-/* =========================================================
-   CARD CONTENT
+   12. CARD CONTENT
    ========================================================= */
 
 .brand-card-content {
+    position: relative;
 
-    position:
-        relative;
+    width: 100%;
 
-    width:
-        100%;
-
-    padding:
-        28px;
+    padding: 28px;
 }
 
 
 .brand-icon {
+    width: 48px;
+    height: 48px;
 
-    display:
-        flex;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-    align-items:
-        center;
-
-    justify-content:
-        center;
-
-    width:
-        48px;
-
-    height:
-        48px;
-
-    margin-bottom:
-        24px;
+    margin-bottom: 22px;
 
     border:
         1px solid
-        rgba(
-            255,
-            255,
-            255,
-            0.15
-        );
+        rgba(255,255,255,.15);
 
-    border-radius:
-        16px;
+    border-radius: 16px;
 
     color:
         var(--color-primary);
 
     background:
-        rgba(
-            255,
-            255,
-            255,
-            0.07
-        );
+        rgba(255,255,255,.07);
 
     backdrop-filter:
         blur(12px);
@@ -832,37 +760,27 @@
     -webkit-backdrop-filter:
         blur(12px);
 
-    font-size:
-        20px;
+    font-size: 20px;
 }
 
 
 .brand-category {
+    display: block;
 
-    display:
-        block;
-
-    margin-bottom:
-        8px;
+    margin-bottom: 8px;
 
     color:
         var(--color-primary);
 
-    font-size:
-        9px;
+    font-size: 9px;
+    font-weight: 800;
 
-    font-weight:
-        800;
-
-    letter-spacing:
-        0.17em;
+    letter-spacing: .17em;
 }
 
 
 .brand-card h3 {
-
-    margin-bottom:
-        12px;
+    margin-bottom: 12px;
 
     font-size:
         clamp(
@@ -871,155 +789,48 @@
             32px
         );
 
-    letter-spacing:
-        -0.035em;
+    letter-spacing: -.035em;
 }
 
 
 .brand-card p {
+    max-width: 430px;
 
-    max-width:
-        430px;
-
-    margin-bottom:
-        22px;
+    margin-bottom: 22px;
 
     color:
         var(--color-text-soft);
 
-    font-size:
-        13px;
-
-    line-height:
-        1.7;
+    font-size: 13px;
+    line-height: 1.7;
 }
 
 
 /* =========================================================
-   CARD BUTTON
-   ========================================================= */
-
-.card-button {
-
-    display:
-        inline-flex;
-
-    align-items:
-        center;
-
-    gap:
-        9px;
-
-    padding:
-        10px 15px;
-
-    border:
-        1px solid
-        var(--color-border);
-
-    border-radius:
-        var(--radius-pill);
-
-    background:
-        rgba(
-            255,
-            255,
-            255,
-            0.06
-        );
-
-    color:
-        var(--color-text);
-
-    font-size:
-        12px;
-
-    font-weight:
-        700;
-
-    transition:
-        all var(--transition-normal);
-}
-
-
-.card-button span {
-
-    transition:
-        transform
-        var(--transition-normal);
-}
-
-
-.card-button:hover {
-
-    border-color:
-        rgba(
-            102,
-            227,
-            255,
-            0.35
-        );
-
-    background:
-        rgba(
-            102,
-            227,
-            255,
-            0.10
-        );
-
-    transform:
-        translateY(-2px);
-}
-
-
-.card-button:hover span {
-
-    transform:
-        translateX(4px);
-}
-
-
-/* =========================================================
-   06. ABOUT SECTION
+   13. ABOUT
    ========================================================= */
 
 .about-section {
-
-    min-height:
-        100svh;
-
     background:
         var(--color-bg);
 }
 
 
 .about-background {
+    position: absolute;
+    inset: 0;
 
-    position:
-        absolute;
+    overflow: hidden;
 
-    inset:
-        0;
-
-    z-index:
-        -1;
-
-    overflow:
-        hidden;
+    pointer-events: none;
 }
 
 
 .about-orb {
+    position: absolute;
 
-    position:
-        absolute;
-
-    top:
-        50%;
-
-    left:
-        50%;
+    top: 50%;
+    left: 50%;
 
     width:
         min(
@@ -1034,29 +845,19 @@
         );
 
     transform:
-        translate(
-            -50%,
-            -50%
-        );
+        translate(-50%,-50%);
 
-    border-radius:
-        50%;
+    border-radius: 50%;
 
     background:
         radial-gradient(
             circle,
-            rgba(
-                102,
-                227,
-                255,
-                0.08
-            ),
-            transparent
-            68%
+            rgba(102,227,255,.08),
+            transparent 68%
         );
 
     animation:
-        about-orb
+        aboutOrb
         12s
         ease-in-out
         infinite
@@ -1064,228 +865,123 @@
 }
 
 
-@keyframes about-orb {
+@keyframes aboutOrb {
 
     from {
-
         transform:
-            translate(
-                -50%,
-                -50%
-            )
-            scale(0.92);
+            translate(-50%,-50%)
+            scale(.92);
     }
 
     to {
-
         transform:
-            translate(
-                -50%,
-                -50%
-            )
+            translate(-50%,-50%)
             scale(1.08);
     }
+
 }
 
 
 .about-container {
+    min-height: calc(100svh - 170px);
 
-    display:
-        grid;
+    display: grid;
 
     grid-template-columns:
-        1.2fr
-        0.8fr;
+        1.2fr .8fr;
 
-    align-items:
-        center;
+    align-items: center;
 
-    gap:
-        70px;
+    gap: 70px;
 }
 
 
 .about-content {
-
-    max-width:
-        680px;
+    max-width: 680px;
 }
 
 
-.about-content > p:last-child {
-
-    max-width:
-        620px;
+.about-text {
+    max-width: 620px;
 
     color:
         var(--color-text-soft);
 
-    font-size:
-        16px;
+    font-size: 16px;
+    line-height: 1.8;
 }
 
 
 .about-actions {
+    display: flex;
 
-    display:
-        flex;
+    flex-direction: column;
 
-    flex-direction:
-        column;
-
-    gap:
-        12px;
+    gap: 12px;
 
     width:
         min(
-            100%,
-            330px
+            330px,
+            100%
         );
 
-    margin-left:
-        auto;
+    margin-left: auto;
 }
 
 
 /* =========================================================
-   07. CONTACT SECTION
+   14. CONTACT
    ========================================================= */
 
 .contact-section {
-
-    min-height:
-        100svh;
-
     background:
-
         radial-gradient(
             circle at 50% 100%,
-            rgba(
-                140,
-                124,
-                255,
-                0.08
-            ),
-            transparent
-            45%
+            rgba(140,124,255,.08),
+            transparent 45%
         ),
-
         var(--color-bg-soft);
 }
 
 
-.contact-background {
-
-    position:
-        absolute;
-
-    inset:
-        0;
-
-    z-index:
-        -1;
-
-    overflow:
-        hidden;
-}
-
-
-.contact-glow {
-
-    position:
-        absolute;
-
-    width:
-        500px;
-
-    height:
-        500px;
-
-    top:
-        50%;
-
-    left:
-        50%;
-
-    transform:
-        translate(
-            -50%,
-            -50%
-        );
-
-    border-radius:
-        50%;
-
-    background:
-        radial-gradient(
-            circle,
-            rgba(
-                102,
-                227,
-                255,
-                0.07
-            ),
-            transparent
-            68%
-        );
-
-    filter:
-        blur(20px);
-}
-
-
 .contact-container {
+    min-height: calc(100svh - 170px);
 
-    display:
-        flex;
+    display: flex;
 
-    flex-direction:
-        column;
+    flex-direction: column;
 
-    justify-content:
-        center;
-
-    min-height:
-        100svh;
+    justify-content: center;
 }
 
 
 .contact-heading {
+    text-align: center;
 
-    text-align:
-        center;
-
-    margin-bottom:
-        40px;
+    margin-bottom: 40px;
 }
 
 
 .contact-heading > p:last-child {
-
     color:
         var(--color-text-soft);
 
-    font-size:
-        14px;
+    font-size: 14px;
+
+    line-height: 1.7;
 }
 
 
 .contact-grid {
-
-    display:
-        grid;
+    display: grid;
 
     grid-template-columns:
         repeat(
             2,
-            minmax(
-                0,
-                1fr
-            )
+            minmax(0,1fr)
         );
 
-    gap:
-        12px;
+    gap: 12px;
 
     width:
         min(
@@ -1293,46 +989,29 @@
             100%
         );
 
-    margin:
-        0 auto;
+    margin: auto;
 }
 
 
-/* =========================================================
-   CONTACT ITEM
-   ========================================================= */
-
 .contact-item {
+    display: flex;
 
-    display:
-        flex;
+    align-items: center;
 
-    align-items:
-        center;
+    gap: 14px;
 
-    gap:
-        14px;
+    min-height: 78px;
 
-    min-height:
-        78px;
-
-    padding:
-        14px 16px;
+    padding: 14px 16px;
 
     border:
         1px solid
         var(--color-border);
 
-    border-radius:
-        18px;
+    border-radius: 18px;
 
     background:
-        rgba(
-            255,
-            255,
-            255,
-            0.045
-        );
+        rgba(255,255,255,.045);
 
     backdrop-filter:
         blur(16px);
@@ -1341,162 +1020,104 @@
         blur(16px);
 
     transition:
-        transform
-        var(--transition-normal),
-
-        border-color
-        var(--transition-normal),
-
-        background
-        var(--transition-normal);
+        transform .3s ease,
+        border-color .3s ease,
+        background .3s ease;
 }
 
 
 .contact-item:hover {
-
     transform:
         translateY(-4px);
 
     border-color:
-        rgba(
-            102,
-            227,
-            255,
-            0.28
-        );
+        rgba(102,227,255,.28);
 
     background:
-        rgba(
-            102,
-            227,
-            255,
-            0.07
-        );
+        rgba(102,227,255,.07);
 }
 
 
 .contact-icon {
+    flex: 0 0 auto;
 
-    flex:
-        0 0 auto;
+    width: 44px;
+    height: 44px;
 
-    display:
-        flex;
+    display: flex;
 
-    align-items:
-        center;
-
-    justify-content:
-        center;
-
-    width:
-        44px;
-
-    height:
-        44px;
+    align-items: center;
+    justify-content: center;
 
     border:
         1px solid
         var(--color-border);
 
-    border-radius:
-        14px;
+    border-radius: 14px;
 
     color:
         var(--color-primary);
 
     background:
-        rgba(
-            102,
-            227,
-            255,
-            0.07
-        );
+        rgba(102,227,255,.07);
 
-    font-size:
-        10px;
-
-    font-weight:
-        800;
+    font-size: 10px;
+    font-weight: 800;
 }
 
 
 .contact-info {
+    display: flex;
 
-    display:
-        flex;
+    flex-direction: column;
 
-    flex-direction:
-        column;
+    gap: 3px;
 
-    min-width:
-        0;
-
-    gap:
-        3px;
+    min-width: 0;
 }
 
 
 .contact-info small {
-
     color:
         var(--color-text-muted);
 
-    font-size:
-        9px;
+    font-size: 9px;
+    font-weight: 700;
 
-    font-weight:
-        700;
+    letter-spacing: .08em;
 
-    letter-spacing:
-        0.08em;
-
-    text-transform:
-        uppercase;
+    text-transform: uppercase;
 }
 
 
 .contact-info strong {
-
-    overflow:
-        hidden;
+    overflow: hidden;
 
     color:
         var(--color-text);
 
-    font-size:
-        13px;
+    font-size: 13px;
+    font-weight: 600;
 
-    font-weight:
-        600;
-
-    white-space:
-        nowrap;
-
-    text-overflow:
-        ellipsis;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 
 .contact-arrow {
-
-    margin-left:
-        auto;
+    margin-left: auto;
 
     color:
         var(--color-text-muted);
 
-    font-size:
-        18px;
+    font-size: 18px;
 
     transition:
-        transform
-        var(--transition-normal);
+        transform .3s ease;
 }
 
 
 .contact-item:hover .contact-arrow {
-
     color:
         var(--color-primary);
 
@@ -1506,35 +1127,163 @@
 
 
 /* =========================================================
-   08. MOBILE
+   15. SECTION BUTTON
+   ========================================================= */
+
+.section-next-button {
+    position: fixed;
+
+    left: 50%;
+    bottom:
+        calc(
+            20px +
+            env(safe-area-inset-bottom)
+        );
+
+    transform:
+        translateX(-50%);
+
+    z-index: 999;
+
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 10px;
+
+    min-height: 46px;
+
+    padding:
+        0 20px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.14);
+
+    border-radius: 999px;
+
+    color:
+        var(--color-text);
+
+    background:
+        rgba(8,14,25,.72);
+
+    backdrop-filter:
+        blur(18px);
+
+    -webkit-backdrop-filter:
+        blur(18px);
+
+    box-shadow:
+        0 12px 35px
+        rgba(0,0,0,.25);
+
+    font-size: 11px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        transform .3s ease,
+        background .3s ease,
+        border-color .3s ease;
+}
+
+
+.section-next-button:hover {
+    transform:
+        translateX(-50%)
+        translateY(-3px);
+
+    border-color:
+        rgba(102,227,255,.35);
+
+    background:
+        rgba(102,227,255,.10);
+}
+
+
+.scroll-arrow {
+    display: inline-block;
+
+    transition:
+        transform .3s ease;
+}
+
+
+.section-next-button:hover .scroll-arrow {
+    transform:
+        translateY(3px);
+}
+
+
+/* =========================================================
+   16. REVEAL ANIMATION
+   ========================================================= */
+
+.reveal-item {
+    opacity: 0;
+
+    transform:
+        translateY(24px)
+        scale(.98);
+}
+
+
+.home-section.is-active
+.reveal-item.is-visible {
+    animation:
+        homeReveal
+        .7s
+        cubic-bezier(.22,1,.36,1)
+        forwards;
+}
+
+
+@keyframes homeReveal {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(24px)
+            scale(.98);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
+
+}
+
+
+/* =========================================================
+   17. MOBILE
    ========================================================= */
 
 @media (max-width: 768px) {
 
-    .hero-content {
-
+    .home-page .home-section {
         padding:
-            80px 20px;
+            85px 18px
+            105px;
     }
 
 
-    .logo-placeholder {
-
-        width:
-            82px;
-
-        height:
-            82px;
-
-        border-radius:
-            24px;
+    .hero-section {
+        padding:
+            80px 18px
+            110px;
     }
 
 
     .hero-actions {
-
-        flex-direction:
-            column;
+        flex-direction: column;
 
         width:
             min(
@@ -1545,1240 +1294,185 @@
 
 
     .hero-actions .main-button {
+        width: 100%;
+    }
 
-        width:
-            100%;
+
+    .logo-placeholder {
+        width: 82px;
+        height: 82px;
+
+        border-radius: 24px;
     }
 
 
     .brand-cards {
+        grid-template-columns: 1fr;
 
-        grid-template-columns:
-            1fr;
+        gap: 14px;
     }
 
 
     .brand-card {
-
-        min-height:
-            360px;
+        min-height: 360px;
     }
 
 
     .about-container {
+        min-height: auto;
 
-        grid-template-columns:
-            1fr;
+        grid-template-columns: 1fr;
 
-        gap:
-            35px;
+        gap: 35px;
 
-        text-align:
-            center;
+        text-align: center;
     }
 
 
     .about-content {
+        margin: auto;
+    }
 
-        margin:
-            0 auto;
+
+    .about-text {
+        margin: auto;
     }
 
 
     .about-actions {
+        width: 100%;
 
-        width:
-            100%;
+        margin: auto;
+    }
 
-        margin:
-            0 auto;
+
+    .contact-container {
+        min-height: auto;
     }
 
 
     .contact-grid {
+        grid-template-columns: 1fr;
+    }
 
-        grid-template-columns:
-            1fr;
+
+    .section-next-button {
+        bottom:
+            calc(
+                14px +
+                env(safe-area-inset-bottom)
+            );
+
+        max-width:
+            calc(
+                100% - 30px
+            );
+
+        white-space: nowrap;
     }
 
 }
 
 
 /* =========================================================
-   09. SMALL MOBILE
+   18. SMALL MOBILE
    ========================================================= */
 
 @media (max-width: 420px) {
 
     .hero-title {
-
-        font-size:
-            56px;
+        font-size: 56px;
     }
 
 
     .section-heading h2,
     .about-content h2,
     .contact-heading h2 {
-
-        font-size:
-            38px;
+        font-size: 37px;
     }
 
 
     .brand-card {
+        min-height: 345px;
 
-        min-height:
-            340px;
-
-        border-radius:
-            25px;
+        border-radius: 25px;
     }
 
 
     .brand-card-content {
-
-        padding:
-            22px;
+        padding: 22px;
     }
 
 
     .section-next-button {
-
-        font-size:
-            9px;
-    }
-
-}
-
-
-/* =========================================================
-   10. DESKTOP ENHANCEMENT
-   ========================================================= */
-
-@media (min-width: 1000px) {
-
-    .hero-content {
-
-        transform:
-            translateY(-2vh);
-    }
-
-
-    .brand-card {
-
-        min-height:
-            430px;
-    }
-
-
-    .contact-item {
-
-        min-height:
-            86px;
-    }
-
-}
-/* =========================================================
-   HOME — APP SCREEN MODE
-   Khusus index.html
-   ========================================================= */
-
-html:has(.home-page),
-body:has(.home-page) {
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-}
-
-
-/* Home menjadi satu layar */
-
-.home-page {
-    position: relative;
-    width: 100%;
-    height: 100svh;
-    overflow: hidden;
-
-    touch-action: none;
-    overscroll-behavior: none;
-}
-
-
-/* Semua section Home ditumpuk */
-
-.home-page .home-section {
-    position: absolute;
-    inset: 0;
-
-    width: 100%;
-    height: 100svh;
-    min-height: 100svh;
-
-    overflow: hidden;
-
-    opacity: 0;
-    visibility: hidden;
-
-    transform: scale(1.035);
-
-    pointer-events: none;
-
-    transition:
-        opacity 650ms cubic-bezier(0.22, 1, 0.36, 1),
-        transform 800ms cubic-bezier(0.22, 1, 0.36, 1),
-        visibility 650ms ease;
-}
-
-
-/* Section yang sedang dibuka */
-
-.home-page .home-section.is-active {
-    opacity: 1;
-    visibility: visible;
-
-    transform: scale(1);
-
-    pointer-events: auto;
-}
-
-
-/* Section yang sedang keluar */
-
-.home-page .home-section.is-leaving {
-    opacity: 0;
-
-    visibility: visible;
-
-    transform:
-        scale(0.97)
-        translateY(-12px);
-
-    pointer-events: none;
-}
-
-
-/* Section yang belum dibuka */
-
-.home-page .home-section.is-entering {
-    opacity: 0;
-    visibility: hidden;
-
-    transform:
-        scale(1.035)
-        translateY(25px);
-
-    pointer-events: none;
-}
-
-
-/* =========================================================
-   ANIMASI ISI SECTION
-   ========================================================= */
-
-.home-page .home-section.is-active .reveal-item {
-    animation:
-        homeReveal
-        700ms
-        cubic-bezier(0.22, 1, 0.36, 1)
-        forwards;
-}
-
-
-@keyframes homeReveal {
-
-    from {
-        opacity: 0;
-        transform:
-            translateY(25px)
-            scale(0.98);
-    }
-
-    to {
-        opacity: 1;
-        transform:
-            translateY(0)
-            scale(1);
-    }
-
-}
-
-
-/* =========================================================
-   MOBILE
-   ========================================================= */
-
-@media (max-width: 768px) {
-
-    .home-page,
-    .home-page .home-section {
-        height: 100svh;
-        min-height: 100svh;
-    }
-
-}
-/* =========================================================
-   HOME — FINAL SECTION NAVIGATION
-   Scroll hanya untuk membaca isi section
-   Pindah section HANYA menggunakan tombol
-   ========================================================= */
-
-
-/* HOME tetap menjadi layar utama */
-
-.home-page {
-    position: relative;
-
-    width: 100%;
-    height: 100svh;
-
-    overflow: hidden;
-
-    touch-action: auto;
-}
-
-
-/* =========================================================
-   SECTION
-   ========================================================= */
-
-.home-page .home-section {
-
-    position: absolute;
-
-    inset: 0;
-
-    width: 100%;
-    height: 100svh;
-
-    min-height: 100svh;
-
-    overflow-x: hidden;
-
-    overflow-y: auto;
-
-    -webkit-overflow-scrolling: touch;
-
-    overscroll-behavior-y: contain;
-
-    opacity: 0;
-
-    visibility: hidden;
-
-    transform: scale(1.025);
-
-    pointer-events: none;
-
-    transition:
-        opacity 500ms ease,
-        transform 650ms
-        cubic-bezier(
-            0.22,
-            1,
-            0.36,
-            1
-        );
-}
-
-
-/* =========================================================
-   SECTION AKTIF
-   ========================================================= */
-
-.home-page .home-section.is-active {
-
-    opacity: 1;
-
-    visibility: visible;
-
-    transform: scale(1);
-
-    pointer-events: auto;
-
-    z-index: 10;
-}
-
-
-/* =========================================================
-   SECTION YANG KELUAR
-   ========================================================= */
-
-.home-page .home-section.is-leaving {
-
-    opacity: 0;
-
-    visibility: hidden;
-
-    transform:
-        scale(0.985)
-        translateY(-10px);
-
-    pointer-events: none;
-
-    z-index: 5;
-}
-
-
-/* =========================================================
-   SECTION YANG BELUM DIBUKA
-   ========================================================= */
-
-.home-page .home-section.is-entering {
-
-    opacity: 0;
-
-    visibility: hidden;
-
-    transform:
-        scale(1.025)
-        translateY(20px);
-
-    pointer-events: none;
-
-    z-index: 1;
-}
-
-
-/* =========================================================
-   SCROLLBAR
-   ========================================================= */
-
-.home-page .home-section::-webkit-scrollbar {
-
-    width: 5px;
-}
-
-
-.home-page .home-section::-webkit-scrollbar-track {
-
-    background: transparent;
-}
-
-
-.home-page .home-section::-webkit-scrollbar-thumb {
-
-    background:
-        rgba(
-            255,
-            255,
-            255,
-            0.12
-        );
-
-    border-radius: 20px;
-}
-
-
-/* =========================================================
-   DESKTOP
-   ========================================================= */
-
-@media (min-width: 769px) {
-
-    .home-page .home-section {
-
-        scrollbar-width: thin;
-
-        scrollbar-color:
-            rgba(
-                255,
-                255,
-                255,
-                0.12
-            )
-            transparent;
-    }
-
-}
-
-
-/* =========================================================
-   MOBILE
-   ========================================================= */
-
-@media (max-width: 768px) {
-
-    .home-page .home-section {
-
-        height: 100svh;
-
-        min-height: 100svh;
-
-        overflow-y: auto;
-
-        overflow-x: hidden;
-    }
-
-}
-/* =========================================================
-   HOME — FIXED NAVIGATION BUTTON
-   Tombol navigasi tetap berada di layar
-   walaupun isi section di-scroll
-   ========================================================= */
-
-.home-page .section-navigation {
-    position: fixed;
-
-    left: 50%;
-
-    bottom:
-        max(
-            18px,
-            env(safe-area-inset-bottom)
-        );
-
-    transform:
-        translateX(-50%);
-
-    z-index: 9999;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    gap: 10px;
-
-    width: auto;
-
-    pointer-events: auto;
-}
-
-
-/* Tombol navigasi */
-
-.home-page .section-navigation button {
-
-    display: inline-flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    min-width: 48px;
-
-    min-height: 48px;
-
-    padding: 0 18px;
-
-    border: 1px solid
-        rgba(255, 255, 255, 0.14);
-
-    border-radius: 999px;
-
-    color: var(--color-text);
-
-    background:
-        rgba(10, 17, 30, 0.72);
-
-    backdrop-filter:
-        blur(18px);
-
-    -webkit-backdrop-filter:
-        blur(18px);
-
-    box-shadow:
-        0 12px 35px
-        rgba(0, 0, 0, 0.25);
-
-    cursor: pointer;
-
-    transition:
-        transform 250ms ease,
-        background 250ms ease,
-        border-color 250ms ease;
-}
-
-
-.home-page .section-navigation button:hover {
-
-    transform:
-        translateY(-3px);
-
-    border-color:
-        rgba(102, 227, 255, 0.35);
-
-    background:
-        rgba(102, 227, 255, 0.10);
-}
-
-
-.home-page .section-navigation button:active {
-
-    transform:
-        scale(0.95);
-}
-
-
-/* Tombol lanjut */
-
-.home-page .next-section-button {
-
-    min-width: 150px !important;
-
-    font-size: 12px;
-
-    font-weight: 700;
-}
-
-
-/* Panah */
-
-.home-page .next-section-button span {
-
-    margin-left: 8px;
-
-    transition:
-        transform 250ms ease;
-}
-
-
-.home-page .next-section-button:hover span {
-
-    transform:
-        translateX(4px);
-}
-
-
-/* =========================================================
-   MOBILE
-   ========================================================= */
-
-@media (max-width: 768px) {
-
-    .home-page .section-navigation {
-
-        bottom:
-            max(
-                14px,
-                env(safe-area-inset-bottom)
-            );
-
-        width:
-            calc(
-                100% - 32px
-            );
-    }
-
-
-    .home-page .section-navigation button {
-
-        min-height: 46px;
+        font-size: 9px;
 
         padding:
             0 16px;
     }
 
-
-    .home-page .next-section-button {
-
-        flex: 1;
-
-        max-width: 230px;
-    }
-
-}
-/* =========================================================
-   FIX — TOMBOL NAVIGASI HOME SELALU MENEMPEL DI LAYAR
-   ========================================================= */
-
-.home-page {
-    position: relative;
-    width: 100%;
-    height: 100svh;
-    overflow: hidden;
-}
-
-
-/* Section boleh di-scroll */
-
-.home-page .home-section {
-    position: absolute;
-    inset: 0;
-
-    width: 100%;
-    height: 100svh;
-
-    overflow-x: hidden;
-    overflow-y: auto;
-
-    -webkit-overflow-scrolling: touch;
-
-    scroll-behavior: smooth;
 }
 
 
 /* =========================================================
-   TOMBOL NAVIGASI
+   19. TABLET
    ========================================================= */
 
-.home-page .section-navigation {
-    position: fixed !important;
-
-    left: 50% !important;
-    bottom: 20px !important;
-
-    transform: translateX(-50%) !important;
-
-    z-index: 99999 !important;
-
-    width: max-content;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    pointer-events: auto;
-}
-
-
-/* Jangan ikut bergerak ketika section di-scroll */
-
-.home-page .section-navigation,
-.home-page .section-navigation * {
-    transform-origin: center;
-}
-
-
-/* =========================================================
-   MOBILE
-   ========================================================= */
-
-@media (max-width: 768px) {
-
-    .home-page .section-navigation {
-
-        position: fixed !important;
-
-        left: 50% !important;
-
-        bottom:
-            calc(
-                14px +
-                env(safe-area-inset-bottom)
-            ) !important;
-
-        transform:
-            translateX(-50%) !important;
-
-        width:
-            calc(100% - 30px);
-
-    }
-
-}
-/* =========================================================
-   FIX — ANIMASI PERPINDAHAN SECTION
-   Tanpa transform pada parent yang memiliki tombol fixed
-   ========================================================= */
-
-.home-page .home-section {
-    transition:
-        opacity 500ms
-        cubic-bezier(0.22, 1, 0.36, 1);
-
-    transform: none !important;
-}
-
-
-.home-page .home-section.is-active {
-    opacity: 1;
-
-    visibility: visible;
-
-    pointer-events: auto;
-
-    z-index: 10;
-}
-
-
-.home-page .home-section.is-leaving {
-    opacity: 0;
-
-    visibility: hidden;
-
-    pointer-events: none;
-
-    z-index: 5;
-}
-
-
-.home-page .home-section.is-entering {
-    opacity: 0;
-
-    visibility: hidden;
-
-    pointer-events: none;
-
-    z-index: 1;
-}
-/* =========================================================
-   MAS MAIL HOME
-   FINAL APP-STYLE SECTION SYSTEM
-   ========================================================= */
-
-
-/* =========================================================
-   01. HOME ROOT
-   ========================================================= */
-
-html:has(.home-page),
-body:has(.home-page) {
-
-    width: 100%;
-
-    height: 100%;
-
-    margin: 0;
-
-    overflow: hidden;
-
-    overscroll-behavior: none;
-
-}
-
-
-.home-page {
-
-    position: relative;
-
-    width: 100%;
-
-    height: 100svh;
-
-    min-height: 100svh;
-
-    overflow: hidden;
-
-    overscroll-behavior: none;
-
-    touch-action: auto;
-
-}
-
-
-/* =========================================================
-   02. SEMUA SECTION
-   ========================================================= */
-
-.home-page .home-section {
-
-    position: absolute;
-
-    inset: 0;
-
-    width: 100%;
-
-    height: 100svh;
-
-    min-height: 100svh;
-
-    box-sizing: border-box;
-
-    overflow-x: hidden;
-
-    overflow-y: auto;
-
-    -webkit-overflow-scrolling: touch;
-
-    overscroll-behavior-y: contain;
-
-    scroll-behavior: auto;
-
-    scrollbar-gutter: stable;
-
-    opacity: 0;
-
-    visibility: hidden;
-
-    pointer-events: none;
-
-    z-index: 1;
-
-    transform: none !important;
-
-    transition:
-        opacity 600ms
-        cubic-bezier(
-            0.22,
-            1,
-            0.36,
-            1
-        );
-}
-
-
-/* =========================================================
-   03. SECTION AKTIF
-   ========================================================= */
-
-.home-page .home-section.is-active {
-
-    opacity: 1;
-
-    visibility: visible;
-
-    pointer-events: auto;
-
-    z-index: 20;
-
-}
-
-
-/* =========================================================
-   04. SECTION KELUAR
-   ========================================================= */
-
-.home-page .home-section.is-leaving {
-
-    opacity: 0;
-
-    visibility: hidden;
-
-    pointer-events: none;
-
-    z-index: 10;
-
-}
-
-
-/* =========================================================
-   05. SECTION BELUM AKTIF
-   ========================================================= */
-
-.home-page .home-section.is-entering {
-
-    opacity: 0;
-
-    visibility: hidden;
-
-    pointer-events: none;
-
-    z-index: 1;
-
-}
-
-
-/* =========================================================
-   06. PAKSA SECTION BARU DIMULAI DARI ATAS
-   ========================================================= */
-
-.home-page .home-section.is-active {
-
-    scroll-behavior: auto;
-
-}
-
-
-/* =========================================================
-   07. TOMBOL SECTION
-   =========================================================
-   
-   INI BAGIAN YANG SEBELUMNYA SALAH.
-   
-   HTML kita menggunakan:
-   
-   .section-next-button
-   
-   BUKAN:
-   
-   .section-navigation
-   ========================================================= */
-
-.home-page .section-next-button {
-
-    position: fixed !important;
-
-    left: 50% !important;
-
-    bottom:
-        calc(
-            18px +
-            env(safe-area-inset-bottom)
-        ) !important;
-
-    transform:
-        translateX(-50%) !important;
-
-    z-index: 99999 !important;
-
-    display: none;
-
-    align-items: center;
-
-    justify-content: center;
-
-    gap: 10px;
-
-    width: auto;
-
-    min-width: 150px;
-
-    min-height: 48px;
-
-    padding:
-        12px 20px;
-
-    box-sizing: border-box;
-
-    border:
-        1px solid
-        rgba(
-            255,
-            255,
-            255,
-            0.16
-        );
-
-    border-radius:
-        999px;
-
-    color:
-        var(--color-text);
-
-    background:
-        rgba(
-            8,
-            15,
-            27,
-            0.78
-        );
-
-    backdrop-filter:
-        blur(18px);
-
-    -webkit-backdrop-filter:
-        blur(18px);
-
-    box-shadow:
-        0 15px 45px
-        rgba(
-            0,
-            0,
-            0,
-            0.30
-        );
-
-    cursor: pointer;
-
-    pointer-events: auto;
-
-    transition:
-        transform 250ms ease,
-        background 250ms ease,
-        border-color 250ms ease,
-        box-shadow 250ms ease;
-
-}
-
-
-/* =========================================================
-   08. HANYA TOMBOL SECTION AKTIF YANG TAMPIL
-   ========================================================= */
-
-.home-page
-.section-next-button.is-current-button {
-
-    display: inline-flex;
-
-}
-
-
-/* =========================================================
-   09. HOVER
-   ========================================================= */
-
-.home-page
-.section-next-button.is-current-button:hover {
-
-    transform:
-        translateX(-50%)
-        translateY(-3px) !important;
-
-    border-color:
-        rgba(
-            102,
-            227,
-            255,
-            0.35
-        );
-
-    background:
-        rgba(
-            102,
-            227,
-            255,
-            0.11
-        );
-
-    box-shadow:
-        0 20px 55px
-        rgba(
-            0,
-            0,
-            0,
-            0.35
-        );
-
-}
-
-
-/* =========================================================
-   10. SAAT DITEKAN
-   ========================================================= */
-
-.home-page
-.section-next-button:active {
-
-    transform:
-        translateX(-50%)
-        scale(0.95) !important;
-
-}
-
-
-/* =========================================================
-   11. PANAH
-   ========================================================= */
-
-.home-page
-.section-next-button .scroll-arrow {
-
-    display: inline-flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    transition:
-        transform 250ms ease;
-
-}
-
-
-.home-page
-.section-next-button:hover
-.scroll-arrow {
-
-    transform:
-        translateY(3px);
-
-}
-
-
-/* =========================================================
-   12. ISI SECTION JANGAN TERTUTUP TOMBOL
-   ========================================================= */
-
-.home-page .home-section {
-
-    padding-bottom:
-        100px;
-
-}
-
-
-/* =========================================================
-   13. SCROLLBAR
-   ========================================================= */
-
-.home-page .home-section::-webkit-scrollbar {
-
-    width: 4px;
-
-}
-
-
-.home-page .home-section::-webkit-scrollbar-track {
-
-    background: transparent;
-
-}
-
-
-.home-page .home-section::-webkit-scrollbar-thumb {
-
-    background:
-        rgba(
-            255,
-            255,
-            255,
-            0.12
-        );
-
-    border-radius:
-        999px;
-
-}
-
-
-/* =========================================================
-   14. MOBILE
-   ========================================================= */
-
-@media (max-width: 768px) {
+@media (min-width: 769px) and (max-width: 1100px) {
 
     .home-page .home-section {
-
-        height: 100svh;
-
-        min-height: 100svh;
-
-        padding-bottom:
-            90px;
-
+        padding:
+            90px 35px
+            110px;
     }
 
 
-    .home-page
-    .section-next-button {
-
-        bottom:
-            calc(
-                14px +
-                env(safe-area-inset-bottom)
-            ) !important;
-
-        min-width:
-            145px;
-
-        min-height:
-            46px;
-
-        padding:
-            11px 17px;
-
-        font-size:
-            11px;
-
+    .about-container {
+        gap: 45px;
     }
 
 }
 
 
 /* =========================================================
-   15. HP KECIL
+   20. DESKTOP
    ========================================================= */
 
-@media (max-width: 420px) {
+@media (min-width: 1100px) {
 
-    .home-page
-    .section-next-button {
+    .home-page .home-section {
+        padding-left: 50px;
+        padding-right: 50px;
+    }
 
-        min-width:
-            140px;
 
-        min-height:
-            44px;
+    .brand-card {
+        min-height: 430px;
+    }
 
-        padding:
-            10px 15px;
 
-        font-size:
-            10px;
+    .contact-item {
+        min-height: 86px;
+    }
 
+}
+
+
+/* =========================================================
+   21. ACCESSIBILITY
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .home-page *,
+    .home-page *::before,
+    .home-page *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+
+        transition-duration: .01ms !important;
+
+        scroll-behavior: auto !important;
     }
 
 }
