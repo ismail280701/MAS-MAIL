@@ -1,96 +1,159 @@
-// =========================================================
-// MAS MAIL — HOME CONTROLLER
-// VERSION 2
-//
-// Fungsi:
-// 1. Section berpindah dengan tombol
-// 2. Setiap section bisa di-scroll
-// 3. Section baru selalu dimulai dari paling atas
-// 4. Tombol Back Android/browser kembali ke section sebelumnya
-// 5. Refresh selalu kembali ke Home
-// =========================================================
+/* =========================================================
+   MAS MAIL — HOME CONTROLLER
+   HOME NAVIGATION SYSTEM
+   ========================================================= */
 
 document.addEventListener("DOMContentLoaded", function () {
 
     const homePage = document.querySelector(".home-page");
 
-    const sections = Array.from(
-        document.querySelectorAll(".home-section")
-    );
-
-    if (!homePage || sections.length === 0) {
+    if (!homePage) {
         return;
     }
 
 
-    // =====================================================
-    // STATE
-    // =====================================================
+    /* =====================================================
+       01. SECTION
+       ===================================================== */
 
-    let currentSection = 0;
-    let isChanging = false;
+    const sections = Array.from(
+        homePage.querySelectorAll(".home-section")
+    );
+
+    if (sections.length === 0) {
+        return;
+    }
 
 
-    // =====================================================
-    // FUNGSI RESET SECTION
-    // =====================================================
+    /* =====================================================
+       02. STATE
+       ===================================================== */
+
+    let currentIndex = 0;
+    let isTransitioning = false;
+
+
+    /* =====================================================
+       03. RESET SECTION
+       ===================================================== */
 
     function resetSection(section) {
 
-        section.scrollTo({
-            top: 0,
-            left: 0,
-            behavior: "auto"
+        if (!section) {
+            return;
+        }
+
+        section.scrollTop = 0;
+        section.scrollLeft = 0;
+
+    }
+
+
+    /* =====================================================
+       04. SET SECTION
+       ===================================================== */
+
+    function setInitialState() {
+
+        sections.forEach(function (section, index) {
+
+            resetSection(section);
+
+            section.classList.remove(
+                "is-active",
+                "is-leaving",
+                "is-entering"
+            );
+
+            if (index === 0) {
+
+                section.classList.add(
+                    "is-active"
+                );
+
+            } else {
+
+                section.classList.add(
+                    "is-entering"
+                );
+
+            }
+
+        });
+
+        currentIndex = 0;
+
+    }
+
+
+    setInitialState();
+
+
+    /* =====================================================
+       05. ANIMASI ISI
+       ===================================================== */
+
+    function animateSection(section) {
+
+        if (!section) {
+            return;
+        }
+
+        const items =
+            section.querySelectorAll(
+                ".reveal-item"
+            );
+
+        items.forEach(function (item) {
+
+            item.classList.remove(
+                "is-visible"
+            );
+
+        });
+
+
+        items.forEach(function (item, index) {
+
+            window.setTimeout(
+                function () {
+
+                    item.classList.add(
+                        "is-visible"
+                    );
+
+                },
+                100 + (index * 80)
+            );
+
         });
 
     }
 
 
-    // =====================================================
-    // INITIAL STATE
-    // =====================================================
+    /* =====================================================
+       06. HISTORY
+       ===================================================== */
 
-    sections.forEach(function (section, index) {
+    const initialState = {
+        masMailHome: true,
+        section: 0
+    };
 
-        section.classList.remove(
-            "is-active",
-            "is-leaving",
-            "is-entering"
-        );
-
-        resetSection(section);
-
-        if (index === 0) {
-
-            section.classList.add("is-active");
-
-        } else {
-
-            section.classList.add("is-entering");
-
-        }
-
-    });
-
-
-    // =====================================================
-    // HISTORY
-    // =====================================================
 
     history.replaceState(
-        {
-            homeSection: 0
-        },
+        initialState,
         "",
         window.location.href
     );
 
 
-    function pushSectionHistory(index) {
+    function createHistory(index) {
 
         history.pushState(
             {
-                homeSection: index
+                masMailHome: true,
+                section: index
             },
             "",
             window.location.href
@@ -99,77 +162,57 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
-    // =====================================================
-    // ANIMASI ISI SECTION
-    // =====================================================
+    /* =====================================================
+       07. PINDAH SECTION
+       ===================================================== */
 
-    function animateSection(section) {
-
-        const items = section.querySelectorAll(
-            ".reveal-item"
-        );
-
-        items.forEach(function (item, index) {
-
-            item.classList.remove("is-visible");
-
-            setTimeout(function () {
-
-                item.classList.add("is-visible");
-
-            }, 100 + (index * 100));
-
-        });
-
-    }
-
-
-    // =====================================================
-    // PINDAH SECTION
-    // =====================================================
-
-    function changeSection(
+    function goToSection(
         targetIndex,
-        direction,
-        addHistory
+        useHistory
     ) {
 
-        if (isChanging) {
+        if (targetIndex < 0) {
             return;
         }
 
-        if (
-            targetIndex < 0 ||
-            targetIndex >= sections.length
-        ) {
+        if (targetIndex >= sections.length) {
             return;
         }
 
-        if (targetIndex === currentSection) {
+        if (targetIndex === currentIndex) {
             return;
         }
 
-
-        isChanging = true;
+        if (isTransitioning) {
+            return;
+        }
 
 
         const current =
-            sections[currentSection];
+            sections[currentIndex];
 
         const next =
             sections[targetIndex];
 
 
-        // -------------------------------------------------
-        // RESET SCROLL SECTION BARU
-        // -------------------------------------------------
+        if (!current || !next) {
+            return;
+        }
+
+
+        isTransitioning = true;
+
+
+        /* -----------------------------------------------
+           RESET SCROLL SECTION TUJUAN
+        ------------------------------------------------ */
 
         resetSection(next);
 
 
-        // -------------------------------------------------
-        // SIAPKAN SECTION BARU
-        // -------------------------------------------------
+        /* -----------------------------------------------
+           AKTIFKAN SECTION BARU
+        ------------------------------------------------ */
 
         next.classList.remove(
             "is-entering",
@@ -181,9 +224,9 @@ document.addEventListener("DOMContentLoaded", function () {
         );
 
 
-        // -------------------------------------------------
-        // SECTION LAMA
-        // -------------------------------------------------
+        /* -----------------------------------------------
+           KELUARKAN SECTION LAMA
+        ------------------------------------------------ */
 
         current.classList.remove(
             "is-active"
@@ -194,214 +237,254 @@ document.addEventListener("DOMContentLoaded", function () {
         );
 
 
-        // -------------------------------------------------
-        // UPDATE CURRENT
-        // -------------------------------------------------
+        /* -----------------------------------------------
+           UPDATE INDEX
+        ------------------------------------------------ */
 
-        currentSection = targetIndex;
+        currentIndex =
+            targetIndex;
 
 
-        // -------------------------------------------------
-        // HISTORY
-        // -------------------------------------------------
+        /* -----------------------------------------------
+           HISTORY
+        ------------------------------------------------ */
 
-        if (addHistory) {
+        if (useHistory) {
 
-            pushSectionHistory(
+            createHistory(
                 targetIndex
             );
 
         }
 
 
-        // -------------------------------------------------
-        // ANIMASI
-        // -------------------------------------------------
+        /* -----------------------------------------------
+           ANIMASI
+        ------------------------------------------------ */
 
-        animateSection(next);
+        animateSection(
+            next
+        );
 
 
-        // -------------------------------------------------
-        // SELESAIKAN TRANSISI
-        // -------------------------------------------------
+        /* -----------------------------------------------
+           SELESAIKAN
+        ------------------------------------------------ */
 
-        setTimeout(function () {
+        window.setTimeout(
+            function () {
 
-            current.classList.remove(
-                "is-leaving"
-            );
+                current.classList.remove(
+                    "is-leaving"
+                );
 
-            isChanging = false;
+                isTransitioning = false;
 
-        }, 600);
+            },
+            550
+        );
 
     }
 
 
-    // =====================================================
-    // TOMBOL NEXT
-    // =====================================================
+    /* =====================================================
+       08. TOMBOL SECTION
+       ===================================================== */
 
     const sectionButtons =
-        document.querySelectorAll(
+        homePage.querySelectorAll(
             "[data-section-target]"
         );
 
 
-    sectionButtons.forEach(function (button) {
+    sectionButtons.forEach(
+        function (button) {
 
-        button.addEventListener(
-            "click",
-            function () {
+            button.addEventListener(
+                "click",
+                function (event) {
 
-                const targetId =
-                    button.getAttribute(
-                        "data-section-target"
+                    event.preventDefault();
+                    event.stopPropagation();
+
+
+                    const targetId =
+                        button.getAttribute(
+                            "data-section-target"
+                        );
+
+
+                    if (!targetId) {
+                        return;
+                    }
+
+
+                    const target =
+                        document.getElementById(
+                            targetId
+                        );
+
+
+                    if (!target) {
+                        return;
+                    }
+
+
+                    const targetIndex =
+                        sections.indexOf(
+                            target
+                        );
+
+
+                    if (targetIndex === -1) {
+                        return;
+                    }
+
+
+                    goToSection(
+                        targetIndex,
+                        true
                     );
 
-
-                const target =
-                    document.getElementById(
-                        targetId
-                    );
-
-
-                if (!target) {
-                    return;
                 }
+            );
+
+        }
+    );
 
 
-                const targetIndex =
-                    sections.indexOf(target);
-
-
-                if (targetIndex === -1) {
-                    return;
-                }
-
-
-                const direction =
-                    targetIndex > currentSection
-                        ? "next"
-                        : "previous";
-
-
-                changeSection(
-                    targetIndex,
-                    direction,
-                    true
-                );
-
-            }
-        );
-
-    });
-
-
-    // =====================================================
-    // BACK ANDROID / BROWSER
-    // =====================================================
+    /* =====================================================
+       09. BACK ANDROID / BROWSER
+       ===================================================== */
 
     window.addEventListener(
         "popstate",
         function (event) {
 
-            const state = event.state;
+            const state =
+                event.state;
 
 
             if (
-                state &&
-                typeof state.homeSection === "number"
+                !state ||
+                state.masMailHome !== true
             ) {
 
-                const targetIndex =
-                    state.homeSection;
-
-
-                const direction =
-                    targetIndex > currentSection
-                        ? "next"
-                        : "previous";
-
-
-                changeSection(
-                    targetIndex,
-                    direction,
-                    false
-                );
+                return;
 
             }
+
+
+            const targetIndex =
+                Number(
+                    state.section
+                );
+
+
+            if (
+                Number.isNaN(
+                    targetIndex
+                )
+            ) {
+
+                return;
+
+            }
+
+
+            if (
+                targetIndex === currentIndex
+            ) {
+
+                return;
+
+            }
+
+
+            /*
+             * Saat Back ditekan,
+             * jangan membuat history baru.
+             */
+
+            goToSection(
+                targetIndex,
+                false
+            );
 
         }
     );
 
 
-    // =====================================================
-    // ANIMASI HOME PERTAMA
-    // =====================================================
+    /* =====================================================
+       10. TOMBOL AWAL
+       ===================================================== */
 
-    setTimeout(function () {
-
-        animateSection(
-            sections[0]
+    const homeButtons =
+        homePage.querySelectorAll(
+            "[data-home-target]"
         );
 
-    }, 150);
+
+    homeButtons.forEach(
+        function (button) {
+
+            button.addEventListener(
+                "click",
+                function (event) {
+
+                    event.preventDefault();
+                    event.stopPropagation();
 
 
-    // =====================================================
-    // FIX REFRESH
-    // =====================================================
-    //
-    // Saat browser melakukan refresh:
-    //
-    // Section pertama dipaksa aktif
-    // dan scroll dikembalikan ke paling atas.
-    //
-    // =====================================================
-
-    window.addEventListener(
-        "pageshow",
-        function () {
-
-            currentSection = 0;
-
-            sections.forEach(
-                function (section, index) {
-
-                    resetSection(section);
-
-                    section.classList.remove(
-                        "is-active",
-                        "is-leaving",
-                        "is-entering"
+                    goToSection(
+                        0,
+                        true
                     );
-
-
-                    if (index === 0) {
-
-                        section.classList.add(
-                            "is-active"
-                        );
-
-                    } else {
-
-                        section.classList.add(
-                            "is-entering"
-                        );
-
-                    }
 
                 }
             );
 
+        }
+    );
+
+
+    /* =====================================================
+       11. ANIMASI AWAL
+       ===================================================== */
+
+    window.setTimeout(
+        function () {
 
             animateSection(
                 sections[0]
             );
 
-        }
+        },
+        150
     );
 
+
+    /* =====================================================
+       12. PUBLIC API
+       ===================================================== */
+
+    window.masMailHome = {
+
+        goToSection: function (index) {
+
+            goToSection(
+                index,
+                true
+            );
+
+        },
+
+        getCurrentSection: function () {
+
+            return currentIndex;
+
+        }
+
+    };
 
 });
