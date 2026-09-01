@@ -1,1 +1,462 @@
+/* =========================================================
+   MAS MAIL DIGITAL — HEADER
+   File: css/header-digital.css
+   ========================================================= */
 
+
+/* =========================================================
+   DIGITAL HEADER
+   ========================================================= */
+
+.digital-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  width: 100%;
+  border-bottom: 1px solid transparent;
+  background: rgba(6, 18, 14, 0.55);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  transition:
+    background var(--transition-normal),
+    border-color var(--transition-normal),
+    box-shadow var(--transition-normal);
+}
+
+.digital-header.is-scrolled {
+  border-bottom-color: var(--color-border);
+  background: rgba(6, 18, 14, 0.92);
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.18);
+}
+
+
+/* =========================================================
+   HEADER CONTAINER
+   ========================================================= */
+
+.digital-header-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 72px;
+  gap: 20px;
+}
+
+
+/* =========================================================
+   DIGITAL BRAND
+   ========================================================= */
+
+.digital-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 11px;
+  min-width: 0;
+  color: var(--color-white);
+  text-decoration: none;
+}
+
+.digital-brand-logo {
+  display: block;
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  object-fit: contain;
+}
+
+.digital-brand-content {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.digital-brand-name {
+  color: var(--color-white);
+  font-family: var(--font-heading);
+  font-size: 0.92rem;
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.digital-brand-subtitle {
+  margin-top: 3px;
+  overflow: hidden;
+  color: var(--color-text-muted);
+  font-size: 0.6rem;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: 0.05em;
+  text-overflow: ellipsis;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+
+/* =========================================================
+   DESKTOP NAVIGATION
+   ========================================================= */
+
+.digital-desktop-navigation {
+  display: none;
+  align-items: center;
+  gap: 5px;
+}
+
+.digital-nav-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px;
+  padding: 0 13px;
+  border-radius: 10px;
+  color: var(--color-text-soft);
+  font-size: 0.78rem;
+  font-weight: 650;
+  text-decoration: none;
+  transition:
+    color var(--transition-fast),
+    background var(--transition-fast);
+}
+
+.digital-nav-link::after {
+  content: "";
+  position: absolute;
+  right: 13px;
+  bottom: 5px;
+  left: 13px;
+  height: 2px;
+  border-radius: 99px;
+  background: var(--color-green-soft);
+  opacity: 0;
+  transform: scaleX(0.4);
+  transition:
+    opacity var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+.digital-nav-link:hover {
+  color: var(--color-white);
+  background: rgba(110, 231, 168, 0.05);
+}
+
+.digital-nav-link:hover::after,
+.digital-nav-link.active::after,
+.digital-nav-link[aria-current="page"]::after {
+  opacity: 1;
+  transform: scaleX(1);
+}
+
+.digital-nav-link.active,
+.digital-nav-link[aria-current="page"] {
+  color: var(--color-green-soft);
+}
+
+
+/* =========================================================
+   HEADER ACTION
+   ========================================================= */
+
+.digital-header-action {
+  display: none;
+}
+
+.digital-header-action .btn {
+  min-height: 40px;
+  padding: 0 17px;
+  font-size: 0.76rem;
+}
+
+
+/* =========================================================
+   MOBILE MENU BUTTON
+   ========================================================= */
+
+.digital-menu-toggle {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  padding: 0;
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  background: rgba(12, 33, 25, 0.65);
+  color: var(--color-white);
+  cursor: pointer;
+  transition:
+    background var(--transition-fast),
+    border-color var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+.digital-menu-toggle:hover {
+  border-color: var(--color-border-strong);
+  background: rgba(16, 47, 35, 0.8);
+}
+
+.digital-menu-toggle:active {
+  transform: scale(0.95);
+}
+
+.digital-menu-toggle span {
+  position: absolute;
+  width: 19px;
+  height: 2px;
+  border-radius: 99px;
+  background: currentColor;
+  transition:
+    transform var(--transition-fast),
+    opacity var(--transition-fast);
+}
+
+.digital-menu-toggle span:nth-child(1) {
+  transform: translateY(-6px);
+}
+
+.digital-menu-toggle span:nth-child(2) {
+  transform: translateY(0);
+}
+
+.digital-menu-toggle span:nth-child(3) {
+  transform: translateY(6px);
+}
+
+.digital-menu-toggle.is-active span:nth-child(1) {
+  transform: rotate(45deg);
+}
+
+.digital-menu-toggle.is-active span:nth-child(2) {
+  opacity: 0;
+}
+
+.digital-menu-toggle.is-active span:nth-child(3) {
+  transform: rotate(-45deg);
+}
+
+
+/* =========================================================
+   MOBILE NAVIGATION
+   ========================================================= */
+
+.digital-mobile-navigation {
+  position: fixed;
+  top: 72px;
+  right: 0;
+  left: 0;
+  z-index: 999;
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(-10px);
+  border-bottom: 1px solid var(--color-border);
+  background: rgba(6, 18, 14, 0.97);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  pointer-events: none;
+  transition:
+    opacity var(--transition-normal),
+    transform var(--transition-normal),
+    visibility var(--transition-normal);
+}
+
+.digital-mobile-navigation.is-open {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.digital-mobile-navigation-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 15px 20px 20px;
+}
+
+.digital-mobile-nav-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 50px;
+  padding: 0 15px;
+  border: 1px solid transparent;
+  border-radius: 13px;
+  color: var(--color-text-soft);
+  font-size: 0.85rem;
+  font-weight: 650;
+  text-decoration: none;
+  transition:
+    color var(--transition-fast),
+    background var(--transition-fast),
+    border-color var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+.digital-mobile-nav-link::after {
+  content: "→";
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+  transition: transform var(--transition-fast);
+}
+
+.digital-mobile-nav-link:hover,
+.digital-mobile-nav-link:focus-visible,
+.digital-mobile-nav-link.active,
+.digital-mobile-nav-link[aria-current="page"] {
+  border-color: var(--color-border);
+  background: rgba(24, 165, 104, 0.07);
+  color: var(--color-green-soft);
+}
+
+.digital-mobile-nav-link:hover::after,
+.digital-mobile-nav-link:focus-visible::after,
+.digital-mobile-nav-link.active::after,
+.digital-mobile-nav-link[aria-current="page"]::after {
+  color: var(--color-green-soft);
+  transform: translateX(3px);
+}
+
+
+/* =========================================================
+   MOBILE MENU OVERLAY
+   ========================================================= */
+
+.digital-mobile-navigation::before {
+  content: "";
+  position: fixed;
+  top: 72px;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  visibility: hidden;
+  background: rgba(0, 0, 0, 0.35);
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    opacity var(--transition-normal),
+    visibility var(--transition-normal);
+}
+
+.digital-mobile-navigation.is-open::before {
+  visibility: visible;
+  opacity: 1;
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (min-width: 600px) {
+
+  .digital-header-container {
+    min-height: 76px;
+  }
+
+  .digital-brand-logo {
+    width: 42px;
+    height: 42px;
+  }
+
+  .digital-brand-name {
+    font-size: 0.98rem;
+  }
+
+  .digital-brand-subtitle {
+    font-size: 0.62rem;
+  }
+
+  .digital-mobile-navigation {
+    top: 76px;
+  }
+
+  .digital-mobile-navigation::before {
+    top: 76px;
+  }
+}
+
+
+/* =========================================================
+   DESKTOP
+   ========================================================= */
+
+@media (min-width: 769px) {
+
+  .digital-header-container {
+    min-height: 78px;
+  }
+
+  .digital-desktop-navigation {
+    display: flex;
+    margin-left: auto;
+  }
+
+  .digital-header-action {
+    display: block;
+  }
+
+  .digital-menu-toggle,
+  .digital-mobile-navigation {
+    display: none;
+  }
+
+  .digital-brand-logo {
+    width: 44px;
+    height: 44px;
+  }
+
+  .digital-brand-name {
+    font-size: 1rem;
+  }
+
+  .digital-brand-subtitle {
+    font-size: 0.63rem;
+  }
+}
+
+
+/* =========================================================
+   LARGE DESKTOP
+   ========================================================= */
+
+@media (min-width: 1100px) {
+
+  .digital-desktop-navigation {
+    gap: 8px;
+  }
+
+  .digital-nav-link {
+    min-height: 42px;
+    padding: 0 16px;
+  }
+
+  .digital-header-action .btn {
+    min-height: 42px;
+    padding: 0 19px;
+  }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .digital-header,
+  .digital-nav-link,
+  .digital-nav-link::after,
+  .digital-menu-toggle,
+  .digital-menu-toggle span,
+  .digital-mobile-navigation,
+  .digital-mobile-nav-link,
+  .digital-mobile-nav-link::after {
+    transition: none;
+  }
+}
