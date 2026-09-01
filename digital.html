@@ -10,12 +10,15 @@
         content="width=device-width, initial-scale=1.0"
     >
 
-    <title>Mas Mail Digital | Solusi Digital</title>
+    <title>
+        Mas Mail Digital | Solusi Digital Modern
+    </title>
 
     <meta
         name="description"
-        content="Mas Mail Digital menghadirkan website, aplikasi, AppSheet, template digital, dan solusi digital untuk kebutuhan usaha maupun lembaga."
+        content="Mas Mail Digital menyediakan website, aplikasi, AppSheet, template digital, dan berbagai solusi digital."
     >
+
 
     <!-- =====================================================
          GOOGLE FONT
@@ -36,18 +39,13 @@
 
 
     <!-- =====================================================
-         CSS GLOBAL
+         CSS
     ====================================================== -->
 
     <link
         rel="stylesheet"
         href="css/umum.css"
     >
-
-
-    <!-- =====================================================
-         CSS DIGITAL
-    ====================================================== -->
 
     <link
         rel="stylesheet"
@@ -99,23 +97,22 @@
 
 
     <!-- =====================================================
-         NAVIGATION
-    ====================================================== -->
+         HEADER / NAVBAR
+         ====================================================== -->
 
     <header
         class="digital-header"
         data-navigation
     >
 
-        <div class="digital-nav-container">
+        <div class="digital-header-inner">
 
 
             <!-- LOGO -->
 
             <a
                 href="index.html"
-                class="digital-nav-logo page-link"
-                aria-label="Kembali ke Mas Mail"
+                class="digital-brand page-link"
             >
 
                 <img
@@ -123,42 +120,14 @@
                     alt="Mas Mail Digital"
                 >
 
+                <span>
+                    Mas Mail Digital
+                </span>
+
             </a>
 
 
-            <!-- DESKTOP NAVIGATION -->
-
-            <nav
-                class="digital-nav-menu"
-                aria-label="Navigasi utama"
-            >
-
-                <a
-                    href="index.html"
-                    class="digital-nav-link page-link"
-                >
-                    Home
-                </a>
-
-                <a
-                    href="digital.html"
-                    class="digital-nav-link active"
-                    aria-current="page"
-                >
-                    Mas Mail Digital
-                </a>
-
-                <a
-                    href="barokah.html"
-                    class="digital-nav-link page-link"
-                >
-                    Mas Mail Barokah
-                </a>
-
-            </nav>
-
-
-            <!-- MOBILE MENU BUTTON -->
+            <!-- MENU BUTTON -->
 
             <button
                 type="button"
@@ -166,7 +135,6 @@
                 data-menu-toggle
                 aria-label="Buka menu"
                 aria-expanded="false"
-                aria-controls="digitalNavigationMenu"
             >
 
                 <span></span>
@@ -175,64 +143,54 @@
 
             </button>
 
-        </div>
 
-
-        <!-- MOBILE NAVIGATION -->
-
-        <div
-            class="digital-mobile-menu"
-            id="digitalNavigationMenu"
-            data-navigation-menu
-        >
-
-            <div class="digital-mobile-logo">
-
-                <img
-                    src="assets/logo-mas-mail-digital.png"
-                    alt="Mas Mail Digital"
-                >
-
-                <span>
-                    DIGITAL SOLUTION
-                </span>
-
-            </div>
-
+            <!-- NAVIGATION -->
 
             <nav
-                class="digital-mobile-links"
-                aria-label="Navigasi mobile"
+                class="digital-navigation"
+                aria-label="Navigasi utama"
             >
 
                 <a
+                    href="#digitalHero"
+                    class="digital-nav-link"
+                >
+                    Beranda
+                </a>
+
+                <a
+                    href="#digitalServices"
+                    class="digital-nav-link"
+                >
+                    Layanan
+                </a>
+
+                <a
+                    href="#digitalAdvantages"
+                    class="digital-nav-link"
+                >
+                    Keunggulan
+                </a>
+
+                <a
+                    href="#digitalWorkflow"
+                    class="digital-nav-link"
+                >
+                    Alur
+                </a>
+
+                <a
+                    href="#digitalCTA"
+                    class="digital-nav-link"
+                >
+                    Konsultasi
+                </a>
+
+                <a
                     href="index.html"
-                    class="digital-mobile-link page-link"
+                    class="digital-nav-link digital-nav-home page-link"
                 >
-                    <span>01</span>
-                    <strong>Home</strong>
-                    <span>→</span>
-                </a>
-
-
-                <a
-                    href="digital.html"
-                    class="digital-mobile-link active"
-                    aria-current="page"
-                >
-                    <span>02</span>
-                    <strong>Mas Mail Digital</strong>
-                    <span>→</span>
-                </a>
-
-
-                <a
-                    href="barokah.html"
-                    class="digital-mobile-link page-link"
-                >
-                    <span>03</span>
-                    <strong>Mas Mail Barokah</strong>
-                    <span>→</span>
+                    ← Mas Mail
                 </a>
 
             </nav>
@@ -244,17 +202,14 @@
 
 
     <!-- =====================================================
-         MAIN CONTENT
+         MAIN
     ====================================================== -->
 
-    <main
-        class="digital-main"
-        id="digitalTop"
-    >
+    <main class="digital-main">
 
 
         <!-- =================================================
-             HERO
+             01 — HERO
         ================================================== -->
 
         <section
@@ -262,29 +217,39 @@
             id="digitalHero"
         >
 
+
             <div class="digital-hero-background">
 
                 <div class="digital-hero-grid"></div>
 
-                <div class="digital-hero-glow digital-glow-one"></div>
+                <div
+                    class="digital-hero-glow digital-glow-one"
+                ></div>
 
-                <div class="digital-hero-glow digital-glow-two"></div>
+                <div
+                    class="digital-hero-glow digital-glow-two"
+                ></div>
 
             </div>
 
 
-            <div class="digital-container digital-hero-container">
+
+            <div
+                class="digital-container digital-hero-container"
+            >
 
 
-                <div class="digital-hero-content">
+                <!-- HERO TEXT -->
+
+                <div class="digital-hero-content reveal-item">
 
 
-                    <span class="digital-eyebrow reveal-item">
+                    <p class="digital-eyebrow">
                         MAS MAIL DIGITAL
-                    </span>
+                    </p>
 
 
-                    <h1 class="digital-hero-title reveal-item">
+                    <h1 class="digital-hero-title">
 
                         Solusi Digital
 
@@ -295,17 +260,18 @@
                     </h1>
 
 
-                    <p class="digital-hero-description reveal-item">
+                    <p class="digital-hero-description">
 
                         Membantu usaha, lembaga pendidikan,
-                        pesantren, dan kebutuhan personal
-                        hadir lebih modern melalui solusi
-                        digital yang sederhana dan fungsional.
+                        dan kebutuhan personal hadir lebih
+                        rapi melalui website, aplikasi,
+                        AppSheet, template digital, dan
+                        berbagai solusi digital.
 
                     </p>
 
 
-                    <div class="digital-hero-actions reveal-item">
+                    <div class="digital-hero-actions">
 
                         <a
                             href="#digitalServices"
@@ -324,9 +290,7 @@
 
 
                         <a
-                            href="https://wa.me/"
-                            target="_blank"
-                            rel="noopener noreferrer"
+                            href="#digitalCTA"
                             class="main-button secondary-button"
                         >
 
@@ -335,18 +299,22 @@
                             </span>
 
                             <span class="button-icon">
-                                ↗
+                                →
                             </span>
 
                         </a>
 
                     </div>
 
-
                 </div>
 
 
-                <div class="digital-hero-logo reveal-item">
+
+                <!-- HERO LOGO -->
+
+                <div
+                    class="digital-hero-logo reveal-item"
+                >
 
                     <div class="digital-logo-frame">
 
@@ -363,16 +331,15 @@
             </div>
 
 
-            <!-- SCROLL INDICATOR -->
+            <!-- SCROLL -->
 
             <a
                 href="#digitalServices"
                 class="digital-scroll-indicator"
-                aria-label="Scroll ke layanan"
             >
 
                 <span>
-                    SCROLL
+                    SCROLL UNTUK MELIHAT LAYANAN
                 </span>
 
                 <span>
@@ -381,12 +348,13 @@
 
             </a>
 
+
         </section>
 
 
 
         <!-- =================================================
-             SERVICES
+             02 — SERVICES
         ================================================== -->
 
         <section
@@ -404,7 +372,7 @@
                     </span>
 
                     <span class="section-label">
-                        LAYANAN
+                        LAYANAN DIGITAL
                     </span>
 
                     <h2>
@@ -412,23 +380,22 @@
                         Apa yang bisa
 
                         <span>
-                            kami bantu?
+                            kami kerjakan?
                         </span>
 
                     </h2>
 
                     <p>
 
-                        Pilih kebutuhan digital yang ingin
-                        dikembangkan bersama Mas Mail Digital.
+                        Layanan digital yang dapat disesuaikan
+                        dengan kebutuhan, kemampuan, dan tujuan
+                        setiap klien.
 
                     </p>
 
                 </div>
 
 
-
-                <!-- SERVICE GRID -->
 
                 <div class="digital-services-grid">
 
@@ -455,7 +422,8 @@
 
                             Website profil, lembaga,
                             usaha, pesantren, sekolah,
-                            maupun kebutuhan lainnya.
+                            landing page, dan kebutuhan
+                            lainnya.
 
                         </p>
 
@@ -464,6 +432,7 @@
                         </span>
 
                     </article>
+
 
 
                     <!-- SERVICE 02 -->
@@ -487,8 +456,8 @@
                         <p>
 
                             Membantu membuat sistem aplikasi
-                            sederhana sesuai kebutuhan
-                            pengelolaan data.
+                            sederhana untuk mengelola kebutuhan
+                            tertentu secara lebih praktis.
 
                         </p>
 
@@ -497,6 +466,7 @@
                         </span>
 
                     </article>
+
 
 
                     <!-- SERVICE 03 -->
@@ -510,7 +480,7 @@
                         </span>
 
                         <div class="service-icon">
-                            AS
+                            DATA
                         </div>
 
                         <h3>
@@ -519,9 +489,10 @@
 
                         <p>
 
-                            Sistem berbasis AppSheet untuk
-                            absensi, tabungan, data santri,
-                            dan kebutuhan administrasi.
+                            Sistem berbasis data untuk
+                            membantu absensi, tabungan,
+                            pendataan, administrasi,
+                            dan kebutuhan lainnya.
 
                         </p>
 
@@ -530,6 +501,7 @@
                         </span>
 
                     </article>
+
 
 
                     <!-- SERVICE 04 -->
@@ -543,18 +515,18 @@
                         </span>
 
                         <div class="service-icon">
-                            TMP
+                            FILE
                         </div>
 
                         <h3>
-                            Template Digital
+                            Produk Digital
                         </h3>
 
                         <p>
 
-                            Template Canva, PowerPoint,
-                            CapCut, dan berbagai kebutuhan
-                            konten digital.
+                            Template Canva, PPT, CapCut,
+                            e-book, dan berbagai produk
+                            digital siap digunakan.
 
                         </p>
 
@@ -574,12 +546,12 @@
 
 
         <!-- =================================================
-             KEUNGGULAN
+             03 — ADVANTAGE
         ================================================== -->
 
         <section
             class="digital-section advantage-section"
-            id="digitalAdvantage"
+            id="digitalAdvantages"
         >
 
             <div class="digital-container">
@@ -592,7 +564,7 @@
                     </span>
 
                     <span class="section-label">
-                        PENDEKATAN
+                        KEUNGGULAN
                     </span>
 
                     <h2>
@@ -600,15 +572,16 @@
                         Bukan sekadar
 
                         <span>
-                            dibuat.
+                            membuat.
                         </span>
 
                     </h2>
 
                     <p>
 
-                        Setiap solusi dirancang agar dapat
-                        digunakan dan dipahami dengan mudah.
+                        Setiap layanan dibuat dengan
+                        memperhatikan kebutuhan dan
+                        penggunaan sebenarnya.
 
                     </p>
 
@@ -619,78 +592,103 @@
                 <div class="advantage-grid">
 
 
-                    <div class="advantage-item reveal-item">
+                    <article
+                        class="advantage-item reveal-item"
+                    >
 
                         <span class="advantage-number">
                             01
                         </span>
 
                         <h3>
-                            Sederhana
+                            Sesuai Kebutuhan
                         </h3>
 
                         <p>
-                            Tidak dibuat rumit jika kebutuhan
-                            bisa diselesaikan dengan cara
-                            yang lebih sederhana.
+
+                            Solusi disesuaikan dengan
+                            kebutuhan pengguna, bukan
+                            sekadar menggunakan template
+                            yang sama untuk semua.
+
                         </p>
 
-                    </div>
+                    </article>
 
 
-                    <div class="advantage-item reveal-item">
+
+                    <article
+                        class="advantage-item reveal-item"
+                    >
 
                         <span class="advantage-number">
                             02
                         </span>
 
                         <h3>
-                            Fungsional
+                            Sederhana Digunakan
                         </h3>
 
                         <p>
-                            Mengutamakan fungsi yang benar-benar
-                            dibutuhkan dalam penggunaan sehari-hari.
+
+                            Mengutamakan tampilan yang
+                            mudah dipahami sehingga
+                            pengguna tidak perlu merasa
+                            kesulitan ketika menggunakannya.
+
                         </p>
 
-                    </div>
+                    </article>
 
 
-                    <div class="advantage-item reveal-item">
+
+                    <article
+                        class="advantage-item reveal-item"
+                    >
 
                         <span class="advantage-number">
                             03
                         </span>
 
                         <h3>
-                            Responsif
+                            Bisa Dikembangkan
                         </h3>
 
                         <p>
-                            Dirancang agar nyaman digunakan
-                            melalui HP, tablet, maupun desktop.
+
+                            Sistem dapat dirancang agar
+                            masih memungkinkan untuk
+                            dikembangkan ketika kebutuhan
+                            bertambah.
+
                         </p>
 
-                    </div>
+                    </article>
 
 
-                    <div class="advantage-item reveal-item">
+
+                    <article
+                        class="advantage-item reveal-item"
+                    >
 
                         <span class="advantage-number">
                             04
                         </span>
 
                         <h3>
-                            Bertahap
+                            Komunikasi Jelas
                         </h3>
 
                         <p>
-                            Pengembangan dilakukan sesuai
-                            kebutuhan dan dapat dikembangkan
-                            kembali di kemudian hari.
+
+                            Proses pengerjaan dilakukan
+                            dengan komunikasi yang jelas
+                            sejak kebutuhan sampai hasil
+                            akhir.
+
                         </p>
 
-                    </div>
+                    </article>
 
 
                 </div>
@@ -702,7 +700,7 @@
 
 
         <!-- =================================================
-             ALUR KERJA
+             04 — WORKFLOW
         ================================================== -->
 
         <section
@@ -720,7 +718,7 @@
                     </span>
 
                     <span class="section-label">
-                        ALUR PELAYANAN
+                        ALUR PENGERJAAN
                     </span>
 
                     <h2>
@@ -733,6 +731,14 @@
 
                     </h2>
 
+                    <p>
+
+                        Proses dibuat sederhana agar
+                        kebutuhan dapat diterjemahkan
+                        menjadi hasil yang jelas.
+
+                    </p>
+
                 </div>
 
 
@@ -740,11 +746,13 @@
                 <div class="workflow-list">
 
 
-                    <div class="workflow-item reveal-item">
+                    <article
+                        class="workflow-item reveal-item"
+                    >
 
-                        <span class="workflow-number">
+                        <div class="workflow-number">
                             01
-                        </span>
+                        </div>
 
                         <div>
 
@@ -753,42 +761,82 @@
                             </h3>
 
                             <p>
-                                Menentukan kebutuhan dan
-                                tujuan yang ingin dicapai.
+
+                                Menyampaikan kebutuhan,
+                                masalah, atau ide yang
+                                ingin diwujudkan.
+
                             </p>
 
                         </div>
 
-                    </div>
+                    </article>
 
 
-                    <div class="workflow-item reveal-item">
 
-                        <span class="workflow-number">
+                    <article
+                        class="workflow-item reveal-item"
+                    >
+
+                        <div class="workflow-number">
                             02
-                        </span>
+                        </div>
 
                         <div>
 
                             <h3>
-                                Perencanaan
+                                Analisis Kebutuhan
                             </h3>
 
                             <p>
-                                Menentukan konsep, fitur,
-                                tampilan, dan alur pengerjaan.
+
+                                Menentukan fitur,
+                                tampilan, dan alur
+                                yang diperlukan.
+
                             </p>
 
                         </div>
 
-                    </div>
+                    </article>
 
 
-                    <div class="workflow-item reveal-item">
 
-                        <span class="workflow-number">
+                    <article
+                        class="workflow-item reveal-item"
+                    >
+
+                        <div class="workflow-number">
                             03
-                        </span>
+                        </div>
+
+                        <div>
+
+                            <h3>
+                                Perancangan
+                            </h3>
+
+                            <p>
+
+                                Menyusun struktur dan
+                                rancangan solusi sebelum
+                                masuk ke tahap pengerjaan.
+
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+
+                    <article
+                        class="workflow-item reveal-item"
+                    >
+
+                        <div class="workflow-number">
+                            04
+                        </div>
 
                         <div>
 
@@ -797,59 +845,72 @@
                             </h3>
 
                             <p>
-                                Solusi mulai dikembangkan
-                                sesuai kesepakatan.
+
+                                Solusi mulai dibuat sesuai
+                                rancangan dan kebutuhan
+                                yang telah disepakati.
+
                             </p>
 
                         </div>
 
-                    </div>
+                    </article>
 
 
-                    <div class="workflow-item reveal-item">
 
-                        <span class="workflow-number">
-                            04
-                        </span>
+                    <article
+                        class="workflow-item reveal-item"
+                    >
 
-                        <div>
-
-                            <h3>
-                                Review
-                            </h3>
-
-                            <p>
-                                Hasil diperiksa dan disesuaikan
-                                jika terdapat bagian yang perlu
-                                diperbaiki.
-                            </p>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="workflow-item reveal-item">
-
-                        <span class="workflow-number">
+                        <div class="workflow-number">
                             05
-                        </span>
+                        </div>
 
                         <div>
 
                             <h3>
-                                Selesai
+                                Review & Penyesuaian
                             </h3>
 
                             <p>
-                                Solusi siap digunakan dan
-                                dikembangkan sesuai kebutuhan
-                                selanjutnya.
+
+                                Hasil diperiksa bersama
+                                dan dilakukan penyesuaian
+                                apabila diperlukan.
+
                             </p>
 
                         </div>
 
-                    </div>
+                    </article>
+
+
+
+                    <article
+                        class="workflow-item reveal-item"
+                    >
+
+                        <div class="workflow-number">
+                            06
+                        </div>
+
+                        <div>
+
+                            <h3>
+                                Selesai & Digunakan
+                            </h3>
+
+                            <p>
+
+                                Hasil akhir disiapkan
+                                agar dapat digunakan
+                                sesuai kebutuhan.
+
+                            </p>
+
+                        </div>
+
+                    </article>
 
 
                 </div>
@@ -861,24 +922,24 @@
 
 
         <!-- =================================================
-             CTA
+             05 — CTA
         ================================================== -->
 
         <section
             class="digital-section digital-cta-section"
-            id="digitalContact"
+            id="digitalCTA"
         >
 
             <div class="digital-container">
 
 
-                <div class="digital-cta reveal-item">
+                <div
+                    class="digital-cta reveal-item"
+                >
 
-
-                    <span class="section-label">
-                        MAS MAIL DIGITAL
+                    <span class="section-number">
+                        04
                     </span>
-
 
                     <h2>
 
@@ -890,17 +951,17 @@
 
                     </h2>
 
-
                     <p>
 
-                        Mari bicarakan kebutuhanmu terlebih
-                        dahulu. Kita cari solusi yang paling
-                        sesuai.
+                        Ceritakan kebutuhan atau ide yang
+                        ingin kamu wujudkan. Kita bisa
+                        mulai dari pembicaraan sederhana.
 
                     </p>
 
 
                     <div class="digital-cta-actions">
+
 
                         <a
                             href="https://wa.me/"
@@ -926,19 +987,20 @@
                         >
 
                             <span>
-                                Kembali ke Home
+                                Kembali ke Mas Mail
                             </span>
 
                             <span class="button-icon">
-                                ↑
+                                ←
                             </span>
 
                         </a>
 
+
                     </div>
 
-
                 </div>
+
 
             </div>
 
@@ -946,6 +1008,28 @@
 
 
     </main>
+
+
+
+    <!-- =====================================================
+         BACK TO TOP
+    ====================================================== -->
+
+    <button
+        type="button"
+        class="back-to-top"
+        aria-label="Kembali ke atas"
+    >
+
+        <span>
+            ↑
+        </span>
+
+        <small>
+            ATAS
+        </small>
+
+    </button>
 
 
 
@@ -966,103 +1050,10 @@
         </span>
 
         <span class="floating-whatsapp-text">
-            WhatsApp
+            Hubungi Mas Mail
         </span>
 
     </a>
-
-
-
-    <!-- =====================================================
-         BACK TO TOP
-    ====================================================== -->
-
-    <button
-        type="button"
-        class="back-to-top"
-        data-scroll-container
-        aria-label="Kembali ke bagian paling atas"
-    >
-
-        <span>
-            ↑
-        </span>
-
-        <small>
-            Atas
-        </small>
-
-    </button>
-
-
-
-    <!-- =====================================================
-         FOOTER
-    ====================================================== -->
-
-    <footer
-        class="digital-footer"
-    >
-
-        <div class="digital-footer-container">
-
-
-            <div class="digital-footer-brand">
-
-                <img
-                    src="assets/logo-mas-mail-digital.png"
-                    alt="Mas Mail Digital"
-                >
-
-                <p>
-                    Solusi digital sederhana untuk
-                    kebutuhan nyata.
-                </p>
-
-            </div>
-
-
-            <div class="digital-footer-links">
-
-                <a
-                    href="index.html"
-                    class="page-link"
-                >
-                    Home
-                </a>
-
-                <a
-                    href="digital.html"
-                    class="active"
-                >
-                    Mas Mail Digital
-                </a>
-
-                <a
-                    href="barokah.html"
-                    class="page-link"
-                >
-                    Mas Mail Barokah
-                </a>
-
-            </div>
-
-
-            <div class="digital-footer-bottom">
-
-                <span>
-                    © 2026 Mas Mail Digital
-                </span>
-
-                <span>
-                    Digital Solution
-                </span>
-
-            </div>
-
-        </div>
-
-    </footer>
 
 
 
@@ -1077,4 +1068,4 @@
 
 </body>
 
-              </html>
+</html>
