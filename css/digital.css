@@ -1,186 +1,88 @@
 /* =========================================================
    MAS MAIL DIGITAL
-   File: digital.css
-
-   Khusus:
-   - Isi halaman Mas Mail Digital
-   - Hero
-   - Layanan
-   - Produk digital
-   - Keunggulan
-   - CTA
-   - Floating element pendukung halaman
-
-   Navbar  → header-digital.css
-   Footer  → footer-digital.css
-   Umum    → umum.css
+   DIGITAL.CSS
    ========================================================= */
 
 
 /* =========================================================
-   01. DIGITAL PAGE
+   01. DIGITAL ROOT
    ========================================================= */
 
 .digital-page {
-    position: relative;
-    width: 100%;
     min-height: 100vh;
-    background: var(--color-bg);
-    color: var(--color-text);
+    background: #07110d;
+    color: #f5f7f5;
     overflow-x: hidden;
 }
 
 
 /* =========================================================
-   02. DIGITAL SECTION
+   02. MAIN
+   ========================================================= */
+
+.digital-main {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   03. SECTION
    ========================================================= */
 
 .digital-section {
     position: relative;
     width: 100%;
-    min-height: 100svh;
-
-    display: flex;
-    align-items: center;
-
-    padding:
-        110px 20px
-        90px;
-
+    min-height: 100vh;
+    isolation: isolate;
     overflow: hidden;
 }
 
 
-/* =========================================================
-   03. SECTION CONTAINER
-   ========================================================= */
-
 .digital-container {
     position: relative;
-
-    width: min(
-        1180px,
-        100%
-    );
-
+    width: min(1180px, calc(100% - 40px));
     margin: 0 auto;
-
     z-index: 2;
 }
 
 
 /* =========================================================
-   04. DIGITAL HERO
+   04. HERO
    ========================================================= */
 
 .digital-hero {
     min-height: 100svh;
-
+    display: flex;
+    align-items: center;
+    padding: 110px 0 80px;
     background:
         radial-gradient(
-            circle at 15% 20%,
-            rgba(102, 227, 255, 0.11),
+            circle at 80% 20%,
+            rgba(31, 122, 79, 0.18),
             transparent 32%
         ),
-        radial-gradient(
-            circle at 90% 75%,
-            rgba(140, 124, 255, 0.10),
-            transparent 35%
-        ),
-        var(--color-bg);
+        linear-gradient(
+            145deg,
+            #07110d 0%,
+            #0b1913 55%,
+            #06100c 100%
+        );
 }
 
-
-/* =========================================================
-   HERO BACKGROUND
-   ========================================================= */
 
 .digital-hero-background {
     position: absolute;
     inset: 0;
-
-    z-index: 0;
-
+    z-index: -1;
     overflow: hidden;
-
-    pointer-events: none;
 }
 
-
-.digital-hero-orb {
-    position: absolute;
-
-    width: 420px;
-    height: 420px;
-
-    border-radius: 50%;
-
-    filter: blur(80px);
-
-    opacity: 0.45;
-
-    animation:
-        digitalOrbFloat
-        12s
-        ease-in-out
-        infinite
-        alternate;
-}
-
-
-.digital-hero-orb-one {
-    top: -180px;
-    left: -120px;
-
-    background:
-        rgba(102, 227, 255, 0.18);
-}
-
-
-.digital-hero-orb-two {
-    right: -160px;
-    bottom: -190px;
-
-    background:
-        rgba(140, 124, 255, 0.17);
-
-    animation-delay: -4s;
-}
-
-
-@keyframes digitalOrbFloat {
-
-    from {
-        transform:
-            translate3d(
-                0,
-                0,
-                0
-            )
-            scale(1);
-    }
-
-    to {
-        transform:
-            translate3d(
-                45px,
-                -35px,
-                0
-            )
-            scale(1.16);
-    }
-}
-
-
-/* =========================================================
-   HERO GRID
-   ========================================================= */
 
 .digital-hero-grid {
     position: absolute;
     inset: 0;
-
-    opacity: 0.18;
 
     background-image:
         linear-gradient(
@@ -193,22 +95,42 @@
             transparent 1px
         );
 
-    background-size:
-        55px 55px;
+    background-size: 45px 45px;
 
     mask-image:
-        radial-gradient(
-            ellipse at center,
+        linear-gradient(
+            to bottom,
             black,
-            transparent 72%
+            transparent 85%
         );
 
-    -webkit-mask-image:
-        radial-gradient(
-            ellipse at center,
-            black,
-            transparent 72%
-        );
+    opacity: 0.5;
+}
+
+
+.digital-hero-glow {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(20px);
+    pointer-events: none;
+}
+
+
+.digital-glow-one {
+    width: 280px;
+    height: 280px;
+    top: 5%;
+    right: -120px;
+    background: rgba(39, 160, 103, 0.20);
+}
+
+
+.digital-glow-two {
+    width: 220px;
+    height: 220px;
+    bottom: 5%;
+    left: -120px;
+    background: rgba(22, 104, 69, 0.16);
 }
 
 
@@ -216,406 +138,308 @@
    05. HERO CONTENT
    ========================================================= */
 
-.digital-hero-content {
-    position: relative;
-
-    width: min(
-        820px,
-        100%
-    );
-
-    margin: 0 auto;
-
-    text-align: center;
-}
-
-
-/* =========================================================
-   DIGITAL LOGO
-   ========================================================= */
-
-.digital-logo {
+.digital-hero-container {
     display: flex;
-
-    justify-content: center;
-
-    margin-bottom: 28px;
+    flex-direction: column;
+    gap: 55px;
 }
 
 
-.digital-logo img {
-    display: block;
-
-    width: 92px;
-    height: 92px;
-
-    object-fit: contain;
-
-    border-radius: 25px;
-
-    filter:
-        drop-shadow(
-            0 18px 45px
-            rgba(102, 227, 255, 0.12)
-        );
-
-    transition:
-        transform
-        450ms
-        cubic-bezier(
-            0.22,
-            1,
-            0.36,
-            1
-        );
+.digital-hero-content {
+    max-width: 760px;
 }
 
-
-.digital-logo img:hover {
-    transform:
-        translateY(-5px)
-        scale(1.04);
-}
-
-
-/* =========================================================
-   06. EYEBROW
-   ========================================================= */
 
 .digital-eyebrow {
     display: inline-flex;
-
     align-items: center;
-    justify-content: center;
-
     gap: 10px;
 
-    margin-bottom: 18px;
+    margin: 0 0 20px;
 
-    color:
-        var(--color-primary);
-
-    font-size: 10px;
-
-    font-weight: 800;
-
-    letter-spacing: 0.2em;
-
+    font-family: "Inter", sans-serif;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
+
+    color: #82d7ad;
 }
 
 
-.digital-eyebrow::before,
-.digital-eyebrow::after {
+.digital-eyebrow::before {
     content: "";
-
-    width: 25px;
+    width: 28px;
     height: 1px;
-
-    background:
-        rgba(
-            102,
-            227,
-            255,
-            0.45
-        );
+    background: currentColor;
 }
 
-
-/* =========================================================
-   07. HERO TITLE
-   ========================================================= */
 
 .digital-hero-title {
-    margin: 0 0 22px;
+    margin: 0;
 
-    font-size:
-        clamp(
-            46px,
-            9vw,
-            88px
-        );
-
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: clamp(2.7rem, 10vw, 5.7rem);
     line-height: 0.98;
-
-    letter-spacing:
-        -0.06em;
-
+    letter-spacing: -0.055em;
     font-weight: 800;
-
-    background:
-        linear-gradient(
-            135deg,
-            #ffffff 15%,
-            #b9f3ff 55%,
-            #8c7cff 100%
-        );
-
-    -webkit-background-clip:
-        text;
-
-    background-clip:
-        text;
-
-    color: transparent;
-
-    filter:
-        drop-shadow(
-            0 15px 40px
-            rgba(
-                102,
-                227,
-                255,
-                0.08
-            )
-        );
 }
 
 
 .digital-hero-title span {
     display: block;
+    margin-top: 8px;
+    color: #71c99d;
+}
+
+
+.digital-hero-description {
+    max-width: 650px;
+    margin: 28px 0 0;
+
+    color: rgba(245,247,245,0.68);
+
+    font-family: "Inter", sans-serif;
+    font-size: 1rem;
+    line-height: 1.8;
+}
+
+
+.digital-hero-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 34px;
+}
+
+
+.digital-hero-logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.digital-logo-frame {
+    position: relative;
+
+    width: min(260px, 70vw);
+    aspect-ratio: 1 / 1;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid rgba(125,215,173,0.22);
+    border-radius: 32px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,0.08),
+            rgba(255,255,255,0.025)
+        );
+
+    box-shadow:
+        0 25px 80px rgba(0,0,0,0.35),
+        inset 0 1px 0 rgba(255,255,255,0.08);
+
+    backdrop-filter: blur(14px);
+}
+
+
+.digital-logo-frame::before {
+    content: "";
+    position: absolute;
+    inset: 12px;
+
+    border: 1px solid rgba(125,215,173,0.10);
+    border-radius: 24px;
+}
+
+
+.digital-logo-frame img {
+    position: relative;
+    z-index: 2;
+
+    width: 72%;
+    height: auto;
+
+    object-fit: contain;
 }
 
 
 /* =========================================================
-   HERO DESCRIPTION
+   06. HERO BUTTON
    ========================================================= */
 
-.digital-hero-description {
-    width:
-        min(
-            620px,
-            100%
-        );
+.digital-hero .main-button {
+    min-height: 54px;
+}
 
-    margin:
-        0 auto 32px;
 
-    color:
-        var(--color-text-soft);
+/* =========================================================
+   07. SCROLL INDICATOR
+   ========================================================= */
 
-    font-size:
-        clamp(
-            14px,
-            2.5vw,
-            17px
-        );
+.digital-scroll-indicator {
+    position: absolute;
+    left: 50%;
+    bottom: 24px;
 
+    transform: translateX(-50%);
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    color: rgba(255,255,255,0.48);
+
+    text-decoration: none;
+
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+
+    transition:
+        color 0.25s ease,
+        transform 0.25s ease;
+}
+
+
+.digital-scroll-indicator:hover {
+    color: #82d7ad;
+    transform:
+        translateX(-50%)
+        translateY(-3px);
+}
+
+
+.digital-scroll-indicator span:last-child {
+    font-size: 1rem;
+}
+
+
+/* =========================================================
+   08. SECTION HEADING
+   ========================================================= */
+
+.digital-section-heading {
+    max-width: 760px;
+    margin-bottom: 48px;
+}
+
+
+.section-number {
+    display: block;
+
+    margin-bottom: 12px;
+
+    font-family: "Inter", sans-serif;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+
+    color: #72cda0;
+}
+
+
+.section-label {
+    display: inline-block;
+
+    margin-bottom: 16px;
+
+    font-family: "Inter", sans-serif;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.17em;
+    text-transform: uppercase;
+
+    color: rgba(255,255,255,0.46);
+}
+
+
+.digital-section-heading h2 {
+    margin: 0;
+
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: clamp(2rem, 7vw, 4rem);
+    line-height: 1.05;
+    letter-spacing: -0.045em;
+}
+
+
+.digital-section-heading h2 span {
+    color: #72cda0;
+}
+
+
+.digital-section-heading p {
+    max-width: 620px;
+    margin: 22px 0 0;
+
+    color: rgba(255,255,255,0.60);
+
+    font-size: 0.98rem;
     line-height: 1.8;
 }
 
 
 /* =========================================================
-   HERO ACTION
+   09. SERVICES
    ========================================================= */
 
-.digital-hero-actions {
+.services-section {
     display: flex;
-
     align-items: center;
-    justify-content: center;
 
-    flex-wrap: wrap;
-
-    gap: 12px;
-}
-
-
-/* =========================================================
-   08. DIGITAL SERVICES
-   ========================================================= */
-
-.digital-services {
-    background:
-        radial-gradient(
-            circle at 15% 50%,
-            rgba(102,227,255,0.055),
-            transparent 32%
-        ),
-        var(--color-bg-soft);
-}
-
-
-.digital-section-heading {
-    max-width: 720px;
-
-    margin:
-        0 auto 50px;
-
-    text-align: center;
-}
-
-
-.digital-section-number {
-    display: block;
-
-    margin-bottom: 8px;
-
-    color:
-        var(--color-primary);
-
-    font-size: 10px;
-
-    font-weight: 800;
-
-    letter-spacing: 0.18em;
-}
-
-
-.digital-section-label {
-    display: block;
-
-    margin-bottom: 15px;
-
-    color:
-        var(--color-text-muted);
-
-    font-size: 10px;
-
-    font-weight: 800;
-
-    letter-spacing: 0.17em;
-
-    text-transform: uppercase;
-}
-
-
-.digital-section-heading h2 {
-    margin: 0 0 18px;
-
-    font-size:
-        clamp(
-            34px,
-            7vw,
-            62px
-        );
-
-    line-height: 1;
-
-    letter-spacing:
-        -0.05em;
-}
-
-
-.digital-section-heading h2 span {
-    display: block;
+    padding: 100px 0;
 
     background:
         linear-gradient(
-            135deg,
-            var(--color-primary),
-            #b8aefe
+            180deg,
+            #09150f 0%,
+            #0c1a13 100%
         );
-
-    -webkit-background-clip:
-        text;
-
-    background-clip:
-        text;
-
-    color: transparent;
 }
 
 
-.digital-section-heading p {
-    max-width: 590px;
-
-    margin: 0 auto;
-
-    color:
-        var(--color-text-soft);
-
-    font-size: 14px;
-
-    line-height: 1.75;
-}
-
-
-/* =========================================================
-   09. SERVICE GRID
-   ========================================================= */
-
-.digital-service-grid {
+.digital-services-grid {
     display: grid;
-
-    grid-template-columns:
-        repeat(
-            3,
-            minmax(
-                0,
-                1fr
-            )
-        );
-
+    grid-template-columns: 1fr;
     gap: 16px;
-
-    width: min(
-        1050px,
-        100%
-    );
-
-    margin: 0 auto;
 }
 
-
-/* =========================================================
-   SERVICE CARD
-   ========================================================= */
 
 .digital-service-card {
     position: relative;
 
-    min-height: 280px;
+    min-height: 290px;
 
-    padding: 27px;
+    padding: 30px;
 
     display: flex;
-
     flex-direction: column;
 
-    justify-content: space-between;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 24px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,0.065),
+            rgba(255,255,255,0.018)
+        );
+
+    box-shadow:
+        0 20px 50px rgba(0,0,0,0.15);
 
     overflow: hidden;
 
-    border:
-        1px solid
-        var(--color-border);
-
-    border-radius:
-        var(--radius-large);
-
-    background:
-        rgba(
-            255,
-            255,
-            255,
-            0.045
-        );
-
-    backdrop-filter:
-        blur(18px);
-
-    -webkit-backdrop-filter:
-        blur(18px);
-
-    box-shadow:
-        var(--shadow-soft);
-
     transition:
-        transform
-        450ms
-        cubic-bezier(
-            0.22,
-            1,
-            0.36,
-            1
-        ),
-
-        border-color
-        350ms ease,
-
-        background
-        350ms ease;
+        transform 0.35s ease,
+        border-color 0.35s ease,
+        background 0.35s ease;
 }
 
 
@@ -623,170 +447,646 @@
     content: "";
 
     position: absolute;
-
     width: 180px;
     height: 180px;
 
-    top: -90px;
-    right: -90px;
+    top: -100px;
+    right: -100px;
 
     border-radius: 50%;
 
-    background:
-        rgba(
-            102,
-            227,
-            255,
-            0.10
-        );
+    background: rgba(91,201,151,0.10);
 
-    filter: blur(20px);
-
-    transition:
-        transform
-        600ms ease;
+    filter: blur(10px);
 }
 
 
 .digital-service-card:hover {
-    transform:
-        translateY(-7px);
+    transform: translateY(-7px);
 
     border-color:
-        rgba(
-            102,
-            227,
-            255,
-            0.28
-        );
+        rgba(114,205,160,0.28);
 
     background:
-        rgba(
-            255,
-            255,
-            255,
-            0.065
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,0.085),
+            rgba(255,255,255,0.025)
         );
-
-    box-shadow:
-        var(--shadow-strong);
 }
 
 
-.digital-service-card:hover::before {
-    transform:
-        scale(1.45);
+.service-number {
+    position: absolute;
+    top: 22px;
+    right: 24px;
+
+    font-size: 0.7rem;
+    font-weight: 700;
+
+    color: rgba(255,255,255,0.25);
 }
 
 
-/* =========================================================
-   SERVICE ICON
-   ========================================================= */
+.service-icon {
+    width: 54px;
+    height: 54px;
 
-.digital-service-icon {
     display: flex;
-
     align-items: center;
     justify-content: center;
 
-    width: 52px;
-    height: 52px;
+    margin-bottom: 32px;
 
-    margin-bottom: 25px;
+    border: 1px solid rgba(114,205,160,0.22);
+    border-radius: 15px;
 
-    border:
-        1px solid
-        rgba(
-            102,
-            227,
-            255,
-            0.18
-        );
+    color: #82d7ad;
 
-    border-radius: 17px;
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
 
-    color:
-        var(--color-primary);
-
-    background:
-        rgba(
-            102,
-            227,
-            255,
-            0.07
-        );
-
-    font-size: 20px;
-
-    box-shadow:
-        0 12px 35px
-        rgba(
-            102,
-            227,
-            255,
-            0.06
-        );
+    background: rgba(114,205,160,0.06);
 }
 
 
 .digital-service-card h3 {
-    margin: 0 0 10px;
+    margin: 0 0 12px;
 
-    font-size: 22px;
-
-    letter-spacing:
-        -0.03em;
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 1.35rem;
+    letter-spacing: -0.025em;
 }
 
 
 .digital-service-card p {
     margin: 0;
 
-    color:
-        var(--color-text-soft);
+    color: rgba(255,255,255,0.58);
 
-    font-size: 13px;
+    font-size: 0.9rem;
+    line-height: 1.75;
+}
 
+
+.service-arrow {
+    margin-top: auto;
+    padding-top: 24px;
+
+    color: #72cda0;
+
+    font-size: 1.3rem;
+
+    transition:
+        transform 0.25s ease;
+}
+
+
+.digital-service-card:hover .service-arrow {
+    transform: translateX(6px);
+}
+
+
+/* =========================================================
+   10. ADVANTAGE
+   ========================================================= */
+
+.advantage-section {
+    display: flex;
+    align-items: center;
+
+    padding: 100px 0;
+
+    background:
+        #07110d;
+}
+
+
+.advantage-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0;
+
+    border-top: 1px solid rgba(255,255,255,0.08);
+}
+
+
+.advantage-item {
+    position: relative;
+
+    padding: 30px 0;
+
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+
+.advantage-number {
+    display: block;
+
+    margin-bottom: 18px;
+
+    color: #72cda0;
+
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+}
+
+
+.advantage-item h3 {
+    margin: 0 0 10px;
+
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 1.3rem;
+}
+
+
+.advantage-item p {
+    max-width: 580px;
+
+    margin: 0;
+
+    color: rgba(255,255,255,0.56);
+
+    font-size: 0.9rem;
+    line-height: 1.75;
+}
+
+
+/* =========================================================
+   11. WORKFLOW
+   ========================================================= */
+
+.workflow-section {
+    display: flex;
+    align-items: center;
+
+    padding: 100px 0;
+
+    background:
+        linear-gradient(
+            180deg,
+            #0b1913 0%,
+            #08130e 100%
+        );
+}
+
+
+.workflow-list {
+    border-top: 1px solid rgba(255,255,255,0.08);
+}
+
+
+.workflow-item {
+    display: grid;
+    grid-template-columns: 48px 1fr;
+    gap: 18px;
+
+    padding: 25px 0;
+
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+
+.workflow-number {
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid rgba(114,205,160,0.22);
+    border-radius: 50%;
+
+    color: #72cda0;
+
+    font-size: 0.68rem;
+    font-weight: 700;
+}
+
+
+.workflow-item h3 {
+    margin: 0 0 7px;
+
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 1.1rem;
+}
+
+
+.workflow-item p {
+    margin: 0;
+
+    color: rgba(255,255,255,0.54);
+
+    font-size: 0.88rem;
     line-height: 1.7;
 }
 
 
 /* =========================================================
-   10. PRODUCT SECTION
+   12. CTA
    ========================================================= */
 
-.digital-products {
+.digital-cta-section {
+    display: flex;
+    align-items: center;
+
+    min-height: 80vh;
+
+    padding: 100px 0;
+
     background:
-        var(--color-bg);
+        radial-gradient(
+            circle at 50% 20%,
+            rgba(53,164,108,0.16),
+            transparent 45%
+        ),
+        #06100c;
 }
 
 
-.digital-product-layout {
-    display: grid;
+.digital-cta {
+    max-width: 800px;
+    margin: 0 auto;
 
-    grid-template-columns:
-        0.9fr
-        1.1fr;
+    padding: 45px 28px;
 
-    align-items: center;
+    text-align: center;
 
-    gap: 70px;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 30px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,0.065),
+            rgba(255,255,255,0.018)
+        );
+
+    box-shadow:
+        0 30px 80px rgba(0,0,0,0.25);
+}
+
+
+.digital-cta h2 {
+    margin: 0;
+
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: clamp(2rem, 8vw, 4rem);
+    line-height: 1.05;
+    letter-spacing: -0.045em;
+}
+
+
+.digital-cta h2 span {
+    color: #72cda0;
+}
+
+
+.digital-cta p {
+    max-width: 580px;
+
+    margin: 22px auto 0;
+
+    color: rgba(255,255,255,0.58);
+
+    font-size: 0.95rem;
+    line-height: 1.8;
+}
+
+
+.digital-cta-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    margin-top: 32px;
+}
+
+
+.digital-cta .main-button {
+    justify-content: center;
 }
 
 
 /* =========================================================
-   PRODUCT INTRO
+   13. REVEAL ANIMATION
    ========================================================= */
 
-.digital-product-intro {
-    max-width: 570px;
+.reveal-item {
+    opacity: 0;
+    transform: translateY(25px);
+
+    transition:
+        opacity 0.7s ease,
+        transform 0.7s ease;
 }
 
 
-.digital-product-intro h2 {
-    margin:
-        0 0 20px;
+.reveal-item.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
 
-    font-size:
-        clamp(
-            36px,
+
+/* =========================================================
+   14. BACK TO TOP
+   ========================================================= */
+
+.digital-page .back-to-top {
+    position: fixed;
+
+    right: 18px;
+    bottom: 90px;
+
+    z-index: 900;
+
+    width: 52px;
+    height: 52px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1px;
+
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 17px;
+
+    background:
+        rgba(8,20,14,0.86);
+
+    color: #82d7ad;
+
+    backdrop-filter: blur(14px);
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    transform: translateY(12px);
+
+    transition:
+        opacity 0.3s ease,
+        visibility 0.3s ease,
+        transform 0.3s ease;
+}
+
+
+.digital-page .back-to-top.is-visible {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+
+    transform: translateY(0);
+}
+
+
+.digital-page .back-to-top span {
+    font-size: 1.1rem;
+    line-height: 1;
+}
+
+
+.digital-page .back-to-top small {
+    font-size: 0.55rem;
+    letter-spacing: 0.08em;
+}
+
+
+/* =========================================================
+   15. FLOATING WHATSAPP
+   ========================================================= */
+
+.digital-page .floating-whatsapp {
+    position: fixed;
+
+    right: 18px;
+    bottom: 22px;
+
+    z-index: 950;
+
+    min-width: 52px;
+    height: 52px;
+
+    padding: 5px;
+
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    border: 1px solid rgba(255,255,255,0.10);
+    border-radius: 18px;
+
+    background:
+        rgba(8,20,14,0.9);
+
+    color: #fff;
+
+    text-decoration: none;
+
+    box-shadow:
+        0 12px 35px rgba(0,0,0,0.25);
+
+    backdrop-filter: blur(15px);
+
+    transition:
+        transform 0.3s ease,
+        width 0.3s ease;
+}
+
+
+.digital-page .floating-whatsapp:hover {
+    transform: translateY(-4px);
+}
+
+
+.floating-whatsapp-icon {
+    width: 42px;
+    height: 42px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 14px;
+
+    background: #1f9d68;
+
+    color: #fff;
+
+    font-size: 0.62rem;
+    font-weight: 800;
+}
+
+
+.floating-whatsapp-text {
+    padding-right: 10px;
+
+    font-size: 0.72rem;
+    font-weight: 700;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   16. TABLET
+   ========================================================= */
+
+@media (min-width: 600px) {
+
+    .digital-container {
+        width: min(1180px, calc(100% - 70px));
+    }
+
+
+    .digital-hero-actions {
+        flex-direction: row;
+        align-items: center;
+    }
+
+
+    .digital-services-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 18px;
+    }
+
+
+    .digital-cta-actions {
+        flex-direction: row;
+        justify-content: center;
+    }
+
+
+    .digital-cta-actions .main-button {
+        min-width: 210px;
+    }
+
+
+    .advantage-grid {
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 40px;
+    }
+
+
+    .advantage-item:nth-child(odd) {
+        padding-right: 25px;
+    }
+
+
+    .advantage-item:nth-child(even) {
+        padding-left: 25px;
+    }
+
+}
+
+
+/* =========================================================
+   17. DESKTOP
+   ========================================================= */
+
+@media (min-width: 900px) {
+
+    .digital-container {
+        width: min(1180px, calc(100% - 100px));
+    }
+
+
+    .digital-hero {
+        padding: 120px 0 80px;
+    }
+
+
+    .digital-hero-container {
+        display: grid;
+        grid-template-columns: minmax(0, 1.25fr) minmax(300px, 0.75fr);
+        align-items: center;
+        gap: 70px;
+    }
+
+
+    .digital-hero-logo {
+        justify-content: flex-end;
+    }
+
+
+    .digital-logo-frame {
+        width: 360px;
+    }
+
+
+    .digital-services-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+
+    .digital-service-card {
+        min-height: 340px;
+        padding: 30px;
+    }
+
+
+    .workflow-item {
+        grid-template-columns: 65px 1fr;
+        align-items: center;
+        padding: 30px 0;
+    }
+
+
+    .workflow-number {
+        width: 48px;
+        height: 48px;
+    }
+
+
+    .digital-cta {
+        padding: 70px 60px;
+    }
+
+}
+
+
+/* =========================================================
+   18. LARGE DESKTOP
+   ========================================================= */
+
+@media (min-width: 1200px) {
+
+    .digital-container {
+        width: min(1180px, calc(100% - 80px));
+    }
+
+
+    .digital-section-heading {
+        margin-bottom: 60px;
+    }
+
+
+    .digital-services-grid {
+        gap: 20px;
+    }
+
+}
+
+
+/* =========================================================
+   19. REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .digital-page *,
+    .digital-page *::before,
+    .digital-page *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+
+}
