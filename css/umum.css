@@ -427,7 +427,25 @@ button:focus-visible {
     outline: 3px solid var(--color-primary-light);
     outline-offset: 3px;
 }
+/* =========================================
+   REVEAL ANIMATION
+========================================= */
 
+.reveal {
+    opacity: 0;
+
+    transform: translateY(24px);
+
+    transition:
+        opacity 0.7s ease,
+        transform 0.7s ease;
+}
+
+.reveal.revealed {
+    opacity: 1;
+
+    transform: translateY(0);
+}
 
 /* =========================================
    16. TABLET
