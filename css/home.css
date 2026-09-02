@@ -786,17 +786,29 @@
 /* =========================================
    13. BRANDS SECTION
 ========================================= */
+/* =========================================
+   18. BRANDS SECTION
+========================================= */
 
 .brands-section {
-    padding-top: 110px;
-    padding-bottom: 110px;
+    position: relative;
 
-    background: var(--color-background-soft);
+    padding-top: 120px;
+    padding-bottom: 120px;
+
+    background:
+        linear-gradient(
+            180deg,
+            #f5f7fa 0%,
+            #ffffff 100%
+        );
+
+    overflow: hidden;
 }
 
 
 /* =========================================
-   14. BRANDS HEADING
+   19. BRANDS HEADING
 ========================================= */
 
 .brands-section .section-heading {
@@ -804,28 +816,39 @@
 }
 
 .brands-section .section-heading h2 {
-    margin-bottom: 14px;
+    max-width: 650px;
 
-    color: var(--color-text);
+    margin-bottom: 16px;
 
-    font-size: clamp(
-        2rem,
-        5vw,
-        3.5rem
-    );
+    color:
+        var(--color-navy);
 
-    line-height: 1.05;
+    font-size:
+        clamp(
+            2.4rem,
+            5vw,
+            4rem
+        );
 
-    letter-spacing: -0.05em;
+    line-height: 1.02;
+
+    letter-spacing: -0.06em;
 }
 
 .brands-section .section-heading > p:last-child {
-    color: var(--color-text-soft);
+    max-width: 600px;
+
+    color:
+        var(--color-text-soft);
+
+    font-size: 0.98rem;
+
+    line-height: 1.8;
 }
 
 
 /* =========================================
-   15. BRANDS GRID
+   20. BRANDS GRID
 ========================================= */
 
 .brands-grid {
@@ -835,29 +858,39 @@
         repeat(2, minmax(0, 1fr));
 
     gap: 24px;
+
+    margin-top: 45px;
 }
 
 
 /* =========================================
-   16. BRAND CARD
+   21. BRAND CARD
 ========================================= */
 
 .brand-card {
+    position: relative;
+
     display: flex;
 
     flex-direction: column;
 
-    min-height: 330px;
+    min-height: 410px;
 
     padding: 32px;
 
-    background: var(--color-white);
+    background:
+        rgba(255, 255, 255, 0.9);
 
-    border: 1px solid var(--color-border);
+    border: 1px solid
+        var(--color-border);
 
-    border-radius: var(--radius-large);
+    border-radius:
+        var(--radius-large);
 
-    box-shadow: var(--shadow-small);
+    box-shadow:
+        var(--shadow-small);
+
+    overflow: hidden;
 
     transition:
         transform var(--transition-normal),
@@ -865,48 +898,149 @@
         border-color var(--transition-normal);
 }
 
+.brand-card::after {
+    content: "";
+
+    position: absolute;
+
+    width: 180px;
+    height: 180px;
+
+    right: -90px;
+    bottom: -90px;
+
+    border-radius: 50%;
+
+    pointer-events: none;
+}
+
 .brand-card:hover {
-    transform: translateY(-6px);
+    transform:
+        translateY(-7px);
 
-    border-color: rgba(15, 118, 110, 0.25);
-
-    box-shadow: var(--shadow-large);
+    box-shadow:
+        var(--shadow-large);
 }
 
 
 /* =========================================
-   17. BRAND ICON
+   22. BRAND DIGITAL
 ========================================= */
 
-.brand-icon {
+.brand-digital {
+    border-top:
+        3px solid var(--color-cyan);
+}
+
+.brand-digital::after {
+    background:
+        rgba(24, 197, 223, 0.08);
+}
+
+.brand-digital:hover {
+    border-color:
+        rgba(24, 197, 223, 0.35);
+}
+
+
+/* =========================================
+   23. BRAND BAROKAH
+========================================= */
+
+.brand-barokah {
+    border-top:
+        3px solid var(--color-yellow);
+}
+
+.brand-barokah::after {
+    background:
+        rgba(215, 25, 32, 0.06);
+}
+
+.brand-barokah:hover {
+    border-color:
+        rgba(215, 25, 32, 0.25);
+}
+
+
+/* =========================================
+   24. BRAND CARD TOP
+========================================= */
+
+.brand-card-top {
+    position: relative;
+
+    z-index: 2;
+
+    display: flex;
+
+    align-items: flex-start;
+    justify-content: space-between;
+
+    margin-bottom: 28px;
+}
+
+
+/* =========================================
+   25. BRAND LOGO BOX
+========================================= */
+
+.brand-logo-box {
     display: flex;
 
     align-items: center;
     justify-content: center;
 
-    width: 58px;
-    height: 58px;
+    width: 100px;
+    height: 100px;
 
-    margin-bottom: 28px;
+    padding: 8px;
 
-    background: var(--color-primary);
+    background:
+        var(--color-white);
 
-    border-radius: 18px;
+    border: 1px solid
+        var(--color-border);
 
-    color: var(--color-white);
+    border-radius:
+        22px;
 
-    font-size: 0.9rem;
-    font-weight: 800;
+    box-shadow:
+        var(--shadow-small);
+}
 
-    letter-spacing: 0.05em;
+.brand-logo-box img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
 }
 
 
 /* =========================================
-   18. BRAND CONTENT
+   26. BRAND NUMBER
+========================================= */
+
+.brand-number {
+    color:
+        rgba(7, 27, 58, 0.25);
+
+    font-size: 0.78rem;
+    font-weight: 800;
+
+    letter-spacing: 0.08em;
+}
+
+
+/* =========================================
+   27. BRAND CONTENT
 ========================================= */
 
 .brand-content {
+    position: relative;
+
+    z-index: 2;
+
     display: flex;
 
     flex-direction: column;
@@ -917,51 +1051,107 @@
 .brand-content h3 {
     margin-bottom: 12px;
 
-    color: var(--color-text);
+    color:
+        var(--color-navy);
 
-    font-size: 1.4rem;
+    font-size: 1.45rem;
 
     line-height: 1.2;
 
-    letter-spacing: -0.03em;
+    letter-spacing: -0.04em;
 }
 
 .brand-content p {
-    color: var(--color-text-soft);
+    max-width: 500px;
 
-    font-size: 0.95rem;
+    color:
+        var(--color-text-soft);
+
+    font-size: 0.94rem;
 
     line-height: 1.8;
 }
 
 
 /* =========================================
-   19. BRAND LINK
+   28. BRAND LINK
 ========================================= */
 
 .brand-link {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 8px;
+
     align-self: flex-start;
 
     margin-top: auto;
     padding-top: 28px;
 
-    color: var(--color-primary);
+    color:
+        var(--color-navy);
 
-    font-size: 0.9rem;
-    font-weight: 700;
+    font-size: 0.88rem;
+    font-weight: 800;
 
     transition:
         color var(--transition-normal),
-        transform var(--transition-normal);
+        gap var(--transition-normal);
 }
 
 .brand-link:hover {
-    color: var(--color-primary-dark);
+    color:
+        var(--color-primary);
 
-    transform: translateX(4px);
+    gap: 13px;
+}
+
+.brand-link span {
+    font-size: 1.1rem;
 }
 
 
+/* =========================================
+   29. BRAND MOBILE
+========================================= */
+
+@media (max-width: 700px) {
+
+    .brands-section {
+        padding-top: 80px;
+        padding-bottom: 80px;
+    }
+
+    .brands-section .section-heading h2 {
+        font-size: 2.4rem;
+    }
+
+    .brands-grid {
+        grid-template-columns: 1fr;
+
+        gap: 16px;
+
+        margin-top: 35px;
+    }
+
+    .brand-card {
+        min-height: 380px;
+
+        padding: 25px;
+
+        border-radius:
+            var(--radius-medium);
+    }
+
+    .brand-logo-box {
+        width: 82px;
+        height: 82px;
+
+        border-radius: 18px;
+    }
+
+}
 /* =========================================
    20. TABLET
 ========================================= */
@@ -1046,20 +1236,6 @@
 
     .about-image {
         min-height: 330px;
-
-        border-radius: var(--radius-medium);
-    }
-
-    .brands-grid {
-        grid-template-columns: 1fr;
-
-        gap: 16px;
-    }
-
-    .brand-card {
-        min-height: 300px;
-
-        padding: 26px;
 
         border-radius: var(--radius-medium);
     }
