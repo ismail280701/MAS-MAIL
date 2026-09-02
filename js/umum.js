@@ -15,16 +15,19 @@ if (menuToggle && navMenu) {
 
     menuToggle.addEventListener("click", () => {
 
-        navMenu.classList.toggle("active");
+    navMenu.classList.toggle("active");
 
-        const isOpen = navMenu.classList.contains("active");
+    menuToggle.classList.toggle("active");
 
-        menuToggle.setAttribute(
-            "aria-expanded",
-            isOpen
-        );
+    const isOpen =
+        navMenu.classList.contains("active");
 
-    });
+    menuToggle.setAttribute(
+        "aria-expanded",
+        isOpen
+    );
+
+});
 
 
     /* Menutup menu setelah link diklik */
@@ -37,11 +40,12 @@ if (menuToggle && navMenu) {
 
             navMenu.classList.remove("active");
 
-            menuToggle.setAttribute(
-                "aria-expanded",
-                "false"
-            );
+menuToggle.classList.remove("active");
 
+menuToggle.setAttribute(
+    "aria-expanded",
+    "false"
+);
         });
 
     });
