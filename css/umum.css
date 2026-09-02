@@ -3,7 +3,7 @@
    CSS UMUM
 ========================================= */
 
-
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
 /* =========================================
    1. RESET
 ========================================= */
@@ -20,7 +20,12 @@ html {
 
 body {
     min-height: 100vh;
-    font-family: Arial, Helvetica, sans-serif;
+
+    font-family:
+        "Plus Jakarta Sans",
+        Arial,
+        Helvetica,
+        sans-serif;
     background: #ffffff;
     color: #171717;
     line-height: 1.6;
@@ -51,59 +56,91 @@ select {
 
 :root {
 
-    /* Warna utama */
+    /* =====================================
+       BRAND COLORS
+    ====================================== */
 
-    --color-primary: #0f766e;
-    --color-primary-dark: #115e59;
-    --color-primary-light: #ccfbf1;
+    --color-primary: #d4af5f;
+    --color-primary-dark: #b89546;
+    --color-primary-light: #f7edcf;
 
-    /* Warna dasar */
+    --color-navy: #071b3a;
+    --color-navy-light: #102d55;
+
+    --color-blue: #1769aa;
+    --color-cyan: #18c5df;
+
+    --color-red: #d71920;
+    --color-yellow: #f7c600;
+
+
+    /* =====================================
+       BASIC COLORS
+    ====================================== */
 
     --color-white: #ffffff;
-    --color-black: #111111;
-    --color-text: #171717;
-    --color-text-soft: #5f6368;
+    --color-black: #080b10;
 
-    /* Background */
+    --color-text: #111827;
+    --color-text-soft: #667085;
+
+
+    /* =====================================
+       BACKGROUND
+    ====================================== */
 
     --color-background: #ffffff;
-    --color-background-soft: #f7f9f8;
-    --color-background-dark: #10201f;
+    --color-background-soft: #f7f8fa;
+    --color-background-dark: #071b3a;
 
-    /* Border */
+
+    /* =====================================
+       BORDER
+    ====================================== */
 
     --color-border: #e5e7eb;
 
-    /* Radius */
+
+    /* =====================================
+       RADIUS
+    ====================================== */
 
     --radius-small: 10px;
     --radius-medium: 18px;
     --radius-large: 28px;
     --radius-pill: 999px;
 
-    /* Shadow */
+
+    /* =====================================
+       SHADOW
+    ====================================== */
 
     --shadow-small:
-        0 4px 15px rgba(0, 0, 0, 0.05);
+        0 4px 15px rgba(7, 27, 58, 0.06);
 
     --shadow-medium:
-        0 10px 30px rgba(0, 0, 0, 0.08);
+        0 10px 30px rgba(7, 27, 58, 0.10);
 
     --shadow-large:
-        0 20px 50px rgba(0, 0, 0, 0.12);
+        0 20px 50px rgba(7, 27, 58, 0.14);
 
-    /* Container */
+
+    /* =====================================
+       CONTAINER
+    ====================================== */
 
     --container-width: 1180px;
 
-    /* Transition */
+
+    /* =====================================
+       TRANSITION
+    ====================================== */
 
     --transition-fast: 0.2s ease;
     --transition-normal: 0.3s ease;
     --transition-slow: 0.5s ease;
 
 }
-
 
 /* =========================================
    3. CONTAINER
