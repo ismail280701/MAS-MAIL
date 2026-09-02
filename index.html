@@ -14,43 +14,69 @@
 <body>
 
     <!-- =========================================
-         HEADER / NAVBAR
-    ========================================= -->
+     HEADER / NAVBAR
+========================================= -->
 
-    <header class="site-header">
+<header class="site-header">
 
-        <nav class="navbar">
+    <nav class="navbar">
 
-            <a href="index.html" class="logo">
-                Mas Ismail
+        <!-- LOGO -->
+
+        <a href="index.html" class="logo">
+            <span class="logo-main">Mas</span>
+            <span class="logo-name">Ismail</span>
+        </a>
+
+
+        <!-- MOBILE MENU BUTTON -->
+
+        <button
+            class="menu-toggle"
+            type="button"
+            aria-label="Buka menu"
+            aria-expanded="false"
+            aria-controls="main-navigation"
+        >
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+
+        <!-- NAVIGATION -->
+
+        <div
+            class="nav-menu"
+            id="main-navigation"
+        >
+
+            <a
+                href="index.html"
+                class="nav-link active"
+            >
+                Home
             </a>
 
-            <button class="menu-toggle" type="button" aria-label="Buka menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
+            <a
+                href="digital.html"
+                class="nav-link"
+            >
+                Mas Mail Digital
+            </a>
 
-            <div class="nav-menu">
+            <a
+                href="barokah.html"
+                class="nav-link"
+            >
+                Mas Mail Barokah
+            </a>
 
-                <a href="index.html" class="nav-link active">
-                    Home
-                </a>
+        </div>
 
-                <a href="digital.html" class="nav-link">
-                    Mas Mail Digital
-                </a>
+    </nav>
 
-                <a href="barokah.html" class="nav-link">
-                    Mas Mail Barokah
-                </a>
-
-            </div>
-
-        </nav>
-
-    </header>
-
+</header>
 
     <!-- =========================================
          MAIN
