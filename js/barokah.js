@@ -1,22 +1,279 @@
 "use strict";
 
 /*
+ * =========================================================
  * MAS MAIL BAROKAH
  * JavaScript khusus halaman barokah.html
  *
  * Fungsi:
- * 1. Back to Top
- * 2. Active navigation berdasarkan section
- * 3. Reveal animation
- * 4. Interaksi card
- * 5. Animasi hero
- * 6. Status header ketika scroll
+ * 1. Mobile Navigation
+ * 2. Back to Top
+ * 3. Active Navigation
+ * 4. Reveal Animation
+ * 5. Interaksi Card
+ * 6. Animasi Hero
+ * 7. Header Scroll State
+ * =========================================================
  */
 
 
-/* =========================================
+/* =========================================================
+   MOBILE NAVIGATION
+   ========================================================= */
+
+const barokahMenuToggle =
+    document.querySelector(".barokah-menu-toggle");
+
+const barokahMobileNavigation =
+    document.querySelector(".barokah-mobile-navigation");
+
+const barokahMobileLinks =
+    document.querySelectorAll(
+        ".barokah-mobile-nav-link"
+    );
+
+
+function openBarokahMenu() {
+
+    if (
+        !barokahMenuToggle ||
+        !barokahMobileNavigation
+    ) {
+        return;
+    }
+
+
+    barokahMenuToggle.classList.add("is-active");
+
+    barokahMobileNavigation.classList.add(
+        "is-open"
+    );
+
+
+    barokahMenuToggle.setAttribute(
+        "aria-expanded",
+        "true"
+    );
+
+
+    barokahMenuToggle.setAttribute(
+        "aria-label",
+        "Tutup menu navigasi"
+    );
+
+
+    document.body.classList.add(
+        "menu-open"
+    );
+
+}
+
+
+function closeBarokahMenu() {
+
+    if (
+        !barokahMenuToggle ||
+        !barokahMobileNavigation
+    ) {
+        return;
+    }
+
+
+    barokahMenuToggle.classList.remove(
+        "is-active"
+    );
+
+
+    barokahMobileNavigation.classList.remove(
+        "is-open"
+    );
+
+
+    barokahMenuToggle.setAttribute(
+        "aria-expanded",
+        "false"
+    );
+
+
+    barokahMenuToggle.setAttribute(
+        "aria-label",
+        "Buka menu navigasi"
+    );
+
+
+    document.body.classList.remove(
+        "menu-open"
+    );
+
+}
+
+
+function toggleBarokahMenu() {
+
+    if (
+        !barokahMenuToggle ||
+        !barokahMobileNavigation
+    ) {
+        return;
+    }
+
+
+    const isOpen =
+        barokahMobileNavigation.classList.contains(
+            "is-open"
+        );
+
+
+    if (isOpen) {
+
+        closeBarokahMenu();
+
+    } else {
+
+        openBarokahMenu();
+
+    }
+
+}
+
+
+/*
+ * Tombol hamburger
+ */
+
+if (barokahMenuToggle) {
+
+    barokahMenuToggle.addEventListener(
+        "click",
+        toggleBarokahMenu
+    );
+
+}
+
+
+/*
+ * Tutup menu ketika link dipilih.
+ */
+
+barokahMobileLinks.forEach((link) => {
+
+    link.addEventListener(
+        "click",
+        () => {
+
+            closeBarokahMenu();
+
+        }
+    );
+
+});
+
+
+/*
+ * Tutup ketika klik di luar menu.
+ */
+
+document.addEventListener(
+    "click",
+    (event) => {
+
+        if (
+            !barokahMobileNavigation ||
+            !barokahMenuToggle
+        ) {
+            return;
+        }
+
+
+        const clickedInsideNavigation =
+            barokahMobileNavigation.contains(
+                event.target
+            );
+
+
+        const clickedToggle =
+            barokahMenuToggle.contains(
+                event.target
+            );
+
+
+        const isOpen =
+            barokahMobileNavigation.classList.contains(
+                "is-open"
+            );
+
+
+        if (
+            isOpen &&
+            !clickedInsideNavigation &&
+            !clickedToggle
+        ) {
+
+            closeBarokahMenu();
+
+        }
+
+    }
+);
+
+
+/*
+ * Tutup dengan tombol Escape.
+ */
+
+document.addEventListener(
+    "keydown",
+    (event) => {
+
+        if (event.key !== "Escape") {
+            return;
+        }
+
+
+        if (
+            barokahMobileNavigation &&
+            barokahMobileNavigation.classList.contains(
+                "is-open"
+            )
+        ) {
+
+            closeBarokahMenu();
+
+
+            if (barokahMenuToggle) {
+
+                barokahMenuToggle.focus();
+
+            }
+
+        }
+
+    }
+);
+
+
+/*
+ * Jika layar menjadi desktop,
+ * tutup menu mobile.
+ */
+
+window.addEventListener(
+    "resize",
+    () => {
+
+        if (window.innerWidth > 768) {
+
+            closeBarokahMenu();
+
+        }
+
+    }
+);
+
+
+/* =========================================================
    BACK TO TOP
-========================================= */
+========================================================= */
 
 const backToTopButton =
     document.querySelector(".back-to-top");
@@ -24,7 +281,9 @@ const backToTopButton =
 
 function updateBackToTop() {
 
-    if (!backToTopButton) return;
+    if (!backToTopButton) {
+        return;
+    }
 
 
     if (window.scrollY > 500) {
@@ -47,7 +306,9 @@ function updateBackToTop() {
 window.addEventListener(
     "scroll",
     updateBackToTop,
-    { passive: true }
+    {
+        passive: true
+    }
 );
 
 
@@ -71,9 +332,9 @@ if (backToTopButton) {
 }
 
 
-/* =========================================
+/* =========================================================
    ACTIVE NAVIGATION
-========================================= */
+========================================================= */
 
 const barokahSections =
     document.querySelectorAll(
@@ -89,7 +350,9 @@ const barokahNavLinks =
 
 function updateActiveNavigation() {
 
-    if (!barokahSections.length) return;
+    if (!barokahSections.length) {
+        return;
+    }
 
 
     const scrollPosition =
@@ -104,8 +367,10 @@ function updateActiveNavigation() {
         const sectionTop =
             section.offsetTop;
 
+
         const sectionBottom =
-            sectionTop + section.offsetHeight;
+            sectionTop +
+            section.offsetHeight;
 
 
         if (
@@ -121,7 +386,9 @@ function updateActiveNavigation() {
     });
 
 
-    if (!currentSection) return;
+    if (!currentSection) {
+        return;
+    }
 
 
     barokahNavLinks.forEach((link) => {
@@ -135,11 +402,15 @@ function updateActiveNavigation() {
             `#${currentSection}`
         ) {
 
-            link.classList.add("active");
+            link.classList.add(
+                "active"
+            );
 
         } else {
 
-            link.classList.remove("active");
+            link.classList.remove(
+                "active"
+            );
 
         }
 
@@ -151,7 +422,9 @@ function updateActiveNavigation() {
 window.addEventListener(
     "scroll",
     updateActiveNavigation,
-    { passive: true }
+    {
+        passive: true
+    }
 );
 
 
@@ -164,37 +437,51 @@ window.addEventListener(
 updateActiveNavigation();
 
 
-/* =========================================
+/* =========================================================
    REVEAL ANIMATION
-========================================= */
+========================================================= */
 
 const revealSelectors = [
+
     ".barokah-section-heading",
+
     ".barokah-about-content",
+
     ".barokah-service-card",
+
     ".barokah-advantages-content",
+
     ".barokah-advantage-item",
+
     ".barokah-store-card",
+
     ".barokah-link-card"
+
 ];
 
 
 const revealElements = [];
 
 
-revealSelectors.forEach((selector) => {
+revealSelectors.forEach(
+    (selector) => {
 
-    document
-        .querySelectorAll(selector)
-        .forEach((element) => {
+        document
+            .querySelectorAll(selector)
+            .forEach((element) => {
 
-            element.classList.add("reveal");
+                element.classList.add(
+                    "reveal"
+                );
 
-            revealElements.push(element);
+                revealElements.push(
+                    element
+                );
 
-        });
+            });
 
-});
+    }
+);
 
 
 if (
@@ -206,54 +493,66 @@ if (
         new IntersectionObserver(
             (entries, observer) => {
 
-                entries.forEach((entry) => {
+                entries.forEach(
+                    (entry) => {
 
-                    if (!entry.isIntersecting) {
-                        return;
+                        if (
+                            !entry.isIntersecting
+                        ) {
+                            return;
+                        }
+
+
+                        entry.target.classList.add(
+                            "is-visible"
+                        );
+
+
+                        observer.unobserve(
+                            entry.target
+                        );
+
                     }
-
-
-                    entry.target.classList.add(
-                        "is-visible"
-                    );
-
-
-                    observer.unobserve(
-                        entry.target
-                    );
-
-                });
+                );
 
             },
             {
                 threshold: 0.12,
-                rootMargin: "0px 0px -50px 0px"
+
+                rootMargin:
+                    "0px 0px -50px 0px"
             }
         );
 
 
-    revealElements.forEach((element) => {
+    revealElements.forEach(
+        (element) => {
 
-        revealObserver.observe(element);
+            revealObserver.observe(
+                element
+            );
 
-    });
+        }
+    );
 
 } else {
 
-    revealElements.forEach((element) => {
+    revealElements.forEach(
+        (element) => {
 
-        element.classList.add(
-            "is-visible"
-        );
+            element.classList.add(
+                "is-visible"
+            );
 
-    });
+        }
+    );
 
 }
 
 
-/* =========================================
+/* =========================================================
    SERVICE CARD INTERACTION
-========================================= */
+========================================================= */
 
 const serviceCards =
     document.querySelectorAll(
@@ -289,9 +588,9 @@ serviceCards.forEach((card) => {
 });
 
 
-/* =========================================
+/* =========================================================
    HERO LOAD ANIMATION
-========================================= */
+========================================================= */
 
 const heroContent =
     document.querySelector(
@@ -330,9 +629,9 @@ window.addEventListener(
 );
 
 
-/* =========================================
+/* =========================================================
    HEADER SCROLL STATE
-========================================= */
+========================================================= */
 
 const barokahHeader =
     document.querySelector(
@@ -342,7 +641,9 @@ const barokahHeader =
 
 function updateHeaderState() {
 
-    if (!barokahHeader) return;
+    if (!barokahHeader) {
+        return;
+    }
 
 
     if (window.scrollY > 30) {
@@ -365,16 +666,18 @@ function updateHeaderState() {
 window.addEventListener(
     "scroll",
     updateHeaderState,
-    { passive: true }
+    {
+        passive: true
+    }
 );
 
 
 updateHeaderState();
 
 
-/* =========================================
+/* =========================================================
    STORE CARD INTERACTION
-========================================= */
+========================================================= */
 
 const storeCard =
     document.querySelector(
@@ -410,9 +713,9 @@ if (storeCard) {
 }
 
 
-/* =========================================
+/* =========================================================
    LINK CARD INTERACTION
-========================================= */
+========================================================= */
 
 const linkCard =
     document.querySelector(
@@ -445,4 +748,9 @@ if (linkCard) {
         }
     );
 
-          }
+}
+
+
+/* =========================================================
+   SELESAI
+========================================================= */
