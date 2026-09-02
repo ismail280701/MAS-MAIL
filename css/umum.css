@@ -274,24 +274,43 @@ section {
 
     border-bottom-color: transparent;
 }
-
 /* =========================================
    10. LOGO
 ========================================= */
 
 .logo {
+    display: inline-flex;
+
+    align-items: baseline;
+
+    gap: 4px;
+
     color: var(--color-text);
 
     font-size: 1.15rem;
     font-weight: 800;
 
-    letter-spacing: -0.03em;
+    letter-spacing: -0.04em;
 
-    transition: color var(--transition-normal);
+    white-space: nowrap;
+
+    transition:
+        color var(--transition-normal),
+        transform var(--transition-fast);
 }
 
 .logo:hover {
     color: var(--color-primary);
+
+    transform: translateY(-1px);
+}
+
+.logo-main {
+    color: var(--color-primary);
+}
+
+.logo-name {
+    color: var(--color-text);
 }
 
 
@@ -304,7 +323,7 @@ section {
 
     align-items: center;
 
-    gap: 8px;
+    gap: 6px;
 }
 
 
@@ -315,15 +334,18 @@ section {
 .nav-link {
     position: relative;
 
-    padding: 8px 12px;
+    padding: 9px 12px;
 
     color: var(--color-text-soft);
 
-    font-size: 0.9rem;
+    font-size: 0.88rem;
     font-weight: 600;
 
+    white-space: nowrap;
+
     transition:
-        color var(--transition-normal);
+        color var(--transition-normal),
+        background-color var(--transition-normal);
 }
 
 .nav-link::after {
@@ -342,9 +364,11 @@ section {
     border-radius: var(--radius-pill);
 
     transform: scaleX(0);
+
     transform-origin: center;
 
-    transition: transform var(--transition-normal);
+    transition:
+        transform var(--transition-normal);
 }
 
 .nav-link:hover {
@@ -360,7 +384,6 @@ section {
     color: var(--color-primary);
 }
 
-
 /* =========================================
    13. MENU TOGGLE
 ========================================= */
@@ -368,26 +391,42 @@ section {
 .menu-toggle {
     display: none;
 
+    align-items: center;
+    justify-content: center;
+
+    flex-direction: column;
+
     width: 42px;
     height: 42px;
 
-    padding: 9px;
+    padding: 8px;
 
-    border: 0;
+    border: 1px solid transparent;
+
     border-radius: 12px;
 
     background: transparent;
 
     cursor: pointer;
+
+    transition:
+        background-color var(--transition-normal),
+        border-color var(--transition-normal);
+}
+
+.menu-toggle:hover {
+    background: var(--color-background-soft);
+
+    border-color: var(--color-border);
 }
 
 .menu-toggle span {
     display: block;
 
-    width: 100%;
+    width: 20px;
     height: 2px;
 
-    margin: 5px 0;
+    margin: 3px 0;
 
     background: var(--color-text);
 
@@ -396,6 +435,27 @@ section {
     transition:
         transform var(--transition-normal),
         opacity var(--transition-normal);
+}
+
+
+/* =========================================
+   14. MENU TOGGLE ACTIVE
+========================================= */
+
+.menu-toggle.active span:nth-child(1) {
+    transform:
+        translateY(8px)
+        rotate(45deg);
+}
+
+.menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle.active span:nth-child(3) {
+    transform:
+        translateY(-8px)
+        rotate(-45deg);
 }
 
 
@@ -464,8 +524,6 @@ button:focus-visible {
     }
 
 }
-
-
 /* =========================================
    17. MOBILE
 ========================================= */
@@ -480,7 +538,14 @@ button:focus-visible {
         );
     }
 
+
+    /* ================================
+       NAVBAR
+    ================================= */
+
     .navbar {
+        position: relative;
+
         width: min(
             calc(100% - 32px),
             var(--container-width)
@@ -489,35 +554,66 @@ button:focus-visible {
         min-height: 64px;
     }
 
-    .menu-toggle {
-        display: block;
+
+    /* ================================
+       LOGO
+    ================================= */
+
+    .logo {
+        font-size: 1.05rem;
     }
 
-    .nav-menu {
 
+    /* ================================
+       HAMBURGER
+    ================================= */
+
+    .menu-toggle {
+        display: flex;
+    }
+
+
+    /* ================================
+       MOBILE MENU
+    ================================= */
+
+    .nav-menu {
         position: absolute;
 
-        top: calc(100% + 8px);
-        left: 16px;
-        right: 16px;
+        top: calc(100% + 10px);
+
+        left: 0;
+        right: 0;
 
         display: flex;
+
         flex-direction: column;
+
         align-items: stretch;
+
+        gap: 4px;
 
         padding: 10px;
 
         background: rgba(255, 255, 255, 0.97);
 
         border: 1px solid var(--color-border);
+
         border-radius: var(--radius-medium);
 
         box-shadow: var(--shadow-medium);
 
         opacity: 0;
+
         visibility: hidden;
 
-        transform: translateY(-8px);
+        transform:
+            translateY(-10px)
+            scale(0.98);
+
+        transform-origin: top center;
+
+        pointer-events: none;
 
         transition:
             opacity var(--transition-normal),
@@ -525,28 +621,67 @@ button:focus-visible {
             transform var(--transition-normal);
     }
 
+
+    /* ================================
+       MOBILE MENU ACTIVE
+    ================================= */
+
     .nav-menu.active {
         opacity: 1;
+
         visibility: visible;
 
-        transform: translateY(0);
+        transform:
+            translateY(0)
+            scale(1);
+
+        pointer-events: auto;
     }
+
+
+    /* ================================
+       MOBILE LINK
+    ================================= */
 
     .nav-link {
         width: 100%;
 
-        padding: 12px 14px;
+        padding: 13px 14px;
 
         border-radius: 10px;
+
+        font-size: 0.9rem;
     }
 
     .nav-link::after {
         display: none;
     }
 
-    .nav-link:hover,
-    .nav-link.active {
+    .nav-link:hover {
         background: var(--color-background-soft);
+    }
+
+    .nav-link.active {
+        background: var(--color-primary-light);
+
+        color: var(--color-primary);
+    }
+
+
+    /* ================================
+       HOME SPACING
+    ================================= */
+
+    .hero-section {
+        padding-top: 80px;
+    }
+
+
+    .about-section,
+    .brands-section {
+        padding-top: 80px;
+
+        padding-bottom: 80px;
     }
 
 }
