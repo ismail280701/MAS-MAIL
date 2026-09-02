@@ -311,36 +311,47 @@ section {
 
     border-bottom-color: transparent;
 }
+
 /* =========================================
-   10. LOGO
+   10. BRAND LOGO
 ========================================= */
 
-.logo {
+.brand-logo {
     display: inline-flex;
 
     align-items: center;
 
-    width: 46px;
-    height: 46px;
+    gap: 10px;
 
-    flex-shrink: 0;
+    color: var(--color-navy);
+
+    font-size: 1rem;
+    font-weight: 800;
+
+    letter-spacing: -0.03em;
+
+    white-space: nowrap;
 
     transition:
         transform var(--transition-fast),
         opacity var(--transition-normal);
 }
 
-.logo img {
-    width: 100%;
-    height: 100%;
+.brand-logo img {
+    width: 42px;
+    height: 42px;
 
     object-fit: contain;
 }
 
-.logo:hover {
+.brand-logo:hover {
     transform: translateY(-1px);
 
-    opacity: 0.9;
+    opacity: 0.88;
+}
+
+.brand-logo span {
+    color: var(--color-navy);
 }
 
 
