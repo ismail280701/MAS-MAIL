@@ -263,7 +263,17 @@ section {
 
     margin-inline: auto;
 }
+/* =========================================
+   9A. HEADER SCROLLED
+========================================= */
 
+.site-header.scrolled {
+    background: rgba(255, 255, 255, 0.96);
+
+    box-shadow: var(--shadow-small);
+
+    border-bottom-color: transparent;
+}
 
 /* =========================================
    10. LOGO
