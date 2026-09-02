@@ -1,11 +1,12 @@
 /* =========================================================
-   MAS MAIL BAROKAH — HEADER
+   MAS MAIL BAROKAH
+   HEADER / NAVIGATION
    File: css/header-barokah.css
    ========================================================= */
 
 
 /* =========================================================
-   BAROKAH HEADER
+   HEADER UTAMA
    ========================================================= */
 
 .barokah-header {
@@ -14,84 +15,84 @@
   left: 0;
   z-index: 1000;
   width: 100%;
+
+  background: rgba(6, 18, 14, 0.72);
+
   border-bottom: 1px solid transparent;
-  background: rgba(6, 18, 14, 0.55);
+
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
+
   transition:
-    background var(--transition-normal),
-    border-color var(--transition-normal),
-    box-shadow var(--transition-normal);
+    background 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
+
+/* Header ketika scroll */
+
 .barokah-header.is-scrolled {
+  background: rgba(6, 18, 14, 0.94);
+
   border-bottom-color: var(--color-border);
-  background: rgba(6, 18, 14, 0.93);
-  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.18);
+
+  box-shadow:
+    0 10px 35px rgba(0, 0, 0, 0.18);
 }
 
 
 /* =========================================================
-   HEADER CONTAINER
+   CONTAINER HEADER
    ========================================================= */
 
 .barokah-header-container {
   position: relative;
+
   display: flex;
   align-items: center;
   justify-content: space-between;
+
   min-height: 72px;
+
   gap: 20px;
 }
 
 
 /* =========================================================
-   BAROKAH BRAND
+   BRAND / LOGO
    ========================================================= */
 
 .barokah-brand {
   display: inline-flex;
   align-items: center;
-  gap: 11px;
-  min-width: 0;
+
+  flex-shrink: 0;
+
   color: var(--color-white);
   text-decoration: none;
 }
 
-.barokah-brand-logo {
+
+/*
+   HTML saat ini menggunakan:
+
+   <a class="barokah-brand">
+       <img ...>
+   </a>
+
+   Jadi kita langsung mengatur img di dalam brand.
+*/
+
+.barokah-brand img {
   display: block;
-  width: 40px;
-  height: 40px;
+
+  width: 46px;
+  height: 46px;
+
   flex-shrink: 0;
+
   object-fit: contain;
-}
-
-.barokah-brand-content {
-  display: flex;
-  flex-direction: column;
-  min-width: 0;
-}
-
-.barokah-brand-name {
-  color: var(--color-white);
-  font-family: var(--font-heading);
-  font-size: 0.92rem;
-  font-weight: 800;
-  line-height: 1.1;
-  letter-spacing: -0.02em;
-}
-
-.barokah-brand-subtitle {
-  margin-top: 3px;
-  overflow: hidden;
-  color: var(--color-text-muted);
-  font-size: 0.6rem;
-  font-weight: 600;
-  line-height: 1.2;
-  letter-spacing: 0.05em;
-  text-overflow: ellipsis;
-  text-transform: uppercase;
-  white-space: nowrap;
 }
 
 
@@ -101,58 +102,90 @@
 
 .barokah-desktop-navigation {
   display: none;
+
   align-items: center;
+
   gap: 5px;
 }
 
+
 .barokah-nav-link {
   position: relative;
+
   display: inline-flex;
   align-items: center;
   justify-content: center;
+
   min-height: 40px;
+
   padding: 0 13px;
+
   border-radius: 10px;
+
   color: var(--color-text-soft);
+
   font-size: 0.78rem;
   font-weight: 650;
+
   text-decoration: none;
+
   transition:
-    color var(--transition-fast),
-    background var(--transition-fast);
+    color 0.2s ease,
+    background 0.2s ease;
 }
+
+
+/* Garis aktif */
 
 .barokah-nav-link::after {
   content: "";
+
   position: absolute;
+
   right: 13px;
   bottom: 5px;
   left: 13px;
+
   height: 2px;
+
   border-radius: 99px;
+
   background: var(--color-green-soft);
+
   opacity: 0;
+
   transform: scaleX(0.4);
+
   transition:
-    opacity var(--transition-fast),
-    transform var(--transition-fast);
+    opacity 0.2s ease,
+    transform 0.2s ease;
 }
+
+
+/* Hover */
 
 .barokah-nav-link:hover {
   color: var(--color-white);
-  background: rgba(110, 231, 168, 0.05);
+
+  background:
+    rgba(110, 231, 168, 0.05);
 }
+
+
+/* Active */
+
+.barokah-nav-link.active,
+.barokah-nav-link[aria-current="page"] {
+  color: var(--color-green-soft);
+}
+
 
 .barokah-nav-link:hover::after,
 .barokah-nav-link.active::after,
 .barokah-nav-link[aria-current="page"]::after {
   opacity: 1;
-  transform: scaleX(1);
-}
 
-.barokah-nav-link.active,
-.barokah-nav-link[aria-current="page"] {
-  color: var(--color-green-soft);
+  transform: scaleX(1);
 }
 
 
@@ -164,9 +197,12 @@
   display: none;
 }
 
+
 .barokah-header-action .btn {
   min-height: 40px;
+
   padding: 0 17px;
+
   font-size: 0.76rem;
 }
 
@@ -177,63 +213,96 @@
 
 .barokah-menu-toggle {
   position: relative;
+
   display: inline-flex;
   align-items: center;
   justify-content: center;
+
   width: 44px;
   height: 44px;
+
   flex-shrink: 0;
+
   padding: 0;
+
   border: 1px solid var(--color-border);
+
   border-radius: 12px;
-  background: rgba(12, 33, 25, 0.65);
+
+  background:
+    rgba(12, 33, 25, 0.65);
+
   color: var(--color-white);
+
   cursor: pointer;
+
   transition:
-    background var(--transition-fast),
-    border-color var(--transition-fast),
-    transform var(--transition-fast);
+    background 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
 }
 
+
 .barokah-menu-toggle:hover {
-  border-color: var(--color-border-strong);
-  background: rgba(16, 47, 35, 0.8);
+  background:
+    rgba(16, 47, 35, 0.8);
+
+  border-color:
+    var(--color-border-strong);
 }
+
 
 .barokah-menu-toggle:active {
   transform: scale(0.95);
 }
 
+
+/* Garis hamburger */
+
 .barokah-menu-toggle span {
   position: absolute;
+
   width: 19px;
   height: 2px;
+
   border-radius: 99px;
+
   background: currentColor;
+
   transition:
-    transform var(--transition-fast),
-    opacity var(--transition-fast);
+    transform 0.25s ease,
+    opacity 0.25s ease;
 }
+
 
 .barokah-menu-toggle span:nth-child(1) {
   transform: translateY(-6px);
 }
 
+
 .barokah-menu-toggle span:nth-child(2) {
   transform: translateY(0);
 }
+
 
 .barokah-menu-toggle span:nth-child(3) {
   transform: translateY(6px);
 }
 
+
+/* =========================================================
+   HAMBURGER KETIKA AKTIF
+   ========================================================= */
+
 .barokah-menu-toggle.is-active span:nth-child(1) {
   transform: rotate(45deg);
 }
 
+
 .barokah-menu-toggle.is-active span:nth-child(2) {
   opacity: 0;
 }
+
 
 .barokah-menu-toggle.is-active span:nth-child(3) {
   transform: rotate(-45deg);
@@ -246,105 +315,170 @@
 
 .barokah-mobile-navigation {
   position: fixed;
+
   top: 72px;
   right: 0;
   left: 0;
+
   z-index: 999;
+
   visibility: hidden;
+
   opacity: 0;
+
   transform: translateY(-10px);
-  border-bottom: 1px solid var(--color-border);
-  background: rgba(6, 18, 14, 0.97);
+
+  border-bottom:
+    1px solid var(--color-border);
+
+  background:
+    rgba(6, 18, 14, 0.97);
+
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
+
   pointer-events: none;
+
   transition:
-    opacity var(--transition-normal),
-    transform var(--transition-normal),
-    visibility var(--transition-normal);
+    opacity 0.25s ease,
+    transform 0.25s ease,
+    visibility 0.25s ease;
 }
+
+
+/* Menu terbuka */
 
 .barokah-mobile-navigation.is-open {
   visibility: visible;
+
   opacity: 1;
+
   transform: translateY(0);
+
   pointer-events: auto;
 }
 
+
+/* Isi menu */
+
 .barokah-mobile-navigation-inner {
   display: flex;
+
   flex-direction: column;
+
   gap: 5px;
+
   padding: 15px 20px 20px;
 }
 
+
+/* =========================================================
+   MOBILE NAV LINK
+   ========================================================= */
+
 .barokah-mobile-nav-link {
   display: flex;
+
   align-items: center;
   justify-content: space-between;
+
   min-height: 50px;
+
   padding: 0 15px;
+
   border: 1px solid transparent;
+
   border-radius: 13px;
+
   color: var(--color-text-soft);
+
   font-size: 0.85rem;
   font-weight: 650;
+
   text-decoration: none;
+
   transition:
-    color var(--transition-fast),
-    background var(--transition-fast),
-    border-color var(--transition-fast),
-    transform var(--transition-fast);
+    color 0.2s ease,
+    background 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
 }
+
+
+/* Panah */
 
 .barokah-mobile-nav-link::after {
   content: "→";
+
   color: var(--color-text-muted);
+
   font-size: 0.9rem;
-  transition: transform var(--transition-fast);
+
+  transition:
+    transform 0.2s ease;
 }
+
+
+/* Hover / focus / active */
 
 .barokah-mobile-nav-link:hover,
 .barokah-mobile-nav-link:focus-visible,
 .barokah-mobile-nav-link.active,
 .barokah-mobile-nav-link[aria-current="page"] {
-  border-color: var(--color-border);
-  background: rgba(110, 231, 168, 0.07);
   color: var(--color-green-soft);
+
+  background:
+    rgba(110, 231, 168, 0.07);
+
+  border-color:
+    var(--color-border);
 }
+
 
 .barokah-mobile-nav-link:hover::after,
 .barokah-mobile-nav-link:focus-visible::after,
 .barokah-mobile-nav-link.active::after,
 .barokah-mobile-nav-link[aria-current="page"]::after {
   color: var(--color-green-soft);
+
   transform: translateX(3px);
 }
 
 
 /* =========================================================
-   MOBILE MENU OVERLAY
+   MOBILE OVERLAY
    ========================================================= */
 
 .barokah-mobile-navigation::before {
   content: "";
+
   position: fixed;
+
   top: 72px;
   right: 0;
   bottom: 0;
   left: 0;
+
   z-index: -1;
+
   visibility: hidden;
-  background: rgba(0, 0, 0, 0.35);
+
+  background:
+    rgba(0, 0, 0, 0.35);
+
   opacity: 0;
+
   pointer-events: none;
+
   transition:
-    opacity var(--transition-normal),
-    visibility var(--transition-normal);
+    opacity 0.25s ease,
+    visibility 0.25s ease;
 }
+
 
 .barokah-mobile-navigation.is-open::before {
   visibility: visible;
+
   opacity: 1;
 }
 
@@ -359,26 +493,22 @@
     min-height: 76px;
   }
 
-  .barokah-brand-logo {
-    width: 42px;
-    height: 42px;
+
+  .barokah-brand img {
+    width: 48px;
+    height: 48px;
   }
 
-  .barokah-brand-name {
-    font-size: 0.98rem;
-  }
-
-  .barokah-brand-subtitle {
-    font-size: 0.62rem;
-  }
 
   .barokah-mobile-navigation {
     top: 76px;
   }
 
+
   .barokah-mobile-navigation::before {
     top: 76px;
   }
+
 }
 
 
@@ -392,32 +522,38 @@
     min-height: 78px;
   }
 
+
+  /* Tampilkan desktop navigation */
+
   .barokah-desktop-navigation {
     display: flex;
+
     margin-left: auto;
   }
+
+
+  /* Tampilkan action jika tersedia */
 
   .barokah-header-action {
     display: block;
   }
+
+
+  /* Sembunyikan menu mobile */
 
   .barokah-menu-toggle,
   .barokah-mobile-navigation {
     display: none;
   }
 
-  .barokah-brand-logo {
-    width: 44px;
-    height: 44px;
+
+  /* Logo desktop */
+
+  .barokah-brand img {
+    width: 50px;
+    height: 50px;
   }
 
-  .barokah-brand-name {
-    font-size: 1rem;
-  }
-
-  .barokah-brand-subtitle {
-    font-size: 0.63rem;
-  }
 }
 
 
@@ -431,15 +567,34 @@
     gap: 8px;
   }
 
+
   .barokah-nav-link {
     min-height: 42px;
+
     padding: 0 16px;
   }
 
+
   .barokah-header-action .btn {
     min-height: 42px;
+
     padding: 0 19px;
   }
+
+}
+
+
+/* =========================================================
+   ACCESSIBILITY
+   ========================================================= */
+
+.barokah-menu-toggle:focus-visible,
+.barokah-nav-link:focus-visible,
+.barokah-mobile-nav-link:focus-visible,
+.barokah-brand:focus-visible {
+  outline: 2px solid var(--color-green-soft);
+
+  outline-offset: 3px;
 }
 
 
@@ -459,4 +614,5 @@
   .barokah-mobile-nav-link::after {
     transition: none;
   }
-  }
+
+}
