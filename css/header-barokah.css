@@ -14,9 +14,10 @@
   top: 0;
   left: 0;
   z-index: 1000;
+
   width: 100%;
 
-  background: rgba(6, 18, 14, 0.72);
+  background: rgba(6, 18, 14, 0.78);
 
   border-bottom: 1px solid transparent;
 
@@ -30,15 +31,13 @@
 }
 
 
-/* Header ketika scroll */
-
 .barokah-header.is-scrolled {
-  background: rgba(6, 18, 14, 0.94);
+  background: rgba(6, 18, 14, 0.95);
 
   border-bottom-color: var(--color-border);
 
   box-shadow:
-    0 10px 35px rgba(0, 0, 0, 0.18);
+    0 10px 35px rgba(0, 0, 0, 0.2);
 }
 
 
@@ -71,18 +70,22 @@
 
   color: var(--color-white);
   text-decoration: none;
+
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease;
 }
 
 
-/*
-   HTML saat ini menggunakan:
+.barokah-brand:hover {
+  opacity: 0.9;
+}
 
-   <a class="barokah-brand">
-       <img ...>
-   </a>
 
-   Jadi kita langsung mengatur img di dalam brand.
-*/
+.barokah-brand:active {
+  transform: scale(0.97);
+}
+
 
 .barokah-brand img {
   display: block;
@@ -135,8 +138,6 @@
 }
 
 
-/* Garis aktif */
-
 .barokah-nav-link::after {
   content: "";
 
@@ -162,8 +163,6 @@
 }
 
 
-/* Hover */
-
 .barokah-nav-link:hover {
   color: var(--color-white);
 
@@ -171,8 +170,6 @@
     rgba(110, 231, 168, 0.05);
 }
 
-
-/* Active */
 
 .barokah-nav-link.active,
 .barokah-nav-link[aria-current="page"] {
@@ -230,22 +227,25 @@
   border-radius: 12px;
 
   background:
-    rgba(12, 33, 25, 0.65);
+    rgba(12, 33, 25, 0.72);
 
   color: var(--color-white);
 
   cursor: pointer;
 
+  -webkit-tap-highlight-color: transparent;
+
   transition:
     background 0.2s ease,
     border-color 0.2s ease,
-    transform 0.2s ease;
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 
 .barokah-menu-toggle:hover {
   background:
-    rgba(16, 47, 35, 0.8);
+    rgba(16, 47, 35, 0.85);
 
   border-color:
     var(--color-border-strong);
@@ -257,7 +257,21 @@
 }
 
 
-/* Garis hamburger */
+.barokah-menu-toggle.is-active {
+  border-color:
+    rgba(110, 231, 168, 0.25);
+
+  background:
+    rgba(16, 47, 35, 0.9);
+
+  box-shadow:
+    0 0 0 4px rgba(110, 231, 168, 0.04);
+}
+
+
+/* =========================================================
+   GARIS HAMBURGER
+   ========================================================= */
 
 .barokah-menu-toggle span {
   position: absolute;
@@ -320,22 +334,30 @@
   right: 0;
   left: 0;
 
-  z-index: 999;
+  z-index: 1001;
 
   visibility: hidden;
 
   opacity: 0;
 
-  transform: translateY(-10px);
+  transform:
+    translateY(-12px);
+
+  max-height: calc(100vh - 72px);
+
+  overflow-y: auto;
 
   border-bottom:
     1px solid var(--color-border);
 
   background:
-    rgba(6, 18, 14, 0.97);
+    rgba(5, 20, 14, 0.97);
 
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  box-shadow:
+    0 20px 45px rgba(0, 0, 0, 0.25);
+
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
 
   pointer-events: none;
 
@@ -346,29 +368,72 @@
 }
 
 
-/* Menu terbuka */
+/* =========================================================
+   MENU TERBUKA
+   ========================================================= */
 
 .barokah-mobile-navigation.is-open {
   visibility: visible;
 
   opacity: 1;
 
-  transform: translateY(0);
+  transform:
+    translateY(0);
 
   pointer-events: auto;
 }
 
 
-/* Isi menu */
+/* =========================================================
+   GARIS AKSEN MENU
+   ========================================================= */
+
+.barokah-mobile-navigation::after {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: 20px;
+  right: 20px;
+
+  height: 1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(110, 231, 168, 0.35),
+      transparent
+    );
+
+  opacity: 0;
+
+  transition:
+    opacity 0.25s ease;
+}
+
+
+.barokah-mobile-navigation.is-open::after {
+  opacity: 1;
+}
+
+
+/* =========================================================
+   ISI MENU
+   ========================================================= */
 
 .barokah-mobile-navigation-inner {
+  position: relative;
+
   display: flex;
 
   flex-direction: column;
 
-  gap: 5px;
+  gap: 6px;
 
-  padding: 15px 20px 20px;
+  padding:
+    16px 20px 22px;
 }
 
 
@@ -377,25 +442,30 @@
    ========================================================= */
 
 .barokah-mobile-nav-link {
+  position: relative;
+
   display: flex;
 
   align-items: center;
   justify-content: space-between;
 
-  min-height: 50px;
+  min-height: 52px;
 
-  padding: 0 15px;
+  padding: 0 16px;
 
   border: 1px solid transparent;
 
-  border-radius: 13px;
+  border-radius: 14px;
 
   color: var(--color-text-soft);
 
-  font-size: 0.85rem;
+  font-size: 0.88rem;
   font-weight: 650;
 
   text-decoration: none;
+
+  background:
+    rgba(255, 255, 255, 0.015);
 
   transition:
     color 0.2s ease,
@@ -405,16 +475,43 @@
 }
 
 
+/* Nomor kecil / indikator visual */
+
+.barokah-mobile-nav-link::before {
+  content: "";
+
+  width: 5px;
+  height: 5px;
+
+  margin-right: 12px;
+
+  border-radius: 50%;
+
+  background:
+    rgba(110, 231, 168, 0.3);
+
+  box-shadow:
+    0 0 0 4px rgba(110, 231, 168, 0.035);
+
+  transition:
+    background 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+
 /* Panah */
 
 .barokah-mobile-nav-link::after {
   content: "→";
+
+  margin-left: auto;
 
   color: var(--color-text-muted);
 
   font-size: 0.9rem;
 
   transition:
+    color 0.2s ease,
     transform 0.2s ease;
 }
 
@@ -428,10 +525,25 @@
   color: var(--color-green-soft);
 
   background:
-    rgba(110, 231, 168, 0.07);
+    rgba(110, 231, 168, 0.075);
 
   border-color:
-    var(--color-border);
+    rgba(110, 231, 168, 0.12);
+
+  transform:
+    translateX(3px);
+}
+
+
+.barokah-mobile-nav-link:hover::before,
+.barokah-mobile-nav-link:focus-visible::before,
+.barokah-mobile-nav-link.active::before,
+.barokah-mobile-nav-link[aria-current="page"]::before {
+  background:
+    var(--color-green-soft);
+
+  box-shadow:
+    0 0 0 4px rgba(110, 231, 168, 0.07);
 }
 
 
@@ -439,47 +551,20 @@
 .barokah-mobile-nav-link:focus-visible::after,
 .barokah-mobile-nav-link.active::after,
 .barokah-mobile-nav-link[aria-current="page"]::after {
-  color: var(--color-green-soft);
+  color:
+    var(--color-green-soft);
 
-  transform: translateX(3px);
+  transform:
+    translateX(3px);
 }
 
 
 /* =========================================================
-   MOBILE OVERLAY
+   BODY SAAT MENU TERBUKA
    ========================================================= */
 
-.barokah-mobile-navigation::before {
-  content: "";
-
-  position: fixed;
-
-  top: 72px;
-  right: 0;
-  bottom: 0;
-  left: 0;
-
-  z-index: -1;
-
-  visibility: hidden;
-
-  background:
-    rgba(0, 0, 0, 0.35);
-
-  opacity: 0;
-
-  pointer-events: none;
-
-  transition:
-    opacity 0.25s ease,
-    visibility 0.25s ease;
-}
-
-
-.barokah-mobile-navigation.is-open::before {
-  visibility: visible;
-
-  opacity: 1;
+body.menu-open {
+  overflow: hidden;
 }
 
 
@@ -502,11 +587,18 @@
 
   .barokah-mobile-navigation {
     top: 76px;
+
+    max-height: calc(100vh - 76px);
   }
 
 
-  .barokah-mobile-navigation::before {
-    top: 76px;
+  .barokah-mobile-navigation-inner {
+    max-width: 600px;
+
+    margin: 0 auto;
+
+    padding:
+      18px 24px 26px;
   }
 
 }
@@ -523,7 +615,7 @@
   }
 
 
-  /* Tampilkan desktop navigation */
+  /* Desktop navigation */
 
   .barokah-desktop-navigation {
     display: flex;
@@ -532,14 +624,14 @@
   }
 
 
-  /* Tampilkan action jika tersedia */
+  /* Header action */
 
   .barokah-header-action {
     display: block;
   }
 
 
-  /* Sembunyikan menu mobile */
+  /* Mobile menu tidak digunakan */
 
   .barokah-menu-toggle,
   .barokah-mobile-navigation {
@@ -610,7 +702,9 @@
   .barokah-menu-toggle,
   .barokah-menu-toggle span,
   .barokah-mobile-navigation,
+  .barokah-mobile-navigation::after,
   .barokah-mobile-nav-link,
+  .barokah-mobile-nav-link::before,
   .barokah-mobile-nav-link::after {
     transition: none;
   }
