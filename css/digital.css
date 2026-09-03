@@ -1,1 +1,446 @@
+/* =========================================
+   MAS MAIL DIGITAL
+   DIGITAL.CSS
+========================================= */
 
+
+/* =========================================
+   1. DIGITAL HERO
+========================================= */
+
+.digital-hero {
+    position: relative;
+
+    min-height: 100svh;
+
+    display: flex;
+
+    align-items: center;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ffffff 0%,
+            #f0f9fa 55%,
+            #e9f7f8 100%
+        );
+}
+
+
+/* =========================================
+   2. HERO CONTAINER
+========================================= */
+
+.digital-hero-container {
+    position: relative;
+
+    z-index: 2;
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1.05fr)
+        minmax(0, 0.95fr);
+
+    align-items: center;
+
+    gap: 60px;
+
+    width: min(
+        calc(100% - 40px),
+        var(--container-width)
+    );
+
+    margin-inline: auto;
+
+    padding-top: 110px;
+    padding-bottom: 80px;
+}
+
+
+/* =========================================
+   3. HERO CONTENT
+========================================= */
+
+.digital-hero-content {
+    max-width: 680px;
+}
+
+.digital-label {
+    margin-bottom: 18px;
+
+    color:
+        var(--color-primary);
+
+    font-size: 0.72rem;
+    font-weight: 800;
+
+    letter-spacing: 0.16em;
+}
+
+.digital-hero-content h1 {
+    color:
+        var(--color-navy);
+
+    font-family:
+        "Plus Jakarta Sans",
+        sans-serif;
+
+    font-size:
+        clamp(
+            3rem,
+            6vw,
+            5.5rem
+        );
+
+    line-height: 0.98;
+
+    letter-spacing: -0.07em;
+}
+
+.digital-hero-content h1 span {
+    display: block;
+
+    color:
+        var(--color-primary);
+}
+
+.digital-description {
+    max-width: 570px;
+
+    margin-top: 25px;
+
+    color:
+        var(--color-text-soft);
+
+    font-size: 1rem;
+
+    line-height: 1.85;
+}
+
+
+/* =========================================
+   4. HERO ACTIONS
+========================================= */
+
+.digital-hero-actions {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 12px;
+
+    margin-top: 32px;
+}
+
+
+/* =========================================
+   5. HERO VISUAL
+========================================= */
+
+.digital-hero-visual {
+    position: relative;
+
+    min-height: 500px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* =========================================
+   6. LOGO CARD
+========================================= */
+
+.digital-logo-card {
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 280px;
+    height: 280px;
+
+    background:
+        rgba(255, 255, 255, 0.85);
+
+    border:
+        1px solid
+        rgba(15, 118, 110, 0.15);
+
+    border-radius: 50%;
+
+    box-shadow:
+        0 30px 80px
+        rgba(15, 118, 110, 0.14);
+
+    animation:
+        digitalFloat 6s ease-in-out infinite;
+}
+
+.digital-logo-card img {
+    position: relative;
+
+    z-index: 2;
+
+    width: 190px;
+    height: 190px;
+
+    object-fit: contain;
+}
+
+
+/* =========================================
+   7. LOGO GLOW
+========================================= */
+
+.digital-logo-glow {
+    position: absolute;
+
+    width: 180px;
+    height: 180px;
+
+    background:
+        rgba(24, 197, 223, 0.12);
+
+    border-radius: 50%;
+
+    filter:
+        blur(25px);
+}
+
+
+/* =========================================
+   8. FLOATING CARDS
+========================================= */
+
+.digital-floating-card {
+    position: absolute;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 4px;
+
+    min-width: 125px;
+
+    padding: 15px 17px;
+
+    background:
+        rgba(255, 255, 255, 0.92);
+
+    border:
+        1px solid
+        rgba(7, 27, 58, 0.08);
+
+    border-radius: 16px;
+
+    box-shadow:
+        0 15px 40px
+        rgba(7, 27, 58, 0.10);
+
+    backdrop-filter:
+        blur(10px);
+
+    animation:
+        digitalCardFloat 5s ease-in-out infinite;
+}
+
+.digital-floating-card span {
+    color:
+        var(--color-navy);
+
+    font-size: 0.85rem;
+    font-weight: 800;
+}
+
+.digital-floating-card small {
+    color:
+        var(--color-text-soft);
+
+    font-size: 0.65rem;
+}
+
+
+/* =========================================
+   9. CARD POSITIONS
+========================================= */
+
+.card-one {
+    top: 70px;
+    left: 20px;
+
+    animation-delay: -1s;
+}
+
+.card-two {
+    right: 0;
+    top: 150px;
+
+    animation-delay: -2.5s;
+}
+
+.card-three {
+    bottom: 65px;
+    left: 45px;
+
+    animation-delay: -4s;
+}
+
+
+/* =========================================
+   10. HERO ANIMATION
+========================================= */
+
+@keyframes digitalFloat {
+
+    0%,
+    100% {
+        transform:
+            translateY(0);
+    }
+
+    50% {
+        transform:
+            translateY(-12px);
+    }
+
+}
+
+
+@keyframes digitalCardFloat {
+
+    0%,
+    100% {
+        transform:
+            translateY(0);
+    }
+
+    50% {
+        transform:
+            translateY(-8px);
+    }
+
+}
+
+
+/* =========================================
+   11. MOBILE
+========================================= */
+
+@media (max-width: 900px) {
+
+    .digital-hero-container {
+        grid-template-columns: 1fr;
+
+        gap: 30px;
+
+        padding-top: 100px;
+    }
+
+    .digital-hero-content {
+        text-align: center;
+
+        margin-inline: auto;
+    }
+
+    .digital-description {
+        margin-inline: auto;
+    }
+
+    .digital-hero-actions {
+        justify-content: center;
+    }
+
+    .digital-hero-visual {
+        min-height: 400px;
+    }
+
+}
+
+
+@media (max-width: 700px) {
+
+    .digital-hero-container {
+        width:
+            min(
+                calc(100% - 32px),
+                var(--container-width)
+            );
+
+        padding-top: 95px;
+        padding-bottom: 50px;
+    }
+
+    .digital-hero-content h1 {
+        font-size:
+            clamp(
+                2.8rem,
+                14vw,
+                4.5rem
+            );
+    }
+
+    .digital-description {
+        font-size: 0.92rem;
+
+        line-height: 1.75;
+    }
+
+    .digital-hero-actions {
+        flex-direction: column;
+
+        align-items: center;
+
+        width: 100%;
+    }
+
+    .digital-hero-actions .button {
+        width: 100%;
+
+        max-width: 300px;
+    }
+
+    .digital-hero-visual {
+        min-height: 330px;
+    }
+
+    .digital-logo-card {
+        width: 210px;
+        height: 210px;
+    }
+
+    .digital-logo-card img {
+        width: 145px;
+        height: 145px;
+    }
+
+    .digital-floating-card {
+        min-width: 105px;
+
+        padding: 11px 13px;
+    }
+
+    .card-one {
+        top: 25px;
+        left: 0;
+    }
+
+    .card-two {
+        top: 100px;
+        right: 0;
+    }
+
+    .card-three {
+        bottom: 25px;
+        left: 10px;
+    }
+
+}
