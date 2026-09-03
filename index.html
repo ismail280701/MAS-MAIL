@@ -63,52 +63,37 @@
 
 </div>
 <!-- =========================================
-     HEADER
+     HEADER / NAVBAR
 ========================================= -->
 
 <header class="site-header">
 
     <nav class="navbar">
 
-
-        <!-- ================================
-             BRAND
-        ================================= -->
+        <!-- BRAND -->
 
         <a
             href="index.html"
-            class="nav-brand"
+            class="brand-logo"
+            aria-label="Mas Mail"
         >
 
-            <div class="nav-brand-logo">
+            <img
+                src="assets/logo-mas-mail.png"
+                alt="Logo Mas Mail"
+            >
 
-                <img
-                    src="assets/logo-mas-mail.png"
-                    alt="Logo Mas Mail"
-                >
-
-            </div>
-
-            <div class="nav-brand-text">
-
-                <strong>
-                    Mas Mail
-                </strong>
-
-                <span>
-                    Personal Brand
-                </span>
-
-            </div>
+            <span>Mas Mail</span>
 
         </a>
 
 
-        <!-- ================================
-             NAVIGATION
-        ================================= -->
+        <!-- NAVIGATION -->
 
-        <div class="nav-menu">
+        <div
+            class="nav-menu"
+            id="navMenu"
+        >
 
             <a
                 href="index.html"
@@ -134,9 +119,7 @@
         </div>
 
 
-        <!-- ================================
-             MOBILE MENU
-        ================================= -->
+        <!-- HAMBURGER -->
 
         <button
             class="nav-toggle"
@@ -144,6 +127,7 @@
             type="button"
             aria-label="Buka menu"
             aria-expanded="false"
+            aria-controls="navMenu"
         >
 
             <span></span>
