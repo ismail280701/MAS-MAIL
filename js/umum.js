@@ -256,7 +256,6 @@ if (revealElements.length > 0) {
 
 }
 
-
 /* =========================================
    4. PAGE TRANSITION
 ========================================= */
@@ -347,7 +346,6 @@ document.addEventListener(
             transitionTitle.textContent =
                 info.title;
 
-
             transitionSubtitle.textContent =
                 info.subtitle;
 
@@ -378,7 +376,7 @@ document.addEventListener(
 
 
         /* =====================================
-           PAGE NAVIGATION TRANSITION
+           PAGE NAVIGATION
         ===================================== */
 
         document
@@ -427,7 +425,6 @@ document.addEventListener(
                         transitionTitle.textContent =
                             info.title;
 
-
                         transitionSubtitle.textContent =
                             info.subtitle;
 
@@ -451,6 +448,28 @@ document.addEventListener(
                 );
 
             });
+
+
+        /* =====================================
+           BROWSER BACK / FORWARD
+        ===================================== */
+
+        window.addEventListener(
+            "pageshow",
+            () => {
+
+                /*
+                 * Saat Android mengembalikan
+                 * halaman sebelumnya dari cache,
+                 * pastikan transition sudah ditutup.
+                 */
+
+                pageTransition.classList.remove(
+                    "active"
+                );
+
+            }
+        );
 
     }
 );
