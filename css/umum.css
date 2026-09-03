@@ -1239,3 +1239,216 @@ button:focus-visible {
     }
 
 }
+/* =========================================
+   PAGE TRANSITION
+========================================= */
+
+.page-transition {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 10000;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    background:
+        #071b3a;
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    pointer-events: none;
+
+    transition:
+        opacity 0.35s ease,
+        visibility 0.35s ease;
+}
+
+
+/* =========================================
+   ACTIVE
+========================================= */
+
+.page-transition.active {
+    opacity: 1;
+
+    visibility: visible;
+
+    pointer-events: auto;
+}
+
+
+/* =========================================
+   TRANSITION CONTENT
+========================================= */
+
+.transition-content {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    flex-direction: column;
+
+    text-align: center;
+
+    transform:
+        translateY(20px)
+        scale(0.96);
+
+    opacity: 0;
+
+    transition:
+        transform 0.45s ease,
+        opacity 0.4s ease;
+}
+
+.page-transition.active
+.transition-content {
+    transform:
+        translateY(0)
+        scale(1);
+
+    opacity: 1;
+}
+
+
+/* =========================================
+   THREE LOGOS
+========================================= */
+
+.transition-logos {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 12px;
+
+    margin-bottom: 28px;
+}
+
+.transition-logos img {
+    width: 65px;
+    height: 65px;
+
+    object-fit: contain;
+
+    border-radius: 50%;
+
+    background:
+        #ffffff;
+
+    box-shadow:
+        0 12px 35px
+        rgba(0, 0, 0, 0.2);
+
+    animation:
+        transitionLogoFloat 3s ease-in-out
+        infinite;
+}
+
+.transition-logos img:nth-child(2) {
+    animation-delay: -1s;
+}
+
+.transition-logos img:nth-child(3) {
+    animation-delay: -2s;
+}
+
+
+/* =========================================
+   TITLE
+========================================= */
+
+.transition-title {
+    margin: 0;
+
+    color:
+        #ffffff;
+
+    font-family:
+        "Plus Jakarta Sans",
+        sans-serif;
+
+    font-size:
+        clamp(
+            1.7rem,
+            5vw,
+            2.7rem
+        );
+
+    font-weight: 800;
+
+    letter-spacing: -0.04em;
+}
+
+
+/* =========================================
+   SUBTITLE
+========================================= */
+
+.transition-subtitle {
+    margin-top: 8px;
+
+    color:
+        rgba(255, 255, 255, 0.55);
+
+    font-size: 0.8rem;
+
+    letter-spacing: 0.04em;
+}
+
+
+/* =========================================
+   LOGO ANIMATION
+========================================= */
+
+@keyframes transitionLogoFloat {
+
+    0%,
+    100% {
+        transform:
+            translateY(0);
+    }
+
+    50% {
+        transform:
+            translateY(-7px);
+    }
+
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 700px) {
+
+    .transition-logos {
+        gap: 8px;
+
+        margin-bottom: 22px;
+    }
+
+    .transition-logos img {
+        width: 55px;
+        height: 55px;
+    }
+
+    .transition-title {
+        font-size: 1.65rem;
+    }
+
+    .transition-subtitle {
+        font-size: 0.7rem;
+    }
+
+}
