@@ -379,3 +379,115 @@ document.addEventListener(
 
     }
 );
+/* =========================================
+   OPENING PAGE TRANSITION
+========================================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    () => {
+
+        const pageTransition =
+            document.getElementById(
+                "pageTransition"
+            );
+
+        const transitionTitle =
+            document.getElementById(
+                "transitionTitle"
+            );
+
+        const transitionSubtitle =
+            document.getElementById(
+                "transitionSubtitle"
+            );
+
+
+        if (
+            !pageTransition ||
+            !transitionTitle ||
+            !transitionSubtitle
+        ) {
+            return;
+        }
+
+
+        /* =====================================
+           CURRENT PAGE
+        ===================================== */
+
+        const currentPage =
+            window.location.pathname
+                .split("/")
+                .pop() || "index.html";
+
+
+        /* =====================================
+           PAGE INFORMATION
+        ===================================== */
+
+        const pageInfo = {
+
+            "index.html": {
+                title: "Mas Mail",
+                subtitle:
+                    "Satu Identitas, Dua Perjalanan."
+            },
+
+            "digital.html": {
+                title: "Mas Mail Digital",
+                subtitle:
+                    "Digital Creative & Solusi Digital"
+            },
+
+            "barokah.html": {
+                title: "Mas Mail Barokah",
+                subtitle:
+                    "Mitra Alfamart & Toko Online"
+            }
+
+        };
+
+
+        const info =
+            pageInfo[currentPage] ||
+            pageInfo["index.html"];
+
+
+        /* =====================================
+           SET CURRENT PAGE TEXT
+        ===================================== */
+
+        transitionTitle.textContent =
+            info.title;
+
+        transitionSubtitle.textContent =
+            info.subtitle;
+
+
+        /* =====================================
+           OPENING ANIMATION
+        ===================================== */
+
+        pageTransition.classList.add(
+            "active"
+        );
+
+
+        /* =====================================
+           REMOVE AFTER ANIMATION
+        ===================================== */
+
+        setTimeout(
+            () => {
+
+                pageTransition.classList.remove(
+                    "active"
+                );
+
+            },
+            1400
+        );
+
+    }
+);
