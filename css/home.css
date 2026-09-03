@@ -1324,39 +1324,39 @@
 
 }
 /* =========================================
-   33. BACK TO HERO
+   FLOATING BACK TO HERO
 ========================================= */
 
 .back-to-hero {
     position: fixed;
 
-    right: 22px;
-    bottom: 24px;
+    right: 20px;
+    bottom: 85px;
 
-    z-index: 1000;
+    z-index: 9999;
+
+    width: 48px;
+    height: 48px;
 
     display: flex;
-
     align-items: center;
     justify-content: center;
-
-    width: 46px;
-    height: 46px;
 
     padding: 0;
 
     border: 1px solid
-        rgba(212, 175, 95, 0.35);
+        rgba(212, 175, 95, 0.45);
 
     border-radius: 50%;
 
     background:
-        rgba(7, 27, 58, 0.94);
+        rgba(7, 27, 58, 0.96);
 
     color:
-        var(--color-white);
+        #ffffff;
 
-    font-size: 1.25rem;
+    font-size: 1.35rem;
+    font-weight: 700;
 
     cursor: pointer;
 
@@ -1365,18 +1365,23 @@
 
     transform:
         translateY(15px)
-        scale(0.9);
+        scale(0.85);
+
+    pointer-events: none;
 
     box-shadow:
-        0 10px 25px
-        rgba(7, 27, 58, 0.18);
+        0 10px 30px
+        rgba(7, 27, 58, 0.25);
 
     transition:
-        opacity var(--transition-normal),
-        visibility var(--transition-normal),
-        transform var(--transition-normal),
-        background-color var(--transition-normal);
+        opacity 0.3s ease,
+        visibility 0.3s ease,
+        transform 0.3s ease,
+        background-color 0.3s ease;
 }
+
+
+/* MUNCUL SETELAH SCROLL */
 
 .back-to-hero.show {
     opacity: 1;
@@ -1386,34 +1391,50 @@
     transform:
         translateY(0)
         scale(1);
+
+    pointer-events: auto;
 }
+
+
+/* HOVER */
 
 .back-to-hero:hover {
     background:
-        var(--color-navy-light);
+        var(--color-primary);
+
+    color:
+        var(--color-navy);
 
     transform:
         translateY(-3px)
-        scale(1.03);
+        scale(1.04);
 }
+
+
+/* ICON */
 
 .back-to-hero span {
+    display: block;
+
     line-height: 1;
+
+    transform:
+        translateY(-1px);
 }
 
 
-/* =========================================
-   34. BACK TO HERO MOBILE
-========================================= */
+/* MOBILE */
 
 @media (max-width: 700px) {
 
     .back-to-hero {
         right: 16px;
-        bottom: 18px;
+        bottom: 78px;
 
         width: 44px;
         height: 44px;
+
+        font-size: 1.2rem;
     }
 
 }
