@@ -176,7 +176,7 @@
                  FOTO
             ============================== -->
 
-            <div class="about-image">
+            <div class="about-image reveal reveal-left">
 
                 <div class="about-image-frame">
 
@@ -193,7 +193,7 @@
                  INFORMASI
             ============================== -->
 
-            <div class="about-info">
+            <div class="about-info reveal reveal-right">
 
                 <div class="section-heading">
 
@@ -316,7 +316,7 @@
                  MAS MAIL DIGITAL
             ================================== -->
 
-            <article class="brand-card brand-digital">
+            <article class="brand-card brand-digital reveal reveal-left">
 
                 <div class="brand-card-top">
 
@@ -366,7 +366,7 @@
                  MAS MAIL BAROKAH
             ================================== -->
 
-            <article class="brand-card brand-barokah">
+            <article class="brand-card brand-barokah reveal reveal-right">
 
                 <div class="brand-card-top">
 
@@ -418,6 +418,20 @@
 </section>
 
     </main>
+<!-- =========================================
+     BACK TO HERO
+========================================= -->
+
+<button
+    class="back-to-hero"
+    id="backToHero"
+    type="button"
+    aria-label="Kembali ke bagian atas"
+>
+
+    <span>↑</span>
+
+</button>
 
 <!-- =========================================
      FOOTER
@@ -456,33 +470,127 @@
 
         <div class="footer-social">
 
-            <a
-                href="#"
-                aria-label="Instagram"
-            >
-                Instagram
-            </a>
+    <!-- Instagram -->
 
-            <a
-                href="#"
-                aria-label="TikTok"
-            >
-                TikTok
-            </a>
+    <a
+        href="#"
+        aria-label="Instagram"
+        class="social-link"
+    >
 
-            <a
-                href="#"
-                aria-label="YouTube"
-            >
-                YouTube
-            </a>
+        <svg
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+        >
+            <rect
+                x="3"
+                y="3"
+                width="18"
+                height="18"
+                rx="5"
+            ></rect>
 
-            <a
-                href="#"
-                aria-label="Facebook"
-            >
-                Facebook
-            </a>
+            <circle
+                cx="12"
+                cy="12"
+                r="4"
+            ></circle>
+
+            <circle
+                cx="17.5"
+                cy="6.5"
+                r="1"
+                class="social-fill"
+            ></circle>
+
+        </svg>
+
+        <span>Instagram</span>
+
+    </a>
+
+
+    <!-- TikTok -->
+
+    <a
+        href="#"
+        aria-label="TikTok"
+        class="social-link"
+    >
+
+        <svg
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+        >
+            <path
+                d="M15 3v11.2a4.8 4.8 0 1 1-4-4.73"
+            ></path>
+
+            <path
+                d="M15 3c.5 2.2 1.9 3.8 4 4.5"
+            ></path>
+
+        </svg>
+
+        <span>TikTok</span>
+
+    </a>
+
+
+    <!-- YouTube -->
+
+    <a
+        href="#"
+        aria-label="YouTube"
+        class="social-link"
+    >
+
+        <svg
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+        >
+            <rect
+                x="2.5"
+                y="5"
+                width="19"
+                height="14"
+                rx="4"
+            ></rect>
+
+            <path
+                d="m10 9 5 3-5 3z"
+                class="social-fill"
+            ></path>
+
+        </svg>
+
+        <span>YouTube</span>
+
+    </a>
+
+
+    <!-- Facebook -->
+
+    <a
+        href="#"
+        aria-label="Facebook"
+        class="social-link"
+    >
+
+        <svg
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+        >
+            <path
+                d="M14 8h3V4h-3c-3.3 0-5 2-5 5v3H6v4h3v4h4v-4h3l1-4h-4V9c0-.7.3-1 1-1z"
+                class="social-fill"
+            ></path>
+
+        </svg>
+
+        <span>Facebook</span>
+
+    </a>
 
         </div>
 
