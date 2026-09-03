@@ -126,3 +126,114 @@ if (revealElements.length > 0) {
     });
 
 }
+/* =========================================
+   MOBILE NAVIGATION
+========================================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    () => {
+
+        const navToggle =
+            document.getElementById("navToggle");
+
+        const navMenu =
+            document.querySelector(".nav-menu");
+
+
+        if (!navToggle || !navMenu) {
+            return;
+        }
+
+
+        /* ================================
+           OPEN / CLOSE
+        ================================= */
+
+        navToggle.addEventListener(
+            "click",
+            (event) => {
+
+                event.stopPropagation();
+
+                const isOpen =
+                    navToggle.classList.toggle("active");
+
+                navMenu.classList.toggle(
+                    "open",
+                    isOpen
+                );
+
+                navToggle.setAttribute(
+                    "aria-expanded",
+                    isOpen
+                );
+
+            }
+        );
+
+
+        /* ================================
+           CLICK OUTSIDE
+        ================================= */
+
+        document.addEventListener(
+            "click",
+            (event) => {
+
+                if (
+                    !navMenu.contains(event.target) &&
+                    !navToggle.contains(event.target)
+                ) {
+
+                    navToggle.classList.remove(
+                        "active"
+                    );
+
+                    navMenu.classList.remove(
+                        "open"
+                    );
+
+                    navToggle.setAttribute(
+                        "aria-expanded",
+                        "false"
+                    );
+
+                }
+
+            }
+        );
+
+
+        /* ================================
+           CLICK MENU → CLOSE
+        ================================= */
+
+        navMenu
+            .querySelectorAll(".nav-link")
+            .forEach((link) => {
+
+                link.addEventListener(
+                    "click",
+                    () => {
+
+                        navToggle.classList.remove(
+                            "active"
+                        );
+
+                        navMenu.classList.remove(
+                            "open"
+                        );
+
+                        navToggle.setAttribute(
+                            "aria-expanded",
+                            "false"
+                        );
+
+                    }
+                );
+
+            });
+
+    }
+);
