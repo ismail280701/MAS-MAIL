@@ -121,6 +121,25 @@ const backToHero =
     document.getElementById("backToHero");
 
 
+function updateBackToHero() {
+
+    if (!backToHero) {
+        return;
+    }
+
+    if (window.scrollY > 350) {
+
+        backToHero.classList.add("show");
+
+    } else {
+
+        backToHero.classList.remove("show");
+
+    }
+
+}
+
+
 if (backToHero) {
 
     backToHero.addEventListener(
@@ -137,6 +156,16 @@ if (backToHero) {
 
 }
 
+
+window.addEventListener(
+    "scroll",
+    updateBackToHero,
+    {
+        passive: true
+    }
+);
+
+updateBackToHero();
 
 /* =========================================
    SHOW / HIDE BACK BUTTON
