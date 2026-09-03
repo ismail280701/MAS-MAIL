@@ -1,67 +1,188 @@
+"use strict";
+
 /* =========================================
-   MAS ISMAIL
+   MAS MAIL
    JAVASCRIPT UMUM
 ========================================= */
 
 
 /* =========================================
-   1. MOBILE MENU
+   1. MOBILE NAVIGATION
 ========================================= */
 
-const menuToggle = document.querySelector(".menu-toggle");
-const navMenu = document.querySelector(".nav-menu");
+document.addEventListener("DOMContentLoaded", () => {
 
-if (menuToggle && navMenu) {
+    /*
+     * Kita mendukung dua kemungkinan class
+     * agar Home dan Digital tetap aman
+     *
+     * .nav-toggle  → sistem utama
+     * .menu-toggle → kompatibilitas dengan HTML lama
+     */
 
-    menuToggle.addEventListener("click", () => {
+    const navToggle =
+        document.querySelector(
+            "#navToggle, .nav-toggle, .menu-toggle"
+        );
 
-    navMenu.classList.toggle("active");
+    const navMenu =
+        document.querySelector(".nav-menu");
 
-    menuToggle.classList.toggle("active");
 
-    const isOpen =
-        navMenu.classList.contains("active");
+    if (!navToggle || !navMenu) {
+        return;
+    }
 
-    menuToggle.setAttribute(
-        "aria-expanded",
-        isOpen
+
+    /* =====================================
+       OPEN / CLOSE MENU
+    ===================================== */
+
+    function openMenu() {
+
+        navToggle.classList.add("active");
+
+        navMenu.classList.add("active");
+
+        navToggle.setAttribute(
+            "aria-expanded",
+            "true"
+        );
+
+    }
+
+
+    function closeMenu() {
+
+        navToggle.classList.remove("active");
+
+        navMenu.classList.remove("active");
+
+        navToggle.setAttribute(
+            "aria-expanded",
+            "false"
+        );
+
+    }
+
+
+    function toggleMenu() {
+
+        const isOpen =
+            navMenu.classList.contains("active");
+
+
+        if (isOpen) {
+
+            closeMenu();
+
+        } else {
+
+            openMenu();
+
+        }
+
+    }
+
+
+    /* =====================================
+       HAMBURGER CLICK
+    ===================================== */
+
+    navToggle.addEventListener(
+        "click",
+        (event) => {
+
+            event.stopPropagation();
+
+            toggleMenu();
+
+        }
+    );
+
+
+    /* =====================================
+       CLICK MENU
+    ===================================== */
+
+    navMenu
+        .querySelectorAll(".nav-link")
+        .forEach((link) => {
+
+            link.addEventListener(
+                "click",
+                () => {
+
+                    closeMenu();
+
+                }
+            );
+
+        });
+
+
+    /* =====================================
+       CLICK DI LUAR MENU
+    ===================================== */
+
+    document.addEventListener(
+        "click",
+        (event) => {
+
+            const clickedInsideMenu =
+                navMenu.contains(event.target);
+
+            const clickedToggle =
+                navToggle.contains(event.target);
+
+
+            if (
+                !clickedInsideMenu &&
+                !clickedToggle
+            ) {
+
+                closeMenu();
+
+            }
+
+        }
+    );
+
+
+    /* =====================================
+       ESCAPE KEY
+    ===================================== */
+
+    document.addEventListener(
+        "keydown",
+        (event) => {
+
+            if (event.key === "Escape") {
+
+                closeMenu();
+
+            }
+
+        }
     );
 
 });
-
-
-    /* Menutup menu setelah link diklik */
-
-    const navLinks = navMenu.querySelectorAll(".nav-link");
-
-    navLinks.forEach((link) => {
-
-        link.addEventListener("click", () => {
-
-            navMenu.classList.remove("active");
-
-menuToggle.classList.remove("active");
-
-menuToggle.setAttribute(
-    "aria-expanded",
-    "false"
-);
-        });
-
-    });
-
-}
 
 
 /* =========================================
    2. HEADER SAAT SCROLL
 ========================================= */
 
-const header = document.querySelector(".site-header");
+const header =
+    document.querySelector(".site-header");
+
 
 function updateHeader() {
 
-    if (!header) return;
+    if (!header) {
+        return;
+    }
+
 
     if (window.scrollY > 20) {
 
@@ -75,21 +196,26 @@ function updateHeader() {
 
 }
 
+
 window.addEventListener(
     "scroll",
     updateHeader,
-    { passive: true }
+    {
+        passive: true
+    }
 );
+
 
 updateHeader();
 
 
 /* =========================================
-   3. REVEAL ELEMENT
+   3. SCROLL REVEAL
 ========================================= */
 
 const revealElements =
     document.querySelectorAll(".reveal");
+
 
 if (revealElements.length > 0) {
 
@@ -99,17 +225,19 @@ if (revealElements.length > 0) {
 
                 entries.forEach((entry) => {
 
-                    if (entry.isIntersecting) {
-
-                        entry.target.classList.add(
-                            "revealed"
-                        );
-
-                        observer.unobserve(
-                            entry.target
-                        );
-
+                    if (!entry.isIntersecting) {
+                        return;
                     }
+
+
+                    entry.target.classList.add(
+                        "revealed"
+                    );
+
+
+                    observer.unobserve(
+                        entry.target
+                    );
 
                 });
 
@@ -119,6 +247,7 @@ if (revealElements.length > 0) {
             }
         );
 
+
     revealElements.forEach((element) => {
 
         revealObserver.observe(element);
@@ -126,119 +255,10 @@ if (revealElements.length > 0) {
     });
 
 }
+
+
 /* =========================================
-   MOBILE NAVIGATION
-========================================= */
-
-document.addEventListener(
-    "DOMContentLoaded",
-    () => {
-
-        const navToggle =
-            document.getElementById("navToggle");
-
-        const navMenu =
-            document.querySelector(".nav-menu");
-
-
-        if (!navToggle || !navMenu) {
-            return;
-        }
-
-
-        /* ================================
-           OPEN / CLOSE
-        ================================= */
-
-        navToggle.addEventListener(
-            "click",
-            (event) => {
-
-                event.stopPropagation();
-
-                const isOpen =
-                    navToggle.classList.toggle("active");
-
-                navMenu.classList.toggle(
-                    "open",
-                    isOpen
-                );
-
-                navToggle.setAttribute(
-                    "aria-expanded",
-                    isOpen
-                );
-
-            }
-        );
-
-
-        /* ================================
-           CLICK OUTSIDE
-        ================================= */
-
-        document.addEventListener(
-            "click",
-            (event) => {
-
-                if (
-                    !navMenu.contains(event.target) &&
-                    !navToggle.contains(event.target)
-                ) {
-
-                    navToggle.classList.remove(
-                        "active"
-                    );
-
-                    navMenu.classList.remove(
-                        "open"
-                    );
-
-                    navToggle.setAttribute(
-                        "aria-expanded",
-                        "false"
-                    );
-
-                }
-
-            }
-        );
-
-
-        /* ================================
-           CLICK MENU → CLOSE
-        ================================= */
-
-        navMenu
-            .querySelectorAll(".nav-link")
-            .forEach((link) => {
-
-                link.addEventListener(
-                    "click",
-                    () => {
-
-                        navToggle.classList.remove(
-                            "active"
-                        );
-
-                        navMenu.classList.remove(
-                            "open"
-                        );
-
-                        navToggle.setAttribute(
-                            "aria-expanded",
-                            "false"
-                        );
-
-                    }
-                );
-
-            });
-
-    }
-);
-/* =========================================
-   PAGE TRANSITION SYSTEM
+   4. PAGE TRANSITION
 ========================================= */
 
 document.addEventListener(
@@ -298,7 +318,7 @@ document.addEventListener(
 
 
         /* =====================================
-           GET CURRENT PAGE
+           CURRENT PAGE
         ===================================== */
 
         const currentPage =
@@ -309,9 +329,6 @@ document.addEventListener(
 
         /* =====================================
            OPENING TRANSITION
-           
-           Hanya dijalankan ketika website
-           pertama kali dibuka / direfresh.
         ===================================== */
 
         const openingPlayed =
@@ -329,6 +346,7 @@ document.addEventListener(
 
             transitionTitle.textContent =
                 info.title;
+
 
             transitionSubtitle.textContent =
                 info.subtitle;
@@ -361,8 +379,6 @@ document.addEventListener(
 
         /* =====================================
            PAGE NAVIGATION TRANSITION
-           
-           Dipakai ketika berpindah halaman.
         ===================================== */
 
         document
@@ -408,29 +424,18 @@ document.addEventListener(
                         event.preventDefault();
 
 
-                        /* =====================
-                           SET TRANSITION TEXT
-                        ===================== */
-
                         transitionTitle.textContent =
                             info.title;
+
 
                         transitionSubtitle.textContent =
                             info.subtitle;
 
 
-                        /* =====================
-                           SHOW TRANSITION
-                        ===================== */
-
                         pageTransition.classList.add(
                             "active"
                         );
 
-
-                        /* =====================
-                           MOVE TO PAGE
-                        ===================== */
 
                         setTimeout(
                             () => {
