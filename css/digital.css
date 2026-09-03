@@ -128,11 +128,40 @@
 .digital-hero-actions {
     display: flex;
 
+    align-items: center;
+
     flex-wrap: wrap;
 
-    gap: 12px;
+    gap: 10px;
 
     margin-top: 32px;
+}
+
+.digital-hero-actions .button {
+    min-height: 44px;
+
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding:
+        11px 18px;
+
+    border-radius:
+        var(--radius-pill);
+
+    font-size: 0.78rem;
+    font-weight: 700;
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.digital-hero-actions .button:hover {
+    transform:
+        translateY(-2px);
 }
 
 
@@ -395,17 +424,25 @@
     }
 
     .digital-hero-actions {
-        flex-direction: column;
+        display: grid;
 
-        align-items: center;
+        grid-template-columns:
+            1fr 1fr;
 
         width: 100%;
+
+        max-width: 340px;
+
+        margin-inline: auto;
+    }
+
+    .digital-hero-actions
+    .button:first-child {
+        grid-column: 1 / -1;
     }
 
     .digital-hero-actions .button {
         width: 100%;
-
-        max-width: 300px;
     }
 
     .digital-hero-visual {
