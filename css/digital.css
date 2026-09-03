@@ -444,3 +444,236 @@
     }
 
 }
+/* =========================================
+   12. DIGITAL NAVBAR OVERRIDE
+========================================= */
+
+.site-header {
+    width: 100%;
+}
+
+.site-header .navbar {
+    min-height: 72px;
+
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+
+/* =========================================
+   NAV BRAND
+========================================= */
+
+.site-header .nav-brand {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    min-width: 0;
+
+    text-decoration: none;
+}
+
+
+/* =========================================
+   NAV LOGO
+========================================= */
+
+.site-header .nav-brand-logo {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 44px;
+    height: 44px;
+
+    flex-shrink: 0;
+
+    overflow: hidden;
+
+    border-radius: 50%;
+}
+
+.site-header .nav-brand-logo img {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+}
+
+
+/* =========================================
+   NAV BRAND TEXT
+========================================= */
+
+.site-header .nav-brand-text {
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    min-width: 0;
+}
+
+.site-header .nav-brand-text strong {
+    display: block;
+
+    color:
+        var(--color-navy);
+
+    font-size: 0.85rem;
+
+    line-height: 1.15;
+
+    white-space: nowrap;
+}
+
+.site-header .nav-brand-text span {
+    display: block;
+
+    margin-top: 3px;
+
+    color:
+        var(--color-text-soft);
+
+    font-size: 0.6rem;
+
+    line-height: 1;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================
+   NAV MENU
+========================================= */
+
+.site-header .nav-menu {
+    display: flex;
+
+    align-items: center;
+
+    gap: 6px;
+
+    margin-left: auto;
+}
+
+.site-header .nav-link {
+    display: inline-flex;
+
+    align-items: center;
+
+    min-height: 38px;
+
+    padding:
+        8px 12px;
+
+    border-radius:
+        var(--radius-pill);
+
+    color:
+        var(--color-text-soft);
+
+    font-size: 0.72rem;
+    font-weight: 600;
+
+    white-space: nowrap;
+
+    transition:
+        color 0.25s ease,
+        background-color 0.25s ease;
+}
+
+.site-header .nav-link:hover {
+    color:
+        var(--color-primary);
+
+    background:
+        rgba(15, 118, 110, 0.06);
+}
+
+.site-header .nav-link.active {
+    color:
+        var(--color-primary);
+
+    background:
+        rgba(15, 118, 110, 0.08);
+}
+
+
+/* =========================================
+   NAV MOBILE
+========================================= */
+
+@media (max-width: 700px) {
+
+    .site-header .navbar {
+        min-height: 64px;
+
+        padding-top: 8px;
+        padding-bottom: 8px;
+    }
+
+    .site-header .nav-brand-logo {
+        width: 40px;
+        height: 40px;
+    }
+
+    .site-header .nav-brand-text strong {
+        font-size: 0.76rem;
+    }
+
+    .site-header .nav-brand-text span {
+        font-size: 0.55rem;
+    }
+
+    .site-header .nav-menu {
+        position: absolute;
+
+        top: 100%;
+        left: 16px;
+        right: 16px;
+
+        display: none;
+
+        flex-direction: column;
+
+        align-items: stretch;
+
+        gap: 4px;
+
+        padding: 10px;
+
+        background:
+            rgba(255, 255, 255, 0.96);
+
+        border:
+            1px solid
+            var(--color-border);
+
+        border-radius:
+            var(--radius-medium);
+
+        box-shadow:
+            var(--shadow-large);
+    }
+
+    .site-header .nav-menu.open {
+        display: flex;
+    }
+
+    .site-header .nav-link {
+        width: 100%;
+
+        justify-content: center;
+
+        padding: 11px;
+    }
+
+}
