@@ -338,8 +338,15 @@ section {
 }
 
 .brand-logo img {
+    display: block;
+
     width: 42px;
     height: 42px;
+
+    max-width: 42px;
+    max-height: 42px;
+
+    flex-shrink: 0;
 
     object-fit: contain;
 }
@@ -579,7 +586,23 @@ button:focus-visible {
         );
     }
 
+@media (max-width: 700px) {
 
+    .brand-logo {
+        gap: 8px;
+
+        font-size: 0.9rem;
+    }
+
+    .brand-logo img {
+        width: 38px;
+        height: 38px;
+
+        max-width: 38px;
+        max-height: 38px;
+    }
+
+}
     /* ================================
        NAVBAR
     ================================= */
@@ -594,17 +617,6 @@ button:focus-visible {
 
         min-height: 64px;
     }
-
-
-    /* ================================
-       LOGO
-    ================================= */
-
-    .logo {
-        font-size: 1.05rem;
-    }
-
-
     /* ================================
        HAMBURGER
     ================================= */
