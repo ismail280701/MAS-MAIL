@@ -237,3 +237,145 @@ document.addEventListener(
 
     }
 );
+/* =========================================
+   PAGE TRANSITION
+========================================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    () => {
+
+        const pageTransition =
+            document.getElementById(
+                "pageTransition"
+            );
+
+        const transitionTitle =
+            document.getElementById(
+                "transitionTitle"
+            );
+
+        const transitionSubtitle =
+            document.getElementById(
+                "transitionSubtitle"
+            );
+
+
+        if (!pageTransition) {
+            return;
+        }
+
+
+        /* ================================
+           PAGE INFORMATION
+        ================================= */
+
+        const pageInfo = {
+
+            "index.html": {
+                title: "Mas Mail",
+                subtitle:
+                    "Koneksi & Perdagangan Modern"
+            },
+
+            "digital.html": {
+                title: "Mas Mail Digital",
+                subtitle:
+                    "Pembuatan Website, Aplikasi, & Solusi Digital"
+            },
+
+            "barokah.html": {
+                title: "Mas Mail Barokah",
+                subtitle:
+                    "Mitra Alfamart & Toko Online"
+            }
+
+        };
+
+
+        /* ================================
+           LINK NAVIGATION
+        ================================= */
+
+        document
+            .querySelectorAll(
+                'a[href$=".html"]'
+            )
+            .forEach((link) => {
+
+                link.addEventListener(
+                    "click",
+                    (event) => {
+
+                        const href =
+                            link.getAttribute(
+                                "href"
+                            );
+
+
+                        if (
+                            !href ||
+                            href.startsWith("#") ||
+                            link.target === "_blank"
+                        ) {
+                            return;
+                        }
+
+
+                        const fileName =
+                            href.split("/").pop();
+
+
+                        const info =
+                            pageInfo[fileName];
+
+
+                        if (!info) {
+                            return;
+                        }
+
+
+                        event.preventDefault();
+
+
+                        /* =====================
+                           SET TEXT
+                        ===================== */
+
+                        transitionTitle.textContent =
+                            info.title;
+
+                        transitionSubtitle.textContent =
+                            info.subtitle;
+
+
+                        /* =====================
+                           SHOW
+                        ===================== */
+
+                        pageTransition.classList.add(
+                            "active"
+                        );
+
+
+                        /* =====================
+                           MOVE PAGE
+                        ===================== */
+
+                        setTimeout(
+                            () => {
+
+                                window.location.href =
+                                    href;
+
+                            },
+                            650
+                        );
+
+                    }
+                );
+
+            });
+
+    }
+);
