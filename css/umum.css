@@ -783,13 +783,16 @@ button:focus-visible {
     font-size: 0.75rem;
 }
 
-
 /* =========================================
-   FOOTER SOCIAL
+   FOOTER SOCIAL MEDIA
 ========================================= */
 
 .footer-social {
     display: flex;
+
+    align-items: center;
+
+    justify-content: flex-end;
 
     flex-wrap: wrap;
 
@@ -802,8 +805,14 @@ button:focus-visible {
         rgba(255, 255, 255, 0.1);
 }
 
-.footer-social a {
-    padding: 9px 14px;
+.social-link {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    padding: 9px 13px;
 
     border: 1px solid
         rgba(255, 255, 255, 0.1);
@@ -812,15 +821,78 @@ button:focus-visible {
         var(--radius-pill);
 
     color:
-        rgba(255, 255, 255, 0.7);
+        rgba(255, 255, 255, 0.65);
 
-    font-size: 0.78rem;
+    font-size: 0.76rem;
     font-weight: 600;
 
     transition:
         background-color var(--transition-normal),
+        border-color var(--transition-normal),
         color var(--transition-normal),
-        border-color var(--transition-normal);
+        transform var(--transition-normal);
+}
+
+.social-link:hover {
+    background:
+        rgba(255, 255, 255, 0.08);
+
+    border-color:
+        rgba(212, 175, 95, 0.45);
+
+    color:
+        var(--color-white);
+
+    transform:
+        translateY(-2px);
+}
+
+.social-link svg {
+    width: 17px;
+    height: 17px;
+
+    fill: none;
+
+    stroke:
+        currentColor;
+
+    stroke-width: 1.8;
+
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.social-link .social-fill {
+    fill:
+        currentColor;
+
+    stroke: none;
+}
+
+
+/* =========================================
+   FOOTER MOBILE SOCIAL
+========================================= */
+
+@media (max-width: 700px) {
+
+    .footer-social {
+        justify-content: flex-start;
+
+        gap: 7px;
+    }
+
+    .social-link {
+        padding: 8px 11px;
+
+        font-size: 0.7rem;
+    }
+
+    .social-link svg {
+        width: 16px;
+        height: 16px;
+    }
+
 }
 
 .footer-social a:hover {
