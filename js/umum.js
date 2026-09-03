@@ -238,149 +238,7 @@ document.addEventListener(
     }
 );
 /* =========================================
-   PAGE TRANSITION
-========================================= */
-
-document.addEventListener(
-    "DOMContentLoaded",
-    () => {
-
-        const pageTransition =
-            document.getElementById(
-                "pageTransition"
-            );
-
-        const transitionTitle =
-            document.getElementById(
-                "transitionTitle"
-            );
-
-        const transitionSubtitle =
-            document.getElementById(
-                "transitionSubtitle"
-            );
-
-
-        if (!pageTransition) {
-            return;
-        }
-
-
-        /* ================================
-           PAGE INFORMATION
-        ================================= */
-
-        const pageInfo = {
-
-            "index.html": {
-                title: "Mas Mail",
-                subtitle:
-                    "Koneksi & Perdagangan Modern"
-            },
-
-            "digital.html": {
-                title: "Mas Mail Digital",
-                subtitle:
-                    "Pembuatan Website, Aplikasi, & Solusi Digital"
-            },
-
-            "barokah.html": {
-                title: "Mas Mail Barokah",
-                subtitle:
-                    "Mitra Alfamart & Toko Online"
-            }
-
-        };
-
-
-        /* ================================
-           LINK NAVIGATION
-        ================================= */
-
-        document
-            .querySelectorAll(
-                'a[href$=".html"]'
-            )
-            .forEach((link) => {
-
-                link.addEventListener(
-                    "click",
-                    (event) => {
-
-                        const href =
-                            link.getAttribute(
-                                "href"
-                            );
-
-
-                        if (
-                            !href ||
-                            href.startsWith("#") ||
-                            link.target === "_blank"
-                        ) {
-                            return;
-                        }
-
-
-                        const fileName =
-                            href.split("/").pop();
-
-
-                        const info =
-                            pageInfo[fileName];
-
-
-                        if (!info) {
-                            return;
-                        }
-
-
-                        event.preventDefault();
-
-
-                        /* =====================
-                           SET TEXT
-                        ===================== */
-
-                        transitionTitle.textContent =
-                            info.title;
-
-                        transitionSubtitle.textContent =
-                            info.subtitle;
-
-
-                        /* =====================
-                           SHOW
-                        ===================== */
-
-                        pageTransition.classList.add(
-                            "active"
-                        );
-
-
-                        /* =====================
-                           MOVE PAGE
-                        ===================== */
-
-                        setTimeout(
-                            () => {
-
-                                window.location.href =
-                                    href;
-
-                            },
-                            650
-                        );
-
-                    }
-                );
-
-            });
-
-    }
-);
-/* =========================================
-   OPENING PAGE TRANSITION
+   PAGE TRANSITION SYSTEM
 ========================================= */
 
 document.addEventListener(
@@ -413,16 +271,6 @@ document.addEventListener(
 
 
         /* =====================================
-           CURRENT PAGE
-        ===================================== */
-
-        const currentPage =
-            window.location.pathname
-                .split("/")
-                .pop() || "index.html";
-
-
-        /* =====================================
            PAGE INFORMATION
         ===================================== */
 
@@ -449,45 +297,155 @@ document.addEventListener(
         };
 
 
-        const info =
-            pageInfo[currentPage] ||
-            pageInfo["index.html"];
+        /* =====================================
+           GET CURRENT PAGE
+        ===================================== */
+
+        const currentPage =
+            window.location.pathname
+                .split("/")
+                .pop() || "index.html";
 
 
         /* =====================================
-           SET CURRENT PAGE TEXT
+           OPENING TRANSITION
+           
+           Hanya dijalankan ketika website
+           pertama kali dibuka / direfresh.
         ===================================== */
 
-        transitionTitle.textContent =
-            info.title;
+        const openingPlayed =
+            sessionStorage.getItem(
+                "masMailOpeningPlayed"
+            );
 
-        transitionSubtitle.textContent =
-            info.subtitle;
+
+        if (!openingPlayed) {
+
+            const info =
+                pageInfo[currentPage] ||
+                pageInfo["index.html"];
+
+
+            transitionTitle.textContent =
+                info.title;
+
+            transitionSubtitle.textContent =
+                info.subtitle;
+
+
+            pageTransition.classList.add(
+                "active"
+            );
+
+
+            sessionStorage.setItem(
+                "masMailOpeningPlayed",
+                "true"
+            );
+
+
+            setTimeout(
+                () => {
+
+                    pageTransition.classList.remove(
+                        "active"
+                    );
+
+                },
+                1400
+            );
+
+        }
 
 
         /* =====================================
-           OPENING ANIMATION
+           PAGE NAVIGATION TRANSITION
+           
+           Dipakai ketika berpindah halaman.
         ===================================== */
 
-        pageTransition.classList.add(
-            "active"
-        );
+        document
+            .querySelectorAll(
+                'a[href$=".html"]'
+            )
+            .forEach((link) => {
+
+                link.addEventListener(
+                    "click",
+                    (event) => {
+
+                        const href =
+                            link.getAttribute(
+                                "href"
+                            );
 
 
-        /* =====================================
-           REMOVE AFTER ANIMATION
-        ===================================== */
+                        if (
+                            !href ||
+                            href.startsWith("#") ||
+                            link.target === "_blank"
+                        ) {
+                            return;
+                        }
 
-        setTimeout(
-            () => {
 
-                pageTransition.classList.remove(
-                    "active"
+                        const targetPage =
+                            href
+                                .split("/")
+                                .pop();
+
+
+                        const info =
+                            pageInfo[targetPage];
+
+
+                        if (!info) {
+                            return;
+                        }
+
+
+                        event.preventDefault();
+
+
+                        /* =====================
+                           SET TRANSITION TEXT
+                        ===================== */
+
+                        transitionTitle.textContent =
+                            info.title;
+
+                        transitionSubtitle.textContent =
+                            info.subtitle;
+
+
+                        /* =====================
+                           SHOW TRANSITION
+                        ===================== */
+
+                        pageTransition.classList.add(
+                            "active"
+                        );
+
+
+                        /* =====================
+                           MOVE TO PAGE
+                        ===================== */
+
+                        setTimeout(
+                            () => {
+
+                                window.location.href =
+                                    href;
+
+                            },
+                            650
+                        );
+
+                    }
                 );
 
-            },
-            1400
-        );
+            });
 
     }
 );
