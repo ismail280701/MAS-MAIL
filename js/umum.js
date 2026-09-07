@@ -255,7 +255,6 @@ if (revealElements.length > 0) {
     });
 
 }
-
 /* =========================================
    4. PAGE TRANSITION
 ========================================= */
@@ -326,22 +325,19 @@ document.addEventListener(
                 .pop() || "index.html";
 
 
+        const currentInfo =
+            pageInfo[currentPage] ||
+            pageInfo["index.html"];
+
+
         /* =====================================
-           OPENING TRANSITION
+           SHOW TRANSITION
         ===================================== */
 
-        const openingPlayed =
-            sessionStorage.getItem(
-                "masMailOpeningPlayed"
-            );
-
-
-        if (!openingPlayed) {
-
-            const info =
-                pageInfo[currentPage] ||
-                pageInfo["index.html"];
-
+        function showTransition(
+            info,
+            duration = 1400
+        ) {
 
             transitionTitle.textContent =
                 info.title;
@@ -355,12 +351,6 @@ document.addEventListener(
             );
 
 
-            sessionStorage.setItem(
-                "masMailOpeningPlayed",
-                "true"
-            );
-
-
             setTimeout(
                 () => {
 
@@ -369,7 +359,33 @@ document.addEventListener(
                     );
 
                 },
+                duration
+            );
+
+        }
+
+
+        /* =====================================
+           OPENING TRANSITION
+        ===================================== */
+
+        const openingPlayed =
+            sessionStorage.getItem(
+                "masMailOpeningPlayed"
+            );
+
+
+        if (!openingPlayed) {
+
+            showTransition(
+                currentInfo,
                 1400
+            );
+
+
+            sessionStorage.setItem(
+                "masMailOpeningPlayed",
+                "true"
             );
 
         }
@@ -422,15 +438,9 @@ document.addEventListener(
                         event.preventDefault();
 
 
-                        transitionTitle.textContent =
-                            info.title;
-
-                        transitionSubtitle.textContent =
-                            info.subtitle;
-
-
-                        pageTransition.classList.add(
-                            "active"
+                        showTransition(
+                            info,
+                            650
                         );
 
 
@@ -456,17 +466,46 @@ document.addEventListener(
 
         window.addEventListener(
             "pageshow",
-            () => {
+            (event) => {
 
                 /*
-                 * Saat Android mengembalikan
-                 * halaman sebelumnya dari cache,
-                 * pastikan transition sudah ditutup.
+                 * Jika halaman dikembalikan
+                 * melalui browser history / BFCache,
+                 * tampilkan transition kembali.
                  */
 
-                pageTransition.classList.remove(
-                    "active"
-                );
+                const navigationEntries =
+                    performance.getEntriesByType(
+                        "navigation"
+                    );
+
+                const navigationEntry =
+                    navigationEntries.length > 0
+                        ? navigationEntries[0]
+                        : null;
+
+
+                const isHistoryNavigation =
+                    navigationEntry &&
+                    navigationEntry.type ===
+                        "back_forward";
+
+
+                const isBFCacheRestore =
+                    event.persisted === true;
+
+
+                if (
+                    isHistoryNavigation ||
+                    isBFCacheRestore
+                ) {
+
+                    showTransition(
+                        currentInfo,
+                        1400
+                    );
+
+                }
 
             }
         );
