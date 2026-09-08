@@ -1,1 +1,1276 @@
+/* =========================================
+   MAS MAIL BAROKAH
+   HERO SECTION
+========================================= */
 
+
+/* =========================================
+   1. HERO
+========================================= */
+
+.barokah-hero {
+
+    position: relative;
+
+    min-height: 100vh;
+
+    min-height: 100svh;
+
+    display: flex;
+
+    align-items: center;
+
+    overflow: hidden;
+
+    padding: 120px 0 80px;
+
+    background:
+        radial-gradient(
+            circle at 85% 20%,
+            rgba(20, 184, 166, 0.16),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 15% 85%,
+            rgba(16, 185, 129, 0.10),
+            transparent 30%
+        ),
+        linear-gradient(
+            135deg,
+            #f8fffd 0%,
+            #ffffff 48%,
+            #effcf8 100%
+        );
+
+}
+
+
+/* =========================================
+   2. HERO CONTAINER
+========================================= */
+
+.barokah-hero-container {
+
+    width: min(
+        1180px,
+        calc(100% - 40px)
+    );
+
+    margin: 0 auto;
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1fr)
+        minmax(420px, 0.9fr);
+
+    align-items: center;
+
+    gap: 70px;
+
+}
+
+
+/* =========================================
+   3. HERO CONTENT
+========================================= */
+
+.barokah-hero-content {
+
+    position: relative;
+
+    z-index: 3;
+
+    max-width: 650px;
+
+}
+
+
+/* =========================================
+   4. LABEL
+========================================= */
+
+.barokah-hero-label {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    margin-bottom: 22px;
+
+    padding: 8px 14px;
+
+    border: 1px solid
+        rgba(13, 148, 136, 0.16);
+
+    border-radius: 999px;
+
+    background:
+        rgba(255, 255, 255, 0.72);
+
+    box-shadow:
+        0 8px 25px
+        rgba(15, 118, 110, 0.07);
+
+    color: #0f766e;
+
+    font-size: 0.75rem;
+
+    font-weight: 800;
+
+    letter-spacing: 0.16em;
+
+}
+
+
+/* =========================================
+   5. TITLE
+========================================= */
+
+.barokah-hero-title {
+
+    margin: 0;
+
+    max-width: 680px;
+
+    color: #0f172a;
+
+    font-size: clamp(
+        2.7rem,
+        5vw,
+        4.8rem
+    );
+
+    font-weight: 800;
+
+    line-height: 1.05;
+
+    letter-spacing: -0.045em;
+
+}
+
+
+.barokah-hero-title span {
+
+    display: block;
+
+    margin-top: 8px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #0f766e,
+            #10b981
+        );
+
+    -webkit-background-clip: text;
+
+    background-clip: text;
+
+    color: transparent;
+
+}
+
+
+/* =========================================
+   6. DESCRIPTION
+========================================= */
+
+.barokah-hero-description {
+
+    max-width: 570px;
+
+    margin: 26px 0 0;
+
+    color: #64748b;
+
+    font-size: 1.05rem;
+
+    line-height: 1.8;
+
+}
+
+
+/* =========================================
+   7. HERO ACTIONS
+========================================= */
+
+.barokah-hero-actions {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    align-items: center;
+
+    gap: 14px;
+
+    margin-top: 34px;
+
+}
+
+
+/*
+ * Primary button
+ * Menggunakan sistem button dari umum.css,
+ * lalu diberi identitas khusus Barokah.
+ */
+
+.barokah-hero-actions .btn-primary {
+
+    background:
+        linear-gradient(
+            135deg,
+            #0f766e,
+            #10b981
+        );
+
+    border-color: transparent;
+
+    box-shadow:
+        0 12px 30px
+        rgba(15, 118, 110, 0.20);
+
+}
+
+
+.barokah-hero-actions .btn-primary:hover {
+
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 16px 35px
+        rgba(15, 118, 110, 0.26);
+
+}
+
+
+.barokah-hero-actions .btn-secondary {
+
+    border-color:
+        rgba(15, 118, 110, 0.18);
+
+    background:
+        rgba(255, 255, 255, 0.78);
+
+    color: #0f766e;
+
+}
+
+
+.barokah-hero-actions .btn-secondary:hover {
+
+    transform: translateY(-3px);
+
+    border-color:
+        rgba(15, 118, 110, 0.35);
+
+    background: #ffffff;
+
+}
+
+
+/* =========================================
+   8. HERO INFO
+========================================= */
+
+.barokah-hero-info {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 22px;
+
+    margin-top: 48px;
+
+}
+
+
+.barokah-info-item {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 5px;
+
+}
+
+
+.barokah-info-item strong {
+
+    color: #0f172a;
+
+    font-size: 0.9rem;
+
+    font-weight: 800;
+
+}
+
+
+.barokah-info-item span {
+
+    color: #94a3b8;
+
+    font-size: 0.72rem;
+
+    line-height: 1.4;
+
+}
+
+
+.barokah-info-divider {
+
+    width: 1px;
+
+    height: 34px;
+
+    background:
+        rgba(15, 23, 42, 0.10);
+
+}
+
+
+/* =========================================
+   9. HERO VISUAL
+========================================= */
+
+.barokah-hero-visual {
+
+    position: relative;
+
+    min-height: 560px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+}
+
+
+/* =========================================
+   10. VISUAL GLOW
+========================================= */
+
+.barokah-visual-glow {
+
+    position: absolute;
+
+    width: 430px;
+
+    height: 430px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(16, 185, 129, 0.20),
+            rgba(20, 184, 166, 0.08) 45%,
+            transparent 72%
+        );
+
+    filter: blur(10px);
+
+    animation:
+        barokahGlow 6s ease-in-out infinite;
+
+}
+
+
+/* =========================================
+   11. LOGO CARD
+========================================= */
+
+.barokah-logo-card {
+
+    position: relative;
+
+    z-index: 2;
+
+    width: 330px;
+
+    height: 330px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 42px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255, 255, 255, 0.94),
+            rgba(240, 253, 250, 0.84)
+        );
+
+    border: 1px solid
+        rgba(255, 255, 255, 0.9);
+
+    box-shadow:
+        0 35px 80px
+        rgba(15, 118, 110, 0.16),
+        inset 0 1px 0
+        rgba(255, 255, 255, 0.95);
+
+    backdrop-filter: blur(20px);
+
+    -webkit-backdrop-filter: blur(20px);
+
+    animation:
+        barokahFloat 5s ease-in-out infinite;
+
+}
+
+
+.barokah-logo-card::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 14px;
+
+    border-radius: 32px;
+
+    border: 1px solid
+        rgba(15, 118, 110, 0.08);
+
+}
+
+
+.barokah-logo-card-inner {
+
+    position: relative;
+
+    z-index: 2;
+
+    width: 230px;
+
+    height: 230px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 32px;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 20px 50px
+        rgba(15, 23, 42, 0.10);
+
+}
+
+
+.barokah-logo-card-inner img {
+
+    display: block;
+
+    width: 78%;
+
+    height: 78%;
+
+    object-fit: contain;
+
+}
+
+
+/* =========================================
+   12. FLOATING CARDS
+========================================= */
+
+.barokah-floating-card {
+
+    position: absolute;
+
+    z-index: 4;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    min-width: 190px;
+
+    padding: 15px 18px;
+
+    border: 1px solid
+        rgba(255, 255, 255, 0.85);
+
+    border-radius: 18px;
+
+    background:
+        rgba(255, 255, 255, 0.84);
+
+    box-shadow:
+        0 18px 40px
+        rgba(15, 23, 42, 0.10);
+
+    backdrop-filter: blur(18px);
+
+    -webkit-backdrop-filter: blur(18px);
+
+}
+
+
+.barokah-floating-card strong {
+
+    display: block;
+
+    margin-bottom: 3px;
+
+    color: #0f172a;
+
+    font-size: 0.78rem;
+
+    font-weight: 800;
+
+}
+
+
+.barokah-floating-card div span {
+
+    display: block;
+
+    color: #94a3b8;
+
+    font-size: 0.68rem;
+
+}
+
+
+.barokah-floating-icon {
+
+    width: 38px;
+
+    height: 38px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 12px;
+
+    background:
+        rgba(16, 185, 129, 0.10);
+
+    color: #0f766e;
+
+    font-size: 1rem;
+
+    font-weight: 800;
+
+}
+
+
+/* =========================================
+   13. FLOATING CARD POSITION
+========================================= */
+
+.barokah-floating-card.card-top {
+
+    top: 95px;
+
+    right: 0;
+
+    animation:
+        barokahCardFloat 4.5s ease-in-out infinite;
+
+}
+
+
+.barokah-floating-card.card-bottom {
+
+    bottom: 95px;
+
+    left: 0;
+
+    animation:
+        barokahCardFloat 5.2s ease-in-out
+        infinite reverse;
+
+}
+
+
+/* =========================================
+   14. DECORATIVE CIRCLES
+========================================= */
+
+.barokah-visual-circle {
+
+    position: absolute;
+
+    border-radius: 50%;
+
+    pointer-events: none;
+
+}
+
+
+.barokah-visual-circle.circle-one {
+
+    width: 24px;
+
+    height: 24px;
+
+    top: 90px;
+
+    left: 70px;
+
+    background:
+        rgba(16, 185, 129, 0.22);
+
+    box-shadow:
+        0 0 0 10px
+        rgba(16, 185, 129, 0.06);
+
+    animation:
+        barokahDot 4s ease-in-out infinite;
+
+}
+
+
+.barokah-visual-circle.circle-two {
+
+    width: 14px;
+
+    height: 14px;
+
+    right: 65px;
+
+    bottom: 105px;
+
+    background:
+        rgba(20, 184, 166, 0.28);
+
+    box-shadow:
+        0 0 0 8px
+        rgba(20, 184, 166, 0.06);
+
+    animation:
+        barokahDot 3.5s ease-in-out
+        infinite reverse;
+
+}
+
+
+/* =========================================
+   15. SCROLL INDICATOR
+========================================= */
+
+.barokah-scroll-indicator {
+
+    position: absolute;
+
+    left: 50%;
+
+    bottom: 28px;
+
+    transform: translateX(-50%);
+
+    z-index: 5;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 6px;
+
+    text-decoration: none;
+
+    color: #94a3b8;
+
+    font-size: 0.68rem;
+
+    letter-spacing: 0.04em;
+
+    transition:
+        color 0.25s ease,
+        transform 0.25s ease;
+
+}
+
+
+.barokah-scroll-indicator:hover {
+
+    color: #0f766e;
+
+    transform:
+        translateX(-50%)
+        translateY(-3px);
+
+}
+
+
+.barokah-scroll-indicator .scroll-arrow {
+
+    font-size: 1.1rem;
+
+    animation:
+        barokahScroll 1.8s ease-in-out
+        infinite;
+
+}
+
+
+/* =========================================
+   16. ANIMATIONS
+========================================= */
+
+@keyframes barokahFloat {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-12px);
+    }
+
+}
+
+
+@keyframes barokahCardFloat {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-9px);
+    }
+
+}
+
+
+@keyframes barokahGlow {
+
+    0%,
+    100% {
+        transform: scale(0.96);
+        opacity: 0.75;
+    }
+
+    50% {
+        transform: scale(1.04);
+        opacity: 1;
+    }
+
+}
+
+
+@keyframes barokahDot {
+
+    0%,
+    100% {
+        transform: translateY(0);
+        opacity: 0.7;
+    }
+
+    50% {
+        transform: translateY(-10px);
+        opacity: 1;
+    }
+
+}
+
+
+@keyframes barokahScroll {
+
+    0%,
+    100% {
+        transform: translateY(0);
+
+    }
+
+    50% {
+        transform: translateY(6px);
+
+    }
+
+}
+
+
+/* =========================================
+   17. TABLET
+========================================= */
+
+@media (max-width: 900px) {
+
+    .barokah-hero {
+
+        padding-top: 120px;
+
+    }
+
+
+    .barokah-hero-container {
+
+        grid-template-columns: 1fr;
+
+        gap: 35px;
+
+        text-align: center;
+
+    }
+
+
+    .barokah-hero-content {
+
+        max-width: 720px;
+
+        margin: 0 auto;
+
+    }
+
+
+    .barokah-hero-title {
+
+        margin-left: auto;
+
+        margin-right: auto;
+
+    }
+
+
+    .barokah-hero-description {
+
+        margin-left: auto;
+
+        margin-right: auto;
+
+    }
+
+
+    .barokah-hero-actions {
+
+        justify-content: center;
+
+    }
+
+
+    .barokah-hero-info {
+
+        justify-content: center;
+
+    }
+
+
+    .barokah-hero-visual {
+
+        min-height: 460px;
+
+    }
+
+
+    .barokah-logo-card {
+
+        width: 290px;
+
+        height: 290px;
+
+    }
+
+
+    .barokah-logo-card-inner {
+
+        width: 205px;
+
+        height: 205px;
+
+    }
+
+
+    .barokah-floating-card.card-top {
+
+        right: 8%;
+
+    }
+
+
+    .barokah-floating-card.card-bottom {
+
+        left: 8%;
+
+    }
+
+}
+
+
+/* =========================================
+   18. MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+
+    .barokah-hero {
+
+        min-height: auto;
+
+        padding:
+            105px 0 80px;
+
+    }
+
+
+    .barokah-hero-container {
+
+        width:
+            min(
+                100% - 28px,
+                500px
+            );
+
+        gap: 25px;
+
+    }
+
+
+    .barokah-hero-label {
+
+        margin-bottom: 18px;
+
+        padding: 7px 12px;
+
+        font-size: 0.65rem;
+
+    }
+
+
+    .barokah-hero-title {
+
+        font-size:
+            clamp(
+                2.15rem,
+                11vw,
+                3.1rem
+            );
+
+        line-height: 1.08;
+
+    }
+
+
+    .barokah-hero-title span {
+
+        margin-top: 5px;
+
+    }
+
+
+    .barokah-hero-description {
+
+        margin-top: 20px;
+
+        font-size: 0.92rem;
+
+        line-height: 1.7;
+
+    }
+
+
+    .barokah-hero-actions {
+
+        display: grid;
+
+        grid-template-columns: 1fr;
+
+        width: 100%;
+
+        gap: 10px;
+
+        margin-top: 27px;
+
+    }
+
+
+    .barokah-hero-actions .btn {
+
+        width: 100%;
+
+        justify-content: center;
+
+    }
+
+
+    .barokah-hero-info {
+
+        gap: 12px;
+
+        margin-top: 35px;
+
+    }
+
+
+    .barokah-info-item strong {
+
+        font-size: 0.76rem;
+
+    }
+
+
+    .barokah-info-item span {
+
+        font-size: 0.61rem;
+
+    }
+
+
+    .barokah-info-divider {
+
+        height: 30px;
+
+    }
+
+
+    .barokah-hero-visual {
+
+        min-height: 380px;
+
+    }
+
+
+    .barokah-visual-glow {
+
+        width: 300px;
+
+        height: 300px;
+
+    }
+
+
+    .barokah-logo-card {
+
+        width: 245px;
+
+        height: 245px;
+
+        border-radius: 32px;
+
+    }
+
+
+    .barokah-logo-card::before {
+
+        inset: 10px;
+
+        border-radius: 24px;
+
+    }
+
+
+    .barokah-logo-card-inner {
+
+        width: 175px;
+
+        height: 175px;
+
+        border-radius: 25px;
+
+    }
+
+
+    .barokah-floating-card {
+
+        min-width: 155px;
+
+        padding: 11px 13px;
+
+        gap: 9px;
+
+        border-radius: 14px;
+
+    }
+
+
+    .barokah-floating-card strong {
+
+        font-size: 0.68rem;
+
+    }
+
+
+    .barokah-floating-card div span {
+
+        font-size: 0.59rem;
+
+    }
+
+
+    .barokah-floating-icon {
+
+        width: 32px;
+
+        height: 32px;
+
+        border-radius: 9px;
+
+        font-size: 0.85rem;
+
+    }
+
+
+    .barokah-floating-card.card-top {
+
+        top: 40px;
+
+        right: 0;
+
+    }
+
+
+    .barokah-floating-card.card-bottom {
+
+        bottom: 38px;
+
+        left: 0;
+
+    }
+
+
+    .barokah-visual-circle.circle-one {
+
+        top: 35px;
+
+        left: 10%;
+
+    }
+
+
+    .barokah-visual-circle.circle-two {
+
+        right: 8%;
+
+        bottom: 40px;
+
+    }
+
+
+    .barokah-scroll-indicator {
+
+        display: none;
+
+    }
+
+}
+
+
+/* =========================================
+   19. SMALL MOBILE
+========================================= */
+
+@media (max-width: 380px) {
+
+    .barokah-hero {
+
+        padding-top: 100px;
+
+    }
+
+
+    .barokah-hero-title {
+
+        font-size: 2rem;
+
+    }
+
+
+    .barokah-hero-info {
+
+        gap: 8px;
+
+    }
+
+
+    .barokah-info-item span {
+
+        font-size: 0.56rem;
+
+    }
+
+
+    .barokah-hero-visual {
+
+        min-height: 340px;
+
+    }
+
+
+    .barokah-logo-card {
+
+        width: 215px;
+
+        height: 215px;
+
+    }
+
+
+    .barokah-logo-card-inner {
+
+        width: 155px;
+
+        height: 155px;
+
+    }
+
+
+    .barokah-floating-card {
+
+        min-width: 140px;
+
+    }
+
+
+    .barokah-floating-card.card-top {
+
+        right: -5px;
+
+    }
+
+
+    .barokah-floating-card.card-bottom {
+
+        left: -5px;
+
+    }
+
+}
+
+/* =========================================
+   20. REDUCED MOTION
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .barokah-logo-card,
+    .barokah-floating-card,
+    .barokah-visual-glow,
+    .barokah-visual-circle,
+    .barokah-scroll-indicator .scroll-arrow {
+
+        animation: none;
+
+    }
+
+  }
