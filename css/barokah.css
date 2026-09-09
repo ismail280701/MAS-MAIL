@@ -4556,3 +4556,485 @@
     }
 
 }
+/* =========================================
+   SECTION 08 — CTA PENUTUP
+========================================= */
+
+.barokah-final-cta {
+    position: relative;
+
+    padding: 135px 0;
+
+    background:
+        var(--color-navy);
+
+    color:
+        var(--color-white);
+
+    overflow: hidden;
+}
+
+
+/* =========================================
+   BACKGROUND DECORATION
+========================================= */
+
+.barokah-final-cta-bg {
+    position: absolute;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    overflow: hidden;
+}
+
+
+.barokah-final-circle {
+    position: absolute;
+
+    display: block;
+
+    border:
+        1px solid
+        rgba(212, 175, 95, 0.13);
+
+    border-radius: 50%;
+
+    animation:
+        barokahFinalFloat
+        8s ease-in-out
+        infinite;
+}
+
+
+.barokah-final-circle.circle-one {
+    width: 520px;
+    height: 520px;
+
+    top: -300px;
+    right: -120px;
+}
+
+
+.barokah-final-circle.circle-two {
+    width: 360px;
+    height: 360px;
+
+    bottom: -240px;
+    left: -120px;
+
+    border-color:
+        rgba(255, 255, 255, 0.06);
+
+    animation-delay:
+        -2s;
+}
+
+
+.barokah-final-circle.circle-three {
+    width: 180px;
+    height: 180px;
+
+    top: 50%;
+    left: 12%;
+
+    border-color:
+        rgba(212, 175, 95, 0.08);
+
+    animation-delay:
+        -4s;
+}
+
+
+/* =========================================
+   CTA CONTENT
+========================================= */
+
+.barokah-final-cta-content {
+    position: relative;
+
+    z-index: 2;
+
+    max-width: 850px;
+
+    margin-inline: auto;
+
+    text-align: center;
+}
+
+
+/* =========================================
+   LABEL
+========================================= */
+
+.barokah-final-label {
+    display: inline-block;
+
+    margin-bottom: 20px;
+
+    color:
+        var(--color-primary);
+
+    font-size: 0.68rem;
+
+    font-weight: 800;
+
+    letter-spacing: 0.18em;
+}
+
+
+/* =========================================
+   TITLE
+========================================= */
+
+.barokah-final-cta-content h2 {
+    margin: 0;
+
+    color:
+        var(--color-white);
+
+    font-size:
+        clamp(
+            2.8rem,
+            6vw,
+            5.2rem
+        );
+
+    line-height: 1.03;
+
+    letter-spacing: -0.065em;
+}
+
+
+.barokah-final-cta-content h2 span {
+    display: block;
+
+    color:
+        var(--color-primary);
+}
+
+
+/* =========================================
+   DESCRIPTION
+========================================= */
+
+.barokah-final-cta-content > p {
+    max-width: 620px;
+
+    margin:
+        25px auto 0;
+
+    color:
+        rgba(255, 255, 255, 0.58);
+
+    font-size: 0.92rem;
+
+    line-height: 1.85;
+}
+
+
+/* =========================================
+   ACTIONS
+========================================= */
+
+.barokah-final-actions {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    flex-wrap: wrap;
+
+    gap: 12px;
+
+    margin-top: 35px;
+}
+
+
+.barokah-final-actions .button {
+    min-width: 160px;
+}
+
+
+/* =========================================
+   SECONDARY BUTTON
+========================================= */
+
+.barokah-final-actions
+.button-secondary {
+    background:
+        rgba(255, 255, 255, 0.06);
+
+    border-color:
+        rgba(255, 255, 255, 0.16);
+
+    color:
+        rgba(255, 255, 255, 0.82);
+}
+
+
+.barokah-final-actions
+.button-secondary:hover {
+    background:
+        rgba(255, 255, 255, 0.11);
+
+    border-color:
+        rgba(212, 175, 95, 0.4);
+
+    color:
+        var(--color-white);
+}
+
+
+/* =========================================
+   NOTE
+========================================= */
+
+.barokah-final-note {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    margin-top: 30px;
+
+    color:
+        rgba(255, 255, 255, 0.38);
+
+    font-size: 0.67rem;
+
+    font-weight: 600;
+}
+
+
+.barokah-final-note-dot {
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+
+    background:
+        var(--color-primary);
+
+    box-shadow:
+        0 0 0 5px
+        rgba(212, 175, 95, 0.08);
+
+    animation:
+        barokahFinalPulse
+        2.5s ease-in-out
+        infinite;
+}
+
+
+/* =========================================
+   HOVER EFFECT
+========================================= */
+
+.barokah-final-actions
+.button-primary:hover {
+    transform:
+        translateY(-3px);
+
+    box-shadow:
+        0 12px 30px
+        rgba(212, 175, 95, 0.2);
+}
+
+
+/* =========================================
+   BACKGROUND ANIMATION
+========================================= */
+
+@keyframes barokahFinalFloat {
+
+    0%,
+    100% {
+        transform:
+            translate(0, 0)
+            scale(1);
+    }
+
+    50% {
+        transform:
+            translate(-15px, 12px)
+            scale(1.03);
+    }
+
+}
+
+
+@keyframes barokahFinalPulse {
+
+    0%,
+    100% {
+        opacity: 0.45;
+
+        transform:
+            scale(0.85);
+    }
+
+    50% {
+        opacity: 1;
+
+        transform:
+            scale(1.15);
+    }
+
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 900px) {
+
+    .barokah-final-cta {
+        padding:
+            110px 0;
+    }
+
+
+    .barokah-final-circle.circle-three {
+        left: 5%;
+    }
+
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 700px) {
+
+    .barokah-final-cta {
+        padding:
+            90px 0;
+    }
+
+
+    .barokah-final-cta-content h2 {
+        font-size:
+            2.65rem;
+
+        letter-spacing:
+            -0.055em;
+    }
+
+
+    .barokah-final-cta-content > p {
+        margin-top:
+            20px;
+
+        font-size:
+            0.8rem;
+    }
+
+
+    .barokah-final-actions {
+        flex-direction:
+            column;
+
+        width:
+            100%;
+
+        margin-top:
+            28px;
+    }
+
+
+    .barokah-final-actions .button {
+        width:
+            100%;
+
+        max-width:
+            340px;
+    }
+
+
+    .barokah-final-note {
+        margin-top:
+            25px;
+
+        font-size:
+            0.62rem;
+    }
+
+
+    .barokah-final-circle.circle-one {
+        width: 330px;
+        height: 330px;
+
+        top: -180px;
+        right: -130px;
+    }
+
+
+    .barokah-final-circle.circle-two {
+        width: 260px;
+        height: 260px;
+
+        bottom: -180px;
+        left: -130px;
+    }
+
+
+    .barokah-final-circle.circle-three {
+        width: 120px;
+        height: 120px;
+
+        top: 45%;
+        left: -60px;
+    }
+
+}
+
+
+/* =========================================
+   SMALL MOBILE
+========================================= */
+
+@media (max-width: 380px) {
+
+    .barokah-final-cta {
+        padding:
+            80px 0;
+    }
+
+
+    .barokah-final-cta-content h2 {
+        font-size:
+            2.35rem;
+    }
+
+
+    .barokah-final-cta-content > p {
+        font-size:
+            0.76rem;
+    }
+
+}
+
+
+/* =========================================
+   REDUCED MOTION
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .barokah-final-circle,
+    .barokah-final-note-dot {
+        animation: none;
+    }
+
+
+    .barokah-final-actions
+    .button-primary:hover {
+        transform: none;
+    }
+
+}
