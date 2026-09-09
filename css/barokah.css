@@ -1274,3 +1274,538 @@
     }
 
   }
+/* =========================================
+   SECTION 02 — TENTANG MAS MAIL BAROKAH
+========================================= */
+
+.barokah-about {
+    padding:
+        120px 0;
+
+    background:
+        var(--color-background-soft);
+
+    overflow: hidden;
+}
+
+
+/* =========================================
+   ABOUT HEADING
+========================================= */
+
+.barokah-about-heading {
+    max-width: 760px;
+
+    margin-bottom: 70px;
+}
+
+
+.barokah-about-heading h2 {
+    margin: 0;
+
+    color:
+        var(--color-navy);
+
+    font-size:
+        clamp(
+            2.3rem,
+            5vw,
+            4.3rem
+        );
+
+    line-height: 1.08;
+
+    letter-spacing: -0.055em;
+}
+
+
+.barokah-about-heading h2 span {
+    color:
+        var(--color-primary);
+}
+
+
+.barokah-about-heading p {
+    max-width: 650px;
+
+    margin-top: 24px;
+
+    color:
+        var(--color-text-soft);
+
+    font-size: 1rem;
+
+    line-height: 1.85;
+}
+
+
+/* =========================================
+   ABOUT GRID
+========================================= */
+
+.barokah-about-grid {
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 0.9fr)
+        minmax(0, 1.1fr);
+
+    gap: 80px;
+
+    align-items: start;
+}
+
+
+/* =========================================
+   STORY
+========================================= */
+
+.barokah-about-story {
+    position: relative;
+
+    padding:
+        35px;
+
+    background:
+        var(--color-navy);
+
+    border-radius:
+        var(--radius-large);
+
+    box-shadow:
+        var(--shadow-large);
+
+    overflow: hidden;
+}
+
+
+.barokah-about-story::before {
+    content: "";
+
+    position: absolute;
+
+    width: 220px;
+    height: 220px;
+
+    top: -120px;
+    right: -90px;
+
+    border:
+        1px solid
+        rgba(212, 175, 95, 0.25);
+
+    border-radius: 50%;
+}
+
+
+.barokah-about-story::after {
+    content: "";
+
+    position: absolute;
+
+    width: 120px;
+    height: 120px;
+
+    bottom: -70px;
+    left: -50px;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.08);
+
+    border-radius: 50%;
+}
+
+
+.barokah-about-story-number {
+    position: relative;
+
+    z-index: 2;
+
+    margin-bottom: 45px;
+
+    color:
+        var(--color-primary);
+
+    font-size: 0.72rem;
+
+    font-weight: 800;
+
+    letter-spacing: 0.15em;
+}
+
+
+.barokah-about-story h3 {
+    position: relative;
+
+    z-index: 2;
+
+    max-width: 430px;
+
+    color:
+        var(--color-white);
+
+    font-size:
+        clamp(
+            1.7rem,
+            3vw,
+            2.5rem
+        );
+
+    line-height: 1.15;
+
+    letter-spacing: -0.04em;
+}
+
+
+.barokah-about-story p {
+    position: relative;
+
+    z-index: 2;
+
+    margin-top: 20px;
+
+    color:
+        rgba(255, 255, 255, 0.62);
+
+    font-size: 0.9rem;
+
+    line-height: 1.85;
+}
+
+
+/* =========================================
+   ABOUT POINTS
+========================================= */
+
+.barokah-about-points {
+    display: flex;
+
+    flex-direction: column;
+
+    border-top:
+        1px solid
+        var(--color-border);
+}
+
+
+.barokah-about-point {
+    display: grid;
+
+    grid-template-columns: 55px 1fr;
+
+    gap: 20px;
+
+    padding:
+        28px 0;
+
+    border-bottom:
+        1px solid
+        var(--color-border);
+
+    transition:
+        transform var(--transition-normal);
+}
+
+
+.barokah-about-point:hover {
+    transform:
+        translateX(7px);
+}
+
+
+.barokah-about-point-number {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 42px;
+    height: 42px;
+
+    border:
+        1px solid
+        rgba(212, 175, 95, 0.35);
+
+    border-radius: 50%;
+
+    color:
+        var(--color-primary);
+
+    font-size: 0.7rem;
+
+    font-weight: 800;
+}
+
+
+.barokah-about-point h3 {
+    margin-bottom: 7px;
+
+    color:
+        var(--color-navy);
+
+    font-size: 1.05rem;
+
+    font-weight: 800;
+}
+
+
+.barokah-about-point p {
+    max-width: 500px;
+
+    color:
+        var(--color-text-soft);
+
+    font-size: 0.85rem;
+
+    line-height: 1.75;
+}
+
+
+/* =========================================
+   ABOUT HIGHLIGHT
+========================================= */
+
+.barokah-about-highlight {
+    display: grid;
+
+    grid-template-columns:
+        auto
+        1fr
+        auto;
+
+    align-items: center;
+
+    gap: 25px;
+
+    margin-top: 70px;
+
+    padding:
+        25px 28px;
+
+    background:
+        var(--color-white);
+
+    border:
+        1px solid
+        var(--color-border);
+
+    border-radius:
+        var(--radius-large);
+
+    box-shadow:
+        var(--shadow-small);
+
+    transition:
+        transform var(--transition-normal),
+        box-shadow var(--transition-normal);
+}
+
+
+.barokah-about-highlight:hover {
+    transform:
+        translateY(-4px);
+
+    box-shadow:
+        var(--shadow-medium);
+}
+
+
+.barokah-about-highlight-icon {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 52px;
+    height: 52px;
+
+    border-radius: 16px;
+
+    background:
+        var(--color-primary-light);
+
+    color:
+        var(--color-primary);
+
+    font-size: 1.4rem;
+
+    font-weight: 700;
+}
+
+
+.barokah-about-highlight-text span {
+    color:
+        var(--color-primary);
+
+    font-size: 0.68rem;
+
+    font-weight: 800;
+
+    letter-spacing: 0.14em;
+}
+
+
+.barokah-about-highlight-text h3 {
+    margin-top: 3px;
+
+    color:
+        var(--color-navy);
+
+    font-size: 1rem;
+
+    font-weight: 800;
+}
+
+
+.barokah-about-highlight-text p {
+    margin-top: 3px;
+
+    color:
+        var(--color-text-soft);
+
+    font-size: 0.78rem;
+}
+
+
+/* =========================================
+   ABOUT TABLET
+========================================= */
+
+@media (max-width: 900px) {
+
+    .barokah-about-grid {
+        grid-template-columns: 1fr;
+
+        gap: 45px;
+    }
+
+
+    .barokah-about-story {
+        max-width: 700px;
+    }
+
+
+    .barokah-about-highlight {
+        grid-template-columns:
+            auto
+            1fr;
+    }
+
+
+    .barokah-about-highlight .button {
+        grid-column: 1 / -1;
+
+        justify-self: start;
+    }
+
+}
+
+
+/* =========================================
+   ABOUT MOBILE
+========================================= */
+
+@media (max-width: 700px) {
+
+    .barokah-about {
+        padding:
+            85px 0;
+    }
+
+
+    .barokah-about-heading {
+        margin-bottom: 45px;
+    }
+
+
+    .barokah-about-heading h2 {
+        font-size: 2.35rem;
+    }
+
+
+    .barokah-about-heading p {
+        margin-top: 18px;
+
+        font-size: 0.88rem;
+    }
+
+
+    .barokah-about-story {
+        padding:
+            26px;
+    }
+
+
+    .barokah-about-story-number {
+        margin-bottom: 35px;
+    }
+
+
+    .barokah-about-story h3 {
+        font-size: 1.65rem;
+    }
+
+
+    .barokah-about-story p {
+        font-size: 0.84rem;
+    }
+
+
+    .barokah-about-point {
+        grid-template-columns:
+            45px 1fr;
+
+        gap: 14px;
+
+        padding:
+            23px 0;
+    }
+
+
+    .barokah-about-point-number {
+        width: 38px;
+        height: 38px;
+    }
+
+
+    .barokah-about-point h3 {
+        font-size: 0.95rem;
+    }
+
+
+    .barokah-about-point p {
+        font-size: 0.78rem;
+    }
+
+
+    .barokah-about-highlight {
+        grid-template-columns: 1fr;
+
+        gap: 16px;
+
+        margin-top: 50px;
+
+        padding: 22px;
+    }
+
+
+    .barokah-about-highlight .button {
+        width: 100%;
+    }
+
+}
+
+
+/* =========================================
+   ABOUT REDUCED MOTION
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .barokah-about-point:hover,
+    .barokah-about-highlight:hover {
+        transform: none;
+    }
+
+}
