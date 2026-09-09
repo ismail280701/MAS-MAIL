@@ -2263,3 +2263,494 @@
     }
 
 }
+/* =========================================
+   SECTION 04 — KATEGORI PRODUK
+========================================= */
+
+.barokah-products {
+    padding:
+        120px 0;
+
+    background:
+        var(--color-background-soft);
+
+    overflow: hidden;
+}
+
+
+/* =========================================
+   PRODUCTS HEADING
+========================================= */
+
+.barokah-products-heading {
+    max-width: 760px;
+
+    margin-bottom: 65px;
+}
+
+
+.barokah-products-heading h2 {
+    margin: 0;
+
+    color:
+        var(--color-navy);
+
+    font-size:
+        clamp(
+            2.3rem,
+            5vw,
+            4.3rem
+        );
+
+    line-height: 1.08;
+
+    letter-spacing: -0.055em;
+}
+
+
+.barokah-products-heading h2 span {
+    color:
+        var(--color-primary);
+}
+
+
+.barokah-products-heading p {
+    max-width: 620px;
+
+    margin-top: 22px;
+
+    color:
+        var(--color-text-soft);
+
+    font-size: 1rem;
+
+    line-height: 1.85;
+}
+
+
+/* =========================================
+   PRODUCT GRID
+========================================= */
+
+.barokah-products-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap: 14px;
+}
+
+
+/* =========================================
+   PRODUCT CARD
+========================================= */
+
+.barokah-product-card {
+    position: relative;
+
+    min-height: 310px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    padding:
+        26px;
+
+    background:
+        var(--color-white);
+
+    border:
+        1px solid
+        var(--color-border);
+
+    border-radius:
+        var(--radius-large);
+
+    overflow: hidden;
+
+    cursor: default;
+
+    transition:
+        transform var(--transition-normal),
+        border-color var(--transition-normal),
+        box-shadow var(--transition-normal);
+}
+
+
+.barokah-product-card::before {
+    content: "";
+
+    position: absolute;
+
+    width: 150px;
+    height: 150px;
+
+    top: -90px;
+    right: -60px;
+
+    border:
+        1px solid
+        rgba(212, 175, 95, 0.18);
+
+    border-radius: 50%;
+
+    transition:
+        transform var(--transition-slow);
+}
+
+
+.barokah-product-card:hover {
+    transform:
+        translateY(-7px);
+
+    border-color:
+        rgba(212, 175, 95, 0.35);
+
+    box-shadow:
+        var(--shadow-medium);
+}
+
+
+.barokah-product-card:hover::before {
+    transform:
+        scale(1.35);
+}
+
+
+/* =========================================
+   CARD TOP
+========================================= */
+
+.barokah-product-card-top {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+.barokah-product-number {
+    color:
+        var(--color-primary);
+
+    font-size: 0.68rem;
+
+    font-weight: 800;
+
+    letter-spacing: 0.14em;
+}
+
+
+.barokah-product-icon {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 48px;
+    height: 48px;
+
+    background:
+        var(--color-primary-light);
+
+    border-radius: 15px;
+
+    color:
+        var(--color-primary);
+
+    font-size: 1.15rem;
+
+    font-weight: 800;
+
+    transition:
+        transform var(--transition-normal),
+        background-color var(--transition-normal);
+}
+
+
+.barokah-product-card:hover
+.barokah-product-icon {
+    transform:
+        rotate(-7deg)
+        scale(1.08);
+
+    background:
+        var(--color-primary);
+    
+    color:
+        var(--color-white);
+}
+
+
+/* =========================================
+   CARD CONTENT
+========================================= */
+
+.barokah-product-content {
+    position: relative;
+
+    z-index: 2;
+
+    margin-top: auto;
+
+    padding-top: 60px;
+}
+
+
+.barokah-product-content h3 {
+    max-width: 260px;
+
+    color:
+        var(--color-navy);
+
+    font-size: 1.15rem;
+
+    line-height: 1.3;
+
+    letter-spacing: -0.025em;
+}
+
+
+.barokah-product-content p {
+    max-width: 310px;
+
+    margin-top: 11px;
+
+    color:
+        var(--color-text-soft);
+
+    font-size: 0.8rem;
+
+    line-height: 1.75;
+}
+
+
+/* =========================================
+   CARD ARROW
+========================================= */
+
+.barokah-product-arrow {
+    position: absolute;
+
+    right: 25px;
+    bottom: 25px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 32px;
+    height: 32px;
+
+    border:
+        1px solid
+        var(--color-border);
+
+    border-radius: 50%;
+
+    color:
+        var(--color-text-soft);
+
+    font-size: 0.8rem;
+
+    transition:
+        transform var(--transition-normal),
+        background-color var(--transition-normal),
+        color var(--transition-normal),
+        border-color var(--transition-normal);
+}
+
+
+.barokah-product-card:hover
+.barokah-product-arrow {
+    transform:
+        rotate(45deg);
+
+    background:
+        var(--color-primary);
+
+    border-color:
+        var(--color-primary);
+
+    color:
+        var(--color-white);
+}
+
+
+/* =========================================
+   PRODUCT CTA
+========================================= */
+
+.barokah-products-cta {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 30px;
+
+    margin-top: 55px;
+
+    padding:
+        28px 30px;
+
+    background:
+        var(--color-navy);
+
+    border-radius:
+        var(--radius-large);
+
+    box-shadow:
+        var(--shadow-medium);
+}
+
+
+.barokah-products-cta span {
+    color:
+        var(--color-primary);
+
+    font-size: 0.66rem;
+
+    font-weight: 800;
+
+    letter-spacing: 0.15em;
+}
+
+
+.barokah-products-cta h3 {
+    margin-top: 5px;
+
+    color:
+        var(--color-white);
+
+    font-size: 1.05rem;
+
+    font-weight: 700;
+}
+
+
+.barokah-products-cta .button {
+    flex-shrink: 0;
+}
+
+
+/* =========================================
+   PRODUCTS TABLET
+========================================= */
+
+@media (max-width: 900px) {
+
+    .barokah-products-grid {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+
+
+    .barokah-product-card {
+        min-height: 290px;
+    }
+
+}
+
+
+/* =========================================
+   PRODUCTS MOBILE
+========================================= */
+
+@media (max-width: 700px) {
+
+    .barokah-products {
+        padding:
+            85px 0;
+    }
+
+
+    .barokah-products-heading {
+        margin-bottom: 45px;
+    }
+
+
+    .barokah-products-heading h2 {
+        font-size: 2.35rem;
+    }
+
+
+    .barokah-products-heading p {
+        margin-top: 18px;
+
+        font-size: 0.88rem;
+    }
+
+
+    .barokah-products-grid {
+        grid-template-columns: 1fr;
+
+        gap: 12px;
+    }
+
+
+    .barokah-product-card {
+        min-height: 275px;
+
+        padding: 23px;
+    }
+
+
+    .barokah-product-content {
+        padding-top: 45px;
+    }
+
+
+    .barokah-product-content h3 {
+        font-size: 1.05rem;
+    }
+
+
+    .barokah-product-content p {
+        font-size: 0.78rem;
+    }
+
+
+    .barokah-products-cta {
+        align-items: flex-start;
+
+        flex-direction: column;
+
+        gap: 20px;
+
+        margin-top: 45px;
+
+        padding: 23px;
+    }
+
+
+    .barokah-products-cta .button {
+        width: 100%;
+    }
+
+}
+
+
+/* =========================================
+   PRODUCTS REDUCED MOTION
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .barokah-product-card:hover,
+    .barokah-product-card:hover
+    .barokah-product-icon,
+    .barokah-product-card:hover
+    .barokah-product-arrow {
+        transform: none;
+    }
+
+
+    .barokah-product-card:hover::before {
+        transform: none;
+    }
+
+}
