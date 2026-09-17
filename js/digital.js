@@ -605,3 +605,190 @@ document.addEventListener("DOMContentLoaded", () => {
     startAutoSlide();
 
 });
+/* =========================================
+   DIGITAL — INTRO SHOWCASE
+========================================= */
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const introTabs =
+        document.querySelectorAll(".digital-intro-tab");
+
+    const introSlides =
+        document.querySelectorAll(".digital-intro-slide");
+
+    const introDots =
+        document.querySelectorAll(".digital-intro-dots button");
+
+    const introProgress =
+        document.querySelector(".digital-intro-progress span");
+
+
+    if (
+        !introTabs.length ||
+        !introSlides.length
+    ) {
+        return;
+    }
+
+
+    let currentIntro = 0;
+
+    let introTimer = null;
+
+    const introDuration = 4500;
+
+
+    /* =====================================
+       CHANGE SLIDE
+    ===================================== */
+
+    function changeIntro(index) {
+
+        currentIntro = index;
+
+
+        /* TABS */
+
+        introTabs.forEach((tab, i) => {
+
+            const active =
+                i === currentIntro;
+
+            tab.classList.toggle(
+                "active",
+                active
+            );
+
+            tab.setAttribute(
+                "aria-selected",
+                active ? "true" : "false"
+            );
+
+        });
+
+
+        /* SLIDES */
+
+        introSlides.forEach((slide, i) => {
+
+            slide.classList.toggle(
+                "active",
+                i === currentIntro
+            );
+
+        });
+
+
+        /* DOTS */
+
+        introDots.forEach((dot, i) => {
+
+            dot.classList.toggle(
+                "active",
+                i === currentIntro
+            );
+
+        });
+
+
+        /* RESET PROGRESS */
+
+        if (introProgress) {
+
+            introProgress.style.animation = "none";
+
+            void introProgress.offsetWidth;
+
+            introProgress.style.animation =
+                `digitalIntroProgress ${introDuration}ms linear`;
+
+        }
+
+    }
+
+
+    /* =====================================
+       AUTO PLAY
+    ===================================== */
+
+    function startIntroAutoPlay() {
+
+        clearInterval(introTimer);
+
+
+        introTimer = setInterval(() => {
+
+            const next =
+                (currentIntro + 1) %
+                introSlides.length;
+
+
+            changeIntro(next);
+
+        }, introDuration);
+
+    }
+
+
+    /* =====================================
+       TAB CLICK
+    ===================================== */
+
+    introTabs.forEach((tab) => {
+
+        tab.addEventListener(
+            "click",
+            () => {
+
+                const index =
+                    Number(
+                        tab.dataset.intro
+                    );
+
+
+                changeIntro(index);
+
+                startIntroAutoPlay();
+
+            }
+        );
+
+    });
+
+
+    /* =====================================
+       DOT CLICK
+    ===================================== */
+
+    introDots.forEach((dot) => {
+
+        dot.addEventListener(
+            "click",
+            () => {
+
+                const index =
+                    Number(
+                        dot.dataset.introDot
+                    );
+
+
+                changeIntro(index);
+
+                startIntroAutoPlay();
+
+            }
+        );
+
+    });
+
+
+    /* =====================================
+       START
+    ===================================== */
+
+    changeIntro(0);
+
+    startIntroAutoPlay();
+
+});
