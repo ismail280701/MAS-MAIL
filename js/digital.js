@@ -792,3 +792,111 @@ document.addEventListener("DOMContentLoaded", () => {
     startIntroAutoPlay();
 
 });
+/* =========================================
+   DIGITAL — SERVICES ACCORDION
+========================================= */
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const serviceCards =
+        document.querySelectorAll(
+            ".digital-service-card"
+        );
+
+
+    if (!serviceCards.length) {
+        return;
+    }
+
+
+    serviceCards.forEach((card) => {
+
+        const toggle =
+            card.querySelector(
+                ".digital-service-toggle"
+            );
+
+
+        if (!toggle) {
+            return;
+        }
+
+
+        toggle.addEventListener(
+            "click",
+            () => {
+
+                const isOpen =
+                    card.classList.contains(
+                        "is-open"
+                    );
+
+
+                /* =================================
+                   CLOSE SEMUA CARD LAIN
+                ================================= */
+
+                serviceCards.forEach((otherCard) => {
+
+                    if (otherCard === card) {
+                        return;
+                    }
+
+
+                    otherCard.classList.remove(
+                        "is-open"
+                    );
+
+
+                    const otherToggle =
+                        otherCard.querySelector(
+                            ".digital-service-toggle"
+                        );
+
+
+                    if (otherToggle) {
+
+                        otherToggle.setAttribute(
+                            "aria-expanded",
+                            "false"
+                        );
+
+                    }
+
+                });
+
+
+                /* =================================
+                   TOGGLE CARD YANG DIKLIK
+                ================================= */
+
+                if (isOpen) {
+
+                    card.classList.remove(
+                        "is-open"
+                    );
+
+                    toggle.setAttribute(
+                        "aria-expanded",
+                        "false"
+                    );
+
+                } else {
+
+                    card.classList.add(
+                        "is-open"
+                    );
+
+                    toggle.setAttribute(
+                        "aria-expanded",
+                        "true"
+                    );
+
+                }
+
+            }
+        );
+
+    });
+
+});
