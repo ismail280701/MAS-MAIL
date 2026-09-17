@@ -491,7 +491,13 @@
     background: var(--color-background-soft);
 }
 
+/* =========================================
+   INTRO — CONTAINER SPACING
+========================================= */
 
+.digital-intro .container {
+    padding-inline: clamp(20px, 4vw, 32px);
+}
 /* =========================================
    LAYOUT
 ========================================= */
