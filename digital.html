@@ -327,9 +327,10 @@
         </section>
 <!-- INTRO / POSITIONING -->
 <section class="digital-intro section" id="about">
+
     <div class="container">
 
-        <div class="digital-intro-grid">
+        <div class="digital-intro-layout">
 
             <!-- TEXT -->
             <div class="digital-intro-content reveal">
@@ -359,15 +360,73 @@
             </div>
 
 
-            <!-- POINTS -->
-            <div class="digital-intro-points">
+            <!-- INTERACTIVE PRINCIPLES -->
+            <div class="digital-intro-showcase reveal">
 
-                <article class="digital-intro-point reveal">
-                    <span class="digital-intro-number">
-                        01
-                    </span>
+                <!-- TABS -->
+                <div class="digital-intro-tabs" role="tablist">
 
-                    <div>
+                    <button
+                        class="digital-intro-tab active"
+                        type="button"
+                        data-intro="0"
+                        role="tab"
+                        aria-selected="true"
+                    >
+                        <span>01</span>
+                        <strong>Sederhana</strong>
+                    </button>
+
+
+                    <button
+                        class="digital-intro-tab"
+                        type="button"
+                        data-intro="1"
+                        role="tab"
+                        aria-selected="false"
+                    >
+                        <span>02</span>
+                        <strong>Fungsional</strong>
+                    </button>
+
+
+                    <button
+                        class="digital-intro-tab"
+                        type="button"
+                        data-intro="2"
+                        role="tab"
+                        aria-selected="false"
+                    >
+                        <span>03</span>
+                        <strong>Berkembang</strong>
+                    </button>
+
+                </div>
+
+
+                <!-- PROGRESS -->
+                <div class="digital-intro-progress">
+                    <span></span>
+                </div>
+
+
+                <!-- CONTENT -->
+                <div class="digital-intro-display">
+
+                    <!-- 01 -->
+                    <article
+                        class="digital-intro-slide active"
+                        data-intro-slide="0"
+                    >
+
+                        <div class="digital-intro-icon">
+                            ✦
+                        </div>
+
+                        <div class="digital-intro-slide-number">
+                            01
+                        </div>
+
                         <h3>
                             Sederhana
                         </h3>
@@ -376,16 +435,24 @@
                             Tampilan dibuat mudah dipahami,
                             tanpa menghilangkan kesan profesional.
                         </p>
-                    </div>
-                </article>
+
+                    </article>
 
 
-                <article class="digital-intro-point reveal">
-                    <span class="digital-intro-number">
-                        02
-                    </span>
+                    <!-- 02 -->
+                    <article
+                        class="digital-intro-slide"
+                        data-intro-slide="1"
+                    >
 
-                    <div>
+                        <div class="digital-intro-icon">
+                            ◈
+                        </div>
+
+                        <div class="digital-intro-slide-number">
+                            02
+                        </div>
+
                         <h3>
                             Fungsional
                         </h3>
@@ -394,16 +461,24 @@
                             Bukan hanya terlihat bagus,
                             tetapi juga dibuat untuk kebutuhan nyata.
                         </p>
-                    </div>
-                </article>
+
+                    </article>
 
 
-                <article class="digital-intro-point reveal">
-                    <span class="digital-intro-number">
-                        03
-                    </span>
+                    <!-- 03 -->
+                    <article
+                        class="digital-intro-slide"
+                        data-intro-slide="2"
+                    >
 
-                    <div>
+                        <div class="digital-intro-icon">
+                            ↗
+                        </div>
+
+                        <div class="digital-intro-slide-number">
+                            03
+                        </div>
+
                         <h3>
                             Terus Berkembang
                         </h3>
@@ -412,14 +487,47 @@
                             Dari desain dan template hingga
                             solusi digital yang terus dikembangkan.
                         </p>
-                    </div>
-                </article>
+
+                    </article>
+
+
+                    <!-- DECORATIVE ORBS -->
+                    <span class="digital-intro-orb digital-intro-orb-1"></span>
+                    <span class="digital-intro-orb digital-intro-orb-2"></span>
+
+                </div>
+
+
+                <!-- DOTS -->
+                <div class="digital-intro-dots">
+
+                    <button
+                        class="active"
+                        type="button"
+                        data-intro-dot="0"
+                        aria-label="Prinsip 1"
+                    ></button>
+
+                    <button
+                        type="button"
+                        data-intro-dot="1"
+                        aria-label="Prinsip 2"
+                    ></button>
+
+                    <button
+                        type="button"
+                        data-intro-dot="2"
+                        aria-label="Prinsip 3"
+                    ></button>
+
+                </div>
 
             </div>
 
         </div>
 
     </div>
+
 </section>
 <!-- SERVICES -->
 <section class="digital-services section" id="services">
