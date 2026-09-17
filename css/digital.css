@@ -2110,6 +2110,9 @@
 /* =========================================
    MOBILE
 ========================================= */
+/* =========================================
+   DIGITAL HOW — MOBILE ZIGZAG
+========================================= */
 
 @media (max-width: 600px) {
 
@@ -2127,7 +2130,6 @@
         margin: 8px 0 10px;
         font-size: 1.85rem;
         line-height: 1.15;
-        letter-spacing: -0.03em;
     }
 
     .digital-how-description {
@@ -2143,31 +2145,33 @@
 
     .digital-how-card {
         width: 100%;
-        padding: 28px 16px 24px;
+        padding: 30px 14px 22px;
         border-radius: 24px;
-        box-shadow: var(--shadow-medium);
+        overflow: hidden;
     }
 
 
     /* =====================================
-       ZIG-ZAG TIMELINE
+       GARIS TENGAH
     ===================================== */
 
     .digital-how-line {
         display: block;
 
-        top: 57px;
-        bottom: 64px;
+        top: 52px;
+        bottom: 58px;
+
         left: 50%;
+        right: auto;
 
         width: 2px;
         height: auto;
 
         background: linear-gradient(
             180deg,
-            rgba(212, 175, 95, 0.12),
+            rgba(212, 175, 95, 0.10),
             var(--color-primary),
-            rgba(212, 175, 95, 0.12)
+            rgba(212, 175, 95, 0.10)
         );
 
         transform-origin: top center;
@@ -2176,24 +2180,31 @@
         animation:
             digitalHowLineMobile 1.8s ease forwards;
 
-        animation-delay: 0.25s;
+        animation-delay: 0.2s;
     }
 
 
     /* =====================================
-       STEP
+       STEP DASAR
     ===================================== */
 
     .digital-how-step {
         position: relative;
 
         width: 100%;
-        min-height: 105px;
+        min-height: 112px;
 
-        margin: 0 0 4px !important;
+        margin: 0 !important;
+        padding: 0;
 
-        display: flex;
-        align-items: flex-start;
+        display: grid;
+
+        grid-template-columns:
+            minmax(0, 1fr)
+            40px
+            minmax(0, 1fr);
+
+        align-items: start;
 
         text-align: left;
     }
@@ -2204,96 +2215,131 @@
     ===================================== */
 
     .digital-how-number {
-        flex: 0 0 54px;
+        position: relative;
+        z-index: 4;
 
-        width: 54px;
-        height: 54px;
+        width: 48px;
+        height: 48px;
 
-        font-size: 0.82rem;
+        flex: none;
+
+        font-size: 0.78rem;
 
         border-width: 2px;
 
         box-shadow:
             0 0 0 5px rgba(212, 175, 95, 0.07),
-            0 8px 18px rgba(7, 27, 58, 0.08);
+            0 7px 16px rgba(7, 27, 58, 0.08);
+
+        align-self: start;
     }
 
 
     /* =====================================
-       POSISI GANJIL
-    ===================================== */
-
-    .digital-how-step:nth-of-type(odd) {
-        flex-direction: row;
-        text-align: left;
-    }
-
-
-    /* =====================================
-       POSISI GENAP
-    ===================================== */
-
-    .digital-how-step:nth-of-type(even) {
-        flex-direction: row-reverse;
-        text-align: right;
-    }
-
-
-    /* =====================================
-       DOT TENGAH
+       TITIK GARIS
     ===================================== */
 
     .digital-how-dot {
         position: absolute;
 
-        top: 21px;
+        z-index: 5;
+
+        top: 19px;
         left: calc(50% - 5px);
 
         width: 10px;
         height: 10px;
 
+        background: var(--color-primary);
+
         box-shadow:
             0 0 0 5px rgba(212, 175, 95, 0.10),
-            0 0 14px rgba(212, 175, 95, 0.30);
+            0 0 14px rgba(212, 175, 95, 0.28);
     }
 
 
     /* =====================================
-       CONTENT
+       KONTEN
     ===================================== */
 
     .digital-how-content {
-        flex: 1;
+        position: relative;
+        z-index: 3;
 
-        max-width: 145px;
+        max-width: none;
 
-        padding: 2px 12px 0;
+        padding: 1px 8px 0;
 
-        transform: translateY(12px);
+        transform: translateY(10px);
     }
-
 
     .digital-how-mini {
         margin-bottom: 4px;
 
-        font-size: 0.54rem;
+        font-size: 0.52rem;
         line-height: 1.2;
 
-        letter-spacing: 0.10em;
+        letter-spacing: 0.08em;
     }
-
 
     .digital-how-content h3 {
         margin-bottom: 4px;
 
-        font-size: 0.94rem;
-        line-height: 1.25;
+        font-size: 0.92rem;
+        line-height: 1.2;
+    }
+
+    .digital-how-content p {
+        margin: 0;
+
+        font-size: 0.69rem;
+        line-height: 1.45;
     }
 
 
-    .digital-how-content p {
-        font-size: 0.70rem;
-        line-height: 1.45;
+    /* =====================================
+       LANGKAH 1 & 3 — KIRI
+    ===================================== */
+
+    .digital-how-step:nth-of-type(odd) {
+
+        grid-template-areas:
+            "number dot content";
+    }
+
+    .digital-how-step:nth-of-type(odd)
+    .digital-how-number {
+        grid-area: number;
+        justify-self: start;
+    }
+
+    .digital-how-step:nth-of-type(odd)
+    .digital-how-content {
+        grid-area: content;
+        text-align: left;
+    }
+
+
+    /* =====================================
+       LANGKAH 2 & 4 — KANAN
+    ===================================== */
+
+    .digital-how-step:nth-of-type(even) {
+
+        grid-template-areas:
+            "content dot number";
+    }
+
+    .digital-how-step:nth-of-type(even)
+    .digital-how-number {
+        grid-area: number;
+        justify-self: end;
+    }
+
+    .digital-how-step:nth-of-type(even)
+    .digital-how-content {
+        grid-area: content;
+        text-align: right;
     }
 
 
@@ -2302,7 +2348,10 @@
     ===================================== */
 
     .digital-how-finish {
-        margin: 2px auto 0;
+        position: relative;
+        z-index: 6;
+
+        margin: 0 auto;
 
         padding: 8px 15px;
 
@@ -2313,7 +2362,6 @@
         box-shadow:
             0 6px 18px rgba(212, 175, 95, 0.10);
     }
-
 
     .digital-how-finish-icon {
         width: 22px;
