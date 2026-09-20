@@ -3435,3 +3435,12 @@
     }
 
 }
+/* =========================================
+   PORTFOLIO & FEATURED — HEADER SPACING
+========================================= */
+
+.digital-portfolio-header,
+.digital-featured-header {
+    padding-left: 24px;
+    padding-right: 24px;
+}
