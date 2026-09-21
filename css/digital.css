@@ -1090,23 +1090,274 @@
 
 }
 /* =========================================
+   DIGITAL — SECTION DIVIDER
+========================================= */
+
+.digital-section-divider {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+
+    width: min(1080px, calc(100% - 48px));
+
+    height: 70px;
+
+    margin: 0 auto;
+
+    overflow: hidden;
+
+    pointer-events: none;
+}
+
+
+/* =========================================
+   DIVIDER LINE
+========================================= */
+
+.digital-divider-line {
+    position: relative;
+
+    display: block;
+
+    flex: 1;
+
+    height: 1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(212, 175, 95, 0.65),
+            rgba(212, 175, 95, 0.12)
+        );
+
+    transform: scaleX(0);
+
+    transition:
+        transform 1s cubic-bezier(.22, 1, .36, 1);
+}
+
+
+/* LEFT */
+
+.digital-divider-line-left {
+    transform-origin: right center;
+}
+
+
+/* RIGHT */
+
+.digital-divider-line-right {
+    background:
+        linear-gradient(
+            90deg,
+            rgba(212, 175, 95, 0.12),
+            rgba(212, 175, 95, 0.65),
+            transparent
+        );
+
+    transform-origin: left center;
+}
+
+
+/* =========================================
+   CENTER
+========================================= */
+
+.digital-divider-center {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 34px;
+    height: 34px;
+
+    margin: 0 14px;
+
+    border: 1px solid rgba(212, 175, 95, 0.5);
+
+    border-radius: 50%;
+
+    background: var(--color-white);
+
+    box-shadow:
+        0 0 0 7px rgba(212, 175, 95, 0.05),
+        0 8px 20px rgba(7, 27, 58, 0.08);
+
+    opacity: 0;
+
+    transform: scale(0.5);
+
+    transition:
+        opacity 0.45s ease,
+        transform 0.7s cubic-bezier(.22, 1, .36, 1);
+}
+
+
+/* CENTER DOT */
+
+.digital-divider-center span {
+    display: block;
+
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+
+    background: var(--color-primary);
+
+    box-shadow:
+        0 0 0 5px rgba(212, 175, 95, 0.10),
+        0 0 18px rgba(212, 175, 95, 0.35);
+
+    transform: scale(0);
+
+    transition:
+        transform 0.45s cubic-bezier(.22, 1, .36, 1);
+}
+
+
+/* =========================================
+   REVEALED ANIMATION
+========================================= */
+
+.digital-section-divider.revealed
+.digital-divider-line-left,
+
+.digital-section-divider.revealed
+.digital-divider-line-right {
+
+    transform: scaleX(1);
+}
+
+
+.digital-section-divider.revealed
+.digital-divider-center {
+
+    opacity: 1;
+
+    transform: scale(1);
+}
+
+
+.digital-section-divider.revealed
+.digital-divider-center span {
+
+    transform: scale(1);
+
+}
+
+
+/* =========================================
+   CENTER PULSE
+========================================= */
+
+.digital-section-divider.revealed
+.digital-divider-center span {
+
+    animation:
+        digitalDividerPulse 2.4s ease-in-out 0.8s infinite;
+
+}
+
+
+@keyframes digitalDividerPulse {
+
+    0%,
+    100% {
+        box-shadow:
+            0 0 0 5px rgba(212, 175, 95, 0.10),
+            0 0 18px rgba(212, 175, 95, 0.30);
+    }
+
+    50% {
+        box-shadow:
+            0 0 0 9px rgba(212, 175, 95, 0.04),
+            0 0 26px rgba(212, 175, 95, 0.48);
+    }
+
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+
+    .digital-section-divider {
+
+        width: calc(100% - 48px);
+
+        height: 58px;
+
+    }
+
+    .digital-divider-center {
+
+        width: 30px;
+        height: 30px;
+
+        margin: 0 10px;
+
+    }
+
+    .digital-divider-center span {
+
+        width: 6px;
+        height: 6px;
+
+    }
+
+}
+/* =========================================
    DIGITAL — SERVICES
    INTERACTIVE ACCORDION
 ========================================= */
 
 .digital-services {
     position: relative;
+
     background:
         linear-gradient(
             180deg,
-            var(--color-background-soft) 0%,
-            #ffffff 100%
+            #f8fafc 0%,
+            var(--color-white) 28%,
+            var(--color-white) 100%
         );
 
     overflow: hidden;
 }
+/* =========================================
+   SERVICES TOP GLOW
+========================================= */
 
+.digital-services::before {
+    content: "";
 
+    position: absolute;
+
+    top: -120px;
+    left: 50%;
+
+    width: 420px;
+    height: 220px;
+
+    transform: translateX(-50%);
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(212, 175, 95, 0.10) 0%,
+            rgba(212, 175, 95, 0.03) 45%,
+            transparent 72%
+        );
+
+    pointer-events: none;
+}
 /* =========================================
    DECORATIVE BACKGROUND
 ========================================= */
