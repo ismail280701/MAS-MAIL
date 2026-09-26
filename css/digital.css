@@ -2628,6 +2628,77 @@
     }
 
 }
+/* ================================
+   PORTFOLIO ACTIONS
+================================ */
+
+.digital-portfolio-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 24px;
+}
+
+.digital-portfolio-actions a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    min-height: 44px;
+    padding: 10px 14px;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        background 0.25s ease;
+}
+
+/* Tombol Lihat Karya */
+
+.digital-portfolio-actions .digital-portfolio-link {
+    flex: 1;
+    color: #071b3a;
+    background: transparent;
+}
+
+/* Tombol Pesan / Konsultasi */
+
+.digital-portfolio-actions .digital-portfolio-order {
+    flex: 1;
+    color: #ffffff;
+    background: #071b3a;
+    border: 1px solid #071b3a;
+}
+
+/* Hover */
+
+.digital-portfolio-actions a:hover {
+    transform: translateY(-2px);
+}
+
+.digital-portfolio-actions .digital-portfolio-order:hover {
+    box-shadow: 0 6px 16px rgba(7, 27, 58, 0.18);
+}
+
+/* Mobile */
+
+@media (max-width: 500px) {
+
+    .digital-portfolio-actions {
+        gap: 8px;
+    }
+
+    .digital-portfolio-actions a {
+        min-height: 42px;
+        padding: 9px 10px;
+        font-size: 13px;
+    }
+
+}
 /* =========================================
    DIGITAL — FEATURED PRODUCTS
 ========================================= */
