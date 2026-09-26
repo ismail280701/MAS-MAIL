@@ -2211,7 +2211,6 @@
     }
 
        }
-
 /* =========================================
    DIGITAL — PORTFOLIO
 ========================================= */
@@ -2233,9 +2232,7 @@
 
 .digital-portfolio-header h2 {
     margin: 0;
-
     color: var(--color-navy);
-
     font-size: clamp(2rem, 4vw, 3.2rem);
     line-height: 1.12;
     letter-spacing: -0.04em;
@@ -2248,11 +2245,8 @@
 
 .digital-portfolio-header > p:last-child {
     max-width: 620px;
-
     margin: 22px 0 0;
-
     color: var(--color-text-soft);
-
     font-size: 1rem;
     line-height: 1.8;
 }
@@ -2266,7 +2260,6 @@
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
-
     margin-bottom: 32px;
 }
 
@@ -2303,7 +2296,6 @@
 
 .portfolio-filter.active {
     border-color: var(--color-navy);
-
     background: var(--color-navy);
     color: var(--color-white);
 }
@@ -2320,6 +2312,8 @@
         repeat(4, minmax(0, 1fr));
 
     gap: 20px;
+
+    align-items: stretch;
 }
 
 
@@ -2332,6 +2326,7 @@
     flex-direction: column;
 
     min-width: 0;
+    min-height: 100%;
 
     background: var(--color-white);
 
@@ -2426,6 +2421,8 @@
 
     flex-direction: column;
 
+    min-width: 0;
+
     padding: 20px;
 }
 
@@ -2449,34 +2446,106 @@
 
 
 /* =========================================
-   PORTFOLIO LINK
+   PORTFOLIO ACTIONS
 ========================================= */
 
-.digital-portfolio-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 7px;
+.digital-portfolio-actions {
+    display: grid;
 
-    width: fit-content;
+    grid-template-columns:
+        minmax(0, 1fr)
+        minmax(0, 1fr);
+
+    align-items: stretch;
+
+    gap: 10px;
+
+    width: 100%;
 
     margin-top: auto;
-    padding-top: 17px;
-
-    color: var(--color-navy);
-
-    font-size: 0.78rem;
-    font-weight: 800;
-
-    text-decoration: none;
-
-    transition:
-        color var(--transition-fast),
-        gap var(--transition-fast);
+    padding-top: 20px;
 }
 
-.digital-portfolio-link:hover {
-    gap: 11px;
+
+/* =========================================
+   PORTFOLIO ACTION BUTTON
+========================================= */
+
+.digital-portfolio-actions a {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    min-width: 0;
+    min-height: 44px;
+
+    box-sizing: border-box;
+
+    padding: 10px 12px;
+
+    border-radius: 12px;
+
+    font-family: inherit;
+    font-size: 0.76rem;
+    font-weight: 800;
+
+    line-height: 1.2;
+
+    text-align: center;
+    text-decoration: none;
+
+    white-space: nowrap;
+
+    transition:
+        transform var(--transition-fast),
+        box-shadow var(--transition-fast),
+        background var(--transition-fast),
+        color var(--transition-fast);
+}
+
+
+/* =========================================
+   LIHAT KARYA
+========================================= */
+
+.digital-portfolio-actions .digital-portfolio-link {
+    width: auto;
+
+    margin-top: 0;
+    padding-top: 10px;
+
+    color: var(--color-navy);
+    background: transparent;
+}
+
+.digital-portfolio-actions .digital-portfolio-link:hover {
+    gap: 10px;
+
     color: var(--color-primary-dark);
+
+    transform: translateY(-2px);
+}
+
+
+/* =========================================
+   PESAN / KONSULTASI
+========================================= */
+
+.digital-portfolio-actions .digital-portfolio-order {
+    width: auto;
+
+    color: var(--color-white);
+
+    background: var(--color-navy);
+
+    border: 1px solid var(--color-navy);
+}
+
+.digital-portfolio-actions .digital-portfolio-order:hover {
+    transform: translateY(-2px);
+
+    box-shadow: 0 6px 16px rgba(7, 27, 58, 0.18);
 }
 
 
@@ -2519,6 +2588,8 @@
     .digital-portfolio-grid {
         grid-template-columns:
             repeat(3, minmax(0, 1fr));
+
+        gap: 18px;
     }
 
 }
@@ -2564,8 +2635,12 @@
 
     .digital-portfolio-header > p:last-child {
         margin-top: 18px;
+
         font-size: 0.94rem;
     }
+
+
+    /* FILTER */
 
     .digital-portfolio-filter {
         gap: 7px;
@@ -2573,6 +2648,7 @@
         margin-bottom: 22px;
 
         overflow-x: auto;
+
         flex-wrap: nowrap;
 
         padding-bottom: 5px;
@@ -2592,12 +2668,18 @@
         font-size: 0.76rem;
     }
 
+
+    /* GRID */
+
     .digital-portfolio-grid {
         grid-template-columns:
             repeat(2, minmax(0, 1fr));
 
         gap: 12px;
     }
+
+
+    /* CONTENT */
 
     .digital-portfolio-content {
         padding: 14px;
@@ -2609,14 +2691,33 @@
 
     .digital-portfolio-content p {
         font-size: 0.72rem;
+
         line-height: 1.55;
     }
 
-    .digital-portfolio-link {
-        padding-top: 13px;
 
-        font-size: 0.7rem;
+    /* ACTIONS */
+
+    .digital-portfolio-actions {
+        gap: 7px;
+
+        padding-top: 15px;
     }
+
+    .digital-portfolio-actions a {
+        min-height: 40px;
+
+        padding: 8px 7px;
+
+        border-radius: 10px;
+
+        font-size: 0.68rem;
+
+        white-space: nowrap;
+    }
+
+
+    /* BADGE */
 
     .digital-portfolio-badge {
         left: 8px;
@@ -2628,74 +2729,40 @@
     }
 
 }
-/* ================================
-   PORTFOLIO ACTIONS
-================================ */
 
-.digital-portfolio-actions {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 12px;
-    margin-top: 24px;
-}
 
-.digital-portfolio-actions a {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
-    min-height: 44px;
-    padding: 10px 14px;
-    border-radius: 12px;
-    font-size: 14px;
-    font-weight: 700;
-    text-decoration: none;
-    transition:
-        transform 0.25s ease,
-        box-shadow 0.25s ease,
-        background 0.25s ease;
-}
+/* =========================================
+   VERY SMALL PHONE
+========================================= */
 
-/* Tombol Lihat Karya */
+@media (max-width: 380px) {
 
-.digital-portfolio-actions .digital-portfolio-link {
-    flex: 1;
-    color: #071b3a;
-    background: transparent;
-}
+    .digital-portfolio-grid {
+        gap: 9px;
+    }
 
-/* Tombol Pesan / Konsultasi */
+    .digital-portfolio-content {
+        padding: 12px;
+    }
 
-.digital-portfolio-actions .digital-portfolio-order {
-    flex: 1;
-    color: #ffffff;
-    background: #071b3a;
-    border: 1px solid #071b3a;
-}
+    .digital-portfolio-content h3 {
+        font-size: 0.8rem;
+    }
 
-/* Hover */
-
-.digital-portfolio-actions a:hover {
-    transform: translateY(-2px);
-}
-
-.digital-portfolio-actions .digital-portfolio-order:hover {
-    box-shadow: 0 6px 16px rgba(7, 27, 58, 0.18);
-}
-
-/* Mobile */
-
-@media (max-width: 500px) {
+    .digital-portfolio-content p {
+        font-size: 0.68rem;
+    }
 
     .digital-portfolio-actions {
-        gap: 8px;
+        gap: 5px;
     }
 
     .digital-portfolio-actions a {
-        min-height: 42px;
-        padding: 9px 10px;
-        font-size: 13px;
+        min-height: 38px;
+
+        padding: 7px 5px;
+
+        font-size: 0.62rem;
     }
 
 }
