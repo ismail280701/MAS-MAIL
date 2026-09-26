@@ -2444,31 +2444,26 @@
     line-height: 1.65;
 }
 
-
 /* =========================================
    PORTFOLIO ACTIONS
 ========================================= */
 
 .digital-portfolio-actions {
-    display: grid;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 
-    grid-template-columns:
-        minmax(0, 1fr)
-        minmax(0, 1fr);
-
-    align-items: stretch;
-
-    gap: 10px;
+    gap: 12px;
 
     width: 100%;
 
     margin-top: auto;
-    padding-top: 20px;
+    padding-top: 22px;
 }
 
 
 /* =========================================
-   PORTFOLIO ACTION BUTTON
+   ACTION BASE
 ========================================= */
 
 .digital-portfolio-actions a {
@@ -2477,14 +2472,10 @@
     align-items: center;
     justify-content: center;
 
-    min-width: 0;
-    min-height: 44px;
-
     box-sizing: border-box;
 
-    padding: 10px 12px;
-
-    border-radius: 12px;
+    min-width: 0;
+    min-height: 42px;
 
     font-family: inherit;
     font-size: 0.76rem;
@@ -2492,16 +2483,13 @@
 
     line-height: 1.2;
 
-    text-align: center;
     text-decoration: none;
-
-    white-space: nowrap;
 
     transition:
         transform var(--transition-fast),
-        box-shadow var(--transition-fast),
+        color var(--transition-fast),
         background var(--transition-fast),
-        color var(--transition-fast);
+        box-shadow var(--transition-fast);
 }
 
 
@@ -2510,13 +2498,16 @@
 ========================================= */
 
 .digital-portfolio-actions .digital-portfolio-link {
-    width: auto;
+    flex: 0 1 auto;
 
-    margin-top: 0;
-    padding-top: 10px;
+    margin: 0;
+    padding: 8px 2px;
 
     color: var(--color-navy);
+
     background: transparent;
+
+    white-space: nowrap;
 }
 
 .digital-portfolio-actions .digital-portfolio-link:hover {
@@ -2524,7 +2515,7 @@
 
     color: var(--color-primary-dark);
 
-    transform: translateY(-2px);
+    transform: translateX(2px);
 }
 
 
@@ -2533,19 +2524,93 @@
 ========================================= */
 
 .digital-portfolio-actions .digital-portfolio-order {
-    width: auto;
+    flex: 0 1 auto;
+
+    padding: 11px 16px;
+
+    border: 1px solid var(--color-navy);
+    border-radius: 14px;
 
     color: var(--color-white);
 
     background: var(--color-navy);
 
-    border: 1px solid var(--color-navy);
+    white-space: nowrap;
+
+    box-shadow:
+        0 4px 12px rgba(7, 27, 58, 0.10);
 }
 
 .digital-portfolio-actions .digital-portfolio-order:hover {
+    color: var(--color-white);
+
+    background: #0c2852;
+
     transform: translateY(-2px);
 
-    box-shadow: 0 6px 16px rgba(7, 27, 58, 0.18);
+    box-shadow:
+        0 8px 20px rgba(7, 27, 58, 0.18);
+}
+
+.digital-portfolio-actions .digital-portfolio-order:active {
+    transform: translateY(0);
+
+    box-shadow:
+        0 3px 8px rgba(7, 27, 58, 0.12);
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+
+    .digital-portfolio-actions {
+        gap: 8px;
+
+        padding-top: 17px;
+    }
+
+    .digital-portfolio-actions a {
+        min-height: 40px;
+
+        font-size: 0.68rem;
+    }
+
+    .digital-portfolio-actions .digital-portfolio-link {
+        padding: 7px 1px;
+    }
+
+    .digital-portfolio-actions .digital-portfolio-order {
+        padding: 10px 12px;
+
+        border-radius: 12px;
+    }
+
+}
+
+
+/* =========================================
+   VERY SMALL PHONE
+========================================= */
+
+@media (max-width: 380px) {
+
+    .digital-portfolio-actions {
+        gap: 6px;
+    }
+
+    .digital-portfolio-actions a {
+        font-size: 0.63rem;
+    }
+
+    .digital-portfolio-actions .digital-portfolio-order {
+        padding: 9px 10px;
+
+        border-radius: 11px;
+    }
+
 }
 
 
