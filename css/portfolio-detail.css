@@ -1,6 +1,7 @@
 /* =========================================
    MAS MAIL DIGITAL
    PORTFOLIO DETAIL
+   MODERN RESPONSIVE OVERLAY
 ========================================= */
 
 
@@ -37,23 +38,18 @@
     inset: 0;
 
     background:
-        rgba(7, 27, 58, 0.48);
+        rgba(7, 27, 58, 0.52);
+
+    opacity: 0;
 
     backdrop-filter: blur(0);
     -webkit-backdrop-filter: blur(0);
-
-    opacity: 0;
 
     transition:
         opacity 0.45s ease,
         backdrop-filter 0.45s ease,
         -webkit-backdrop-filter 0.45s ease;
 }
-
-
-/* =========================================
-   ACTIVE STATE
-========================================= */
 
 .portfolio-detail-overlay.is-open {
     visibility: visible;
@@ -66,8 +62,8 @@
 .portfolio-detail-backdrop {
     opacity: 1;
 
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(9px);
+    -webkit-backdrop-filter: blur(9px);
 }
 
 
@@ -79,12 +75,9 @@
     position: relative;
     z-index: 2;
 
-    width: min(
-        100%,
-        980px
-    );
+    width: min(100%, 1040px);
 
-    max-height: 92vh;
+    max-height: 94vh;
 
     overflow-y: auto;
     overscroll-behavior: contain;
@@ -99,11 +92,11 @@
     border-bottom: 0;
 
     border-radius:
-        28px 28px 0 0;
+        30px 30px 0 0;
 
     box-shadow:
-        0 -20px 60px
-        rgba(7, 27, 58, 0.22);
+        0 -24px 70px
+        rgba(7, 27, 58, 0.26);
 
     transform:
         translateY(105%);
@@ -156,7 +149,7 @@
 ========================================= */
 
 .portfolio-detail-handle {
-    width: 46px;
+    width: 48px;
     height: 5px;
 
     margin:
@@ -166,7 +159,7 @@
         999px;
 
     background:
-        rgba(7, 27, 58, 0.16);
+        rgba(7, 27, 58, 0.15);
 }
 
 
@@ -175,30 +168,94 @@
 ========================================= */
 
 .portfolio-detail-header {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+
     display: flex;
 
     align-items: center;
     justify-content: space-between;
 
-    gap: 16px;
+    gap: 14px;
 
     padding:
-        16px 24px;
+        13px 24px;
+
+    background:
+        rgba(255, 255, 255, 0.94);
 
     border-bottom:
         1px solid
         var(--color-border);
 
-    background:
-        rgba(255, 255, 255, 0.94);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+}
 
-    position: sticky;
-    top: 0;
 
-    z-index: 5;
+/* =========================================
+   HEADER BRAND
+========================================= */
 
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+.portfolio-detail-brand {
+    display: flex;
+
+    align-items: center;
+
+    min-width: 0;
+
+    gap: 10px;
+}
+
+.portfolio-detail-brand img {
+    display: block;
+
+    width: 34px;
+    height: 34px;
+
+    flex-shrink: 0;
+
+    object-fit: contain;
+}
+
+.portfolio-detail-brand-text {
+    min-width: 0;
+}
+
+.portfolio-detail-brand-label {
+    display: block;
+
+    color:
+        var(--color-text-soft);
+
+    font-size:
+        0.58rem;
+
+    font-weight:
+        700;
+
+    letter-spacing:
+        0.08em;
+
+    text-transform:
+        uppercase;
+}
+
+.portfolio-detail-brand-title {
+    display: block;
+
+    margin-top:
+        2px;
+
+    color:
+        var(--color-navy);
+
+    font-size:
+        0.76rem;
+
+    font-weight:
+        800;
 }
 
 
@@ -210,36 +267,50 @@
     display: inline-flex;
 
     align-items: center;
+    justify-content: center;
 
-    gap: 8px;
+    width: 38px;
+    height: 38px;
 
-    padding: 8px 0;
+    flex-shrink: 0;
 
-    border: 0;
+    padding: 0;
 
-    background: transparent;
+    border:
+        1px solid
+        var(--color-border);
+
+    border-radius:
+        50%;
+
+    background:
+        var(--color-background-soft);
 
     color:
         var(--color-navy);
 
-    font-family: inherit;
+    font-family:
+        inherit;
 
-    font-size:
-        0.82rem;
-
-    font-weight:
-        800;
-
-    cursor: pointer;
+    cursor:
+        pointer;
 
     transition:
         color 0.2s ease,
+        background 0.2s ease,
+        border-color 0.2s ease,
         transform 0.2s ease;
 }
 
 .portfolio-detail-back:hover {
     color:
-        var(--color-primary-dark);
+        var(--color-white);
+
+    background:
+        var(--color-navy);
+
+    border-color:
+        var(--color-navy);
 
     transform:
         translateX(-3px);
@@ -261,6 +332,8 @@
 
     flex-shrink: 0;
 
+    padding: 0;
+
     border:
         1px solid
         var(--color-border);
@@ -274,14 +347,17 @@
     color:
         var(--color-navy);
 
-    font-family: inherit;
+    font-family:
+        inherit;
 
     font-size:
-        1.45rem;
+        1.35rem;
 
-    line-height: 1;
+    line-height:
+        1;
 
-    cursor: pointer;
+    cursor:
+        pointer;
 
     transition:
         color 0.2s ease,
@@ -313,8 +389,8 @@
     display: grid;
 
     grid-template-columns:
-        minmax(0, 1.05fr)
-        minmax(0, 0.95fr);
+        minmax(0, 1.08fr)
+        minmax(0, 0.92fr);
 
     gap: 34px;
 
@@ -324,43 +400,401 @@
 
 
 /* =========================================
-   IMAGE
+   MEDIA GALLERY
 ========================================= */
 
-.portfolio-detail-image {
+.portfolio-detail-media {
     position: relative;
 
+    min-width: 0;
+
     align-self: start;
+}
+
+
+/* =========================================
+   MEDIA VIEWPORT
+========================================= */
+
+.portfolio-detail-media-viewport {
+    position: relative;
 
     overflow: hidden;
+
+    width: 100%;
+
+    aspect-ratio:
+        16 / 10;
+
+    min-height:
+        300px;
 
     border:
         1px solid
         var(--color-border);
 
     border-radius:
-        20px;
+        22px;
 
     background:
         var(--color-background-soft);
 
     box-shadow:
         var(--shadow-small);
+
+    touch-action:
+        pan-y;
 }
 
-.portfolio-detail-image img {
-    display: block;
+
+/* =========================================
+   MEDIA SLIDER
+========================================= */
+
+.portfolio-detail-media-track {
+    display: flex;
 
     width: 100%;
-    height: auto;
+    height: 100%;
 
-    max-height:
-        68vh;
+    transition:
+        transform 0.45s
+        cubic-bezier(
+            0.22,
+            1,
+            0.36,
+            1
+        );
+}
 
-    object-fit: contain;
+.portfolio-detail-media-slide {
+    position: relative;
+
+    flex:
+        0 0 100%;
+
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
 
     background:
         var(--color-background-soft);
+}
+
+
+/* =========================================
+   IMAGE MEDIA
+========================================= */
+
+.portfolio-detail-media-slide img {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit:
+        contain;
+
+    user-select:
+        none;
+
+    -webkit-user-drag:
+        none;
+}
+
+
+/* =========================================
+   YOUTUBE MEDIA
+========================================= */
+
+.portfolio-detail-youtube {
+    position: relative;
+
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+
+    background:
+        #071b3a;
+
+    cursor:
+        pointer;
+}
+
+.portfolio-detail-youtube img {
+    position: absolute;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit:
+        cover;
+
+    opacity:
+        0.82;
+
+    transition:
+        transform 0.35s ease,
+        opacity 0.35s ease;
+}
+
+.portfolio-detail-youtube:hover img {
+    transform:
+        scale(1.025);
+
+    opacity:
+        0.68;
+}
+
+
+/* =========================================
+   YOUTUBE PLAY BUTTON
+========================================= */
+
+.portfolio-detail-youtube-play {
+    position: relative;
+    z-index: 2;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 64px;
+    height: 64px;
+
+    border:
+        0;
+
+    border-radius:
+        50%;
+
+    background:
+        rgba(255, 255, 255, 0.95);
+
+    color:
+        var(--color-navy);
+
+    box-shadow:
+        0 12px 35px
+        rgba(0, 0, 0, 0.25);
+
+    transition:
+        transform 0.25s ease,
+        background 0.25s ease;
+}
+
+.portfolio-detail-youtube:hover
+.portfolio-detail-youtube-play {
+    transform:
+        scale(1.08);
+}
+
+
+/* =========================================
+   YOUTUBE IFRAME
+========================================= */
+
+.portfolio-detail-youtube iframe {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    border:
+        0;
+}
+
+
+/* =========================================
+   MEDIA NAVIGATION
+========================================= */
+
+.portfolio-detail-media-prev,
+.portfolio-detail-media-next {
+    position: absolute;
+
+    top: 50%;
+    z-index: 5;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 38px;
+    height: 38px;
+
+    padding: 0;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.55);
+
+    border-radius:
+        50%;
+
+    background:
+        rgba(7, 27, 58, 0.70);
+
+    color:
+        var(--color-white);
+
+    font-family:
+        inherit;
+
+    font-size:
+        1.15rem;
+
+    line-height:
+        1;
+
+    cursor:
+        pointer;
+
+    transform:
+        translateY(-50%);
+
+    backdrop-filter:
+        blur(8px);
+
+    -webkit-backdrop-filter:
+        blur(8px);
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease,
+        opacity 0.2s ease;
+}
+
+.portfolio-detail-media-prev {
+    left:
+        14px;
+}
+
+.portfolio-detail-media-next {
+    right:
+        14px;
+}
+
+.portfolio-detail-media-prev:hover,
+.portfolio-detail-media-next:hover {
+    background:
+        var(--color-navy);
+
+    transform:
+        translateY(-50%)
+        scale(1.06);
+}
+
+
+/* =========================================
+   MEDIA INDICATORS
+========================================= */
+
+.portfolio-detail-media-indicators {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 6px;
+
+    min-height:
+        22px;
+
+    margin-top:
+        10px;
+}
+
+.portfolio-detail-media-dot {
+    width: 7px;
+    height: 7px;
+
+    padding: 0;
+
+    border:
+        0;
+
+    border-radius:
+        999px;
+
+    background:
+        rgba(7, 27, 58, 0.20);
+
+    cursor:
+        pointer;
+
+    transition:
+        width 0.25s ease,
+        background 0.25s ease,
+        transform 0.25s ease;
+}
+
+.portfolio-detail-media-dot.is-active {
+    width:
+        20px;
+
+    background:
+        var(--color-primary);
+
+    transform:
+        scaleY(1.05);
+}
+
+
+/* =========================================
+   MEDIA COUNTER
+========================================= */
+
+.portfolio-detail-media-counter {
+    position: absolute;
+
+    right: 12px;
+    bottom: 12px;
+
+    z-index: 6;
+
+    padding:
+        5px 9px;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.25);
+
+    border-radius:
+        999px;
+
+    background:
+        rgba(7, 27, 58, 0.68);
+
+    color:
+        var(--color-white);
+
+    font-size:
+        0.62rem;
+
+    font-weight:
+        800;
+
+    backdrop-filter:
+        blur(8px);
+
+    -webkit-backdrop-filter:
+        blur(8px);
 }
 
 
@@ -467,7 +901,8 @@
     grid-template-columns:
         repeat(2, minmax(0, 1fr));
 
-    gap: 10px;
+    gap:
+        10px;
 
     margin-top:
         22px;
@@ -542,7 +977,8 @@
 }
 
 .portfolio-detail-section p {
-    margin: 0;
+    margin:
+        0;
 
     color:
         var(--color-text-soft);
@@ -562,7 +998,8 @@
 .portfolio-detail-section ul {
     display: grid;
 
-    gap: 8px;
+    gap:
+        8px;
 
     margin:
         0;
@@ -596,8 +1033,11 @@
 
     position: absolute;
 
-    left: 0;
-    top: 0;
+    left:
+        0;
+
+    top:
+        0;
 
     color:
         var(--color-primary-dark);
@@ -608,13 +1048,26 @@
 
 
 /* =========================================
-   CTA
+   CTA WRAPPER
 ========================================= */
 
 .portfolio-detail-cta {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap:
+        10px;
+
     margin-top:
         30px;
 }
+
+
+/* =========================================
+   CTA BUTTON
+========================================= */
 
 .portfolio-detail-action {
     display: flex;
@@ -622,15 +1075,17 @@
     align-items: center;
     justify-content: center;
 
-    gap: 9px;
+    gap:
+        8px;
 
-    width: 100%;
+    min-width:
+        0;
 
     min-height:
         50px;
 
     padding:
-        12px 18px;
+        12px 16px;
 
     box-sizing:
         border-box;
@@ -640,7 +1095,7 @@
         var(--color-navy);
 
     border-radius:
-        15px;
+        14px;
 
     background:
         var(--color-navy);
@@ -652,26 +1107,33 @@
         inherit;
 
     font-size:
-        0.82rem;
+        0.78rem;
 
     font-weight:
         800;
+
+    text-align:
+        center;
 
     text-decoration:
         none;
 
     box-shadow:
         0 8px 22px
-        rgba(7, 27, 58, 0.16);
+        rgba(7, 27, 58, 0.15);
 
     transition:
         transform 0.2s ease,
         background 0.2s ease,
-        box-shadow 0.2s ease;
+        box-shadow 0.2s ease,
+        border-color 0.2s ease;
 }
 
 .portfolio-detail-action:hover {
     background:
+        #0c2852;
+
+    border-color:
         #0c2852;
 
     transform:
@@ -689,11 +1151,52 @@
 
 
 /* =========================================
+   SECONDARY CTA
+========================================= */
+
+.portfolio-detail-action.secondary {
+    background:
+        transparent;
+
+    color:
+        var(--color-navy);
+
+    border-color:
+        rgba(7, 27, 58, 0.20);
+
+    box-shadow:
+        none;
+}
+
+.portfolio-detail-action.secondary:hover {
+    background:
+        var(--color-background-soft);
+
+    border-color:
+        var(--color-navy);
+
+    box-shadow:
+        none;
+}
+
+
+/* =========================================
+   CTA HIDDEN STATE
+========================================= */
+
+.portfolio-detail-action.is-hidden {
+    display:
+        none;
+}
+
+
+/* =========================================
    BODY LOCK
 ========================================= */
 
 body.portfolio-detail-open {
-    overflow: hidden;
+    overflow:
+        hidden;
 }
 
 
@@ -707,16 +1210,22 @@ body.portfolio-detail-open {
         grid-template-columns:
             1fr;
 
-        gap: 24px;
+        gap:
+            24px;
 
         padding:
             24px;
     }
 
-    .portfolio-detail-image img {
-        max-height:
-            55vh;
+
+    .portfolio-detail-media-viewport {
+        aspect-ratio:
+            16 / 9;
+
+        min-height:
+            260px;
     }
+
 
     .portfolio-detail-info h2 {
         font-size:
@@ -733,10 +1242,11 @@ body.portfolio-detail-open {
 @media (max-width: 600px) {
 
     .portfolio-detail-sheet {
-        width: 100%;
+        width:
+            100%;
 
         max-height:
-            94vh;
+            95vh;
 
         border-radius:
             24px 24px 0 0;
@@ -745,42 +1255,105 @@ body.portfolio-detail-open {
 
     .portfolio-detail-header {
         padding:
-            13px 16px;
+            11px 14px;
     }
 
 
-    .portfolio-detail-back {
+    .portfolio-detail-brand img {
+        width:
+            30px;
+
+        height:
+            30px;
+    }
+
+
+    .portfolio-detail-brand-label {
         font-size:
-            0.74rem;
+            0.52rem;
     }
 
 
+    .portfolio-detail-brand-title {
+        font-size:
+            0.7rem;
+    }
+
+
+    .portfolio-detail-back,
     .portfolio-detail-close {
-        width: 36px;
-        height: 36px;
+        width:
+            36px;
 
-        font-size:
-            1.3rem;
+        height:
+            36px;
     }
 
 
     .portfolio-detail-content {
-        gap: 20px;
+        gap:
+            20px;
 
         padding:
-            20px 16px 28px;
+            20px 16px 30px;
     }
 
 
-    .portfolio-detail-image {
+    .portfolio-detail-media-viewport {
+        aspect-ratio:
+            4 / 3;
+
+        min-height:
+            0;
+
         border-radius:
-            16px;
+            17px;
     }
 
 
-    .portfolio-detail-image img {
-        max-height:
-            48vh;
+    .portfolio-detail-media-prev,
+    .portfolio-detail-media-next {
+        width:
+            34px;
+
+        height:
+            34px;
+
+        font-size:
+            1rem;
+    }
+
+
+    .portfolio-detail-media-prev {
+        left:
+            9px;
+    }
+
+
+    .portfolio-detail-media-next {
+        right:
+            9px;
+    }
+
+
+    .portfolio-detail-youtube-play {
+        width:
+            56px;
+
+        height:
+            56px;
+    }
+
+
+    .portfolio-detail-media-counter {
+        right:
+            9px;
+
+        bottom:
+            9px;
+
+        font-size:
+            0.56rem;
     }
 
 
@@ -806,7 +1379,8 @@ body.portfolio-detail-open {
 
 
     .portfolio-detail-meta {
-        gap: 8px;
+        gap:
+            8px;
 
         margin-top:
             18px;
@@ -854,6 +1428,12 @@ body.portfolio-detail-open {
 
 
     .portfolio-detail-cta {
+        grid-template-columns:
+            1fr;
+
+        gap:
+            8px;
+
         margin-top:
             24px;
     }
@@ -881,19 +1461,29 @@ body.portfolio-detail-open {
 
     .portfolio-detail-sheet {
         max-height:
-            95vh;
+            96vh;
     }
 
 
     .portfolio-detail-content {
         padding:
-            18px 13px 24px;
+            18px 13px 25px;
     }
 
 
-    .portfolio-detail-back {
+    .portfolio-detail-brand-title {
         font-size:
-            0.68rem;
+            0.66rem;
+    }
+
+
+    .portfolio-detail-back,
+    .portfolio-detail-close {
+        width:
+            34px;
+
+        height:
+            34px;
     }
 
 
@@ -906,6 +1496,41 @@ body.portfolio-detail-open {
     .portfolio-detail-meta {
         grid-template-columns:
             1fr;
+    }
+
+
+    .portfolio-detail-media-prev,
+    .portfolio-detail-media-next {
+        width:
+            32px;
+
+        height:
+            32px;
+    }
+
+}
+
+
+/* =========================================
+   REDUCED MOTION
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .portfolio-detail-overlay,
+    .portfolio-detail-backdrop,
+    .portfolio-detail-sheet,
+    .portfolio-detail-media-track,
+    .portfolio-detail-action,
+    .portfolio-detail-close,
+    .portfolio-detail-back {
+        transition:
+            none;
+    }
+
+    .portfolio-detail-youtube img {
+        transition:
+            none;
     }
 
 }
