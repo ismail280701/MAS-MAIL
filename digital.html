@@ -2143,8 +2143,14 @@
     aria-hidden="true"
 >
 
-    <div class="portfolio-detail-backdrop"></div>
+    <!-- BACKDROP -->
+    <div
+        class="portfolio-detail-backdrop"
+        id="portfolioDetailBackdrop"
+    ></div>
 
+
+    <!-- DETAIL SHEET -->
     <div
         class="portfolio-detail-sheet"
         role="dialog"
@@ -2156,75 +2162,179 @@
         <div class="portfolio-detail-handle"></div>
 
 
-        <!-- HEADER -->
-        <div class="portfolio-detail-header">
+        <!-- =====================================
+             HEADER
+        ====================================== -->
 
+        <header class="portfolio-detail-header">
+
+            <!-- BACK -->
             <button
                 type="button"
                 class="portfolio-detail-back"
                 id="portfolioDetailBack"
+                aria-label="Kembali ke portofolio"
             >
-                <span aria-hidden="true">←</span>
-                Kembali ke Portofolio
+
+                <span aria-hidden="true">
+                    ←
+                </span>
+
             </button>
 
+
+            <!-- BRAND -->
+            <div class="portfolio-detail-brand">
+
+                <img
+                    src="assets/logo-mas-mail-digital.png"
+                    alt="Mas Mail Digital"
+                >
+
+                <div class="portfolio-detail-brand-text">
+
+                    <span class="portfolio-detail-brand-label">
+                        Portofolio
+                    </span>
+
+                    <span class="portfolio-detail-brand-title">
+                        Mas Mail Digital
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- CLOSE -->
             <button
                 type="button"
                 class="portfolio-detail-close"
                 id="portfolioDetailClose"
                 aria-label="Tutup detail karya"
             >
-                ×
+
+                <span aria-hidden="true">
+                    ×
+                </span>
+
             </button>
 
-        </div>
+        </header>
 
 
-        <!-- CONTENT -->
+        <!-- =====================================
+             CONTENT
+        ====================================== -->
+
         <div class="portfolio-detail-content">
 
-            <!-- IMAGE -->
-            <div class="portfolio-detail-image">
 
-                <img
-                    id="portfolioDetailImage"
-                    src=""
-                    alt=""
+            <!-- =================================
+                 MEDIA / CAROUSEL
+            ================================== -->
+
+            <div class="portfolio-detail-media">
+
+                <div
+                    class="portfolio-detail-media-viewport"
+                    id="portfolioDetailMediaViewport"
                 >
+
+                    <!-- MEDIA TRACK -->
+
+                    <div
+                        class="portfolio-detail-media-track"
+                        id="portfolioDetailMediaTrack"
+                    ></div>
+
+
+                    <!-- PREVIOUS -->
+
+                    <button
+                        type="button"
+                        class="portfolio-detail-media-prev"
+                        id="portfolioDetailMediaPrev"
+                        aria-label="Media sebelumnya"
+                    >
+                        ←
+                    </button>
+
+
+                    <!-- NEXT -->
+
+                    <button
+                        type="button"
+                        class="portfolio-detail-media-next"
+                        id="portfolioDetailMediaNext"
+                        aria-label="Media berikutnya"
+                    >
+                        →
+                    </button>
+
+
+                    <!-- COUNTER -->
+
+                    <div
+                        class="portfolio-detail-media-counter"
+                        id="portfolioDetailMediaCounter"
+                        aria-live="polite"
+                    >
+                        1 / 1
+                    </div>
+
+                </div>
+
+
+                <!-- INDICATORS -->
+
+                <div
+                    class="portfolio-detail-media-indicators"
+                    id="portfolioDetailMediaIndicators"
+                    aria-label="Navigasi media"
+                ></div>
 
             </div>
 
 
-            <!-- INFO -->
+            <!-- =================================
+                 INFORMATION
+            ================================== -->
+
             <div class="portfolio-detail-info">
+
+
+                <!-- CATEGORY -->
 
                 <span
                     class="portfolio-detail-category"
                     id="portfolioDetailCategory"
-                >
-                </span>
+                ></span>
 
 
-                <h2 id="portfolioDetailTitle">
-                </h2>
+                <!-- TITLE -->
 
+                <h2 id="portfolioDetailTitle"></h2>
+
+
+                <!-- DESCRIPTION -->
 
                 <p
                     class="portfolio-detail-description"
                     id="portfolioDetailDescription"
-                >
-                </p>
+                ></p>
 
 
                 <!-- META -->
+
                 <div
                     class="portfolio-detail-meta"
                     id="portfolioDetailMeta"
-                >
-                </div>
+                ></div>
 
 
                 <!-- ABOUT -->
+
                 <div class="portfolio-detail-section">
 
                     <h3>
@@ -2233,13 +2343,13 @@
 
                     <p
                         id="portfolioDetailAbout"
-                    >
-                    </p>
+                    ></p>
 
                 </div>
 
 
                 <!-- HIGHLIGHTS -->
+
                 <div
                     class="portfolio-detail-section"
                     id="portfolioDetailHighlightsSection"
@@ -2251,14 +2361,21 @@
 
                     <ul
                         id="portfolioDetailHighlights"
-                    >
-                    </ul>
+                    ></ul>
 
                 </div>
 
 
-                <!-- CTA -->
-                <div class="portfolio-detail-cta">
+                <!-- =================================
+                     CTA
+                ================================== -->
+
+                <div
+                    class="portfolio-detail-cta"
+                    id="portfolioDetailCta"
+                >
+
+                    <!-- PRIMARY -->
 
                     <a
                         href="#"
@@ -2267,13 +2384,40 @@
                         target="_blank"
                         rel="noopener noreferrer"
                     >
-                        <span id="portfolioDetailActionText">
-                            Lihat Karya
+
+                        <span
+                            id="portfolioDetailActionText"
+                        >
+                            Gunakan Template
                         </span>
 
                         <span aria-hidden="true">
                             ↗
                         </span>
+
+                    </a>
+
+
+                    <!-- SECONDARY -->
+
+                    <a
+                        href="#"
+                        id="portfolioDetailConsultation"
+                        class="portfolio-detail-action secondary"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+
+                        <span
+                            id="portfolioDetailConsultationText"
+                        >
+                            Konsultasi
+                        </span>
+
+                        <span aria-hidden="true">
+                            ↗
+                        </span>
+
                     </a>
 
                 </div>
