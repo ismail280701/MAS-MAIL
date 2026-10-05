@@ -1534,3 +1534,22 @@ body.portfolio-detail-open {
     }
 
 }
+/* =========================================================
+   PORTFOLIO DETAIL - SCROLL LOCK FIX
+========================================================= */
+
+/* Saat detail tertutup, overlay benar-benar tidak boleh
+   menangkap klik maupun scroll halaman utama */
+.portfolio-detail-overlay {
+    pointer-events: none;
+}
+
+/* Saat detail terbuka, overlay kembali aktif */
+.portfolio-detail-overlay.is-open {
+    pointer-events: auto;
+}
+
+/* Kunci halaman utama hanya ketika detail benar-benar terbuka */
+body.portfolio-detail-open {
+    overflow: hidden !important;
+}
