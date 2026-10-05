@@ -1516,8 +1516,9 @@ document.addEventListener("DOMContentLoaded", () => {
         previousBodyOverflow =
             document.body.style.overflow;
 
-        document.body.style.overflow =
-            "hidden";
+        document.body.classList.add(
+    "portfolio-detail-open"
+);
 
 
         /*
@@ -1553,8 +1554,9 @@ document.addEventListener("DOMContentLoaded", () => {
         );
 
 
-        document.body.style.overflow =
-            previousBodyOverflow;
+        document.body.classList.remove(
+    "portfolio-detail-open"
+);
 
 
         currentPortfolioId =
