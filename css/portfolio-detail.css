@@ -1553,3 +1553,262 @@ body.portfolio-detail-open {
 body.portfolio-detail-open {
     overflow: hidden !important;
 }
+/* =========================================================
+   PREMIUM PORTFOLIO CONTROLS
+========================================================= */
+
+.portfolio-detail-back,
+.portfolio-detail-close {
+    position: relative;
+
+    width: 54px;
+    height: 54px;
+
+    flex: 0 0 54px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid rgba(7, 27, 58, 0.08);
+
+    border-radius: 50%;
+
+    background:
+        linear-gradient(
+            145deg,
+            #ffffff,
+            #f1f4f8
+        );
+
+    color: #071b3a;
+
+    box-shadow:
+        0 8px 22px rgba(7, 27, 58, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.95);
+
+    cursor: pointer;
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        background 0.25s ease,
+        color 0.25s ease;
+}
+
+.portfolio-detail-back span,
+.portfolio-detail-close span {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    height: 100%;
+
+    font-size: 26px;
+    font-weight: 500;
+
+    line-height: 1;
+}
+
+
+/* Hover / tap */
+
+.portfolio-detail-back:hover,
+.portfolio-detail-close:hover {
+    transform: translateY(-2px);
+
+    background:
+        linear-gradient(
+            145deg,
+            #071b3a,
+            #102d54
+        );
+
+    color: #ffffff;
+
+    box-shadow:
+        0 12px 28px rgba(7, 27, 58, 0.20);
+}
+
+
+.portfolio-detail-back:active,
+.portfolio-detail-close:active {
+    transform: scale(0.94);
+}
+
+
+/* =========================================================
+   CAROUSEL ARROWS
+========================================================= */
+
+.portfolio-detail-media-prev,
+.portfolio-detail-media-next {
+    position: absolute;
+
+    top: 50%;
+
+    width: 58px;
+    height: 58px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid rgba(255, 255, 255, 0.45);
+
+    border-radius: 50%;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(7, 27, 58, 0.82),
+            rgba(17, 43, 76, 0.72)
+        );
+
+    color: #ffffff;
+
+    box-shadow:
+        0 10px 28px rgba(7, 27, 58, 0.28),
+        inset 0 1px 0 rgba(255, 255, 255, 0.18);
+
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    font-size: 24px;
+    font-weight: 400;
+
+    cursor: pointer;
+
+    z-index: 5;
+
+    transition:
+        transform 0.25s ease,
+        background 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.portfolio-detail-media-prev {
+    left: 18px;
+
+    transform:
+        translateY(-50%);
+}
+
+.portfolio-detail-media-next {
+    right: 18px;
+
+    transform:
+        translateY(-50%);
+}
+
+
+.portfolio-detail-media-prev:hover,
+.portfolio-detail-media-next:hover {
+    background:
+        linear-gradient(
+            145deg,
+            #d4af5f,
+            #b99543
+        );
+
+    color: #071b3a;
+
+    box-shadow:
+        0 14px 32px rgba(7, 27, 58, 0.25);
+}
+
+
+.portfolio-detail-media-prev:active,
+.portfolio-detail-media-next:active {
+    transform:
+        translateY(-50%)
+        scale(0.92);
+}
+
+
+/* =========================================================
+   MEDIA INDICATORS
+========================================================= */
+
+.portfolio-detail-media-indicators {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 7px;
+
+    margin-top: 14px;
+}
+
+
+.portfolio-detail-media-dot {
+    width: 8px;
+    height: 8px;
+
+    padding: 0;
+
+    border: 0;
+
+    border-radius: 999px;
+
+    background: #cbd2dc;
+
+    cursor: pointer;
+
+    transition:
+        width 0.25s ease,
+        background 0.25s ease,
+        transform 0.25s ease;
+}
+
+
+.portfolio-detail-media-dot:hover {
+    transform: scale(1.15);
+}
+
+
+.portfolio-detail-media-dot.is-active {
+    width: 26px;
+
+    background: #d4af5f;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .portfolio-detail-back,
+    .portfolio-detail-close {
+        width: 50px;
+        height: 50px;
+
+        flex-basis: 50px;
+    }
+
+    .portfolio-detail-back span,
+    .portfolio-detail-close span {
+        font-size: 24px;
+    }
+
+    .portfolio-detail-media-prev,
+    .portfolio-detail-media-next {
+        width: 48px;
+        height: 48px;
+
+        font-size: 20px;
+    }
+
+    .portfolio-detail-media-prev {
+        left: 12px;
+    }
+
+    .portfolio-detail-media-next {
+        right: 12px;
+    }
+}
