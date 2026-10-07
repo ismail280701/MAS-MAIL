@@ -172,13 +172,9 @@
     top: 0;
     z-index: 20;
 
-    display: flex;
-
-    align-items: center;
-    justify-content: space-between;
-
     gap: 14px;
-
+   grid-template-columns:
+    1fr auto 1fr;
     padding:
         13px 24px;
 
@@ -1810,5 +1806,541 @@ body.portfolio-detail-open {
 
     .portfolio-detail-media-next {
         right: 12px;
+    }
+}
+/* =========================================================
+   HEADER FINAL - PORTFOLIO DETAIL
+========================================================= */
+
+.portfolio-detail-header {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+
+    display: grid;
+
+    grid-template-columns:
+        1fr auto 1fr;
+
+    align-items: center;
+
+    min-height: 76px;
+
+    padding:
+        10px 18px;
+
+    background:
+        rgba(255, 255, 255, 0.96);
+
+    border-bottom:
+        1px solid
+        rgba(7, 27, 58, 0.08);
+
+    backdrop-filter:
+        blur(16px);
+
+    -webkit-backdrop-filter:
+        blur(16px);
+
+    box-sizing:
+        border-box;
+}
+
+
+/* =========================================================
+   BRAND - BENAR-BENAR DI TENGAH
+========================================================= */
+
+.portfolio-detail-brand {
+    grid-column: 2;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 10px;
+
+    min-width: 0;
+
+    max-width: min(
+        260px,
+        calc(100vw - 150px)
+    );
+
+    margin: 0;
+
+    justify-self: center;
+}
+
+
+.portfolio-detail-brand img {
+    display: block;
+
+    width: 38px;
+    height: 38px;
+
+    flex: 0 0 38px;
+
+    object-fit: contain;
+
+    margin: 0;
+
+    border-radius: 50%;
+}
+
+
+.portfolio-detail-brand-text {
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    min-width: 0;
+
+    margin: 0;
+
+    text-align: left;
+}
+
+
+.portfolio-detail-brand-label {
+    display: block;
+
+    margin: 0;
+
+    color:
+        var(--color-text-soft);
+
+    font-size:
+        0.58rem;
+
+    font-weight:
+        800;
+
+    line-height:
+        1.15;
+
+    letter-spacing:
+        0.12em;
+
+    text-transform:
+        uppercase;
+}
+
+
+.portfolio-detail-brand-title {
+    display: block;
+
+    margin: 3px 0 0;
+
+    color:
+        var(--color-navy);
+
+    font-size:
+        0.82rem;
+
+    font-weight:
+        800;
+
+    line-height:
+        1.15;
+
+    white-space:
+        nowrap;
+}
+
+
+/* =========================================================
+   BACK & CLOSE - POSISI
+========================================================= */
+
+.portfolio-detail-back,
+.portfolio-detail-close {
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 48px;
+    height: 48px;
+
+    flex: 0 0 48px;
+
+    margin: 0;
+
+    padding: 0;
+
+    box-sizing: border-box;
+
+    border:
+        1px solid
+        rgba(7, 27, 58, 0.09);
+
+    border-radius:
+        50%;
+
+    background:
+        linear-gradient(
+            145deg,
+            #ffffff,
+            #f3f6f9
+        );
+
+    color:
+        var(--color-navy);
+
+    box-shadow:
+        0 6px 18px
+        rgba(7, 27, 58, 0.08),
+
+        inset 0 1px 0
+        rgba(255, 255, 255, 0.95);
+
+    cursor:
+        pointer;
+
+    transition:
+        transform 0.22s ease,
+        background 0.22s ease,
+        color 0.22s ease,
+        box-shadow 0.22s ease,
+        border-color 0.22s ease;
+
+    -webkit-tap-highlight-color:
+        transparent;
+}
+
+
+/* =========================================================
+   LETAK TOMBOL
+========================================================= */
+
+.portfolio-detail-back {
+    grid-column: 1;
+
+    justify-self: start;
+}
+
+
+.portfolio-detail-close {
+    grid-column: 3;
+
+    justify-self: end;
+}
+
+
+/* =========================================================
+   MATIKAN ICON TEKS LAMA
+========================================================= */
+
+.portfolio-detail-back span,
+.portfolio-detail-close span {
+
+    display: block;
+
+    width: 0;
+    height: 0;
+
+    overflow: hidden;
+
+    font-size: 0;
+
+    line-height: 0;
+}
+
+
+/* =========================================================
+   ICON BACK
+========================================================= */
+
+.portfolio-detail-back::before {
+
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    width: 9px;
+    height: 9px;
+
+    border-left:
+        2px solid
+        currentColor;
+
+    border-bottom:
+        2px solid
+        currentColor;
+
+    transform:
+        translate(
+            -35%,
+            -50%
+        )
+        rotate(45deg);
+}
+
+
+.portfolio-detail-back::after {
+
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    width: 17px;
+    height: 2px;
+
+    border-radius:
+        999px;
+
+    background:
+        currentColor;
+
+    transform:
+        translate(
+            -35%,
+            -50%
+        );
+}
+
+
+/* =========================================================
+   ICON CLOSE
+========================================================= */
+
+.portfolio-detail-close::before,
+.portfolio-detail-close::after {
+
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    width: 18px;
+    height: 2px;
+
+    border-radius:
+        999px;
+
+    background:
+        currentColor;
+}
+
+
+.portfolio-detail-close::before {
+
+    transform:
+        translate(
+            -50%,
+            -50%
+        )
+        rotate(45deg);
+}
+
+
+.portfolio-detail-close::after {
+
+    transform:
+        translate(
+            -50%,
+            -50%
+        )
+        rotate(-45deg);
+}
+
+
+/* =========================================================
+   HOVER
+========================================================= */
+
+.portfolio-detail-back:hover,
+.portfolio-detail-close:hover {
+
+    color:
+        #ffffff;
+
+    background:
+        linear-gradient(
+            145deg,
+            #071b3a,
+            #102d54
+        );
+
+    border-color:
+        rgba(7, 27, 58, 0.25);
+
+    box-shadow:
+        0 10px 24px
+        rgba(7, 27, 58, 0.18);
+
+    transform:
+        translateY(-2px);
+}
+
+
+.portfolio-detail-back:hover {
+    transform:
+        translate(
+            -1px,
+            -2px
+        );
+}
+
+
+.portfolio-detail-close:hover {
+    transform:
+        translateY(-2px)
+        rotate(90deg);
+}
+
+
+/* =========================================================
+   ACTIVE / TAP
+========================================================= */
+
+.portfolio-detail-back:active,
+.portfolio-detail-close:active {
+
+    transform:
+        scale(0.93);
+}
+
+
+/* =========================================================
+   MOBILE HEADER
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .portfolio-detail-header {
+
+        min-height:
+            72px;
+
+        padding:
+            9px 14px;
+    }
+
+
+    .portfolio-detail-back,
+    .portfolio-detail-close {
+
+        width:
+            44px;
+
+        height:
+            44px;
+
+        flex-basis:
+            44px;
+    }
+
+
+    .portfolio-detail-brand {
+
+        gap:
+            8px;
+
+        max-width:
+            calc(100vw - 130px);
+    }
+
+
+    .portfolio-detail-brand img {
+
+        width:
+            34px;
+
+        height:
+            34px;
+
+        flex-basis:
+            34px;
+    }
+
+
+    .portfolio-detail-brand-label {
+
+        font-size:
+            0.52rem;
+    }
+
+
+    .portfolio-detail-brand-title {
+
+        margin-top:
+            2px;
+
+        font-size:
+            0.72rem;
+    }
+}
+
+
+/* =========================================================
+   VERY SMALL PHONE
+========================================================= */
+
+@media (max-width: 380px) {
+
+    .portfolio-detail-header {
+
+        padding:
+            8px 11px;
+    }
+
+
+    .portfolio-detail-back,
+    .portfolio-detail-close {
+
+        width:
+            40px;
+
+        height:
+            40px;
+
+        flex-basis:
+            40px;
+    }
+
+
+    .portfolio-detail-brand {
+
+        gap:
+            6px;
+
+        max-width:
+            calc(100vw - 115px);
+    }
+
+
+    .portfolio-detail-brand img {
+
+        width:
+            31px;
+
+        height:
+            31px;
+
+        flex-basis:
+            31px;
+    }
+
+
+    .portfolio-detail-brand-title {
+
+        font-size:
+            0.66rem;
     }
 }
