@@ -82,12 +82,14 @@
   height: calc(100% - 72px);
   max-height: none;
 
+  display: flex;
+  flex-direction: column;
+
   background: #fff;
   border-radius: 28px 28px 0 0;
   overflow: hidden;
 
-  box-shadow:
-    0 -10px 40px rgba(7, 27, 58, .14);
+  box-shadow: 0 -10px 40px rgba(7, 27, 58, .14);
 
   transform: translateY(24px);
   opacity: 0;
@@ -111,7 +113,6 @@
     border-radius: 28px 28px 0 0;
   }
 }
-
 /* =========================================
    SCROLLBAR
 ========================================= */
@@ -176,9 +177,8 @@
 
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
+  flex-shrink: 0;
 }
-
-
 /* =========================================
    HEADER BRAND
 ========================================= */
@@ -258,9 +258,14 @@
 
     padding:
         30px;
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-y: contain;
 }
-
-
 /* =========================================
    MEDIA GALLERY
 ========================================= */
