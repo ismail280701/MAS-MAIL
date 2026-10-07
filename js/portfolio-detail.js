@@ -1,2312 +1,537 @@
-/* =========================================================
-   PORTFOLIO DETAIL
-   Mas Mail Digital
-========================================================= */
+"use strict";
 
 document.addEventListener("DOMContentLoaded", () => {
+    const portfolioSource = window.MasMailPortfolioData;
 
-    /* =====================================================
-       KONFIGURASI
-    ===================================================== */
-
-    const WHATSAPP_NUMBER = "6282253652317";
-    const DEFAULT_PURCHASE_URL = "https://lynk.id/ismail280701";
-    const AUTO_SLIDE_DELAY = 4800;
-
-    /* =====================================================
-       DATA PORTFOLIO
-       Semua link kartu + detail mengambil data dari sini.
-    ===================================================== */
-
-    const portfolioData = {
-
-        /* =================================================
-           WEBSITE
-        ================================================= */
-
-        "website-alihsan": {
-            type: "website",
-            category: "WEBSITE",
-
-            title: "Website Profil PonPes Al Ihsan",
-
-            description:
-                "Website profil pesantren dengan tampilan modern, responsif, dan dirancang agar informasi lembaga lebih mudah diakses.",
-
-            about:
-                "Website ini dibuat sebagai media informasi dan profil digital PonPes Al Ihsan. Struktur halaman dirancang agar pengunjung dapat mengenal pesantren, program, kegiatan, dan informasi penting lainnya dengan lebih nyaman.",
-
-            highlights: [
-                "Desain modern dan responsif",
-                "Tampilan mobile-friendly",
-                "Struktur halaman informatif",
-                "Navigasi yang mudah digunakan",
-                "Dapat diakses melalui internet"
-            ],
-
-            image:
-                "Portofolio/website/websiteponpesalihsan.webp",
-
-            websiteUrl:
-                "https://ponpesalihsanicu.my.id",
-
-            whatsappMessage:
-                "Halo Mas Mail, saya tertarik dengan jasa pembuatan website seperti Website Profil PonPes Al Ihsan."
-        },
-
-
-        /* =================================================
-           CANVA TEMPLATE
-        ================================================= */
-
-        "poster-tahfidz": {
-            type: "template",
-            category: "CANVA TEMPLATE",
-
-            title:
-                "Template Ucapan Selamat Tasmi' Hafalan Al-Qur'an",
-
-            description:
-                "Template Canva untuk kebutuhan ucapan dan publikasi Tasmi' hafalan Al-Qur'an dengan desain yang siap digunakan.",
-
-            about:
-                "Template ini dibuat untuk membantu pesantren, sekolah, maupun individu membuat desain ucapan Tasmi' hafalan Al-Qur'an dengan lebih cepat. Teks dan beberapa bagian desain dapat disesuaikan melalui Canva.",
-
-            highlights: [
-                "Ukuran siap digunakan",
-                "Dapat diedit melalui Canva",
-                "Cocok untuk publikasi pesantren",
-                "Mudah disesuaikan",
-                "Siap digunakan untuk media sosial"
-            ],
-
-            image:
-                "Portofolio/Canva/Templet ucapan selamat Tasmi' hafalan al qur'an_20260928_130011_0000.webp",
-
-            purchaseUrl:
-                "https://lynk.id/ismail280701/972dn525z7w9",
-
-            whatsappMessage:
-                "Halo Mas Mail, saya tertarik menggunakan Template Ucapan Selamat Tasmi' Hafalan Al-Qur'an."
-        },
-
-
-        /* =================================================
-           POWERPOINT
-        ================================================= */
-
-        "template-ppt": {
-            type: "template",
-            category: "POWERPOINT",
-
-            title:
-                "Template PowerPoint",
-
-            description:
-                "Template presentasi PowerPoint dengan desain modern yang dapat digunakan untuk kebutuhan presentasi.",
-
-            about:
-                "Template PowerPoint ini dirancang untuk membantu membuat presentasi terlihat lebih rapi dan profesional. Media tambahan seperti gambar atau video dapat ditampilkan di bagian detail karya.",
-
-            highlights: [
-                "Desain presentasi modern",
-                "Cocok untuk berbagai kebutuhan",
-                "Mudah disesuaikan",
-                "Struktur slide siap digunakan",
-                "Dapat digunakan untuk presentasi"
-            ],
-
-            image:
-                "assets/portfolio/ppt-01.jpg",
-
-            purchaseUrl:
-                DEFAULT_PURCHASE_URL,
-
-            whatsappMessage:
-                "Halo Mas Mail, saya tertarik dengan Template PowerPoint."
-            
-            /*
-            Jika nanti ingin menambahkan gambar:
-
-            media: [
-                {
-                    type: "image",
-                    src: "assets/portfolio/ppt-01.jpg",
-                    alt: "Preview Template PowerPoint"
-                },
-                {
-                    type: "image",
-                    src: "assets/portfolio/ppt-02.jpg",
-                    alt: "Preview halaman Template PowerPoint"
-                }
-            ]
-
-            Atau YouTube:
-
-            media: [
-                {
-                    type: "image",
-                    src: "assets/portfolio/ppt-01.jpg",
-                    alt: "Preview Template PowerPoint"
-                },
-                {
-                    type: "youtube",
-                    id: "ID_VIDEO_YOUTUBE",
-                    title: "Video Preview Template PowerPoint"
-                }
-            ]
-            */
-        },
-
-
-        /* =================================================
-           SERTIFIKAT
-        ================================================= */
-
-        "sertifikat-piagam": {
-            type: "service",
-            category: "SERTIFIKAT",
-
-            title:
-                "Desain Sertifikat & Piagam",
-
-            description:
-                "Jasa pembuatan desain sertifikat dan piagam untuk sekolah, pesantren, organisasi, maupun kebutuhan pribadi.",
-
-            about:
-                "Desain dibuat berdasarkan kebutuhan dan identitas yang diinginkan. Konsep, teks, ukuran, serta elemen visual dapat disesuaikan dengan kebutuhan pemesan.",
-
-            highlights: [
-                "Desain sesuai kebutuhan",
-                "Cocok untuk sekolah dan pesantren",
-                "Bisa menyesuaikan identitas lembaga",
-                "Ukuran dapat disesuaikan",
-                "Konsultasi sebelum pengerjaan"
-            ],
-
-            image:
-                "assets/portfolio/sertifikat-01.jpg",
-
-            whatsappMessage:
-                "Halo Mas Mail, saya ingin konsultasi mengenai desain sertifikat atau piagam."
-        },
-
-
-        /* =================================================
-           CANVA TEMPLATE
-        ================================================= */
-
-        "template-canva": {
-            type: "template",
-            category: "CANVA TEMPLATE",
-
-            title:
-                "Template Canva",
-
-            description:
-                "Template desain Canva yang dapat digunakan dan disesuaikan untuk berbagai kebutuhan.",
-
-            about:
-                "Template Canva dibuat agar pengguna dapat melakukan penyesuaian sendiri dengan lebih mudah. Teks, gambar, warna, maupun elemen desain dapat disesuaikan melalui Canva.",
-
-            highlights: [
-                "Dapat diedit melalui Canva",
-                "Mudah disesuaikan",
-                "Desain siap digunakan",
-                "Cocok untuk kebutuhan digital",
-                "Praktis untuk digunakan kembali"
-            ],
-
-            image:
-                "assets/portfolio/canva-02.jpg",
-
-            purchaseUrl:
-                DEFAULT_PURCHASE_URL,
-
-            whatsappMessage:
-                "Halo Mas Mail, saya tertarik dengan Template Canva."
-        },
-
-
-        /* =================================================
-           APLIKASI
-        ================================================= */
-
-        "proyek-aplikasi": {
-            type: "service",
-            category: "APLIKASI",
-
-            title:
-                "Proyek Aplikasi",
-
-            description:
-                "Pengembangan aplikasi sederhana untuk membantu kebutuhan administrasi dan pengelolaan data.",
-
-            about:
-                "Proyek aplikasi dapat disesuaikan dengan kebutuhan pengguna, mulai dari struktur data, tampilan, hingga alur penggunaan.",
-
-            highlights: [
-                "Disesuaikan dengan kebutuhan",
-                "Membantu pengelolaan data",
-                "Tampilan mudah digunakan",
-                "Dapat dikembangkan sesuai kebutuhan",
-                "Konsultasi sebelum pengerjaan"
-            ],
-
-            image:
-                "assets/portfolio/aplikasi-01.jpg",
-
-            whatsappMessage:
-                "Halo Mas Mail, saya ingin konsultasi mengenai pembuatan aplikasi."
-        }
-    };
-
-
-    /* =====================================================
-       ELEMENT HTML
-    ===================================================== */
-
-    const overlay =
-        document.getElementById("portfolioDetail");
-
-    const backdrop =
-        document.getElementById("portfolioDetailBackdrop");
-
-    const sheet =
-        overlay?.querySelector(".portfolio-detail-sheet");
-
-    const backButton =
-        document.getElementById("portfolioDetailBack");
-
-    const closeButton =
-        document.getElementById("portfolioDetailClose");
-
-
-    /* =====================================================
-       MEDIA
-    ===================================================== */
-
-    const mediaViewport =
-        document.getElementById("portfolioDetailMediaViewport");
-
-    const mediaTrack =
-        document.getElementById("portfolioDetailMediaTrack");
-
-    const mediaPrev =
-        document.getElementById("portfolioDetailMediaPrev");
-
-    const mediaNext =
-        document.getElementById("portfolioDetailMediaNext");
-
-    const mediaIndicators =
-        document.getElementById("portfolioDetailMediaIndicators");
-
-    const mediaCounter =
-        document.getElementById("portfolioDetailMediaCounter");
-
-
-    /* =====================================================
-       INFORMATION
-    ===================================================== */
-
-    const categoryElement =
-        document.getElementById("portfolioDetailCategory");
-
-    const titleElement =
-        document.getElementById("portfolioDetailTitle");
-
-    const descriptionElement =
-        document.getElementById("portfolioDetailDescription");
-
-    const metaElement =
-        document.getElementById("portfolioDetailMeta");
-
-    const aboutElement =
-        document.getElementById("portfolioDetailAbout");
-
-    const highlightsSection =
-        document.getElementById("portfolioDetailHighlightsSection");
-
-    const highlightsElement =
-        document.getElementById("portfolioDetailHighlights");
-
-
-    /* =====================================================
-       CTA
-    ===================================================== */
-
-    const cta =
-        document.getElementById("portfolioDetailCta");
-
-    const primaryAction =
-        document.getElementById("portfolioDetailAction");
-
-    const primaryActionText =
-        document.getElementById("portfolioDetailActionText");
-
-    const consultationAction =
-        document.getElementById("portfolioDetailConsultation");
-
-    const consultationActionText =
-        document.getElementById("portfolioDetailConsultationText");
-
-
-    /* =====================================================
-       STATE
-    ===================================================== */
-
-    let currentPortfolioId = null;
-    let currentPortfolio = null;
-
-    let currentMediaIndex = 0;
-    let currentMedia = [];
-
-    let autoSlideTimer = null;
-
-    let historyEntryCreated = false;
-
-    let previousBodyOverflow = "";
-
-    let pointerStartX = 0;
-    let pointerStartY = 0;
-    let pointerDragging = false;
-
-
-    /* =====================================================
-       CEK ELEMENT
-    ===================================================== */
-
-    if (
-        !overlay ||
-        !mediaViewport ||
-        !mediaTrack
-    ) {
-        console.warn(
-            "Portfolio Detail: element HTML tidak ditemukan."
-        );
-
+    if (!portfolioSource || !portfolioSource.data) {
+        console.error("Mas Mail Portfolio: portfolio-data.js tidak ditemukan.");
         return;
     }
 
+    const portfolioData = portfolioSource.data;
+    const createWhatsAppUrl = portfolioSource.createWhatsAppUrl;
+    const defaultPurchaseUrl = portfolioSource.defaultPurchaseUrl;
 
-    /* =====================================================
-       WHATSAPP
-    ===================================================== */
+    const overlay = document.getElementById("portfolioDetail");
+    const backdrop = document.getElementById("portfolioDetailBackdrop");
+    const backButton = document.getElementById("portfolioDetailBack");
+    const closeButton = document.getElementById("portfolioDetailClose");
 
-    function createWhatsAppUrl(message) {
+    const mediaViewport = document.getElementById("portfolioDetailMediaViewport");
+    const mediaTrack = document.getElementById("portfolioDetailMediaTrack");
+    const mediaPrev = document.getElementById("portfolioDetailMediaPrev");
+    const mediaNext = document.getElementById("portfolioDetailMediaNext");
+    const mediaCounter = document.getElementById("portfolioDetailMediaCounter");
+    const mediaIndicators = document.getElementById("portfolioDetailMediaIndicators");
 
-        const text =
-            encodeURIComponent(message || "");
+    const categoryElement = document.getElementById("portfolioDetailCategory");
+    const titleElement = document.getElementById("portfolioDetailTitle");
+    const descriptionElement = document.getElementById("portfolioDetailDescription");
+    const metaElement = document.getElementById("portfolioDetailMeta");
+    const aboutElement = document.getElementById("portfolioDetailAbout");
+    const highlightsSection = document.getElementById("portfolioDetailHighlightsSection");
+    const highlightsElement = document.getElementById("portfolioDetailHighlights");
 
-        return `https://wa.me/${WHATSAPP_NUMBER}?text=${text}`;
+    const ctaElement = document.getElementById("portfolioDetailCta");
+    const actionElement = document.getElementById("portfolioDetailAction");
+    const actionTextElement = document.getElementById("portfolioDetailActionText");
+    const consultationElement = document.getElementById("portfolioDetailConsultation");
+    const consultationTextElement = document.getElementById("portfolioDetailConsultationText");
+
+    if (!overlay) {
+        console.error("Mas Mail Portfolio: elemen #portfolioDetail tidak ditemukan.");
+        return;
     }
 
+    const AUTO_SLIDE_DELAY = 4800;
 
-    /* =====================================================
-       YOUTUBE ID
-    ===================================================== */
+    let currentPortfolioId = null;
+    let currentMedia = [];
+    let currentMediaIndex = 0;
+    let autoSlideTimer = null;
+    let touchStartX = 0;
+    let touchStartY = 0;
 
-    function extractYouTubeId(value) {
-
-        if (!value) {
-            return "";
-        }
-
-        const input =
-            String(value).trim();
-
-        /*
-         * Jika langsung ID YouTube
-         */
-        if (
-            /^[a-zA-Z0-9_-]{11}$/.test(input)
-        ) {
-            return input;
-        }
-
-        /*
-         * youtube.com/watch?v=
-         */
-        const watchMatch =
-            input.match(
-                /[?&]v=([a-zA-Z0-9_-]{11})/
-            );
-
-        if (watchMatch) {
-            return watchMatch[1];
-        }
-
-        /*
-         * youtu.be/ID
-         */
-        const shortMatch =
-            input.match(
-                /youtu\.be\/([a-zA-Z0-9_-]{11})/
-            );
-
-        if (shortMatch) {
-            return shortMatch[1];
-        }
-
-        /*
-         * youtube.com/embed/ID
-         */
-        const embedMatch =
-            input.match(
-                /youtube\.com\/embed\/([a-zA-Z0-9_-]{11})/
-            );
-
-        if (embedMatch) {
-            return embedMatch[1];
-        }
-
-        return "";
+    function escapeHtml(value) {
+        return String(value ?? "")
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;")
+            .replace(/'/g, "&#039;");
     }
 
-
-    /* =====================================================
-       MEDIA NORMALIZER
-    ===================================================== */
-
-    function getPortfolioMedia(data) {
-
-        /*
-         * Jika nanti data menggunakan media[],
-         * media[] akan diprioritaskan.
-         */
-
-        if (
-            Array.isArray(data.media) &&
-            data.media.length
-        ) {
-
-            return data.media;
+    function getPortfolioMedia(item) {
+        if (Array.isArray(item.media) && item.media.length) {
+            return item.media;
         }
 
-
-        /*
-         * Untuk data lama yang hanya punya image.
-         */
-
-        if (data.image) {
-
+        if (item.image) {
             return [
                 {
                     type: "image",
-                    src: data.image,
-                    alt: data.title || "Portfolio Mas Mail Digital"
+                    src: item.image,
+                    alt: item.title || "Portfolio"
                 }
             ];
         }
 
-
         return [];
     }
 
-
-    /* =====================================================
-       RENDER MEDIA
-    ===================================================== */
-
-    function renderMedia(data) {
-
-        currentMedia =
-            getPortfolioMedia(data);
-
-        currentMediaIndex = 0;
-
-        mediaTrack.innerHTML = "";
-
-        mediaIndicators.innerHTML = "";
-
-
-        if (!currentMedia.length) {
-
-            mediaTrack.innerHTML = `
-                <div class="portfolio-detail-media-slide">
-                    <div style="
-                        min-height:260px;
-                        display:flex;
-                        align-items:center;
-                        justify-content:center;
-                        padding:30px;
-                        text-align:center;
-                    ">
-                        Media portfolio belum tersedia.
-                    </div>
-                </div>
-            `;
-
-            mediaPrev.hidden = true;
-            mediaNext.hidden = true;
-            mediaIndicators.hidden = true;
-            mediaCounter.hidden = true;
-
-            return;
-        }
-
-
-        currentMedia.forEach(
-            (item, index) => {
-
-                const slide =
-                    document.createElement("div");
-
-                slide.className =
-                    "portfolio-detail-media-slide";
-
-                slide.dataset.index =
-                    index;
-
-
-                /* =========================================
-                   IMAGE
-                ========================================= */
-
-                if (
-                    item.type === "image" ||
-                    !item.type
-                ) {
-
-                    const image =
-                        document.createElement("img");
-
-                    image.src =
-                        item.src;
-
-                    image.alt =
-                        item.alt ||
-                        data.title ||
-                        "Portfolio Mas Mail Digital";
-
-                    image.loading =
-                        index === 0
-                            ? "eager"
-                            : "lazy";
-
-                    slide.appendChild(image);
-                }
-
-
-                /* =========================================
-                   YOUTUBE
-                ========================================= */
-
-                else if (
-                    item.type === "youtube"
-                ) {
-
-                    const youtubeId =
-                        extractYouTubeId(
-                            item.id || item.url
-                        );
-
-
-                    if (!youtubeId) {
-
-                        slide.innerHTML = `
-                            <div style="
-                                min-height:260px;
-                                display:flex;
-                                align-items:center;
-                                justify-content:center;
-                                text-align:center;
-                                padding:30px;
-                            ">
-                                Video YouTube belum tersedia.
-                            </div>
-                        `;
-
-                    } else {
-
-                        const youtubeBox =
-                            document.createElement("div");
-
-                        youtubeBox.className =
-                            "portfolio-detail-youtube";
-
-
-                        /*
-                         * Thumbnail YouTube
-                         */
-
-                        const thumbnail =
-                            document.createElement("img");
-
-                        thumbnail.src =
-                            item.thumbnail ||
-                            `https://i.ytimg.com/vi/${youtubeId}/hqdefault.jpg`;
-
-                        thumbnail.alt =
-                            item.title ||
-                            "Video YouTube";
-
-
-                        /*
-                         * Tombol play
-                         */
-
-                        const playButton =
-                            document.createElement("button");
-
-                        playButton.type =
-                            "button";
-
-                        playButton.className =
-                            "portfolio-detail-youtube-play";
-
-                        playButton.setAttribute(
-                            "aria-label",
-                            "Putar video"
-                        );
-
-                        playButton.innerHTML =
-                            "▶";
-
-
-                        /*
-                         * Klik video
-                         * → baru iframe dibuat.
-                         * Jadi YouTube tidak autoplay
-                         * ketika carousel dibuka.
-                         */
-
-                        playButton.addEventListener(
-                            "click",
-                            () => {
-
-                                youtubeBox.innerHTML = "";
-
-                                const iframe =
-                                    document.createElement("iframe");
-
-                                iframe.src =
-                                    `https://www.youtube-nocookie.com/embed/${youtubeId}?autoplay=1&rel=0`;
-
-                                iframe.title =
-                                    item.title ||
-                                    "Video YouTube";
-
-                                iframe.loading =
-                                    "lazy";
-
-                                iframe.allow =
-                                    "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
-
-                                iframe.allowFullscreen =
-                                    true;
-
-                                youtubeBox.appendChild(
-                                    iframe
-                                );
-
-                                stopAutoSlide();
-                            }
-                        );
-
-
-                        youtubeBox.appendChild(
-                            thumbnail
-                        );
-
-                        youtubeBox.appendChild(
-                            playButton
-                        );
-
-                        slide.appendChild(
-                            youtubeBox
-                        );
-                    }
-                }
-
-
-                mediaTrack.appendChild(
-                    slide
-                );
-
-
-                /* =========================================
-                   INDICATOR
-                ========================================= */
-
-                if (currentMedia.length > 1) {
-
-                    const dot =
-                        document.createElement("button");
-
-                    dot.type =
-                        "button";
-
-                    dot.className =
-                        "portfolio-detail-media-dot";
-
-                    dot.setAttribute(
-                        "aria-label",
-                        `Buka media ${index + 1}`
-                    );
-
-                    dot.dataset.index =
-                        index;
-
-                    dot.addEventListener(
-                        "click",
-                        () => {
-
-                            goToMedia(
-                                index,
-                                true
-                            );
-                        }
-                    );
-
-                    mediaIndicators.appendChild(
-                        dot
-                    );
-                }
-            }
-        );
-
-
-        /*
-         * Carousel controls
-         */
-
-        const hasMultiple =
-            currentMedia.length > 1;
-
-        mediaPrev.hidden =
-            !hasMultiple;
-
-        mediaNext.hidden =
-            !hasMultiple;
-
-        mediaIndicators.hidden =
-            !hasMultiple;
-
-        mediaCounter.hidden =
-            !hasMultiple;
-
-
-        updateMediaPosition(false);
-
-
-        if (hasMultiple) {
-
-            startAutoSlide();
+    function stopAutoSlide() {
+        if (autoSlideTimer) {
+            clearInterval(autoSlideTimer);
+            autoSlideTimer = null;
         }
     }
-
-
-    /* =====================================================
-       UPDATE MEDIA POSITION
-    ===================================================== */
-
-    function updateMediaPosition(animate = true) {
-
-        const offset =
-            currentMediaIndex * -100;
-
-        if (!animate) {
-
-            mediaTrack.style.transition =
-                "none";
-        }
-
-        mediaTrack.style.transform =
-            `translate3d(${offset}%, 0, 0)`;
-
-
-        if (!animate) {
-
-            requestAnimationFrame(() => {
-
-                mediaTrack.style.transition =
-                    "";
-            });
-        }
-
-
-        /*
-         * Counter
-         */
-
-        if (
-            currentMedia.length > 1
-        ) {
-
-            mediaCounter.textContent =
-                `${currentMediaIndex + 1} / ${currentMedia.length}`;
-        }
-
-
-        /*
-         * Indicator
-         */
-
-        const dots =
-            mediaIndicators.querySelectorAll(
-                ".portfolio-detail-media-dot"
-            );
-
-        dots.forEach(
-            (dot, index) => {
-
-                const active =
-                    index === currentMediaIndex;
-
-                dot.classList.toggle(
-                    "is-active",
-                    active
-                );
-
-                dot.setAttribute(
-                    "aria-current",
-                    active
-                        ? "true"
-                        : "false"
-                );
-            }
-        );
-    }
-
-
-    /* =====================================================
-       GO TO MEDIA
-    ===================================================== */
-
-    function goToMedia(
-        index,
-        userInteraction = false
-    ) {
-
-        if (!currentMedia.length) {
-            return;
-        }
-
-
-        const total =
-            currentMedia.length;
-
-
-        /*
-         * Carousel looping
-         */
-
-        if (index < 0) {
-
-            index =
-                total - 1;
-        }
-
-        if (index >= total) {
-
-            index = 0;
-        }
-
-
-        currentMediaIndex =
-            index;
-
-
-        updateMediaPosition(true);
-
-
-        /*
-         * Reset autoplay
-         */
-
-        stopAutoSlide();
-
-
-        /*
-         * Jika media sekarang adalah YouTube,
-         * jangan jalankan autoplay carousel.
-         */
-
-        const currentItem =
-            currentMedia[currentMediaIndex];
-
-        if (
-            currentItem?.type !== "youtube"
-        ) {
-
-            startAutoSlide();
-        }
-
-
-        /*
-         * Interaksi user tidak perlu
-         * melakukan hal tambahan.
-         */
-
-        if (userInteraction) {
-
-            /*
-             * Hentikan iframe YouTube pada
-             * slide yang ditinggalkan.
-             */
-
-            stopInactiveYouTubeVideos();
-        }
-    }
-
-
-    /* =====================================================
-       STOP INACTIVE YOUTUBE
-    ===================================================== */
-
-    function stopInactiveYouTubeVideos() {
-
-        const slides =
-            mediaTrack.querySelectorAll(
-                ".portfolio-detail-media-slide"
-            );
-
-        slides.forEach(
-            (slide, index) => {
-
-                if (
-                    index !== currentMediaIndex
-                ) {
-
-                    const iframe =
-                        slide.querySelector(
-                            "iframe"
-                        );
-
-                    if (iframe) {
-
-                        const youtubeBox =
-                            slide.querySelector(
-                                ".portfolio-detail-youtube"
-                            );
-
-                        const item =
-                            currentMedia[index];
-
-                        const youtubeId =
-                            extractYouTubeId(
-                                item?.id ||
-                                item?.url
-                            );
-
-                        if (
-                            youtubeBox &&
-                            youtubeId
-                        ) {
-
-                            youtubeBox.innerHTML = "";
-
-                            const thumbnail =
-                                document.createElement("img");
-
-                            thumbnail.src =
-                                item.thumbnail ||
-                                `https://i.ytimg.com/vi/${youtubeId}/hqdefault.jpg`;
-
-                            thumbnail.alt =
-                                item.title ||
-                                "Video YouTube";
-
-                            const playButton =
-                                document.createElement("button");
-
-                            playButton.type =
-                                "button";
-
-                            playButton.className =
-                                "portfolio-detail-youtube-play";
-
-                            playButton.setAttribute(
-                                "aria-label",
-                                "Putar video"
-                            );
-
-                            playButton.innerHTML =
-                                "▶";
-
-
-                            playButton.addEventListener(
-                                "click",
-                                () => {
-
-                                    youtubeBox.innerHTML = "";
-
-                                    const newIframe =
-                                        document.createElement("iframe");
-
-                                    newIframe.src =
-                                        `https://www.youtube-nocookie.com/embed/${youtubeId}?autoplay=1&rel=0`;
-
-                                    newIframe.title =
-                                        item.title ||
-                                        "Video YouTube";
-
-                                    newIframe.loading =
-                                        "lazy";
-
-                                    newIframe.allow =
-                                        "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
-
-                                    newIframe.allowFullscreen =
-                                        true;
-
-                                    youtubeBox.appendChild(
-                                        newIframe
-                                    );
-
-                                    stopAutoSlide();
-                                }
-                            );
-
-                            youtubeBox.appendChild(
-                                thumbnail
-                            );
-
-                            youtubeBox.appendChild(
-                                playButton
-                            );
-                        }
-                    }
-                }
-            }
-        );
-    }
-
-
-    /* =====================================================
-       AUTO SLIDE
-    ===================================================== */
 
     function startAutoSlide() {
-
         stopAutoSlide();
 
-
-        if (
-            currentMedia.length <= 1
-        ) {
+        if (currentMedia.length <= 1) {
             return;
         }
 
-
-        /*
-         * Respect reduced motion
-         */
-
-        if (
-            window.matchMedia(
-                "(prefers-reduced-motion: reduce)"
-            ).matches
-        ) {
-            return;
-        }
-
-
-        const currentItem =
-            currentMedia[currentMediaIndex];
-
-
-        /*
-         * YouTube tidak menjalankan
-         * auto carousel saat sedang aktif.
-         */
-
-        if (
-            currentItem?.type === "youtube"
-        ) {
-            return;
-        }
-
-
-        autoSlideTimer =
-            setInterval(
-                () => {
-
-                    const nextIndex =
-                        currentMediaIndex + 1 >=
-                        currentMedia.length
-                            ? 0
-                            : currentMediaIndex + 1;
-
-
-                    goToMedia(
-                        nextIndex,
-                        false
-                    );
-
-                },
-                AUTO_SLIDE_DELAY
-            );
+        autoSlideTimer = setInterval(() => {
+            showMedia(currentMediaIndex + 1);
+        }, AUTO_SLIDE_DELAY);
     }
 
+    function renderMedia() {
+        if (!mediaTrack) {
+            return;
+        }
 
-    /* =====================================================
-       STOP AUTO SLIDE
-    ===================================================== */
+        mediaTrack.innerHTML = "";
+        mediaIndicators.innerHTML = "";
 
-    function stopAutoSlide() {
+        currentMedia.forEach((media, index) => {
+            const slide = document.createElement("div");
+            slide.className = "portfolio-detail-media-slide";
 
-        if (autoSlideTimer) {
+            if (media.type === "youtube") {
+                const videoWrapper = document.createElement("div");
+                videoWrapper.className = "portfolio-detail-youtube";
 
-            clearInterval(
-                autoSlideTimer
+                const thumbnail = document.createElement("div");
+                thumbnail.className = "portfolio-detail-youtube-thumb";
+
+                if (media.thumbnail) {
+                    thumbnail.style.backgroundImage = `url("${media.thumbnail}")`;
+                }
+
+                const playButton = document.createElement("button");
+                playButton.type = "button";
+                playButton.className = "portfolio-detail-youtube-play";
+                playButton.setAttribute("aria-label", "Putar video");
+
+                playButton.innerHTML = "▶";
+
+                playButton.addEventListener("click", () => {
+                    const iframe = document.createElement("iframe");
+
+                    iframe.src = `https://www.youtube.com/embed/${encodeURIComponent(media.id)}?rel=0`;
+                    iframe.title = media.title || "Video portfolio";
+                    iframe.loading = "lazy";
+                    iframe.allow =
+                        "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+                    iframe.allowFullscreen = true;
+
+                    videoWrapper.innerHTML = "";
+                    videoWrapper.appendChild(iframe);
+                });
+
+                videoWrapper.appendChild(thumbnail);
+                videoWrapper.appendChild(playButton);
+                slide.appendChild(videoWrapper);
+            } else {
+                const image = document.createElement("img");
+
+                image.src = media.src || "";
+                image.alt = media.alt || "Portfolio";
+                image.loading = index === 0 ? "eager" : "lazy";
+
+                slide.appendChild(image);
+            }
+
+            mediaTrack.appendChild(slide);
+
+            const indicator = document.createElement("button");
+
+            indicator.type = "button";
+            indicator.className = "portfolio-detail-media-indicator";
+            indicator.setAttribute("aria-label", `Tampilkan media ${index + 1}`);
+
+            indicator.addEventListener("click", () => {
+                showMedia(index);
+                startAutoSlide();
+            });
+
+            mediaIndicators.appendChild(indicator);
+        });
+
+        updateMediaUI();
+    }
+
+    function updateMediaUI() {
+        if (!mediaTrack) {
+            return;
+        }
+
+        mediaTrack.style.transform = `translateX(-${currentMediaIndex * 100}%)`;
+
+        if (mediaCounter) {
+            mediaCounter.textContent =
+                `${currentMedia.length ? currentMediaIndex + 1 : 0} / ${currentMedia.length}`;
+        }
+
+        const indicators = mediaIndicators
+            ? mediaIndicators.querySelectorAll(".portfolio-detail-media-indicator")
+            : [];
+
+        indicators.forEach((indicator, index) => {
+            indicator.classList.toggle(
+                "is-active",
+                index === currentMediaIndex
             );
+        });
 
-            autoSlideTimer =
-                null;
+        if (mediaPrev) {
+            mediaPrev.disabled = currentMedia.length <= 1;
+        }
+
+        if (mediaNext) {
+            mediaNext.disabled = currentMedia.length <= 1;
         }
     }
 
+    function showMedia(index) {
+        if (!currentMedia.length) {
+            currentMediaIndex = 0;
+            updateMediaUI();
+            return;
+        }
 
-    /* =====================================================
-       RENDER INFORMATION
-    ===================================================== */
+        if (index < 0) {
+            currentMediaIndex = currentMedia.length - 1;
+        } else if (index >= currentMedia.length) {
+            currentMediaIndex = 0;
+        } else {
+            currentMediaIndex = index;
+        }
 
-    function renderPortfolio(data) {
+        updateMediaUI();
+    }
 
-        categoryElement.textContent =
-            data.category || "";
-
-
-        titleElement.textContent =
-            data.title || "";
-
-
-        descriptionElement.textContent =
-            data.description || "";
-
-
-        aboutElement.textContent =
-            data.about || "";
-
-
-        /*
-         * META
-         */
+    function renderMeta(item) {
+        if (!metaElement) {
+            return;
+        }
 
         metaElement.innerHTML = "";
 
         const metaItems = [];
 
-
-        if (data.type === "website") {
-
-            metaItems.push(
-                "Website"
-            );
-        }
-
-        else if (data.type === "template") {
-
-            metaItems.push(
-                "Produk Digital"
-            );
-        }
-
-        else if (data.type === "service") {
-
-            metaItems.push(
-                "Jasa Digital"
-            );
-        }
-
-
-        metaItems.forEach(
-            (item) => {
-
-                const span =
-                    document.createElement("span");
-
-                span.textContent =
-                    item;
-
-                metaElement.appendChild(
-                    span
-                );
+        if (item.meta) {
+            if (Array.isArray(item.meta)) {
+                metaItems.push(...item.meta);
+            } else {
+                metaItems.push(item.meta);
             }
-        );
+        }
 
+        if (item.type === "website") {
+            metaItems.push("Responsive Mobile & Desktop");
+        }
 
-        /*
-         * HIGHLIGHTS
-         */
+        if (!metaItems.length) {
+            metaElement.style.display = "none";
+            return;
+        }
+
+        metaElement.style.display = "";
+
+        metaItems.forEach((meta) => {
+            const span = document.createElement("span");
+            span.textContent = meta;
+            metaElement.appendChild(span);
+        });
+    }
+
+    function renderHighlights(item) {
+        if (!highlightsSection || !highlightsElement) {
+            return;
+        }
 
         highlightsElement.innerHTML = "";
 
-
-        if (
-            Array.isArray(data.highlights) &&
-            data.highlights.length
-        ) {
-
-            highlightsSection.hidden =
-                false;
-
-            data.highlights.forEach(
-                (item) => {
-
-                    const li =
-                        document.createElement("li");
-
-                    li.textContent =
-                        item;
-
-                    highlightsElement.appendChild(
-                        li
-                    );
-                }
-            );
-
-        } else {
-
-            highlightsSection.hidden =
-                true;
-        }
-
-
-        /*
-         * MEDIA
-         */
-
-        renderMedia(data);
-
-
-        /*
-         * CTA
-         */
-
-        renderActions(data);
-    }
-
-
-    /* =====================================================
-       RENDER ACTIONS
-    ===================================================== */
-
-    function renderActions(data) {
-
-        /*
-         * Reset
-         */
-
-        primaryAction.classList.remove(
-            "is-hidden"
-        );
-
-        consultationAction.classList.remove(
-            "is-hidden"
-        );
-
-        primaryAction.hidden =
-            false;
-
-        consultationAction.hidden =
-            false;
-
-
-        /*
-         * WEBSITE
-         */
-
-        if (
-            data.type === "website"
-        ) {
-
-            primaryAction.href =
-                data.websiteUrl || "#";
-
-            primaryActionText.textContent =
-                "Kunjungi Website";
-
-
-            consultationAction.href =
-                createWhatsAppUrl(
-                    data.whatsappMessage
-                );
-
-            consultationActionText.textContent =
-                "Konsultasi";
-
+        if (!Array.isArray(item.highlights) || !item.highlights.length) {
+            highlightsSection.style.display = "none";
             return;
         }
 
+        highlightsSection.style.display = "";
 
-        /*
-         * TEMPLATE
-         */
+        item.highlights.forEach((highlight) => {
+            const li = document.createElement("li");
+            li.textContent = highlight;
+            highlightsElement.appendChild(li);
+        });
+    }
 
-        if (
-            data.type === "template"
-        ) {
-
-            primaryAction.href =
-                data.purchaseUrl ||
-                DEFAULT_PURCHASE_URL;
-
-            primaryActionText.textContent =
-                "Gunakan Template";
-
-
-            consultationAction.href =
-                createWhatsAppUrl(
-                    data.whatsappMessage
-                );
-
-            consultationActionText.textContent =
-                "Konsultasi";
-
+    function renderCTA(item) {
+        if (!ctaElement || !actionElement || !consultationElement) {
             return;
         }
 
+        actionElement.style.display = "";
+        consultationElement.style.display = "";
 
-        /*
-         * SERVICE
-         *
-         * Karena service tidak memiliki
-         * link produk, cukup tampilkan
-         * satu tombol konsultasi.
-         */
+        if (item.type === "website") {
+            actionElement.href = item.websiteUrl || "#";
+            actionTextElement.textContent = "Kunjungi Website";
 
-        primaryAction.href =
-            createWhatsAppUrl(
-                data.whatsappMessage
-            );
-
-        primaryActionText.textContent =
-            "Konsultasi";
-
-
-        consultationAction.classList.add(
-            "is-hidden"
-        );
-
-        consultationAction.hidden =
-            true;
-    }
-
-
-    /* =====================================================
-       URL
-    ===================================================== */
-
-    function getPortfolioIdFromURL() {
-
-        const params =
-            new URLSearchParams(
-                window.location.search
-            );
-
-        return params.get(
-            "karya"
-        );
-    }
-
-
-    function createPortfolioURL(id) {
-
-        const url =
-            new URL(
-                window.location.href
-            );
-
-        url.searchParams.set(
-            "karya",
-            id
-        );
-
-        return url.href;
-    }
-
-
-    function createCleanURL() {
-
-        const url =
-            new URL(
-                window.location.href
-            );
-
-        url.searchParams.delete(
-            "karya"
-        );
-
-        return url.href;
-    }
-
-
-    /* =====================================================
-       OPEN DETAIL
-    ===================================================== */
-
-    function openPortfolio(
-        id,
-        updateHistory = true
-    ) {
-
-        const data =
-            portfolioData[id];
-
-
-        if (!data) {
-
-            console.warn(
-                `Portfolio "${id}" tidak ditemukan.`
-            );
-
+            consultationElement.href =
+                createWhatsAppUrl(item.whatsappMessage);
+            consultationTextElement.textContent = "Konsultasi";
             return;
         }
 
+        if (item.type === "template") {
+            actionElement.href =
+                item.purchaseUrl || defaultPurchaseUrl;
+            actionTextElement.textContent = "Gunakan Template";
 
-        currentPortfolioId =
-            id;
-
-        currentPortfolio =
-            data;
-
-
-        renderPortfolio(
-            data
-        );
-
-
-        /*
-         * History
-         */
-
-        if (
-            updateHistory &&
-            getPortfolioIdFromURL() !== id
-        ) {
-
-            window.history.pushState(
-                {
-                    portfolio:
-                        id,
-
-                    portfolioOverlay:
-                        true
-                },
-                "",
-                createPortfolioURL(id)
-            );
-
-            historyEntryCreated =
-                true;
+            consultationElement.href =
+                createWhatsAppUrl(item.whatsappMessage);
+            consultationTextElement.textContent = "Konsultasi";
+            return;
         }
 
+        if (item.type === "service") {
+            actionElement.href =
+                createWhatsAppUrl(item.whatsappMessage);
+            actionTextElement.textContent = "Konsultasi";
 
-        /*
-         * Tampilkan overlay
-         */
+            consultationElement.style.display = "none";
+            return;
+        }
 
-        overlay.classList.add(
-            "is-open"
-        );
+        actionElement.href =
+            createWhatsAppUrl(item.whatsappMessage);
 
-        overlay.setAttribute(
-            "aria-hidden",
-            "false"
-        );
-
-
-        /*
-         * Lock body
-         */
-
-        previousBodyOverflow =
-            document.body.style.overflow;
-
-        document.body.classList.add(
-    "portfolio-detail-open"
-);
-
-
-        /*
-         * Fokus tombol close
-         */
-
-        requestAnimationFrame(
-            () => {
-
-                closeButton?.focus();
-            }
-        );
+        actionTextElement.textContent = "Konsultasi";
+        consultationElement.style.display = "none";
     }
 
+    function renderDetail(item) {
+        categoryElement.textContent =
+            item.categoryLabel || item.category || "";
 
-    /* =====================================================
-       CLOSE UI SAJA
-       Dipakai ketika popstate.
-    ===================================================== */
+        titleElement.textContent =
+            item.title || "";
 
-    function closePortfolioUI() {
+        descriptionElement.textContent =
+            item.description || item.cardDescription || "";
 
+        aboutElement.textContent =
+            item.about || "";
+
+        renderMeta(item);
+        renderHighlights(item);
+        renderCTA(item);
+
+        currentMedia = getPortfolioMedia(item);
+        currentMediaIndex = 0;
+
+        renderMedia();
+    }
+
+    function openDetail(id, updateUrl = true) {
+        const item = portfolioData[id];
+
+        if (!item) {
+            console.warn(`Mas Mail Portfolio: karya "${id}" tidak ditemukan.`);
+            return;
+        }
+
+        currentPortfolioId = id;
+
+        renderDetail(item);
+
+        overlay.classList.add("is-open");
+        overlay.setAttribute("aria-hidden", "false");
+
+        document.body.classList.add("portfolio-detail-open");
+
+        if (updateUrl) {
+            const url = new URL(window.location.href);
+            url.searchParams.set("karya", id);
+            history.pushState({ portfolio: id }, "", url);
+        }
+
+        startAutoSlide();
+    }
+
+    function closeDetail(updateUrl = true) {
         stopAutoSlide();
 
+        overlay.classList.remove("is-open");
+        overlay.setAttribute("aria-hidden", "true");
 
-        overlay.classList.remove(
-            "is-open"
-        );
+        document.body.classList.remove("portfolio-detail-open");
 
-        overlay.setAttribute(
-            "aria-hidden",
-            "true"
-        );
+        currentPortfolioId = null;
 
+        if (updateUrl) {
+            const url = new URL(window.location.href);
+            url.searchParams.delete("karya");
 
-        document.body.classList.remove(
-    "portfolio-detail-open"
-);
-
-
-        currentPortfolioId =
-            null;
-
-        currentPortfolio =
-            null;
-
-        currentMedia =
-            [];
-
-        currentMediaIndex =
-            0;
-
-
-        mediaTrack.innerHTML =
-            "";
-
-        mediaIndicators.innerHTML =
-            "";
-    }
-
-
-    /* =====================================================
-       CLOSE DETAIL
-    ===================================================== */
-
-    function closePortfolio() {
-
-        /*
-         * Jika kita sendiri yang membuat
-         * history entry, gunakan back().
-         *
-         * Popstate nantinya akan menutup overlay.
-         */
-
-        if (
-            historyEntryCreated &&
-            getPortfolioIdFromURL()
-        ) {
-
-            window.history.back();
-
-            return;
+            history.pushState({}, "", url.pathname + url.search + url.hash);
         }
-
-
-        /*
-         * Jika halaman dibuka langsung dengan
-         * ?karya=id, hapus query tanpa
-         * meninggalkan halaman.
-         */
-
-        if (
-            getPortfolioIdFromURL()
-        ) {
-
-            window.history.replaceState(
-                {},
-                "",
-                createCleanURL()
-            );
-        }
-
-
-        historyEntryCreated =
-            false;
-
-        closePortfolioUI();
     }
-
-
-    /* =====================================================
-       CARD PORTFOLIO
-    ===================================================== */
 
     function setupPortfolioCards() {
+        const cards = document.querySelectorAll(
+            ".digital-portfolio-card"
+        );
 
-        const cards =
-            document.querySelectorAll(
-                ".digital-portfolio-card"
+        cards.forEach((card) => {
+            const trigger = card.querySelector(
+                ".portfolio-detail-trigger"
             );
 
+            if (!trigger) {
+                return;
+            }
 
-        cards.forEach(
-            (card) => {
+            if (trigger.dataset.detailReady === "true") {
+                return;
+            }
+
+            trigger.dataset.detailReady = "true";
+
+            trigger.addEventListener("click", (event) => {
+                event.preventDefault();
 
                 const id =
-                    card.dataset.portfolio ||
+                    trigger.dataset.portfolioId ||
                     card.dataset.portfolioId;
 
-
-                if (
-                    !id ||
-                    !portfolioData[id]
-                ) {
-                    return;
+                if (id) {
+                    openDetail(id);
                 }
-
-
-                const data =
-                    portfolioData[id];
-
-
-                /*
-                 * Tombol / link "Lihat Detail"
-                 */
-
-                const detailLinks =
-                    card.querySelectorAll(
-                        ".digital-portfolio-link, .portfolio-detail-trigger, [data-detail]"
-                    );
-
-
-                detailLinks.forEach(
-                    (link) => {
-
-                        link.dataset.portfolio =
-                            id;
-
-                        link.href =
-                            createPortfolioURL(id);
-
-                        link.addEventListener(
-                            "click",
-                            (event) => {
-
-                                /*
-                                 * Jika Ctrl/Cmd/klik tengah,
-                                 * biarkan browser membuka
-                                 * tab seperti biasa.
-                                 */
-
-                                if (
-                                    event.ctrlKey ||
-                                    event.metaKey ||
-                                    event.shiftKey ||
-                                    event.button === 1
-                                ) {
-                                    return;
-                                }
-
-
-                                event.preventDefault();
-
-
-                                openPortfolio(
-                                    id,
-                                    true
-                                );
-                            }
-                        );
-                    }
-                );
-
-
-                /*
-                 * Tombol order / gunakan template
-                 */
-
-                const orderLinks =
-                    card.querySelectorAll(
-                        ".digital-portfolio-order"
-                    );
-
-
-                orderLinks.forEach(
-                    (link) => {
-
-                        if (
-                            data.type === "template"
-                        ) {
-
-                            /*
-                             * SAMA PERSIS dengan
-                             * link detail.
-                             */
-
-                            link.href =
-                                data.purchaseUrl ||
-                                DEFAULT_PURCHASE_URL;
-
-                        }
-
-                        else if (
-                            data.type === "website"
-                        ) {
-
-                            link.href =
-                                data.websiteUrl ||
-                                "#";
-
-                        }
-
-                        else {
-
-                            link.href =
-                                createWhatsAppUrl(
-                                    data.whatsappMessage
-                                );
-                        }
-                    }
-                );
-            }
-        );
+            });
+        });
     }
 
+    function openFromURL() {
+        const params = new URLSearchParams(window.location.search);
+        const id = params.get("karya");
 
-    /* =====================================================
-       SUPPORT UNTUK TOMBOL DENGAN DATA-PORTFOLIO
-       Jika struktur card berbeda.
-    ===================================================== */
-
-    function setupGenericPortfolioTriggers() {
-
-        const triggers =
-            document.querySelectorAll(
-                "[data-portfolio]"
-            );
-
-
-        triggers.forEach(
-            (trigger) => {
-
-                const id =
-                    trigger.dataset.portfolio;
-
-
-                if (
-                    !portfolioData[id]
-                ) {
-                    return;
-                }
-
-
-                /*
-                 * Jangan pasang listener dua kali
-                 */
-
-                if (
-                    trigger.dataset.detailReady === "true"
-                ) {
-                    return;
-                }
-
-
-                /*
-                 * Hanya trigger yang memang
-                 * dimaksudkan untuk membuka detail.
-                 */
-
-                const isDetailTrigger =
-                    trigger.matches(
-                        ".portfolio-detail-trigger, [data-detail]"
-                    );
-
-
-                if (!isDetailTrigger) {
-                    return;
-                }
-
-
-                trigger.dataset.detailReady =
-                    "true";
-
-
-                trigger.addEventListener(
-                    "click",
-                    (event) => {
-
-                        if (
-                            event.ctrlKey ||
-                            event.metaKey ||
-                            event.shiftKey ||
-                            event.button === 1
-                        ) {
-                            return;
-                        }
-
-
-                        event.preventDefault();
-
-
-                        openPortfolio(
-                            id,
-                            true
-                        );
-                    }
-                );
-            }
-        );
+        if (id && portfolioData[id]) {
+            openDetail(id, false);
+        }
     }
 
+    mediaPrev?.addEventListener("click", () => {
+        showMedia(currentMediaIndex - 1);
+        startAutoSlide();
+    });
 
-    /* =====================================================
-       BUTTON EVENTS
-    ===================================================== */
+    mediaNext?.addEventListener("click", () => {
+        showMedia(currentMediaIndex + 1);
+        startAutoSlide();
+    });
 
-    closeButton?.addEventListener(
-        "click",
-        () => {
+    backButton?.addEventListener("click", () => {
+        closeDetail();
+    });
 
-            closePortfolio();
-        }
-    );
+    closeButton?.addEventListener("click", () => {
+        closeDetail();
+    });
 
+    backdrop?.addEventListener("click", () => {
+        closeDetail();
+    });
 
-    backButton?.addEventListener(
-        "click",
-        () => {
-
-            closePortfolio();
-        }
-    );
-
-
-    backdrop?.addEventListener(
-        "click",
-        () => {
-
-            closePortfolio();
-        }
-    );
-
-
-    /* =====================================================
-       MEDIA PREV / NEXT
-    ===================================================== */
-
-    mediaPrev?.addEventListener(
-        "click",
-        () => {
-
-            goToMedia(
-                currentMediaIndex - 1,
-                true
-            );
-        }
-    );
-
-
-    mediaNext?.addEventListener(
-        "click",
-        () => {
-
-            goToMedia(
-                currentMediaIndex + 1,
-                true
-            );
-        }
-    );
-
-
-    /* =====================================================
-       KEYBOARD
-    ===================================================== */
-
-    document.addEventListener(
-        "keydown",
+    mediaViewport?.addEventListener(
+        "touchstart",
         (event) => {
+            const touch = event.changedTouches[0];
 
-            if (
-                !overlay.classList.contains(
-                    "is-open"
-                )
-            ) {
-                return;
-            }
-
-
-            /*
-             * ESC
-             */
-
-            if (
-                event.key === "Escape"
-            ) {
-
-                event.preventDefault();
-
-                closePortfolio();
-
-                return;
-            }
-
-
-            /*
-             * Arrow Left
-             */
-
-            if (
-                event.key === "ArrowLeft"
-            ) {
-
-                event.preventDefault();
-
-                goToMedia(
-                    currentMediaIndex - 1,
-                    true
-                );
-
-                return;
-            }
-
-
-            /*
-             * Arrow Right
-             */
-
-            if (
-                event.key === "ArrowRight"
-            ) {
-
-                event.preventDefault();
-
-                goToMedia(
-                    currentMediaIndex + 1,
-                    true
-                );
-            }
-        }
+            touchStartX = touch.clientX;
+            touchStartY = touch.clientY;
+        },
+        { passive: true }
     );
 
-
-    /* =====================================================
-       TOUCH / MOUSE SWIPE
-    ===================================================== */
-
-    mediaViewport.addEventListener(
-        "pointerdown",
+    mediaViewport?.addEventListener(
+        "touchend",
         (event) => {
+            const touch = event.changedTouches[0];
 
-            /*
-             * Jangan mengambil pointer dari
-             * tombol carousel / YouTube.
-             */
+            const deltaX = touch.clientX - touchStartX;
+            const deltaY = touch.clientY - touchStartY;
 
-            if (
-                event.target.closest(
-                    "button, iframe"
-                )
-            ) {
+            if (Math.abs(deltaX) < 50) {
                 return;
             }
 
-
-            pointerStartX =
-                event.clientX;
-
-            pointerStartY =
-                event.clientY;
-
-            pointerDragging =
-                true;
-
-            mediaViewport.setPointerCapture?.(
-                event.pointerId
-            );
-
-            stopAutoSlide();
-        }
-    );
-
-
-    mediaViewport.addEventListener(
-        "pointermove",
-        (event) => {
-
-            if (!pointerDragging) {
+            if (Math.abs(deltaX) <= Math.abs(deltaY)) {
                 return;
             }
 
-
-            const dx =
-                event.clientX -
-                pointerStartX;
-
-            const dy =
-                event.clientY -
-                pointerStartY;
-
-
-            /*
-             * Hanya proses jika gerakan
-             * dominan horizontal.
-             */
-
-            if (
-                Math.abs(dx) >
-                Math.abs(dy)
-            ) {
-
-                if (
-                    Math.abs(dx) > 10
-                ) {
-
-                    event.preventDefault();
-                }
+            if (deltaX < 0) {
+                showMedia(currentMediaIndex + 1);
+            } else {
+                showMedia(currentMediaIndex - 1);
             }
-        }
+
+            startAutoSlide();
+        },
+        { passive: true }
     );
 
-
-    function finishPointerGesture(event) {
-
-        if (!pointerDragging) {
+    document.addEventListener("keydown", (event) => {
+        if (!overlay.classList.contains("is-open")) {
             return;
         }
 
+        if (event.key === "Escape") {
+            closeDetail();
+        }
 
-        pointerDragging =
-            false;
+        if (event.key === "ArrowLeft") {
+            showMedia(currentMediaIndex - 1);
+            startAutoSlide();
+        }
 
+        if (event.key === "ArrowRight") {
+            showMedia(currentMediaIndex + 1);
+            startAutoSlide();
+        }
+    });
 
-        const dx =
-            event.clientX -
-            pointerStartX;
+    window.addEventListener("popstate", () => {
+        const params = new URLSearchParams(window.location.search);
+        const id = params.get("karya");
 
-        const dy =
-            event.clientY -
-            pointerStartY;
-
-
-        /*
-         * Minimal swipe 45px
-         */
-
-        if (
-            Math.abs(dx) >= 45 &&
-            Math.abs(dx) > Math.abs(dy)
-        ) {
-
-            if (dx < 0) {
-
-                goToMedia(
-                    currentMediaIndex + 1,
-                    true
-                );
-
-            } else {
-
-                goToMedia(
-                    currentMediaIndex - 1,
-                    true
-                );
-            }
-
+        if (id && portfolioData[id]) {
+            openDetail(id, false);
         } else {
-
-            startAutoSlide();
+            closeDetail(false);
         }
-    }
-
-
-    mediaViewport.addEventListener(
-        "pointerup",
-        finishPointerGesture
-    );
-
-
-    mediaViewport.addEventListener(
-        "pointercancel",
-        finishPointerGesture
-    );
-
-
-    /* =====================================================
-       MOUSE HOVER
-    ===================================================== */
-
-    mediaViewport.addEventListener(
-        "mouseenter",
-        () => {
-
-            stopAutoSlide();
-        }
-    );
-
-
-    mediaViewport.addEventListener(
-        "mouseleave",
-        () => {
-
-            startAutoSlide();
-        }
-    );
-
-
-    /* =====================================================
-       FOCUS
-    ===================================================== */
-
-    mediaViewport.addEventListener(
-        "focusin",
-        () => {
-
-            stopAutoSlide();
-        }
-    );
-
-
-    mediaViewport.addEventListener(
-        "focusout",
-        () => {
-
-            startAutoSlide();
-        }
-    );
-
-
-    /* =====================================================
-       VISIBILITY TAB
-    ===================================================== */
-
-    document.addEventListener(
-        "visibilitychange",
-        () => {
-
-            if (
-                document.hidden
-            ) {
-
-                stopAutoSlide();
-
-            } else if (
-                overlay.classList.contains(
-                    "is-open"
-                )
-            ) {
-
-                startAutoSlide();
-            }
-        }
-    );
-
-
-    /* =====================================================
-       BROWSER BACK / FORWARD
-    ===================================================== */
-
-    window.addEventListener(
-        "popstate",
-        () => {
-
-            const id =
-                getPortfolioIdFromURL();
-
-
-            if (
-                id &&
-                portfolioData[id]
-            ) {
-
-                /*
-                 * Browser forward / back
-                 * menuju karya tertentu.
-                 */
-
-                historyEntryCreated =
-                    false;
-
-                openPortfolio(
-                    id,
-                    false
-                );
-
-            } else {
-
-                /*
-                 * Browser back keluar dari
-                 * detail portfolio.
-                 */
-
-                historyEntryCreated =
-                    false;
-
-                closePortfolioUI();
-            }
-        }
-    );
-
-
-    /* =====================================================
-       OPEN DARI URL
-       Contoh:
-       digital.html?karya=poster-tahfidz
-    ===================================================== */
-
-    function openFromURL() {
-
-        const id =
-            getPortfolioIdFromURL();
-
-
-        if (
-            id &&
-            portfolioData[id]
-        ) {
-
-            historyEntryCreated =
-                false;
-
-            openPortfolio(
-                id,
-                false
-            );
-        }
-    }
-
-
-    /* =====================================================
-       INITIALIZE
-    ===================================================== */
+    });
 
     setupPortfolioCards();
-
-    setupGenericPortfolioTriggers();
-
     openFromURL();
 
-
-    /* =====================================================
-       PUBLIC API
-       Bisa digunakan script lain jika diperlukan.
-    ===================================================== */
-
     window.MasMailPortfolio = {
-
-        open: (
-            id
-        ) => {
-
-            if (
-                portfolioData[id]
-            ) {
-
-                openPortfolio(
-                    id,
-                    true
-                );
-            }
-        },
-
-        close: () => {
-
-            closePortfolio();
-        },
-
-        data:
-            portfolioData
+        open: openDetail,
+        close: closeDetail,
+        data: portfolioData
     };
-
 });
