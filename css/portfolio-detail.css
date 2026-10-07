@@ -104,7 +104,13 @@
 
     opacity: 1;
 }
-
+@media (max-width: 768px) {
+  .portfolio-detail-sheet {
+    top: 72px;
+    height: calc(100% - 72px);
+    border-radius: 28px 28px 0 0;
+  }
+}
 
 /* =========================================
    SCROLLBAR
