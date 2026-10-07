@@ -38,15 +38,15 @@
     inset: 0;
 
     background:
-        rgba(7, 27, 58, 0.52);
+        rgba(7, 27, 58, .38);
 
     opacity: 0;
 
-    backdrop-filter: blur(0);
-    -webkit-backdrop-filter: blur(0);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
 
     transition:
-        opacity 0.45s ease,
+        transition: opacity .35s ease;
         backdrop-filter 0.45s ease,
         -webkit-backdrop-filter 0.45s ease;
 }
@@ -72,46 +72,29 @@
 ========================================= */
 
 .portfolio-detail-sheet {
-    position: relative;
-    z-index: 2;
+  position: absolute;
+  top: 72px;
+  right: 0;
+  bottom: 0;
+  left: 0;
 
-    width: min(100%, 1040px);
+  width: 100%;
+  height: calc(100% - 72px);
+  max-height: none;
 
-    max-height: 94vh;
+  background: #fff;
+  border-radius: 28px 28px 0 0;
+  overflow: hidden;
 
-    overflow-y: auto;
-    overscroll-behavior: contain;
+  box-shadow:
+    0 -10px 40px rgba(7, 27, 58, .14);
 
-    background:
-        var(--color-white);
+  transform: translateY(24px);
+  opacity: 0;
 
-    border:
-        1px solid
-        rgba(7, 27, 58, 0.08);
-
-    border-bottom: 0;
-
-    border-radius:
-        30px 30px 0 0;
-
-    box-shadow:
-        0 -24px 70px
-        rgba(7, 27, 58, 0.26);
-
-    transform:
-        translateY(105%);
-
-    opacity: 0;
-
-    transition:
-        transform 0.55s
-        cubic-bezier(
-            0.22,
-            1,
-            0.36,
-            1
-        ),
-        opacity 0.35s ease;
+  transition:
+    transform .35s ease,
+    opacity .35s ease;
 }
 
 .portfolio-detail-overlay.is-open
