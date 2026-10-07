@@ -7,28 +7,22 @@
  * =========================================
  */
 
-document.addEventListener(
-    "DOMContentLoaded",
-    () => {
 
-        console.log(
-            "Mas Mail Digital — halaman aktif."
-        );
-
-    }
-);
 /* =========================================
-   DIGITAL — PORTFOLIO FILTER
+   DIGITAL — PORTFOLIO
+   DATA DIBACA DARI portfolio-data.js
 ========================================= */
 
 document.addEventListener("DOMContentLoaded", () => {
 
-    const filterButtons =
-        document.querySelectorAll(".portfolio-filter");
+    const portfolioGrid =
+        document.querySelector(
+            ".digital-portfolio-grid"
+        );
 
-    const portfolioCards =
+    const filterButtons =
         document.querySelectorAll(
-            ".digital-portfolio-card"
+            ".portfolio-filter"
         );
 
     const emptyState =
@@ -36,48 +30,335 @@ document.addEventListener("DOMContentLoaded", () => {
             ".digital-portfolio-empty"
         );
 
+    const portfolioSystem =
+        window.MasMailPortfolioData;
 
-    if (
-        filterButtons.length === 0 ||
-        portfolioCards.length === 0
-    ) {
+    if (!portfolioGrid) {
+        return;
+    }
+
+    if (!portfolioSystem) {
+        console.warn(
+            "Portfolio Data belum tersedia."
+        );
+
         return;
     }
 
 
-    function filterPortfolio(category) {
+    const portfolioData =
+        portfolioSystem.data;
+
+
+    /* =====================================
+       CREATE CARD
+    ===================================== */
+
+    function createPortfolioCard(
+        id,
+        data
+    ) {
+
+        const article =
+            document.createElement("article");
+
+        article.className =
+            "digital-portfolio-card";
+
+        article.dataset.category =
+            data.category;
+
+        article.dataset.portfolio =
+            id;
+
+
+        /* =================================
+           MEDIA
+        ================================= */
+
+        const media =
+            Array.isArray(data.media) &&
+            data.media.length
+                ? data.media[0]
+                : null;
+
+
+        const imageSource =
+            media?.type === "image"
+                ? media.src
+                : data.image || "";
+
+
+        const imageAlt =
+            media?.alt ||
+            data.title ||
+            "Portfolio Mas Mail Digital";
+
+
+        /* =================================
+           TYPE LABEL
+        ================================= */
+
+        let typeLabel =
+            data.categoryLabel ||
+            data.category ||
+            "";
+
+
+        /* =================================
+           CARD
+        ================================= */
+
+        article.innerHTML = `
+            <div class="digital-portfolio-image">
+
+                ${
+                    imageSource
+                        ? `
+                            <img
+                                src="${imageSource}"
+                                alt="${imageAlt}"
+                                loading="lazy"
+                            >
+                          `
+                        : `
+                            <div class="digital-portfolio-image-empty">
+                                Preview belum tersedia
+                            </div>
+                          `
+                }
+
+            </div>
+
+            <div class="digital-portfolio-content">
+
+                <span class="digital-portfolio-category">
+                    ${typeLabel}
+                </span>
+
+                <h3 class="digital-portfolio-title">
+                    ${data.title || ""}
+                </h3>
+
+                <p class="digital-portfolio-description">
+                    ${
+                        data.cardDescription ||
+                        data.description ||
+                        ""
+                    }
+                </p>
+
+                <div class="digital-portfolio-actions">
+
+                    <a
+                        href="?karya=${encodeURIComponent(id)}"
+                        class="digital-portfolio-link portfolio-detail-trigger"
+                        data-portfolio="${id}"
+                    >
+                        Lihat Karya
+                    </a>
+
+                    <a
+                        href="#"
+                        class="digital-portfolio-order"
+                        data-portfolio-order="${id}"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        ${
+                            data.type === "template"
+                                ? "Gunakan Template"
+                                : data.type === "website"
+                                    ? "Kunjungi Website"
+                                    : "Konsultasi"
+                        }
+                    </a>
+
+                </div>
+
+            </div>
+        `;
+
+
+        return article;
+    }
+
+
+    /* =====================================
+       RENDER SEMUA PORTFOLIO
+    ===================================== */
+
+    function renderPortfolioCards() {
+
+        /*
+         * Hapus kartu lama yang masih ada
+         * di HTML.
+         *
+         * Empty state tetap dipertahankan.
+         */
+
+        portfolioGrid
+            .querySelectorAll(
+                ".digital-portfolio-card"
+            )
+            .forEach((card) => {
+                card.remove();
+            });
+
+
+        /*
+         * Buat kartu dari portfolioData.
+         */
+
+        Object.entries(
+            portfolioData
+        ).forEach(
+            ([id, data]) => {
+
+                const card =
+                    createPortfolioCard(
+                        id,
+                        data
+                    );
+
+                portfolioGrid.appendChild(
+                    card
+                );
+
+            }
+        );
+
+
+        /*
+         * Pasang link order.
+         */
+
+        setupPortfolioOrderLinks();
+
+    }
+
+
+    /* =====================================
+       ORDER LINKS
+    ===================================== */
+
+    function setupPortfolioOrderLinks() {
+
+        const orderLinks =
+            portfolioGrid.querySelectorAll(
+                ".digital-portfolio-order"
+            );
+
+
+        orderLinks.forEach(
+            (link) => {
+
+                const id =
+                    link.dataset.portfolioOrder;
+
+                const data =
+                    portfolioData[id];
+
+
+                if (!data) {
+                    return;
+                }
+
+
+                /*
+                 * TEMPLATE
+                 */
+
+                if (
+                    data.type === "template"
+                ) {
+
+                    link.href =
+                        data.purchaseUrl ||
+                        portfolioSystem.defaultPurchaseUrl;
+
+                    return;
+                }
+
+
+                /*
+                 * WEBSITE
+                 */
+
+                if (
+                    data.type === "website"
+                ) {
+
+                    link.href =
+                        data.websiteUrl ||
+                        "#";
+
+                    return;
+                }
+
+
+                /*
+                 * SERVICE
+                 */
+
+                link.href =
+                    portfolioSystem.createWhatsAppUrl(
+                        data.whatsappMessage
+                    );
+
+            }
+        );
+
+    }
+
+
+    /* =====================================
+       PORTFOLIO FILTER
+    ===================================== */
+
+    function filterPortfolio(
+        category
+    ) {
+
+        const cards =
+            portfolioGrid.querySelectorAll(
+                ".digital-portfolio-card"
+            );
+
 
         let visibleCount = 0;
 
 
-        portfolioCards.forEach((card) => {
+        cards.forEach(
+            (card) => {
 
-            const cardCategory =
-                card.dataset.category;
-
-
-            const shouldShow =
-                category === "all" ||
-                cardCategory === category;
+                const cardCategory =
+                    card.dataset.category;
 
 
-            if (shouldShow) {
+                const shouldShow =
+                    category === "all" ||
+                    cardCategory === category;
 
-                card.classList.remove(
-                    "is-hidden"
-                );
 
-                visibleCount++;
+                if (shouldShow) {
 
-            } else {
+                    card.classList.remove(
+                        "is-hidden"
+                    );
 
-                card.classList.add(
-                    "is-hidden"
-                );
+                    visibleCount++;
+
+                } else {
+
+                    card.classList.add(
+                        "is-hidden"
+                    );
+
+                }
 
             }
-
-        });
+        );
 
 
         if (emptyState) {
@@ -92,51 +373,67 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    filterButtons.forEach((button) => {
+    /* =====================================
+       FILTER BUTTONS
+    ===================================== */
 
-        button.addEventListener(
-            "click",
-            () => {
+    filterButtons.forEach(
+        (button) => {
 
-                const category =
-                    button.dataset.filter;
+            button.addEventListener(
+                "click",
+                () => {
 
-
-                filterButtons.forEach(
-                    (item) => {
-
-                        const isActive =
-                            item === button;
+                    const category =
+                        button.dataset.filter;
 
 
-                        item.classList.toggle(
-                            "active",
-                            isActive
-                        );
+                    filterButtons.forEach(
+                        (item) => {
+
+                            const isActive =
+                                item === button;
 
 
-                        item.setAttribute(
-                            "aria-selected",
-                            isActive
-                                ? "true"
-                                : "false"
-                        );
-
-                    }
-                );
+                            item.classList.toggle(
+                                "active",
+                                isActive
+                            );
 
 
-                filterPortfolio(category);
+                            item.setAttribute(
+                                "aria-selected",
+                                isActive
+                                    ? "true"
+                                    : "false"
+                            );
 
-            }
-        );
+                        }
+                    );
 
-    });
 
+                    filterPortfolio(
+                        category
+                    );
+
+                }
+            );
+
+        }
+    );
+
+
+    /* =====================================
+       INITIALIZE PORTFOLIO
+    ===================================== */
+
+    renderPortfolioCards();
 
     filterPortfolio("all");
 
 });
+
+
 /* =========================================
    DIGITAL — FEATURED PRODUCTS CAROUSEL
 ========================================= */
@@ -190,16 +487,11 @@ document.addEventListener("DOMContentLoaded", () => {
     let startScrollLeft = 0;
 
 
-    /* =====================================
-       GET CARD POSITION
-    ===================================== */
-
     function getCardStep() {
 
         if (cards.length < 2) {
             return cards[0].offsetWidth;
         }
-
 
         return (
             cards[1].offsetLeft -
@@ -208,10 +500,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     }
 
-
-    /* =====================================
-       CREATE DOTS
-    ===================================== */
 
     cards.forEach((card, index) => {
 
@@ -254,10 +542,6 @@ document.addEventListener("DOMContentLoaded", () => {
         );
 
 
-    /* =====================================
-       UPDATE CONTROLS
-    ===================================== */
-
     function updateControls() {
 
         dots.forEach((dot, index) => {
@@ -278,10 +562,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     }
 
-
-    /* =====================================
-       GO TO SLIDE
-    ===================================== */
 
     function goToSlide(index) {
 
@@ -306,10 +586,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     }
 
-
-    /* =====================================
-       NEXT / PREVIOUS
-    ===================================== */
 
     function nextSlide() {
 
@@ -389,10 +665,6 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
 
-    /* =====================================
-       AUTO SLIDE
-    ===================================== */
-
     function startAutoSlide() {
 
         stopAutoSlide();
@@ -433,10 +705,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    /* =====================================
-       PAUSE WHEN HOVER
-    ===================================== */
-
     track.addEventListener(
         "mouseenter",
         stopAutoSlide
@@ -447,10 +715,6 @@ document.addEventListener("DOMContentLoaded", () => {
         startAutoSlide
     );
 
-
-    /* =====================================
-       TOUCH / MOUSE DRAG
-    ===================================== */
 
     track.addEventListener(
         "pointerdown",
@@ -529,10 +793,6 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
 
-    /* =====================================
-       UPDATE SLIDE AFTER MANUAL SWIPE
-    ===================================== */
-
     let scrollTimer;
 
 
@@ -596,15 +856,13 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
 
-    /* =====================================
-       INITIALIZE
-    ===================================== */
-
     updateControls();
 
     startAutoSlide();
 
 });
+
+
 /* =========================================
    DIGITAL — INTRO SHOWCASE
 ========================================= */
@@ -612,16 +870,24 @@ document.addEventListener("DOMContentLoaded", () => {
 document.addEventListener("DOMContentLoaded", () => {
 
     const introTabs =
-        document.querySelectorAll(".digital-intro-tab");
+        document.querySelectorAll(
+            ".digital-intro-tab"
+        );
 
     const introSlides =
-        document.querySelectorAll(".digital-intro-slide");
+        document.querySelectorAll(
+            ".digital-intro-slide"
+        );
 
     const introDots =
-        document.querySelectorAll(".digital-intro-dots button");
+        document.querySelectorAll(
+            ".digital-intro-dots button"
+        );
 
     const introProgress =
-        document.querySelector(".digital-intro-progress span");
+        document.querySelector(
+            ".digital-intro-progress span"
+        );
 
 
     if (
@@ -639,16 +905,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const introDuration = 4500;
 
 
-    /* =====================================
-       CHANGE SLIDE
-    ===================================== */
-
     function changeIntro(index) {
 
         currentIntro = index;
 
-
-        /* TABS */
 
         introTabs.forEach((tab, i) => {
 
@@ -668,8 +928,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
 
-        /* SLIDES */
-
         introSlides.forEach((slide, i) => {
 
             slide.classList.toggle(
@@ -680,8 +938,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
 
-        /* DOTS */
-
         introDots.forEach((dot, i) => {
 
             dot.classList.toggle(
@@ -691,8 +947,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
         });
 
-
-        /* RESET PROGRESS */
 
         if (introProgress) {
 
@@ -708,32 +962,28 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    /* =====================================
-       AUTO PLAY
-    ===================================== */
-
     function startIntroAutoPlay() {
 
         clearInterval(introTimer);
 
 
-        introTimer = setInterval(() => {
+        introTimer =
+            setInterval(
+                () => {
 
-            const next =
-                (currentIntro + 1) %
-                introSlides.length;
+                    const next =
+                        (currentIntro + 1) %
+                        introSlides.length;
 
 
-            changeIntro(next);
+                    changeIntro(next);
 
-        }, introDuration);
+                },
+                introDuration
+            );
 
     }
 
-
-    /* =====================================
-       TAB CLICK
-    ===================================== */
 
     introTabs.forEach((tab) => {
 
@@ -757,10 +1007,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 
-    /* =====================================
-       DOT CLICK
-    ===================================== */
-
     introDots.forEach((dot) => {
 
         dot.addEventListener(
@@ -783,15 +1029,13 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 
-    /* =====================================
-       START
-    ===================================== */
-
     changeIntro(0);
 
     startIntroAutoPlay();
 
 });
+
+
 /* =========================================
    DIGITAL — SERVICES ACCORDION
 ========================================= */
@@ -832,43 +1076,39 @@ document.addEventListener("DOMContentLoaded", () => {
                     );
 
 
-                /* =================================
-                   CLOSE SEMUA CARD LAIN
-                ================================= */
+                serviceCards.forEach(
+                    (otherCard) => {
 
-                serviceCards.forEach((otherCard) => {
-
-                    if (otherCard === card) {
-                        return;
-                    }
-
-
-                    otherCard.classList.remove(
-                        "is-open"
-                    );
+                        if (
+                            otherCard === card
+                        ) {
+                            return;
+                        }
 
 
-                    const otherToggle =
-                        otherCard.querySelector(
-                            ".digital-service-toggle"
+                        otherCard.classList.remove(
+                            "is-open"
                         );
 
 
-                    if (otherToggle) {
+                        const otherToggle =
+                            otherCard.querySelector(
+                                ".digital-service-toggle"
+                            );
 
-                        otherToggle.setAttribute(
-                            "aria-expanded",
-                            "false"
-                        );
+
+                        if (otherToggle) {
+
+                            otherToggle.setAttribute(
+                                "aria-expanded",
+                                "false"
+                            );
+
+                        }
 
                     }
+                );
 
-                });
-
-
-                /* =================================
-                   TOGGLE CARD YANG DIKLIK
-                ================================= */
 
                 if (isOpen) {
 
