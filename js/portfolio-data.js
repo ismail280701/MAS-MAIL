@@ -336,15 +336,25 @@ const portfolioData = {
    PUBLIC
 ========================================= */
 
+function getPortfolioCategories() {
+    const categories = [];
+
+    Object.values(portfolioData).forEach((item) => {
+        if (!item.category) {
+            return;
+        }
+
+        if (!categories.includes(item.category)) {
+            categories.push(item.category);
+        }
+    });
+
+    return categories;
+}
+
 window.MasMailPortfolioData = {
-
-    data:
-        portfolioData,
-
-    createWhatsAppUrl:
-        createPortfolioWhatsApp,
-
-    defaultPurchaseUrl:
-        DEFAULT_PURCHASE_URL
-
+    data: portfolioData,
+    createWhatsAppUrl: createPortfolioWhatsApp,
+    defaultPurchaseUrl: DEFAULT_PURCHASE_URL,
+    getCategories: getPortfolioCategories
 };
