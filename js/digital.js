@@ -20,11 +20,6 @@ document.addEventListener("DOMContentLoaded", () => {
             ".digital-portfolio-grid"
         );
 
-    const filterButtons =
-        document.querySelectorAll(
-            ".portfolio-filter"
-        );
-
     const emptyState =
         document.querySelector(
             ".digital-portfolio-empty"
@@ -373,44 +368,116 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    /* =====================================
-       FILTER BUTTONS
-    ===================================== */
+/* =====================================
+   CREATE PORTFOLIO FILTERS
+===================================== */
 
-    filterButtons.forEach(
-        (button) => {
+function createPortfolioFilters() {
+
+    const filterContainer =
+        document.querySelector(
+            ".digital-portfolio-filter"
+        );
+
+    if (!filterContainer) {
+        return;
+    }
+
+
+    const categories =
+        portfolioSystem.getCategories
+            ? portfolioSystem.getCategories()
+            : [];
+
+
+    filterContainer.innerHTML = "";
+
+
+    /* ================================
+       ALL BUTTON
+    ================================= */
+
+    const allButton =
+        document.createElement("button");
+
+    allButton.type = "button";
+
+    allButton.className =
+        "portfolio-filter active";
+
+    allButton.dataset.filter =
+        "all";
+
+    allButton.setAttribute(
+        "role",
+        "tab"
+    );
+
+    allButton.setAttribute(
+        "aria-selected",
+        "true"
+    );
+
+    allButton.textContent =
+        "Semua";
+
+    filterContainer.appendChild(
+        allButton
+    );
+
+
+    /* ================================
+       CATEGORY BUTTONS
+    ================================= */
+
+    const categoryLabels = {
+        website: "Website",
+        canva: "Canva",
+        ppt: "PPT",
+        sertifikat: "Sertifikat",
+        aplikasi: "Aplikasi"
+    };
+
+
+    categories.forEach(
+        (category) => {
+
+            const button =
+                document.createElement("button");
+
+            button.type = "button";
+
+            button.className =
+                "portfolio-filter";
+
+            button.dataset.filter =
+                category;
+
+            button.setAttribute(
+                "role",
+                "tab"
+            );
+
+            button.setAttribute(
+                "aria-selected",
+                "false"
+            );
+
+            button.textContent =
+                categoryLabels[category] ||
+                category
+                    .charAt(0)
+                    .toUpperCase() +
+                category.slice(1);
+
 
             button.addEventListener(
                 "click",
                 () => {
 
-                    const category =
-                        button.dataset.filter;
-
-
-                    filterButtons.forEach(
-                        (item) => {
-
-                            const isActive =
-                                item === button;
-
-
-                            item.classList.toggle(
-                                "active",
-                                isActive
-                            );
-
-
-                            item.setAttribute(
-                                "aria-selected",
-                                isActive
-                                    ? "true"
-                                    : "false"
-                            );
-
-                        }
+                    setActiveFilter(
+                        button
                     );
-
 
                     filterPortfolio(
                         category
@@ -419,19 +486,86 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
             );
 
+
+            filterContainer.appendChild(
+                button
+            );
+
         }
     );
 
 
-    /* =====================================
-       INITIALIZE PORTFOLIO
-    ===================================== */
+    /* ================================
+       ALL BUTTON ACTION
+    ================================= */
 
-    renderPortfolioCards();
+    allButton.addEventListener(
+        "click",
+        () => {
 
-    filterPortfolio("all");
+            setActiveFilter(
+                allButton
+            );
 
-});
+            filterPortfolio(
+                "all"
+            );
+
+        }
+    );
+
+}
+
+
+/* =====================================
+   SET ACTIVE FILTER
+===================================== */
+
+function setActiveFilter(
+    activeButton
+) {
+
+    const filterButtons =
+        document.querySelectorAll(
+            ".portfolio-filter"
+        );
+
+
+    filterButtons.forEach(
+        (button) => {
+
+            const isActive =
+                button === activeButton;
+
+
+            button.classList.toggle(
+                "active",
+                isActive
+            );
+
+
+            button.setAttribute(
+                "aria-selected",
+                isActive
+                    ? "true"
+                    : "false"
+            );
+
+        }
+    );
+
+}
+
+
+/* =====================================
+   INITIALIZE PORTFOLIO
+===================================== */
+
+renderPortfolioCards();
+
+createPortfolioFilters();
+
+filterPortfolio("all");
 
 
 /* =========================================
