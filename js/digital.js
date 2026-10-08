@@ -384,18 +384,43 @@ function createPortfolioFilters() {
     }
 
 
-    const categories =
-        portfolioSystem.getCategories
-            ? portfolioSystem.getCategories()
-            : [];
+    /*
+     * Ambil kategori langsung
+     * dari portfolioData.
+     */
 
+    const categories = [
+        ...new Set(
+            Object.values(portfolioData)
+                .map((item) => item.category)
+                .filter(Boolean)
+        )
+    ];
+
+
+    /*
+     * Kosongkan filter lama.
+     */
 
     filterContainer.innerHTML = "";
 
 
-    /* ================================
-       ALL BUTTON
-    ================================= */
+    /*
+     * Nama kategori yang ditampilkan.
+     */
+
+    const categoryLabels = {
+        website: "Website",
+        canva: "Canva",
+        ppt: "PPT",
+        sertifikat: "Sertifikat",
+        aplikasi: "Aplikasi"
+    };
+
+
+    /*
+     * Buat tombol SEMUA.
+     */
 
     const allButton =
         document.createElement("button");
@@ -421,23 +446,36 @@ function createPortfolioFilters() {
     allButton.textContent =
         "Semua";
 
+
     filterContainer.appendChild(
         allButton
     );
 
 
-    /* ================================
-       CATEGORY BUTTONS
-    ================================= */
+    /*
+     * Tombol SEMUA.
+     */
 
-    const categoryLabels = {
-        website: "Website",
-        canva: "Canva",
-        ppt: "PPT",
-        sertifikat: "Sertifikat",
-        aplikasi: "Aplikasi"
-    };
+    allButton.addEventListener(
+        "click",
+        () => {
 
+            setActiveFilter(
+                allButton
+            );
+
+            filterPortfolio(
+                "all"
+            );
+
+        }
+    );
+
+
+    /*
+     * Buat tombol kategori
+     * secara otomatis.
+     */
 
     categories.forEach(
         (category) => {
@@ -494,28 +532,7 @@ function createPortfolioFilters() {
         }
     );
 
-
-    /* ================================
-       ALL BUTTON ACTION
-    ================================= */
-
-    allButton.addEventListener(
-        "click",
-        () => {
-
-            setActiveFilter(
-                allButton
-            );
-
-            filterPortfolio(
-                "all"
-            );
-
-        }
-    );
-
 }
-
 
 /* =====================================
    SET ACTIVE FILTER
