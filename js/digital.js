@@ -63,7 +63,7 @@ document.addEventListener("DOMContentLoaded", () => {
         article.dataset.category =
             data.category;
 
-        article.dataset.portfolio =
+        article.dataset.portfolioId =
             id;
 
 
@@ -148,7 +148,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     <a
                         href="?karya=${encodeURIComponent(id)}"
                         class="digital-portfolio-link portfolio-detail-trigger"
-                        data-portfolio="${id}"
+                        data-portfolio-id="${id}"
                     >
                         Lihat Karya
                     </a>
