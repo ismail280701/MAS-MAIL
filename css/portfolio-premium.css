@@ -1,0 +1,42 @@
+/* MAS MAIL DIGITAL — PORTFOLIO PREMIUM V2 (tambahan, aman untuk CSS lama) */
+.digital-portfolio-card {
+  overflow: hidden; border: 1px solid rgba(7,27,58,.09);
+  border-radius: 22px; background: #fff;
+  box-shadow: 0 10px 32px rgba(7,27,58,.07);
+  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+}
+.digital-portfolio-card:hover { transform: translateY(-5px); box-shadow: 0 20px 44px rgba(7,27,58,.13); border-color: rgba(212,175,95,.5); }
+.digital-portfolio-image { overflow: hidden; }
+.digital-portfolio-image img { transition: transform .4s ease; }
+.digital-portfolio-card:hover .digital-portfolio-image img { transform: scale(1.035); }
+.digital-portfolio-card .digital-portfolio-actions a { transition: transform .2s ease, box-shadow .2s ease; }
+.digital-portfolio-card .digital-portfolio-actions a:focus-visible,
+.portfolio-detail-action:focus-visible,
+.portfolio-premium-share:focus-visible,
+.portfolio-premium-search-wrap input:focus-visible { outline: 3px solid #d4af5f; outline-offset: 3px; }
+.portfolio-premium-search-wrap { max-width: 500px; margin: 18px auto 26px; }
+.portfolio-premium-search-wrap input { width: 100%; min-height: 48px; padding: 12px 18px; border: 1px solid rgba(7,27,58,.16); border-radius: 15px; background: #fff; color: #071b3a; font: inherit; box-shadow: 0 8px 25px rgba(7,27,58,.05); }
+.portfolio-detail-overlay .portfolio-detail-sheet { box-shadow: 0 -20px 80px rgba(7,27,58,.2); }
+.portfolio-detail-overlay .portfolio-detail-content { scrollbar-width: thin; }
+.portfolio-detail-overlay .portfolio-detail-media-viewport { background: #f5f7fb; }
+.portfolio-detail-overlay .portfolio-detail-media-slide img { cursor: zoom-in; }
+.portfolio-detail-overlay .portfolio-detail-category { letter-spacing: .09em; }
+.portfolio-detail-overlay .portfolio-detail-action { border-radius: 14px; }
+.portfolio-premium-share { display: inline-flex; align-items: center; justify-content: center; width: 100%; margin-top: 12px; min-height: 44px; border: 1px solid rgba(7,27,58,.15); border-radius: 13px; background: #fff; color: #071b3a; font: 700 .8rem inherit; cursor: pointer; }
+.portfolio-premium-share:hover { background: #f7f4ec; border-color: #d4af5f; }
+.portfolio-premium-lightbox[hidden] { display: none !important; }
+.portfolio-premium-lightbox { position: fixed; inset: 0; z-index: 20000; display: flex; align-items: center; justify-content: center; padding: 60px 16px 20px; background: rgba(4,14,30,.94); backdrop-filter: blur(8px); }
+.portfolio-premium-lightbox img { display: block; max-width: 100%; max-height: 100%; object-fit: contain; border-radius: 8px; }
+.portfolio-premium-lightbox-close { position: absolute; top: 12px; right: 16px; width: 44px; height: 44px; border: 1px solid rgba(255,255,255,.3); border-radius: 50%; background: #fff; color: #071b3a; font-size: 30px; cursor: pointer; }
+@media (min-width: 1000px) {
+  .portfolio-detail-overlay .portfolio-detail-sheet { top: 5vh; left: 4vw; right: 4vw; bottom: 5vh; width: 92vw; height: 90vh; max-width: 1500px; margin: 0 auto; border-radius: 26px; }
+  .portfolio-detail-overlay .portfolio-detail-content { grid-template-columns: minmax(0,1.15fr) minmax(0,.85fr); gap: 38px; padding: 30px 38px; }
+  .portfolio-detail-overlay .portfolio-detail-media { position: sticky; top: 0; }
+}
+@media (max-width: 600px) {
+  .digital-portfolio-card { border-radius: 18px; }
+  .portfolio-detail-overlay .portfolio-detail-content { padding-bottom: 34px; }
+  .portfolio-detail-overlay .portfolio-detail-media-viewport { aspect-ratio: 4 / 3; }
+  .portfolio-premium-search-wrap { margin: 14px 0 22px; }
+}
+@media (prefers-reduced-motion: reduce) { .digital-portfolio-card, .digital-portfolio-image img { transition: none; } }
