@@ -1,0 +1,68 @@
+"use strict";
+/* EDIT PORTOFOLIO DI SINI. Tambahkan objek baru dengan ID unik.
+   Media: {type:'image',src:'...'}, {type:'video',src:'...mp4',poster:'...'},
+          {type:'youtube',url:'https://www.youtube.com/watch?v=VIDEO_ID'}.
+   type: website | template | service
+*/
+(() => {
+  const WHATSAPP_NUMBER = '6282253652317';
+  const defaultPurchaseUrl = 'https://lynk.id/ismail280701';
+  const createWhatsAppUrl = message => `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message || 'Halo Mas Mail, saya ingin berkonsultasi.')}`;
+  const data = {
+    'website-alihsan': {
+      type:'website', category:'website', categoryLabel:'WEBSITE', title:'Website Profil PonPes Al Ihsan',
+      cardDescription:'Website profil pesantren dengan tampilan modern, responsif, dan informatif.',
+      description:'Website profil pesantren dengan tampilan modern, responsif, dan dirancang agar informasi lembaga lebih mudah diakses.',
+      about:'Website ini dibuat sebagai media informasi dan profil digital PonPes Al Ihsan. Struktur halaman dirancang agar pengunjung dapat mengenal pesantren, program, kegiatan, dan informasi penting lainnya dengan lebih nyaman.',
+      highlights:['Desain modern dan responsif','Tampilan mobile-friendly','Struktur halaman informatif','Navigasi yang mudah digunakan','Dapat diakses melalui internet'],
+      media:[{type:'image',src:'Portofolio/website/websiteponpesalihsan.webp',alt:'Website Profil PonPes Al Ihsan'}],
+      websiteUrl:'https://ponpesalihsanicu.my.id', whatsappMessage:'Halo Mas Mail, saya tertarik dengan jasa pembuatan website seperti Website Profil PonPes Al Ihsan.'
+    },
+    'poster-tahfidz': {
+      type:'template',category:'canva',categoryLabel:'CANVA TEMPLATE',title:"Template Ucapan Selamat Tasmi' Hafalan Al-Qur'an",
+      cardDescription:"Template Canva untuk kebutuhan ucapan dan publikasi Tasmi' hafalan Al-Qur'an.",
+      description:"Template Canva untuk kebutuhan ucapan dan publikasi Tasmi' hafalan Al-Qur'an dengan desain yang siap digunakan.",
+      about:"Template ini dibuat untuk membantu pesantren, sekolah, maupun individu membuat desain ucapan Tasmi' hafalan Al-Qur'an dengan lebih cepat. Teks dan beberapa bagian desain dapat disesuaikan melalui Canva.",
+      highlights:['Ukuran siap digunakan','Dapat diedit melalui Canva','Cocok untuk publikasi pesantren','Mudah disesuaikan','Siap digunakan untuk media sosial'],
+      media:[{type:'image',src:"Portofolio/Canva/Templet ucapan selamat Tasmi' hafalan al qur'an_20260928_130011_0000.webp",alt:'Template Ucapan Selamat Tasmi'}],
+      purchaseUrl:'https://lynk.id/ismail280701/972dn525z7w9',whatsappMessage:"Halo Mas Mail, saya tertarik menggunakan Template Ucapan Selamat Tasmi' Hafalan Al-Qur'an."
+    },
+    'template-ppt': {
+      type:'template',category:'ppt',categoryLabel:'POWERPOINT',title:'Template PowerPoint',
+      cardDescription:'Template presentasi PowerPoint dengan desain modern yang siap disesuaikan.',
+      description:'Template presentasi PowerPoint dengan desain modern yang dapat digunakan untuk berbagai kebutuhan presentasi.',
+      about:'Template PowerPoint ini dirancang untuk membantu membuat presentasi terlihat lebih rapi dan profesional.',
+      highlights:['Desain presentasi modern','Cocok untuk berbagai kebutuhan','Mudah disesuaikan','Struktur slide siap digunakan','Dapat digunakan untuk presentasi'],
+      media:[{type:'image',src:'assets/portfolio/ppt-01.jpg',alt:'Preview Template PowerPoint'}],
+      purchaseUrl:'https://lynk.id/ismail280701/wo8rvjrlmrwd',whatsappMessage:'Halo Mas Mail, saya tertarik dengan Template PowerPoint.'
+    },
+    'sertifikat-piagam': {
+      type:'template',category:'sertifikat',categoryLabel:'SERTIFIKAT & PIAGAM',title:'Template Piagam Penghargaan Islami A4',
+      cardDescription:'Template piagam penghargaan Islami ukuran A4 yang bisa diedit di Canva.',
+      description:'Template piagam penghargaan bernuansa Islami yang dapat disesuaikan untuk berbagai kebutuhan.',
+      about:'Edit nama penerima, prestasi, nomor piagam, dan informasi lainnya sesuai kebutuhan melalui Canva.',
+      highlights:['Ukuran A4','Dapat diedit di Canva','Desain bernuansa Islami','Cocok untuk sekolah dan pesantren'],
+      media:[{type:'image',src:'Portofolio/Canva/Template Piagam Penghargaan Islami A4.webp',alt:'Template Piagam Penghargaan Islami A4'}],
+      purchaseUrl:'https://lynk.id/ismail280701/4veeoekq4w02',whatsappMessage:'Halo Mas Mail, saya tertarik dengan Template Piagam Penghargaan Islami A4.'
+    },
+    'template-canva': {
+      type:'template',category:'canva',categoryLabel:'CANVA TEMPLATE',title:'Template Canva',
+      cardDescription:'Template desain Canva yang dapat digunakan dan disesuaikan untuk berbagai kebutuhan.',
+      description:'Template desain Canva yang dapat digunakan dan disesuaikan untuk berbagai kebutuhan.',
+      about:'Template Canva dibuat agar pengguna dapat melakukan penyesuaian sendiri dengan lebih mudah.',
+      highlights:['Dapat diedit melalui Canva','Mudah disesuaikan','Desain siap digunakan','Cocok untuk kebutuhan digital'],
+      media:[{type:'image',src:'assets/portfolio/canva-02.jpg',alt:'Template Canva'}],
+      purchaseUrl:defaultPurchaseUrl,whatsappMessage:'Halo Mas Mail, saya tertarik dengan Template Canva.'
+    },
+    'proyek-aplikasi': {
+      type:'service',category:'aplikasi',categoryLabel:'APLIKASI',title:'Proyek Aplikasi',
+      cardDescription:'Pengembangan aplikasi sederhana untuk membantu administrasi dan pengelolaan data.',
+      description:'Pengembangan aplikasi sederhana untuk membantu administrasi dan pengelolaan data.',
+      about:'Proyek aplikasi dapat disesuaikan dengan kebutuhan pengguna, mulai dari struktur data, tampilan, hingga alur penggunaan.',
+      highlights:['Disesuaikan dengan kebutuhan','Membantu pengelolaan data','Tampilan mudah digunakan','Dapat dikembangkan sesuai kebutuhan'],
+      media:[{type:'image',src:'assets/portfolio/aplikasi-01.jpg',alt:'Proyek Aplikasi'}],
+      whatsappMessage:'Halo Mas Mail, saya ingin konsultasi mengenai pembuatan aplikasi.'
+    }
+  };
+  window.MasMailPortfolioData = {data,createWhatsAppUrl,defaultPurchaseUrl,getCategories:()=>[...new Set(Object.values(data).map(x=>x.category).filter(Boolean))]};
+})();
