@@ -27,6 +27,18 @@
       media:[{type:'image',src:"Portofolio/Canva/Templet ucapan selamat Tasmi' hafalan al qur'an_20260928_130011_0000.webp",alt:'Template Ucapan Selamat Tasmi'}],
       purchaseUrl:'https://lynk.id/ismail280701/972dn525z7w9',whatsappMessage:"Halo Mas Mail, saya tertarik menggunakan Template Ucapan Selamat Tasmi' Hafalan Al-Qur'an."
     },
+     'piagam-elegan-islami-a4': {
+    type: 'template',category: 'canva',categoryLabel: 'CANVA TEMPLATE',title:'Template Sertifikat & Piagam Penghargaan Elegan Islami A4',
+    cardDescription:'🏆 Template piagam A4 bernuansa emas dan biru tua, elegan, formal, dan siap disesuaikan untuk berbagai acara.',
+    description:'✨ Berikan penghargaan yang lebih berkesan! Template Sertifikat & Piagam Penghargaan Elegan Islami A4 hadir dengan perpaduan warna emas dan biru tua, ornamen Islami yang elegan, serta tata letak profesional. Cocok untuk sekolah, madrasah, pesantren, perlombaan, dan berbagai kegiatan organisasi.',
+    about:'🏆 Setiap pencapaian layak mendapatkan apresiasi istimewa!\n\nMas Mail Digital menghadirkan Template Sertifikat & Piagam Penghargaan Elegan Islami A4 untuk membantu Anda membuat piagam yang rapi, resmi, dan berkelas tanpa harus mendesain dari awal.\n\n🎨 Mengusung konsep Islami modern, template ini memadukan warna emas dan biru tua dengan ornamen arabesque serta kaligrafi Basmalah yang memperkuat kesan elegan dan penuh makna.\n\n📐 Desain berukuran A4 lanskap dengan satu halaman utama. Tata letaknya dirancang agar informasi penerima penghargaan, nama kegiatan, tanggal, dan tanda tangan penyelenggara dapat ditampilkan dengan jelas.\n\n🎓 Cocok digunakan untuk penghargaan perlombaan, kegiatan sekolah, madrasah, pesantren, kajian, pelatihan, maupun acara organisasi.\n\n💡 Dengan template ini, Anda dapat menghemat waktu persiapan dan lebih fokus menyukseskan acara.',
+    highlights:["🏆 Desain elegan, formal, dan profesional","🎨 Perpaduan warna emas dan biru tua","🕌 Ornamen Islami dan kaligrafi Basmalah","📄 Ukuran A4 lanskap","✍️ Tata letak nama penerima dan tanda tangan yang rapi","🎓 Cocok untuk sekolah, pesantren, dan perlombaan","⚡ Praktis tanpa perlu membuat desain dari awal","🛒 Pembelian melalui Lynk.id"],
+    media:[{type:"image",src:"Portofolio/Canva/piagam-elegan-islami/cover.webp",alt:"Tampilan utama Template Piagam Penghargaan Elegan Islami A4"},
+           {type:"image",src:"Portofolio/Canva/piagam-elegan-islami/preview-2.webp",alt:"Preview kedua Template Piagam Penghargaan Elegan Islami A4"},
+           {type:"youtube",id:"Ibsq61bvOkM",title:"Video Preview Piagam Penghargaan Elegan Islami A4"}],
+    purchaseUrl:"http://lynk.id/ismail280701/llm0z1257918/checkout",
+    whatsappMessage:"Halo Mas Mail, saya tertarik dengan Template Sertifikat & Piagam Penghargaan Elegan Islami A4. Saya ingin bertanya mengenai produknya."
+    },
     'template-ppt': {
       type:'template',category:'ppt',categoryLabel:'POWERPOINT',title:'Template PowerPoint',
       cardDescription:'Template presentasi PowerPoint dengan desain modern yang siap disesuaikan.',
