@@ -24,7 +24,8 @@
       description:"Template Canva untuk kebutuhan ucapan dan publikasi Tasmi' hafalan Al-Qur'an dengan desain yang siap digunakan.",
       about:"Template ini dibuat untuk membantu pesantren, sekolah, maupun individu membuat desain ucapan Tasmi' hafalan Al-Qur'an dengan lebih cepat. Teks dan beberapa bagian desain dapat disesuaikan melalui Canva.",
       highlights:['Ukuran siap digunakan','Dapat diedit melalui Canva','Cocok untuk publikasi pesantren','Mudah disesuaikan','Siap digunakan untuk media sosial'],
-      media:[{type:'image',src:"Portofolio/Canva/Templet ucapan selamat Tasmi' hafalan al qur'an_20260928_130011_0000.webp",alt:'Template Ucapan Selamat Tasmi'}],
+      media:[{type:'image',src:"Portofolio/Canva/Templet ucapan selamat Tasmi' hafalan al qur'an_20260928_130011_0000.webp",alt:'Template Ucapan Selamat Tasmi'},
+             {type:"youtube",id:"NOFUmFPWnA0",title:"Video Preview Piagam Penghargaan Elegan Islami A4"}],
       purchaseUrl:'https://lynk.id/ismail280701/972dn525z7w9',whatsappMessage:"Halo Mas Mail, saya tertarik menggunakan Template Ucapan Selamat Tasmi' Hafalan Al-Qur'an."
     },
      'piagam-elegan-islami-a4': {
@@ -35,7 +36,7 @@
     highlights:["🏆 Desain elegan, formal, dan profesional","🎨 Perpaduan warna emas dan biru tua","🕌 Ornamen Islami dan kaligrafi Basmalah","📄 Ukuran A4 lanskap","✍️ Tata letak nama penerima dan tanda tangan yang rapi","🎓 Cocok untuk sekolah, pesantren, dan perlombaan","⚡ Praktis tanpa perlu membuat desain dari awal","🛒 Pembelian melalui Lynk.id"],
     media:[{type:"image",src:"Portofolio/Canva/piagam-elegan-islami/cover.webp",alt:"Tampilan utama Template Piagam Penghargaan Elegan Islami A4"},
            {type:"image",src:"Portofolio/Canva/piagam-elegan-islami/preview-2.webp",alt:"Preview kedua Template Piagam Penghargaan Elegan Islami A4"},
-           {type:"youtube",id:"Ibsq61bvOkM",title:"Video Preview Piagam Penghargaan Elegan Islami A4"}],
+           {type:"youtube",id:"Ibsq61bvOkM",title:"Video Preview Sertifikat & Piagam Penghargaan Elegan Islami A4"}],
     purchaseUrl:"http://lynk.id/ismail280701/llm0z1257918/checkout",
     whatsappMessage:"Halo Mas Mail, saya tertarik dengan Template Sertifikat & Piagam Penghargaan Elegan Islami A4. Saya ingin bertanya mengenai produknya."
     },
