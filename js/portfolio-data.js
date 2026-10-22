@@ -40,6 +40,16 @@
     purchaseUrl:"http://lynk.id/ismail280701/llm0z1257918/checkout",
     whatsappMessage:"Halo Mas Mail, saya tertarik dengan Template Sertifikat & Piagam Penghargaan Elegan Islami A4. Saya ingin bertanya mengenai produknya."
     },
+    'sertifikat-piagam': {
+      type:'template',category:'sertifikat',categoryLabel:'SERTIFIKAT & PIAGAM',title:'Template Piagam Penghargaan Islami A4',
+      cardDescription:'Template piagam penghargaan Islami ukuran A4 yang bisa diedit di Canva.',
+      description:'Template piagam penghargaan bernuansa Islami yang dapat disesuaikan untuk berbagai kebutuhan.',
+      about:'Edit nama penerima, prestasi, nomor piagam, dan informasi lainnya sesuai kebutuhan melalui Canva.',
+      highlights:['Ukuran A4','Dapat diedit di Canva','Desain bernuansa Islami','Cocok untuk sekolah dan pesantren'],
+      media:[{type:'image',src:'Portofolio/Canva/Template Piagam Penghargaan Islami A4.webp',alt:'Template Piagam Penghargaan Islami A4'},
+            {type:"youtube",id:"gjp33PEQWKw",title:"Video Preview Template Piagam Penghargaan Islami A4"}],
+      purchaseUrl:'https://lynk.id/ismail280701/4veeoekq4w02',whatsappMessage:'Halo Mas Mail, saya tertarik dengan Template Piagam Penghargaan Islami A4.'
+    },
     'template-ppt': {
       type:'template',category:'ppt',categoryLabel:'POWERPOINT',title:'Template PowerPoint',
       cardDescription:'Template presentasi PowerPoint dengan desain modern yang siap disesuaikan.',
@@ -48,15 +58,6 @@
       highlights:['Desain presentasi modern','Cocok untuk berbagai kebutuhan','Mudah disesuaikan','Struktur slide siap digunakan','Dapat digunakan untuk presentasi'],
       media:[{type:'image',src:'assets/portfolio/ppt-01.jpg',alt:'Preview Template PowerPoint'}],
       purchaseUrl:'https://lynk.id/ismail280701/wo8rvjrlmrwd',whatsappMessage:'Halo Mas Mail, saya tertarik dengan Template PowerPoint.'
-    },
-    'sertifikat-piagam': {
-      type:'template',category:'sertifikat',categoryLabel:'SERTIFIKAT & PIAGAM',title:'Template Piagam Penghargaan Islami A4',
-      cardDescription:'Template piagam penghargaan Islami ukuran A4 yang bisa diedit di Canva.',
-      description:'Template piagam penghargaan bernuansa Islami yang dapat disesuaikan untuk berbagai kebutuhan.',
-      about:'Edit nama penerima, prestasi, nomor piagam, dan informasi lainnya sesuai kebutuhan melalui Canva.',
-      highlights:['Ukuran A4','Dapat diedit di Canva','Desain bernuansa Islami','Cocok untuk sekolah dan pesantren'],
-      media:[{type:'image',src:'Portofolio/Canva/Template Piagam Penghargaan Islami A4.webp',alt:'Template Piagam Penghargaan Islami A4'}],
-      purchaseUrl:'https://lynk.id/ismail280701/4veeoekq4w02',whatsappMessage:'Halo Mas Mail, saya tertarik dengan Template Piagam Penghargaan Islami A4.'
     },
     'template-canva': {
       type:'template',category:'canva',categoryLabel:'CANVA TEMPLATE',title:'Template Canva',
