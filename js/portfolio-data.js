@@ -26,7 +26,37 @@
       highlights:['Ukuran siap digunakan','Dapat diedit melalui Canva','Cocok untuk publikasi pesantren','Mudah disesuaikan','Siap digunakan untuk media sosial'],
       media:[{type:'image',src:"Portofolio/Canva/Templet ucapan selamat Tasmi' hafalan al qur'an_20260928_130011_0000.webp",alt:'Template Ucapan Selamat Tasmi'},
              {type:"youtube",id:"NOFUmFPWnA0",title:"Video Preview Piagam Penghargaan Elegan Islami A4"}],
-      purchaseUrl:'https://lynk.id/ismail280701/972dn525z7w9',whatsappMessage:"Halo Mas Mail, saya tertarik menggunakan Template Ucapan Selamat Tasmi' Hafalan Al-Qur'an."
+      purchaseUrl:'https://lynk.id/ismail280701/972dn525z7w9/checkout',whatsappMessage:"Halo Mas Mail, saya tertarik menggunakan Template Ucapan Selamat Tasmi' Hafalan Al-Qur'an."
+    },
+    '34-template-canva-islami': {
+    type:'template',
+    category:'canva',
+    categoryLabel:'CANVA TEMPLATE',
+    title:'34 Template Canva Islami Premium Siap Edit | PPDB, Kajian, Donasi & Prestasi Santri',
+    cardDescription:'🕌 Koleksi 34 template Canva Islami premium dalam satu akses! Desain profesional untuk PPDB, kajian, donasi, kegiatan pesantren, hingga prestasi santri. Praktis dan siap diedit.',
+    description:'✨ Satu akses, 34 desain Islami siap digunakan! Mas Mail Digital menghadirkan koleksi 34 Template Canva Islami Premium dengan beragam desain menarik untuk kebutuhan sekolah, madrasah, pesantren, masjid, dan organisasi Islam. Mulai dari poster PPDB, kajian, donasi, pengumuman, hingga penghargaan santri. Semua template dikumpulkan dalam satu halaman Google Sites sehingga lebih praktis untuk dijelajahi dan dipilih sesuai kebutuhan.',
+    about:'🕌 34 TEMPLATE CANVA ISLAMI PREMIUM — SATU AKSES, BANYAK KEBUTUHAN!\n\nMas Mail Digital menghadirkan koleksi 34 Template Canva Islami Premium untuk membantu Anda membuat berbagai kebutuhan desain Islami secara lebih praktis, cepat, dan profesional tanpa harus memulai dari nol.\n\n🎨 KOLEKSI 34 DESAIN ISLAMI\nTersedia 34 template dengan berbagai konsep, kombinasi warna, ornamen Islami, dan tata letak yang menarik. Setiap desain memiliki karakter visual tersendiri sehingga dapat disesuaikan dengan kebutuhan kegiatan maupun identitas lembaga.\n\n🕌 COCOK UNTUK KEGIATAN ISLAMI\nKoleksi ini dapat digunakan sebagai referensi dan bahan desain untuk berbagai kegiatan seperti penerimaan santri baru (PPDB), kajian Islam, dakwah, donasi, kegiatan Ramadan, Idulfitri, Iduladha, pengumuman pesantren, hingga apresiasi dan prestasi santri.\n\n🔗 SATU LINK GOOGLE SITES\nTidak perlu mencari template satu per satu! Seluruh koleksi telah disusun dalam satu halaman Google Sites yang memudahkan Anda melihat pilihan desain dan mengakses tautan template Canva yang tersedia.\n\n✏️ MUDAH DISESUAIKAN\nTemplate dapat dibuka melalui Canva untuk menyesuaikan teks, nama lembaga, informasi kegiatan, warna, dan elemen desain sesuai kebutuhan. Penggunaan fitur atau elemen tertentu mengikuti ketentuan akun Canva masing-masing.\n\n📱 AKSES PRAKTIS DI BERBAGAI PERANGKAT\nHalaman koleksi dapat diakses melalui HP, tablet, maupun komputer selama tersedia koneksi internet. Proses pengeditan dapat dilakukan menggunakan aplikasi atau website Canva.\n\n🎓 UNTUK SIAPA PRODUK INI?\nCocok bagi pengelola pesantren, guru, ustaz, ustazah, pengurus masjid, panitia kegiatan Islam, organisasi pendidikan, maupun kreator konten Islami yang membutuhkan desain siap edit.\n\n⏳ HEMAT WAKTU DAN TENAGA\nDengan berbagai pilihan desain yang sudah tersedia, Anda tidak perlu membuat seluruh konsep visual dari awal. Pilih template yang sesuai, sesuaikan informasinya, lalu gunakan untuk kebutuhan kegiatan Anda.\n\n🛒 CARA MENDAPATKAN PRODUK\nLakukan pembelian melalui Lynk.id Mas Mail Digital. Produk yang ditawarkan berupa akses menuju halaman Google Sites yang berisi kumpulan tautan 34 template Canva Islami.\n\n💡 Satu koleksi, beragam inspirasi desain Islami untuk mendukung kegiatan dan kebutuhan publikasi lembaga Anda!',
+    highlights:[
+        "🕌 Koleksi 34 template Canva bertema Islami",
+        "🎨 Beragam desain menarik dan profesional",
+        "🔗 Seluruh template dikumpulkan dalam satu Google Sites",
+        "✏️ Template dapat disesuaikan melalui Canva",
+        "🎓 Cocok untuk sekolah, madrasah, dan pesantren",
+        "📢 Pilihan desain untuk PPDB dan pengumuman",
+        "📖 Mendukung publikasi kajian dan kegiatan dakwah",
+        "🤲 Cocok untuk kebutuhan poster donasi dan kegiatan sosial",
+        "🏆 Tersedia desain bertema apresiasi dan prestasi santri",
+        "🌙 Pilihan desain untuk kegiatan dan hari besar Islam",
+        "📱 Dapat diakses melalui HP, tablet, dan komputer",
+        "⏳ Menghemat waktu pembuatan desain",
+        "🛒 Pembelian praktis melalui Lynk.id"],
+    media:[
+        {type:"image",src:"Portofolio/Canva/34 _Template_Canva/cover.webp",alt:"Cover produk 34 Template Canva Islami Premium dengan tampilan koleksi desain dalam layar komputer"},
+        {type:"youtube",id: "L0ZGG4tJ7R8",title: "Video Preview Pertama Koleksi 34 Template Canva Islami Premium"},
+        {type:"image",src: "Portofolio/Canva/34 _Template_Canva/preview-2.webp.webp",alt: "Preview kedua koleksi 34 Template Canva Islami Premium untuk berbagai kebutuhan kegiatan Islam"},
+        {type:"youtube",id: "XnL8eGI6mLU",title:"Video Preview Kedua Koleksi 34 Template Canva Islami Premium"}],
+    purchaseUrl:"http://lynk.id/ismail280701/wo8rvjrlmrwd/checkout",
+    whatsappMessage:"Halo Mas Mail, saya tertarik dengan produk 34 Template Canva Islami Premium yang berisi kumpulan link template melalui Google Sites. Saya ingin bertanya mengenai produk dan cara mengakses templatenya."
     },
      'piagam-elegan-islami-a4': {
     type: 'template',category: 'canva',categoryLabel: 'CANVA TEMPLATE',title:'Template Sertifikat & Piagam Penghargaan Elegan Islami A4',
@@ -48,7 +78,7 @@
       highlights:['Ukuran A4','Dapat diedit di Canva','Desain bernuansa Islami','Cocok untuk sekolah dan pesantren'],
       media:[{type:'image',src:'Portofolio/Canva/Template Piagam Penghargaan Islami A4.webp',alt:'Template Piagam Penghargaan Islami A4'},
             {type:"youtube",id:"gjp33PEQWKw",title:"Video Preview Template Piagam Penghargaan Islami A4"}],
-      purchaseUrl:'https://lynk.id/ismail280701/4veeoekq4w02',whatsappMessage:'Halo Mas Mail, saya tertarik dengan Template Piagam Penghargaan Islami A4.'
+      purchaseUrl:'https://lynk.id/ismail280701/4veeoekq4w02/checkout',whatsappMessage:'Halo Mas Mail, saya tertarik dengan Template Piagam Penghargaan Islami A4.'
     },
     'template-ppt': {
       type:'template',category:'ppt',categoryLabel:'POWERPOINT',title:'Template PowerPoint',
