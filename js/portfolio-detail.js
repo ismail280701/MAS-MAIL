@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
     track.querySelectorAll('video').forEach(v => { v.pause(); v.currentTime = 0; });
     track.querySelectorAll('iframe').forEach(f => f.remove());
     // YouTube thumbnail dikembalikan saat berpindah slide
-    track.querySelectorAll('.portfolio-detail-youtube').forEach(w => { const b = w.querySelector('button'); if (b) b.hidden = false; });
+   track.querySelectorAll('.portfolio-detail-youtube').forEach(w => {const b = w.querySelector('button');if (b) b.hidden = false;w.classList.remove('is-playing');});
   }
   function update() {
     track.style.transform = `translateX(-${index * 100}%)`;
@@ -58,17 +58,62 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!media.length) { const p = document.createElement('p'); p.textContent = 'Media belum tersedia.'; p.className = 'portfolio-media-empty'; track.append(p); update(); return; }
     media.forEach((m,i) => {
       const slide = document.createElement('div'); slide.className = 'portfolio-detail-media-slide';
-      if (m.type === 'youtube') {
-        const id = youtubeId(m);
-        const wrap = document.createElement('div'); wrap.className = 'portfolio-detail-youtube';
-        if (id) {
-          const thumb = document.createElement('img'); thumb.src = safeUrl(m.thumbnail) || `https://img.youtube.com/vi/${id}/hqdefault.jpg`; thumb.alt = m.title || 'Pratinjau video YouTube'; thumb.loading = 'lazy'; wrap.append(thumb);
-          const play = document.createElement('button'); play.type = 'button'; play.className = 'portfolio-detail-youtube-play'; play.textContent = '▶'; play.setAttribute('aria-label','Putar video YouTube');
-          play.addEventListener('click', () => { stopTimer(); wrap.querySelector('img')?.remove(); play.hidden = true; const iframe = document.createElement('iframe'); iframe.src = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0`; iframe.title = m.title || 'Video portofolio'; iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'; iframe.allowFullscreen = true; wrap.append(iframe); });
-          wrap.append(play);
-        } else { wrap.textContent = 'Link YouTube tidak valid.'; }
-        slide.append(wrap);
-      } else if (m.type === 'video') {
+  
+if (m.type === 'youtube') {
+ const id = youtubeId(m);
+    const wrap = document.createElement('div');
+    wrap.className = 'portfolio-detail-youtube';
+    if (id) {
+        // THUMBNAIL VIDEO YOUTUBE
+        const thumb = document.createElement('img');
+        thumb.src = `https://img.youtube.com/vi/${id}/maxresdefault.jpg`;
+        thumb.alt = m.title || 'Thumbnail video YouTube';
+        thumb.loading = 'lazy';
+        // Jika thumbnail resolusi tinggi tidak tersedia,
+        // gunakan ukuran standar YouTube.
+        thumb.onerror = function () {
+            if (this.dataset.fallback) return;
+            this.dataset.fallback = 'true';
+            this.src = `https://img.youtube.com/vi/${id}/hqdefault.jpg`;
+        };
+        wrap.appendChild(thumb);
+        // TOMBOL PLAY PREMIUM
+        const play = document.createElement('button');
+        play.type = 'button';
+        play.className = 'portfolio-detail-youtube-play';
+        play.innerHTML = `
+            <span class="premium-play-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M8 5.5v13l11-6.5z"/>
+                </svg>
+            </span>
+        `;
+        play.setAttribute(
+            'aria-label',
+            'Putar video YouTube'
+        );
+        // KETIKA TOMBOL PLAY DIKLIK
+        play.addEventListener('click', () => {
+            stopTimer();
+            wrap.classList.add('is-playing');
+            play.hidden = true;
+            const iframe = document.createElement('iframe');
+            iframe.src =
+                `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0`;
+            iframe.title =
+                m.title || 'Video portofolio';
+            iframe.allow =
+                'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+            iframe.allowFullscreen = true;
+            wrap.appendChild(iframe);
+        });
+        wrap.appendChild(play);
+    } else {
+        wrap.textContent = 'Link YouTube tidak valid.';
+    }
+    slide.appendChild(wrap);
+}      
+      else if (m.type === 'video') {
         const video = document.createElement('video'); video.controls = true; video.playsInline = true; video.preload = 'metadata'; video.src = m.src || ''; if (m.poster) video.poster = m.poster; video.setAttribute('aria-label',m.title || 'Video portofolio'); video.addEventListener('play',stopTimer); slide.append(video);
       } else {
         const img = document.createElement('img'); img.src = m.src || ''; img.alt = m.alt || item.title || 'Gambar portofolio'; img.loading = i ? 'lazy' : 'eager'; slide.append(img);
