@@ -18,6 +18,25 @@
       media:[{type:'image',src:'Portofolio/website/websiteponpesalihsan.webp',alt:'Website Profil PonPes Al Ihsan'}],
       websiteUrl:'https://ponpesalihsanicu.my.id', whatsappMessage:'Halo Mas Mail, saya tertarik dengan jasa pembuatan website seperti Website Profil PonPes Al Ihsan.'
     },
+   'waktu-untuk-pantas': {
+    type: 'template',
+    category: 'ebook',
+    categoryLabel: 'E-BOOK DIGITAL',
+    title: 'Waktu untuk Pantas',
+    cardDescription: '📖 Sebuah kisah tentang pulang, memulai kembali, dan menemukan bahwa setiap orang memiliki waktunya sendiri.',
+    description: '✨ Tidak semua orang terlambat. Tidak semua yang pulang berarti kalah. Kadang-kadang, hidup hanya sedang menyiapkan waktu terbaik bagi seseorang yang belum menyerah.',
+    about: '📖 Waktu untuk Pantas mengisahkan perjalanan Rafi, seorang pemuda yang pulang ke kampung dengan perasaan gagal setelah merantau. Ketika orang lain terlihat sudah melangkah jauh, ia justru harus memulai kembali dari nol.\n\n🏡 Melalui rumah sederhana, perjuangan orang tua, dan pertemuan-pertemuan yang perlahan mengubah hatinya, Rafi belajar bahwa hidup bukan perlombaan tentang siapa yang paling cepat berhasil.\n\n🌱 Kisah ini hadir untuk kamu yang sedang lelah, merasa tertinggal, kehilangan arah, atau sedang berusaha membangun hidup sedikit demi sedikit.\n\n🤍 Jika kamu membutuhkan teman untuk menguatkan langkah, semoga cerita ini bisa menemani. Karena terkadang, bukan kita yang terlambat—melainkan perjalanan kita memang membutuhkan waktu.',
+    highlights: ['📚 Kisah perjalanan hidup Rafi', '🏡 Tentang keluarga, kegagalan, dan keberanian memulai kembali', '🌱 Mengangkat tema proses, harapan, dan pertumbuhan diri', '🤍 Cocok untuk pembaca yang sedang merasa tertinggal', '✨ Cerita reflektif tentang menemukan waktu sendiri'],
+    media: [
+        { type: 'image', src: 'Portofolio/E-Book/waktu_untuk_pantas/cover.webp', alt: 'Cover E-Book Waktu untuk Pantas' },
+        { type: 'image', src: 'Portofolio/E-Book/waktu_untuk_pantas/preview_1.webp', alt: 'Preview isi E-Book Waktu untuk Pantas' }
+    ],
+    purchaseUrl: 'http://lynk.id/ismail280701/ykx86g0zop7p/checkout',
+    actionText: 'Baca Sekarang',
+    cardActionText: 'Baca Sekarang',
+    consultationText: 'Konsultasi',
+    whatsappMessage: 'Halo Mas Mail, saya ingin bertanya mengenai E-Book Waktu untuk Pantas.'
+    },
     'poster-tahfidz': {
       type:'template',category:'canva',categoryLabel:'CANVA TEMPLATE',title:"Template Ucapan Selamat Tasmi' Hafalan Al-Qur'an",
       cardDescription:"Template Canva untuk kebutuhan ucapan dan publikasi Tasmi' hafalan Al-Qur'an.",
