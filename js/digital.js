@@ -161,11 +161,13 @@ document.addEventListener("DOMContentLoaded", () => {
                         rel="noopener noreferrer"
                     >
                         ${
-                            data.type === "template"
-                                ? "Gunakan Template"
-                                : data.type === "website"
-                                    ? "Kunjungi Website"
-                                    : "Konsultasi"
+                            data.cardActionText || (
+                                data.type === 'template'
+                                    ? 'Gunakan Template'
+                                    : data.type === 'website'
+                                         ? 'Kunjungi Website'
+                                         : 'Konsultasi'
+                         )
                         }
                     </a>
 
