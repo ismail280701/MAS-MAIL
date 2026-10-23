@@ -40,3 +40,40 @@
   .portfolio-premium-search-wrap { margin: 14px 0 22px; }
 }
 @media (prefers-reduced-motion: reduce) { .digital-portfolio-card, .digital-portfolio-image img { transition: none; } }
+/* =========================================
+   MAS MAIL DIGITAL
+   PREMIUM YOUTUBE THUMBNAIL V3
+========================================= */
+.portfolio-detail-youtube {position: relative;width: 100%;height: 100%;min-height: 240px;display: flex;align-items: center;justify-content: center;overflow: hidden;border-radius: 18px;background: #071b3a;isolation: isolate;}
+/* THUMBNAIL */
+.portfolio-detail-youtube > img {position: absolute;inset: 0;width: 100%;height: 100%;object-fit: contain;object-position: center;background: #071b3a;}
+/* GRADIENT PREMIUM */
+.portfolio-detail-youtube::after {content: "";position: absolute;inset: 0;background: linear-gradient(180deg,rgba(7, 27, 58, 0.05),rgba(7, 27, 58, 0.35));pointer-events: none;z-index: 1;}
+/* TOMBOL PLAY */
+.portfolio-detail-youtube-play {position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);width: 82px;height: 82px;display: flex;align-items: center;justify-content: center;border: 2px solid rgba(255, 255, 255, 0.55);border-radius: 50%;background: linear-gradient(135deg,#f4d58a,#d4af5f,#a67c2e);color: #071b3a;box-shadow:0 8px 30px rgba(0, 0, 0, 0.3),0 0 0 8px rgba(212, 175, 95, 0.18);cursor: pointer;z-index: 3;transition:transform 0.3s ease,box-shadow 0.3s ease;}
+/* ICON PLAY */
+.premium-play-icon {display: flex;align-items: center;justify-content: center;width: 36px;height: 36px;}
+.premium-play-icon svg {width: 36px;height: 36px;}
+/* ANIMASI HOVER */
+@media (hover: hover) {
+.portfolio-detail-youtube-play:hover {
+        transform:translate(-50%, -50%)scale(1.12);box-shadow:0 12px 40px rgba(0, 0, 0, 0.35),0 0 0 13px rgba(212, 175, 95, 0.2);}
+}
+/* ANIMASI SAAT DITEKAN */
+.portfolio-detail-youtube-play:active {transform:translate(-50%, -50%)scale(0.94);}
+/* VIDEO YOUTUBE */
+.portfolio-detail-youtube iframe {position: absolute;inset: 0;width: 100%;height: 100%;border: none;z-index: 5;}
+/* SEMBUNYIKAN GRADIENT SAAT VIDEO DIPUTAR */
+.portfolio-detail-youtube.is-playing::after {display: none;}
+/* PASTIKAN TOMBOL TERSEMBUNYI SAAT VIDEO DIPUTAR */
+.portfolio-detail-youtube-play[hidden] {display: none !important;}
+/* RESPONSIVE MOBILE */
+@media (max-width: 600px) {
+.portfolio-detail-youtube {min-height: 200px;border-radius: 14px;}
+.portfolio-detail-youtube-play {width: 68px;height: 68px;}
+.premium-play-icon,.premium-play-icon svg {width: 30px;height: 30px;}
+}
+/* AKSESIBILITAS */
+@media (prefers-reduced-motion: reduce) {
+.portfolio-detail-youtube-play {transition: none;}
+}
