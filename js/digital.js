@@ -266,16 +266,18 @@ document.addEventListener("DOMContentLoaded", () => {
                  * TEMPLATE
                  */
 
-                if (
-                    data.type === "template"
-                ) {
-
-                    link.href =
-                        data.purchaseUrl ||
-                        portfolioSystem.defaultPurchaseUrl;
-
-                    return;
-                }
+                if (data.type === 'template') {
+                if (data.purchaseUrl) {
+                   link.href = data.purchaseUrl;
+                   link.hidden = false;
+                   link.style.display = '';
+                   } else {
+                   link.removeAttribute('href');
+                  link.hidden = true;
+                  link.style.display = 'none';
+                   }
+                  return;
+                  }
 
 
                 /*
@@ -416,7 +418,8 @@ function createPortfolioFilters() {
         canva: "Canva",
         ppt: "PPT",
         sertifikat: "Sertifikat",
-        aplikasi: "Aplikasi"
+        aplikasi: "Aplikasi",
+        ebook: 'E-Book'
     };
 
 
