@@ -139,7 +139,7 @@ if (m.type === 'youtube') {
     const wa = source.createWhatsAppUrl(item.whatsappMessage);
     const primary = $('portfolioDetailAction'), secondary = $('portfolioDetailConsultation');
     if (item.type === 'website') { setLink(primary,item.websiteUrl,'Kunjungi Website'); setLink(secondary,wa,'Konsultasi'); }
-    else if (item.type === 'template') { setLink(primary,item.purchaseUrl || source.defaultPurchaseUrl,'Gunakan Template'); setLink(secondary,wa,'Konsultasi'); }
+   else if (item.type === 'template') {setLink(primary, item.purchaseUrl || '', item.actionText || 'Gunakan Template');setLink(secondary, wa, item.consultationText || 'Konsultasi');}
     else { setLink(primary,wa,'Konsultasi'); setLink(secondary,'',''); }
     renderMedia(item); if(content) content.scrollTop=0;
   }
