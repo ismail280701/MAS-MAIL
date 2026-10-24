@@ -40,11 +40,16 @@ document.addEventListener('DOMContentLoaded', () => {
     dots.hidden = media.length <= 1;
     if (counter) counter.hidden = media.length <= 1;
   }
-  function startTimer() {
+function startTimer() {
     stopTimer();
-    if (media.length < 2 || media.some(m => m.type !== 'image')) return;
-    timer = setInterval(() => show(index + 1), 4800);
-  }
+    if (media.length < 2) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const activeSlide = track.children[index];
+    if (activeSlide?.querySelector('iframe, video')) return;
+    timer = setInterval(() => {
+        show(index + 1);
+    }, 5000);
+ }
   function show(n) {
     if (!media.length) return;
     stopPlayback();
