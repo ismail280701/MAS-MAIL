@@ -113,7 +113,7 @@
              {type:'image',src:'Portofolio/PPT/Lomba_Cerdas_Cermat_Biru_halus/preview_2.webp',alt:'Preview Desain dan Fitur Template PowerPoint Cerdas Cermat Interaktif'}],
       purchaseUrl:'https://lynk.id/ismail280701/9egw92ry9gll/checkout',
       whatsappMessage:'Halo Mas Mail, saya tertarik dengan Template PowerPoint Cerdas Cermat Biru Muda Modern & Interaktif yang memiliki 3 paket dengan total 90 soal. Saya ingin bertanya mengenai fitur, cara penggunaan, dan pembelian produknya.'
-    },
+    }/*,
     'template-ppt': {
       type:'template',category:'ppt',categoryLabel:'POWERPOINT',title:'Template PowerPoint',
       cardDescription:'Template presentasi PowerPoint dengan desain modern yang siap disesuaikan.',
@@ -140,7 +140,7 @@
       highlights:['Disesuaikan dengan kebutuhan','Membantu pengelolaan data','Tampilan mudah digunakan','Dapat dikembangkan sesuai kebutuhan'],
       media:[{type:'image',src:'assets/portfolio/aplikasi-01.jpg',alt:'Proyek Aplikasi'}],
       whatsappMessage:'Halo Mas Mail, saya ingin konsultasi mengenai pembuatan aplikasi.'
-    }
+    }*/
   };
   window.MasMailPortfolioData = {data,createWhatsAppUrl,defaultPurchaseUrl,getCategories:()=>[...new Set(Object.values(data).map(x=>x.category).filter(Boolean))]};
 })();
