@@ -1528,3 +1528,199 @@ button:focus-visible {
     }
 
 }
+/* =========================================
+   GLOBAL FLOATING PREMIUM
+   MAS MAIL — ALL PAGES
+========================================= */
+
+.mm-floating {
+    position: fixed;
+    right: max(18px, env(safe-area-inset-right));
+    bottom: calc(22px + env(safe-area-inset-bottom));
+    z-index: 9990;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+
+    pointer-events: none;
+}
+
+.mm-floating > * {
+    pointer-events: auto;
+}
+
+.mm-floating-wa,
+.mm-floating-top {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 60px;
+    height: 60px;
+    padding: 0;
+
+    border-radius: 50%;
+    cursor: pointer;
+    text-decoration: none;
+
+    transition:
+        transform .4s cubic-bezier(.2,.8,.2,1),
+        opacity .35s ease,
+        box-shadow .35s ease,
+        background .35s ease;
+}
+
+/* WHATSAPP */
+
+.mm-floating .mm-floating-wa {
+    background: linear-gradient(145deg, #32e678, #128c4a);
+    border: 2px solid rgba(255,255,255,.8);
+    color: #fff;
+
+    box-shadow:
+        0 8px 28px rgba(18,140,74,.3),
+        0 0 0 5px rgba(37,211,102,.1);
+
+    animation: mmFloatingPulse 3.5s ease-in-out infinite;
+}
+
+.mm-floating-wa svg {
+    width: 31px;
+    height: 31px;
+    fill: currentColor;
+}
+
+/* BACK TO TOP */
+
+.mm-floating #backToHero.mm-floating-top {
+    position: relative;
+    inset: auto;
+    right: auto;
+    bottom: auto;
+    left: auto;
+
+    width: 56px;
+    height: 56px;
+    margin: 0;
+    padding: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid rgba(212,175,95,.65);
+    border-radius: 50%;
+
+    background: linear-gradient(145deg, #12315a, #071b3a);
+    color: #f0ce7a;
+
+    box-shadow: 0 9px 25px rgba(7,27,58,.22);
+
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(22px) scale(.8);
+
+    pointer-events: none;
+}
+
+.mm-floating-top svg {
+    width: 26px;
+    height: 26px;
+    stroke: currentColor;
+    stroke-width: 2.5;
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.mm-floating #backToHero.mm-floating-top span {
+    display: none;
+}
+
+/* SCROLLED STATE */
+
+.mm-floating.is-scrolled #backToHero.mm-floating-top {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+    pointer-events: auto;
+}
+
+.mm-floating.is-scrolled .mm-floating-wa {
+    transform: translateY(-8px);
+}
+
+/* INTERACTIONS */
+
+@media (hover: hover) {
+    .mm-floating .mm-floating-wa:hover {
+        animation-play-state: paused;
+        transform: translateY(-5px) scale(1.07);
+        box-shadow: 0 13px 34px rgba(18,140,74,.38);
+    }
+
+    .mm-floating.is-scrolled .mm-floating-wa:hover {
+        transform: translateY(-13px) scale(1.07);
+    }
+
+    .mm-floating #backToHero.mm-floating-top:hover {
+        transform: translateY(-4px) scale(1.07);
+        background: #153e70;
+    }
+}
+
+.mm-floating a:focus-visible,
+.mm-floating button:focus-visible {
+    outline: 3px solid #d4af5f;
+    outline-offset: 4px;
+}
+
+/* GENTLE PULSE */
+
+@keyframes mmFloatingPulse {
+    0%, 100% {
+        box-shadow:
+            0 8px 28px rgba(18,140,74,.3),
+            0 0 0 5px rgba(37,211,102,.1);
+    }
+
+    50% {
+        box-shadow:
+            0 10px 30px rgba(18,140,74,.36),
+            0 0 0 11px rgba(37,211,102,0);
+    }
+}
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+    .mm-floating {
+        right: calc(16px + env(safe-area-inset-right));
+        bottom: calc(20px + env(safe-area-inset-bottom));
+        gap: 12px;
+    }
+
+    .mm-floating .mm-floating-wa {
+        width: 58px;
+        height: 58px;
+    }
+
+    .mm-floating #backToHero.mm-floating-top {
+        width: 54px;
+        height: 54px;
+    }
+}
+
+/* ACCESSIBILITY */
+
+@media (prefers-reduced-motion: reduce) {
+    .mm-floating *,
+    .mm-floating *::before,
+    .mm-floating *::after {
+        animation: none !important;
+        transition: none !important;
+    }
+}
