@@ -512,3 +512,87 @@ document.addEventListener(
 
     }
 );
+/* =========================================
+   GLOBAL FLOATING PREMIUM
+   MAS MAIL — ALL PAGES
+========================================= */
+
+document.addEventListener('DOMContentLoaded', () => {
+    if (document.querySelector('.mm-floating')) return;
+
+    const WHATSAPP_NUMBER = '6282253652317';
+    const SCROLL_THRESHOLD = 180;
+
+    const floating = document.createElement('div');
+    floating.className = 'mm-floating';
+    floating.setAttribute('aria-label', 'Navigasi cepat');
+
+    // WHATSAPP BUTTON
+    const whatsapp = document.createElement('a');
+    whatsapp.className = 'mm-floating-wa';
+    whatsapp.href = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent('Halo Mas Mail, saya ingin konsultasi mengenai layanan atau produk Mas Mail.')}`;
+    whatsapp.target = '_blank';
+    whatsapp.rel = 'noopener noreferrer';
+    whatsapp.setAttribute('aria-label', 'Konsultasi melalui WhatsApp');
+    whatsapp.title = 'Konsultasi WhatsApp';
+
+    whatsapp.innerHTML = `
+        <svg viewBox="0 0 32 32" aria-hidden="true">
+            <path d="M16 .8A15.1 15.1 0 0 0 3 23.5L.8 31.2l7.9-2.1A15.2 15.2 0 1 0 16 .8zm0 27.5a12.2 12.2 0 0 1-6.2-1.7l-.5-.3-4.6 1.2 1.2-4.5-.3-.5A12.3 12.3 0 1 1 16 28.3zm6.7-9.2c-.4-.2-2.2-1.1-2.5-1.2-.4-.1-.6-.2-.9.2-.3.4-1 1.2-1.2 1.4-.2.2-.4.3-.8.1-.4-.2-1.6-.6-3-1.9-1.1-1-1.9-2.2-2.1-2.6-.2-.4 0-.6.2-.8l.6-.7c.2-.2.3-.4.4-.7.1-.3 0-.5-.1-.7l-1.1-2.7c-.3-.7-.6-.6-.9-.6h-.8c-.3 0-.7.1-1.1.5-.4.4-1.4 1.4-1.4 3.3s1.5 3.8 1.7 4c.2.3 2.9 4.4 7 6.2 1 .4 1.8.7 2.4.9 1 .3 1.9.3 2.6.2.8-.1 2.2-.9 2.5-1.8.3-.9.3-1.7.2-1.8-.1-.2-.4-.3-.8-.5z"/>
+        </svg>
+    `;
+
+    // REUSE EXISTING BACK-TO-HERO BUTTON
+    let backToTop = document.getElementById('backToHero');
+
+    if (!backToTop) {
+        backToTop = document.createElement('button');
+        backToTop.id = 'backToHero';
+        backToTop.type = 'button';
+    }
+
+    backToTop.classList.add('mm-floating-top');
+    backToTop.setAttribute('aria-label', 'Kembali ke atas');
+    backToTop.title = 'Kembali ke atas';
+
+    backToTop.innerHTML = `
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 19V5"/>
+            <path d="m5 12 7-7 7 7"/>
+        </svg>
+    `;
+
+    floating.appendChild(backToTop);
+    floating.appendChild(whatsapp);
+    document.body.appendChild(floating);
+
+    // SCROLL TO TOP
+    backToTop.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches
+                ? 'instant'
+                : 'smooth'
+        });
+    });
+
+    // SCROLL VISIBILITY
+    let ticking = false;
+
+    function updateFloating() {
+        floating.classList.toggle(
+            'is-scrolled',
+            window.scrollY > SCROLL_THRESHOLD
+        );
+        ticking = false;
+    }
+
+    window.addEventListener('scroll', () => {
+        if (!ticking) {
+            window.requestAnimationFrame(updateFloating);
+            ticking = true;
+        }
+    }, { passive: true });
+
+    updateFloating();
+});
