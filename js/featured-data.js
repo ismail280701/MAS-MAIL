@@ -6,7 +6,7 @@ window.MasMailFeaturedConfig = {
     { id: 'waktu-untuk-pantas', badge: 'E-BOOK' },
     { id: 'piagam-elegan-islami-a4', badge: 'POPULER' },
     { id: 'sertifikat-piagam', badge: 'UNGGULAN' },
-    { id: 'template-ppt', badge: 'FAVORIT' }
+    { id: 'ppt-cerdas-cermat-biru-muda', badge: 'FAVORIT' }
   ],
   standaloneProducts: {
     /* Contoh (hapus komentar dan sesuaikan jika diperlukan):
