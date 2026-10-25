@@ -1,0 +1,17 @@
+/* Mas Mail Digital — featured cards premium; letakkan setelah digital.css */
+.digital-featured-carousel { overflow: hidden; }
+.digital-featured-track { padding: 8px 3px 18px; scroll-padding-inline: 3px; align-items: stretch; }
+.featured-premium-card { background: #fff; border: 1px solid rgba(7,27,58,.1); border-radius: 22px; box-shadow: 0 12px 35px rgba(7,27,58,.07); }
+.featured-premium-card .digital-featured-image { aspect-ratio: 4 / 3; background: #f1f3f8; }
+.featured-premium-card .digital-featured-image img { object-fit: contain; }
+.featured-premium-card .digital-featured-content { padding: 22px; }
+.featured-premium-card .digital-featured-content h3 { font-size: 1.15rem; line-height: 1.4; }
+.featured-premium-card .digital-featured-content p { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; min-height: 4.2em; }
+.featured-premium-actions { display: flex; gap: 9px; margin-top: auto; padding-top: 22px; flex-wrap: wrap; }
+.featured-premium-actions a { display: inline-flex; justify-content: center; align-items: center; text-align: center; flex: 1 1 125px; min-height: 44px; padding: 11px 13px; border-radius: 12px; font-size: .82rem; font-weight: 750; line-height: 1.35; text-decoration: none; transition: transform .2s ease, background .2s ease, box-shadow .2s ease; }
+.featured-premium-detail { background: #f2f5fa; color: #071b3a; border: 1px solid #dfe5ee; }
+.featured-premium-buy { background: linear-gradient(135deg,#e9c879,#c99b43); color: #071b3a; border: 1px solid #d2a34c; }
+.featured-premium-actions a:hover { transform: translateY(-2px); box-shadow: 0 5px 14px rgba(7,27,58,.12); }
+.featured-premium-actions a:focus-visible { outline: 3px solid #d4af5f; outline-offset: 3px; }
+@media(max-width:600px) { .featured-premium-card { flex-basis: 88%; border-radius: 19px; } .featured-premium-card .digital-featured-content { padding: 18px; } }
+@media(prefers-reduced-motion:reduce) { .featured-premium-actions a { transition: none; } }
