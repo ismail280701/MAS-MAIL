@@ -5,6 +5,7 @@ window.MasMailFeaturedConfig = {
   featured: [
     { id: 'waktu-untuk-pantas', badge: 'E-BOOK' },
     { id: 'separuh-langit-yang-tersisa', badge: 'E-BOOK' },
+    { id: 'jasa_pembuatan_webset', badge: 'FAVORIT' },
     { id: 'piagam-elegan-islami-a4', badge: 'POPULER' },
     { id: 'sertifikat-piagam', badge: 'UNGGULAN' },
     { id: 'ppt-cerdas-cermat-biru-muda', badge: 'FAVORIT' }
