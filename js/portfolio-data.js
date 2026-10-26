@@ -92,7 +92,11 @@
         { type: 'image', src: 'Portofolio/E-Book/separuh_langit_yang_tersisa/privew-1.webp', alt: 'Preview 1 E-Book Separuh Langit (yang tersisa)' },
         { type: 'image', src: 'Portofolio/E-Book/separuh_langit_yang_tersisa/privew-2.webp', alt: 'Preview 2 E-Book Separuh Langit (yang tersisa)' }
     ],
-    purchaseUrl: 'http://lynk.id/ismail280701/1w85gdkvp78o/checkout'
+    purchaseUrl: 'http://lynk.id/ismail280701/1w85gdkvp78o/checkout', 
+    actionText: 'Baca Sekarang',
+    cardActionText: 'Baca Sekarang',
+    consultationText: 'Konsultasi',
+    whatsappMessage: 'Halo Mas Mail, saya ingin bertanya mengenai E-Book Waktu untuk Pantas.'
     },
      'piagam-elegan-islami-a4': {
     type: 'template',category: 'canva',categoryLabel: 'CANVA TEMPLATE',title:'Template Sertifikat & Piagam Penghargaan Elegan Islami A4',
