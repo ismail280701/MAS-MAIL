@@ -77,6 +77,23 @@
     purchaseUrl:"http://lynk.id/ismail280701/wo8rvjrlmrwd/checkout",
     whatsappMessage:"Halo Mas Mail, saya tertarik dengan produk 34 Template Canva Islami Premium yang berisi kumpulan link template melalui Google Sites. Saya ingin bertanya mengenai produk dan cara mengakses templatenya."
     },
+ 
+    'separuh-langit-yang-tersisa': {
+    type: 'template',
+    category: 'ebook',
+    categoryLabel: 'E-BOOK DIGITAL',
+    title: 'Separuh Langit (yang tersisa)',
+    cardDescription: '📖 Sebuah kisah tentang cinta, hijrah, masa lalu, dan keberanian menemukan kembali arah hidup ketika hati belum sepenuhnya pulih.',
+    description: '✨ Hijrah bukan tentang menjadi sempurna dalam semalam, melainkan tentang keberanian menjaga hati, berdamai dengan masa lalu, dan terus melangkah meski perlahan.',
+    about: '📖 Separuh Langit (yang tersisa) karya M. Ismail mengisahkan perjalanan Hana, seorang perempuan yang sedang berjuang menemukan ketenangan di tengah bayang-bayang masa lalu dan proses hijrah yang tidak selalu mudah.\n\n🌿 Di sebuah kajian kampus, Hana memilih duduk di barisan paling belakang. Bukan karena tidak ingin mendengar, tetapi karena merasa terlalu banyak beban yang masih dibawanya. Hingga sebuah pesan singkat dari seseorang di masa lalu kembali mengguncang hatinya: "Boleh kita ketemu?"\n\n🤍 Di antara catatan kecil, ketenangan ruang kajian, dan kehadiran seorang lelaki pendiam yang tidak pernah menghakiminya, Hana perlahan memahami bahwa berubah bukan berarti harus langsung sempurna. Ada hati yang perlu dijaga, luka yang perlu disembuhkan, dan masa lalu yang harus direlakan.\n\n🌙 Melalui perjalanan Hana dan Rafi, kisah ini mengajak pembaca merenungkan makna cinta, hijrah, ketulusan, dan keberanian memilih jalan yang benar meski langkah masih tertatih.\n\n✨ Untuk kamu yang sedang berjuang merajut kembali kepingan hati, berdamai dengan masa lalu, atau mencari arah hidup yang lebih tenang, semoga kisah ini menjadi teman perjalanan. Karena terkadang, yang tersisa bukanlah akhir dari segalanya, melainkan awal untuk menemukan kembali cahaya.',
+    highlights: ['📚 Novel digital karya M. Ismail', '🌙 Kisah cinta, hijrah, dan ketulusan hati Hana dan Rafi', '🌿 Tentang berdamai dengan masa lalu dan menemukan arah hidup', '🤍 Mengangkat tema menjaga hati, proses perubahan, dan penerimaan diri', '✨ Cerita reflektif bernuansa Islami yang menyentuh hati', '📱 Format e-book digital yang praktis untuk dibaca'],
+    media: [
+        { type: 'image', src: 'Portofolio/E-Book/separuh_langit_yang_tersisa/cover.webp', alt: 'Cover E-Book Separuh Langit (yang tersisa)' },
+        { type: 'image', src: 'Portofolio/E-Book/separuh_langit_yang_tersisa/privew-1.webp', alt: 'Preview 1 E-Book Separuh Langit (yang tersisa)' },
+        { type: 'image', src: 'Portofolio/E-Book/separuh_langit_yang_tersisa/privew-2.webp', alt: 'Preview 2 E-Book Separuh Langit (yang tersisa)' }
+    ],
+    purchaseUrl: 'http://lynk.id/ismail280701/1w85gdkvp78o/checkout'
+    },
      'piagam-elegan-islami-a4': {
     type: 'template',category: 'canva',categoryLabel: 'CANVA TEMPLATE',title:'Template Sertifikat & Piagam Penghargaan Elegan Islami A4',
     cardDescription:'🏆 Template piagam A4 bernuansa emas dan biru tua, elegan, formal, dan siap disesuaikan untuk berbagai acara.',
