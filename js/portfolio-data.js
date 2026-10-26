@@ -96,7 +96,7 @@
     actionText: 'Baca Sekarang',
     cardActionText: 'Baca Sekarang',
     consultationText: 'Konsultasi',
-    whatsappMessage: 'Halo Mas Mail, saya ingin bertanya mengenai E-Book Waktu untuk Pantas.'
+    whatsappMessage: 'Halo Mas Mail, saya ingin bertanya mengenai E-Book Separuh Langit yang Tersisa.'
     },
      'piagam-elegan-islami-a4': {
     type: 'template',category: 'canva',categoryLabel: 'CANVA TEMPLATE',title:'Template Sertifikat & Piagam Penghargaan Elegan Islami A4',
