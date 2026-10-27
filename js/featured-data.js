@@ -5,7 +5,7 @@ window.MasMailFeaturedConfig = {
   featured: [
     { id: 'waktu-untuk-pantas', badge: 'E-BOOK' },
     { id: 'separuh-langit-yang-tersisa', badge: 'E-BOOK' },
-    
+    { id: 'jasa_pembuatan_webset', badge: 'E-BOOK' },
     { id: 'piagam-elegan-islami-a4', badge: 'POPULER' },
     { id: 'sertifikat-piagam', badge: 'UNGGULAN' },
     { id: 'ppt-cerdas-cermat-biru-muda', badge: 'FAVORIT' }
@@ -15,11 +15,14 @@ window.MasMailFeaturedConfig = {
       type: 'template', category: 'digital', categoryLabel: 'JASA DIGITAL',
       title: 'Jasa Pembuatan Webset', cardDescription: '🌐 Wujudkan website modern, responsif, dan profesional untuk bisnis, UMKM, pesantren, lembaga, maupun personal branding. Desain menarik, fitur sesuai kebutuhan, dan siap membantu membangun kepercayaan pelanggan.',
       description: '✨ Saatnya hadir lebih profesional di dunia digital! Mas Mail Digital menyediakan jasa pembuatan website dengan desain modern, tampilan optimal di HP maupun komputer, serta fitur yang disesuaikan dengan kebutuhan dan identitas usaha atau lembaga Anda.',
-      about: ['🌐 JASA PEMBUATAN WEBSITE — MAS MAIL DIGITAL',
-         'Bangun Identitas Digital, Tingkatkan Kepercayaan, dan Perluas Jangkauan Anda!',
-'🚀 Di era digital, website bukan sekadar halaman di internet. Website adalah wajah profesional yang membantu memperkenalkan usaha, lembaga, layanan, maupun karya Anda kepada lebih banyak orang.',
-'💻 Mas Mail Digital hadir membantu mewujudkan website modern, elegan, responsif, dan mudah digunakan. Setiap website dirancang dengan memperhatikan tampilan, kenyamanan pengunjung, serta kebutuhan dan karakter identitas Anda.'],
-/*
+      about: ['🌐 JASA PEMBUATAN WEBSITE — MAS MAIL DIGITAL
+
+Bangun Identitas Digital, Tingkatkan Kepercayaan, dan Perluas Jangkauan Anda!
+
+🚀 Di era digital, website bukan sekadar halaman di internet. Website adalah wajah profesional yang membantu memperkenalkan usaha, lembaga, layanan, maupun karya Anda kepada lebih banyak orang.
+
+💻 Mas Mail Digital hadir membantu mewujudkan website modern, elegan, responsif, dan mudah digunakan. Setiap website dirancang dengan memperhatikan tampilan, kenyamanan pengunjung, serta kebutuhan dan karakter identitas Anda.
+
 ✨ Apa yang Bisa Anda Dapatkan?
 
 - 🎨 Desain Modern & Profesional — Tampilan menarik yang disesuaikan dengan identitas usaha atau lembaga.
@@ -47,8 +50,7 @@ Konsultasikan terlebih dahulu kebutuhan website Anda bersama Mas Mail Digital. K
 
 🌟 Mas Mail Digital — Dari Ide Menjadi Website.
 
-📩 Konsultasikan kebutuhan website Anda sekarang dan mulai bangun kehadiran digital yang lebih profesional!',*/
-      
+📩 Konsultasikan kebutuhan website Anda sekarang dan mulai bangun kehadiran digital yang lebih profesional!'], 
 highlights: ['🌐 Website modern dan profesional', '📱 Responsif untuk HP, tablet, dan komputer', '🎨 Desain sesuai identitas brand atau lembaga', '⚙️ Fitur fleksibel sesuai kebutuhan', '⚡ Navigasi nyaman dan performa optimal', '🏪 Cocok untuk UMKM, bisnis, pesantren, dan portofolio', '🤝 Konsultasi dan revisi sesuai paket'],
       media: [{ type: 'image', src: 'Produk_Unggulan/jasa_wabset/cover.webp', alt: 'Jasa Pembuatan Webset' },
               { type: 'image', src: 'Produk_Unggulan/jasa_wabset/priview-1.webp', alt: 'Jasa Pembuatan Webset' },
