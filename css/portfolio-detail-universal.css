@@ -1,0 +1,44 @@
+/* =========================================
+   MAS MAIL DIGITAL - DETAIL UNIVERSAL
+   Ubah warna/ukuran di file ini saja.
+========================================= */
+body.portfolio-detail-open .mm-floating,
+body.portfolio-detail-open #backToHero,
+body.portfolio-detail-open .back-to-hero { display:none !important; }
+
+/* Header: bagikan di kanan, tombol tutup tetap tersedia. */
+.portfolio-detail-overlay .portfolio-detail-header { display:flex; align-items:center; gap:12px; }
+.portfolio-detail-overlay .portfolio-detail-brand { flex:1; min-width:0; }
+.portfolio-detail-overlay .portfolio-premium-share { flex:0 0 42px; width:42px; height:42px; min-height:42px; margin:0; padding:0; border-radius:50%; color:#071b3a; background:#fff; border:1px solid rgba(7,27,58,.14); }
+.portfolio-detail-overlay .portfolio-premium-share:hover { background:#fff7e6; border-color:#d4af5f; }
+
+/* CTA tetap terlihat saat konten digulir; berada di luar scroll area. */
+.portfolio-detail-overlay .portfolio-detail-sheet { display:flex; flex-direction:column; }
+.portfolio-detail-overlay .portfolio-detail-content { flex:1 1 auto; min-height:0; overflow-y:auto; }
+.portfolio-detail-overlay .portfolio-detail-cta { flex:0 0 auto; margin:0; padding:12px 22px calc(12px + env(safe-area-inset-bottom)); background:rgba(255,255,255,.97); border-top:1px solid rgba(7,27,58,.12); box-shadow:0 -8px 24px rgba(7,27,58,.08); z-index:12; }
+.portfolio-detail-overlay .portfolio-detail-action { min-height:48px; }
+
+/* Teks about: paragraf, heading, dan penekanan konsisten. */
+#portfolioDetailAbout { line-height:1.85; overflow-wrap:anywhere; }
+#portfolioDetailAbout .portfolio-about-paragraph { margin:0 0 16px; white-space:pre-line; }
+#portfolioDetailAbout .portfolio-about-heading { margin:24px 0 12px; font-size:1.04rem; line-height:1.5; font-weight:800; color:#071b3a; }
+#portfolioDetailAbout h4.portfolio-about-heading { font-size:.98rem; color:#8c681e; }
+#portfolioDetailAbout strong { font-weight:800; }
+#portfolioDetailAbout > :first-child { margin-top:0; }
+
+/* Desktop: foto mengapung di kiri. Teks otomatis mengisi ruang di
+   samping foto, lalu mengalir ke lebar penuh setelah melewati foto. */
+@media (min-width:1000px) {
+  .portfolio-detail-overlay .portfolio-detail-content { display:block; padding:30px 38px; }
+  .portfolio-detail-overlay .portfolio-detail-media { float:left; position:relative; top:auto; width:52%; margin:0 34px 22px 0; }
+  .portfolio-detail-overlay .portfolio-detail-info { display:contents; }
+  .portfolio-detail-overlay .portfolio-detail-section { min-width:0; }
+  .portfolio-detail-overlay .portfolio-detail-content::after { content:''; display:block; clear:both; }
+}
+@media (max-width:999px) {
+  .portfolio-detail-overlay .portfolio-detail-content { display:flex; flex-direction:column; gap:20px; padding:20px 18px; }
+  .portfolio-detail-overlay .portfolio-detail-media { float:none; width:100%; }
+  .portfolio-detail-overlay .portfolio-detail-info { display:block; width:100%; }
+  .portfolio-detail-overlay .portfolio-detail-cta { gap:8px; padding:10px 12px calc(10px + env(safe-area-inset-bottom)); }
+  .portfolio-detail-overlay .portfolio-detail-action { padding:10px 8px; font-size:.73rem; }
+}
