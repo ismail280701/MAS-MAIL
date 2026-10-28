@@ -687,8 +687,8 @@ section {
 
     margin-top: 20px;
 
-    color:
-        rgba(255, 255, 255, 0.55);
+ 
+    color: rgba(255, 255, 255, 0.85);
 
     font-size: 0.92rem;
 
@@ -808,9 +808,7 @@ section {
 }
 
 .footer-social-area > p {
-    color:
-        rgba(255, 255, 255, 0.45);
-
+    color: rgba(255, 255, 255, 0.85);
     font-size: 0.78rem;
 }
 
@@ -850,9 +848,7 @@ section {
     border-radius:
         var(--radius-pill);
 
-    color:
-        rgba(255, 255, 255, 0.65);
-
+    color: rgba(255, 255, 255, 0.85);
     font-size: 0.72rem;
 
     font-weight: 600;
@@ -908,9 +904,7 @@ section {
 }
 
 .footer-bottom p {
-    color:
-        rgba(255, 255, 255, 0.35);
-
+    color: rgba(255, 255, 255, 0.80);
     font-size: 0.68rem;
 }
 
