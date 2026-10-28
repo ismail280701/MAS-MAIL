@@ -22,20 +22,29 @@
 
 <!-- =========================================
      03. FONT DAN CSS WEBSITE
-     Font dimuat langsung agar tidak menunggu @import CSS.
 ========================================== -->
 
-<!-- Koneksi awal ke server font -->
+<!-- KONEKSI AWAL GOOGLE FONTS -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<!-- Font utama website -->
+<!-- GOOGLE FONTS NON-BLOCKING -->
 <link
   rel="stylesheet"
   href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+  media="print"
+  onload="this.media='all'"
 >
 
-<!-- CSS utama website -->
+<!-- FALLBACK JIKA JAVASCRIPT TIDAK AKTIF -->
+<noscript>
+  <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+  >
+</noscript>
+
+<!-- CSS UTAMA TETAP DIMUAT NORMAL -->
 <link rel="stylesheet" href="css/umum.css">
 <link rel="stylesheet" href="css/home.css">
 
